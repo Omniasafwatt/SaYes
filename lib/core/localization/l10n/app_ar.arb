@@ -1,0 +1,57 @@
+{
+  "@@locale": "ar",
+  "appName": "سيّ يس",
+  "appTagline": "مخطط الأفراح الفاخر",
+
+  "showcaseTitle": "نظام التصميم",
+  "showcaseSubtitle": "كل عناصر الأساس لتجربة سيّ يس الفاخرة.",
+  "sectionColors": "الألوان",
+  "sectionTypography": "الخطوط",
+  "sectionButtons": "الأزرار",
+  "sectionInputs": "حقول الإدخال",
+  "sectionChips": "فئات الخدمات",
+  "sectionCards": "بطاقات مزودي الخدمة",
+  "sectionBadges": "الشارات والحالة",
+  "sectionRating": "التقييمات",
+  "sectionStates": "حالات فارغة / خطأ / نجاح",
+  "sectionLoading": "التحميل والهياكل العظمية",
+
+  "primaryButtonLabel": "طلب حجز",
+  "secondaryButtonLabel": "عرض الأعمال السابقة",
+  "textButtonLabel": "تخطي الآن",
+  "loadingButtonLabel": "جارٍ الإرسال",
+
+  "emailLabel": "البريد الإلكتروني",
+  "emailHint": "you@example.com",
+  "passwordLabel": "كلمة المرور",
+  "passwordHint": "أدخل كلمة المرور",
+
+  "categoryPhotography": "التصوير الفوتوغرافي",
+  "categoryMakeup": "خبيرة المكياج",
+  "categoryHalls": "قاعات الأفراح",
+  "categoryPlanning": "منظمو حفلات الزفاف",
+
+  "vendorSampleName": "قاعة نور الشام للأفراح",
+  "vendorSampleCity": "الزمالك، القاهرة",
+  "vendorSamplePrice": "يبدأ من 45,000 جنيه",
+  "vendorSampleReviews": "(120)",
+
+  "verifiedLabel": "موثّق",
+  "featuredLabel": "مميز",
+  "statusPending": "قيد الانتظار",
+  "statusAccepted": "مقبول",
+  "statusRejected": "مرفوض",
+  "ratingReviewsLabel": "120 تقييم",
+
+  "emptyFavoritesTitle": "مزودو الخدمة المفضلون لديك\nسيظهرون هنا.",
+  "emptyFavoritesMessage": "اضغطي على أيقونة القلب لأي مزود لحفظه لوقت لاحق.",
+  "emptyFavoritesAction": "ابدئي الاستكشاف",
+
+  "errorTitle": "حدث خطأ ما",
+  "errorMessage": "تعذّر تحميل هذا الآن. يرجى المحاولة مرة أخرى.",
+  "errorAction": "إعادة المحاولة",
+
+  "successTitle": "تم إرسال طلبك بنجاح!",
+  "successMessage": "استلم مزود الخدمة طلب الحجز الخاص بك. سنُبقيك على اطّلاع.",
+  "successAction": "العودة للرئيسية"
+}

@@ -1,0 +1,57 @@
+{
+  "@@locale": "en",
+  "appName": "SayYes",
+  "appTagline": "The Luxury Wedding Planner",
+
+  "showcaseTitle": "Design System",
+  "showcaseSubtitle": "Every foundation piece for the premium SayYes experience.",
+  "sectionColors": "Colors",
+  "sectionTypography": "Typography",
+  "sectionButtons": "Buttons",
+  "sectionInputs": "Text Fields",
+  "sectionChips": "Category Chips",
+  "sectionCards": "Vendor Cards",
+  "sectionBadges": "Badges & Status",
+  "sectionRating": "Ratings",
+  "sectionStates": "Empty / Error / Success",
+  "sectionLoading": "Loading & Skeletons",
+
+  "primaryButtonLabel": "Request Booking",
+  "secondaryButtonLabel": "View Portfolio",
+  "textButtonLabel": "Skip for now",
+  "loadingButtonLabel": "Sending",
+
+  "emailLabel": "Email",
+  "emailHint": "you@example.com",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter your password",
+
+  "categoryPhotography": "Photography",
+  "categoryMakeup": "Makeup Artist",
+  "categoryHalls": "Wedding Halls",
+  "categoryPlanning": "Wedding Planners",
+
+  "vendorSampleName": "Nour Al Sham Wedding Hall",
+  "vendorSampleCity": "Zamalek, Cairo",
+  "vendorSamplePrice": "From EGP 45,000",
+  "vendorSampleReviews": "(120)",
+
+  "verifiedLabel": "Verified",
+  "featuredLabel": "Featured",
+  "statusPending": "Pending",
+  "statusAccepted": "Accepted",
+  "statusRejected": "Rejected",
+  "ratingReviewsLabel": "120 reviews",
+
+  "emptyFavoritesTitle": "Your favorite vendors\nwill appear here.",
+  "emptyFavoritesMessage": "Tap the heart on any vendor to save them for later.",
+  "emptyFavoritesAction": "Start exploring",
+
+  "errorTitle": "Something went wrong",
+  "errorMessage": "We couldn't load this right now. Please try again.",
+  "errorAction": "Retry",
+
+  "successTitle": "Your request has been sent!",
+  "successMessage": "The vendor has received your booking request. We'll keep you updated.",
+  "successAction": "Back to Home"
+}
