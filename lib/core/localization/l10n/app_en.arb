@@ -2,6 +2,8 @@
   "@@locale": "en",
   "appName": "SayYes",
   "appTagline": "The Luxury Wedding Planner",
+  "splashSubtitle": "Crafting unforgettable Egyptian celebrations, beautifully planned.",
+  "splashCities": "Cairo · Alexandria · El Gouna",
 
   "showcaseTitle": "Design System",
   "showcaseSubtitle": "Every foundation piece for the premium SayYes experience.",

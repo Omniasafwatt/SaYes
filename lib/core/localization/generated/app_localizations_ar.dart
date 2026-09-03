@@ -16,6 +16,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appTagline => 'مخطط الأفراح الفاخر';
 
   @override
+  String get splashSubtitle =>
+      'نُخطط لاحتفالات مصرية لا تُنسى، بعناية واهتمام فائقين.';
+
+  @override
+  String get splashCities => 'القاهرة · الإسكندرية · الجونة';
+
+  @override
   String get showcaseTitle => 'نظام التصميم';
 
   @override

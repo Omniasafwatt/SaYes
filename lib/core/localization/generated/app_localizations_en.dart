@@ -16,6 +16,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTagline => 'The Luxury Wedding Planner';
 
   @override
+  String get splashSubtitle =>
+      'Crafting unforgettable Egyptian celebrations, beautifully planned.';
+
+  @override
+  String get splashCities => 'Cairo · Alexandria · El Gouna';
+
+  @override
   String get showcaseTitle => 'Design System';
 
   @override

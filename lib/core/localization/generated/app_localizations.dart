@@ -110,6 +110,18 @@ abstract class AppLocalizations {
   /// **'The Luxury Wedding Planner'**
   String get appTagline;
 
+  /// No description provided for @splashSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crafting unforgettable Egyptian celebrations, beautifully planned.'**
+  String get splashSubtitle;
+
+  /// No description provided for @splashCities.
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo · Alexandria · El Gouna'**
+  String get splashCities;
+
   /// No description provided for @showcaseTitle.
   ///
   /// In en, this message translates to:
