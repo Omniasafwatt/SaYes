@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _continue() {
     if (!mounted) return;
     // TODO(auth): branch on stored-session validity once Phase 4 exists.
-    context.go(AppRoutes.showcase);
+    context.go(AppRoutes.onboarding);
   }
 
   @override

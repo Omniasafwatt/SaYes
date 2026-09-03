@@ -23,6 +23,53 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splashCities => 'Cairo · Alexandria · El Gouna';
 
   @override
+  String get onboardingSkip => 'Skip';
+
+  @override
+  String get onboardingNext => 'Next';
+
+  @override
+  String get onboardingGetStarted => 'Get Started';
+
+  @override
+  String onboardingStep(int current, int total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String get onboarding1Headline => 'Your dream wedding\nstarts here.';
+
+  @override
+  String get onboarding1Body =>
+      'Discover breathtaking venues, talented photographers, and everything you need for the celebration you\'ve always imagined.';
+
+  @override
+  String get onboarding2Headline => 'Find vendors\nyou can trust.';
+
+  @override
+  String get onboarding2Body =>
+      'Every vendor is verified — real reviews, transparent pricing, and portfolios you can browse before you book.';
+
+  @override
+  String get onboarding3Headline => 'Plan everything\nin one place.';
+
+  @override
+  String get onboarding3Body =>
+      'From discovery to booking, manage your entire wedding journey in one beautifully simple app.';
+
+  @override
+  String get onboarding3Vendors => 'Vendors';
+
+  @override
+  String get onboarding3Bookings => 'Bookings';
+
+  @override
+  String get onboarding3Favorites => 'Favorites';
+
+  @override
+  String get onboarding3Reviews => 'Reviews';
+
+  @override
   String get showcaseTitle => 'Design System';
 
   @override

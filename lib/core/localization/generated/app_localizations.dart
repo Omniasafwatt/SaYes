@@ -122,6 +122,90 @@ abstract class AppLocalizations {
   /// **'Cairo · Alexandria · El Gouna'**
   String get splashCities;
 
+  /// No description provided for @onboardingSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkip;
+
+  /// No description provided for @onboardingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboardingNext;
+
+  /// No description provided for @onboardingGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get onboardingGetStarted;
+
+  /// No description provided for @onboardingStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String onboardingStep(int current, int total);
+
+  /// No description provided for @onboarding1Headline.
+  ///
+  /// In en, this message translates to:
+  /// **'Your dream wedding\nstarts here.'**
+  String get onboarding1Headline;
+
+  /// No description provided for @onboarding1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover breathtaking venues, talented photographers, and everything you need for the celebration you\'ve always imagined.'**
+  String get onboarding1Body;
+
+  /// No description provided for @onboarding2Headline.
+  ///
+  /// In en, this message translates to:
+  /// **'Find vendors\nyou can trust.'**
+  String get onboarding2Headline;
+
+  /// No description provided for @onboarding2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Every vendor is verified — real reviews, transparent pricing, and portfolios you can browse before you book.'**
+  String get onboarding2Body;
+
+  /// No description provided for @onboarding3Headline.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan everything\nin one place.'**
+  String get onboarding3Headline;
+
+  /// No description provided for @onboarding3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'From discovery to booking, manage your entire wedding journey in one beautifully simple app.'**
+  String get onboarding3Body;
+
+  /// No description provided for @onboarding3Vendors.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendors'**
+  String get onboarding3Vendors;
+
+  /// No description provided for @onboarding3Bookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get onboarding3Bookings;
+
+  /// No description provided for @onboarding3Favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get onboarding3Favorites;
+
+  /// No description provided for @onboarding3Reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get onboarding3Reviews;
+
   /// No description provided for @showcaseTitle.
   ///
   /// In en, this message translates to:

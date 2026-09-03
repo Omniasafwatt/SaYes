@@ -23,6 +23,53 @@ class AppLocalizationsAr extends AppLocalizations {
   String get splashCities => 'القاهرة · الإسكندرية · الجونة';
 
   @override
+  String get onboardingSkip => 'تخطي';
+
+  @override
+  String get onboardingNext => 'التالي';
+
+  @override
+  String get onboardingGetStarted => 'ابدأ الآن';
+
+  @override
+  String onboardingStep(int current, int total) {
+    return 'الخطوة $current من $total';
+  }
+
+  @override
+  String get onboarding1Headline => 'حفل زفافك المثالي\nيبدأ من هنا.';
+
+  @override
+  String get onboarding1Body =>
+      'اكتشفي قاعات ساحرة، ومصورين موهوبين، وكل ما تحتاجينه للاحتفال الذي طالما حلمتِ به.';
+
+  @override
+  String get onboarding2Headline => 'تعرّفي على مزودي خدمة\nيمكنكِ الوثوق بهم.';
+
+  @override
+  String get onboarding2Body =>
+      'كل مزود خدمة موثّق — تقييمات حقيقية، أسعار واضحة، وأعمال سابقة يمكنكِ تصفحها قبل الحجز.';
+
+  @override
+  String get onboarding3Headline => 'خططي لكل شيء\nفي مكان واحد.';
+
+  @override
+  String get onboarding3Body =>
+      'من الاكتشاف إلى الحجز، أديري رحلة زفافك بالكامل من تطبيق واحد أنيق وبسيط.';
+
+  @override
+  String get onboarding3Vendors => 'مزودو الخدمة';
+
+  @override
+  String get onboarding3Bookings => 'الحجوزات';
+
+  @override
+  String get onboarding3Favorites => 'المفضلة';
+
+  @override
+  String get onboarding3Reviews => 'التقييمات';
+
+  @override
   String get showcaseTitle => 'نظام التصميم';
 
   @override

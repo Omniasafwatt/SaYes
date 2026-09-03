@@ -5,6 +5,27 @@
   "splashSubtitle": "Crafting unforgettable Egyptian celebrations, beautifully planned.",
   "splashCities": "Cairo · Alexandria · El Gouna",
 
+  "onboardingSkip": "Skip",
+  "onboardingNext": "Next",
+  "onboardingGetStarted": "Get Started",
+  "onboardingStep": "Step {current} of {total}",
+  "@onboardingStep": {
+    "placeholders": { "current": {"type": "int"}, "total": {"type": "int"} }
+  },
+
+  "onboarding1Headline": "Your dream wedding\nstarts here.",
+  "onboarding1Body": "Discover breathtaking venues, talented photographers, and everything you need for the celebration you've always imagined.",
+
+  "onboarding2Headline": "Find vendors\nyou can trust.",
+  "onboarding2Body": "Every vendor is verified — real reviews, transparent pricing, and portfolios you can browse before you book.",
+
+  "onboarding3Headline": "Plan everything\nin one place.",
+  "onboarding3Body": "From discovery to booking, manage your entire wedding journey in one beautifully simple app.",
+  "onboarding3Vendors": "Vendors",
+  "onboarding3Bookings": "Bookings",
+  "onboarding3Favorites": "Favorites",
+  "onboarding3Reviews": "Reviews",
+
   "showcaseTitle": "Design System",
   "showcaseSubtitle": "Every foundation piece for the premium SayYes experience.",
   "sectionColors": "Colors",

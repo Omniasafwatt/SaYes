@@ -5,6 +5,27 @@
   "splashSubtitle": "نُخطط لاحتفالات مصرية لا تُنسى، بعناية واهتمام فائقين.",
   "splashCities": "القاهرة · الإسكندرية · الجونة",
 
+  "onboardingSkip": "تخطي",
+  "onboardingNext": "التالي",
+  "onboardingGetStarted": "ابدأ الآن",
+  "onboardingStep": "الخطوة {current} من {total}",
+  "@onboardingStep": {
+    "placeholders": { "current": {"type": "int"}, "total": {"type": "int"} }
+  },
+
+  "onboarding1Headline": "حفل زفافك المثالي\nيبدأ من هنا.",
+  "onboarding1Body": "اكتشفي قاعات ساحرة، ومصورين موهوبين، وكل ما تحتاجينه للاحتفال الذي طالما حلمتِ به.",
+
+  "onboarding2Headline": "تعرّفي على مزودي خدمة\nيمكنكِ الوثوق بهم.",
+  "onboarding2Body": "كل مزود خدمة موثّق — تقييمات حقيقية، أسعار واضحة، وأعمال سابقة يمكنكِ تصفحها قبل الحجز.",
+
+  "onboarding3Headline": "خططي لكل شيء\nفي مكان واحد.",
+  "onboarding3Body": "من الاكتشاف إلى الحجز، أديري رحلة زفافك بالكامل من تطبيق واحد أنيق وبسيط.",
+  "onboarding3Vendors": "مزودو الخدمة",
+  "onboarding3Bookings": "الحجوزات",
+  "onboarding3Favorites": "المفضلة",
+  "onboarding3Reviews": "التقييمات",
+
   "showcaseTitle": "نظام التصميم",
   "showcaseSubtitle": "كل عناصر الأساس لتجربة سيّ يس الفاخرة.",
   "sectionColors": "الألوان",
