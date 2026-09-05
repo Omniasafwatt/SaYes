@@ -781,6 +781,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to Home'**
   String get successAction;
+
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @navExplore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get navExplore;
+
+  /// No description provided for @navFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get navFavorites;
+
+  /// No description provided for @navBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get navBookings;
+
+  /// No description provided for @navProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get navProfile;
+
+  /// No description provided for @comingSoonExploreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore is on its way'**
+  String get comingSoonExploreTitle;
+
+  /// No description provided for @comingSoonExploreMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Full category browsing and search land in the next phase.'**
+  String get comingSoonExploreMessage;
+
+  /// No description provided for @comingSoonFavoritesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites is on its way'**
+  String get comingSoonFavoritesTitle;
+
+  /// No description provided for @comingSoonFavoritesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving vendors you love lands in a later phase.'**
+  String get comingSoonFavoritesMessage;
+
+  /// No description provided for @comingSoonBookingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings is on its way'**
+  String get comingSoonBookingsTitle;
+
+  /// No description provided for @comingSoonBookingsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Tracking your booking requests lands in a later phase.'**
+  String get comingSoonBookingsMessage;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @profileMoreComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Full profile management — editing your details, notifications, and settings — lands in a later phase.'**
+  String get profileMoreComingSoon;
+
+  /// No description provided for @profileLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get profileLanguage;
+
+  /// No description provided for @profileLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get profileLogOut;
+
+  /// No description provided for @homeGreetingMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get homeGreetingMorning;
+
+  /// No description provided for @homeGreetingAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get homeGreetingAfternoon;
+
+  /// No description provided for @homeGreetingEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get homeGreetingEvening;
+
+  /// No description provided for @homeGreetingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s plan something beautiful today.'**
+  String get homeGreetingSubtitle;
+
+  /// No description provided for @homeHeroHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan the wedding\nyou\'ve always dreamed of.'**
+  String get homeHeroHeadline;
+
+  /// No description provided for @homeSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What are you looking for?'**
+  String get homeSearchHint;
+
+  /// No description provided for @homeSectionCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get homeSectionCategories;
+
+  /// No description provided for @homeSectionFeatured.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Vendors'**
+  String get homeSectionFeatured;
+
+  /// No description provided for @homeSectionPopular.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular Vendors'**
+  String get homeSectionPopular;
+
+  /// No description provided for @homeSectionCities.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular Cities'**
+  String get homeSectionCities;
+
+  /// No description provided for @homeSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get homeSeeAll;
+
+  /// No description provided for @homeCategoryPhotographers.
+  ///
+  /// In en, this message translates to:
+  /// **'Photographers'**
+  String get homeCategoryPhotographers;
+
+  /// No description provided for @homeCategoryMakeup.
+  ///
+  /// In en, this message translates to:
+  /// **'Makeup Artists'**
+  String get homeCategoryMakeup;
+
+  /// No description provided for @homeCategoryHalls.
+  ///
+  /// In en, this message translates to:
+  /// **'Wedding Halls'**
+  String get homeCategoryHalls;
+
+  /// No description provided for @homeCategoryPlanners.
+  ///
+  /// In en, this message translates to:
+  /// **'Wedding Planners'**
+  String get homeCategoryPlanners;
+
+  /// No description provided for @homeCategoryDj.
+  ///
+  /// In en, this message translates to:
+  /// **'DJs'**
+  String get homeCategoryDj;
+
+  /// No description provided for @homeCategoryCatering.
+  ///
+  /// In en, this message translates to:
+  /// **'Catering'**
+  String get homeCategoryCatering;
+
+  /// No description provided for @homeCategoryDecoration.
+  ///
+  /// In en, this message translates to:
+  /// **'Decoration'**
+  String get homeCategoryDecoration;
+
+  /// No description provided for @homeCategoryCarRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Car Rental'**
+  String get homeCategoryCarRental;
+
+  /// No description provided for @cityCairo.
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo'**
+  String get cityCairo;
+
+  /// No description provided for @cityAlexandria.
+  ///
+  /// In en, this message translates to:
+  /// **'Alexandria'**
+  String get cityAlexandria;
+
+  /// No description provided for @cityGiza.
+  ///
+  /// In en, this message translates to:
+  /// **'Giza'**
+  String get cityGiza;
+
+  /// No description provided for @cityElGouna.
+  ///
+  /// In en, this message translates to:
+  /// **'El Gouna'**
+  String get cityElGouna;
+
+  /// No description provided for @cityHurghada.
+  ///
+  /// In en, this message translates to:
+  /// **'Hurghada'**
+  String get cityHurghada;
+
+  /// No description provided for @citySharmElSheikh.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharm El Sheikh'**
+  String get citySharmElSheikh;
+
+  /// No description provided for @cityVendorCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} vendors'**
+  String cityVendorCount(int count);
+
+  /// No description provided for @homeErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load your home feed right now.'**
+  String get homeErrorMessage;
+
+  /// No description provided for @vendorStartingFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From EGP {amount}'**
+  String vendorStartingFrom(String amount);
+
+  /// No description provided for @vendorReviewCount.
+  ///
+  /// In en, this message translates to:
+  /// **'({count})'**
+  String vendorReviewCount(int count);
 }
 
 class _AppLocalizationsDelegate

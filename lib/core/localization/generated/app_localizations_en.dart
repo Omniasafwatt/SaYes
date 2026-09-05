@@ -375,4 +375,146 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get successAction => 'Back to Home';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get navExplore => 'Explore';
+
+  @override
+  String get navFavorites => 'Favorites';
+
+  @override
+  String get navBookings => 'Bookings';
+
+  @override
+  String get navProfile => 'Profile';
+
+  @override
+  String get comingSoonExploreTitle => 'Explore is on its way';
+
+  @override
+  String get comingSoonExploreMessage =>
+      'Full category browsing and search land in the next phase.';
+
+  @override
+  String get comingSoonFavoritesTitle => 'Favorites is on its way';
+
+  @override
+  String get comingSoonFavoritesMessage =>
+      'Saving vendors you love lands in a later phase.';
+
+  @override
+  String get comingSoonBookingsTitle => 'Bookings is on its way';
+
+  @override
+  String get comingSoonBookingsMessage =>
+      'Tracking your booking requests lands in a later phase.';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileMoreComingSoon =>
+      'Full profile management — editing your details, notifications, and settings — lands in a later phase.';
+
+  @override
+  String get profileLanguage => 'Language';
+
+  @override
+  String get profileLogOut => 'Log Out';
+
+  @override
+  String get homeGreetingMorning => 'Good morning';
+
+  @override
+  String get homeGreetingAfternoon => 'Good afternoon';
+
+  @override
+  String get homeGreetingEvening => 'Good evening';
+
+  @override
+  String get homeGreetingSubtitle => 'Let\'s plan something beautiful today.';
+
+  @override
+  String get homeHeroHeadline => 'Plan the wedding\nyou\'ve always dreamed of.';
+
+  @override
+  String get homeSearchHint => 'What are you looking for?';
+
+  @override
+  String get homeSectionCategories => 'Categories';
+
+  @override
+  String get homeSectionFeatured => 'Featured Vendors';
+
+  @override
+  String get homeSectionPopular => 'Popular Vendors';
+
+  @override
+  String get homeSectionCities => 'Popular Cities';
+
+  @override
+  String get homeSeeAll => 'See all';
+
+  @override
+  String get homeCategoryPhotographers => 'Photographers';
+
+  @override
+  String get homeCategoryMakeup => 'Makeup Artists';
+
+  @override
+  String get homeCategoryHalls => 'Wedding Halls';
+
+  @override
+  String get homeCategoryPlanners => 'Wedding Planners';
+
+  @override
+  String get homeCategoryDj => 'DJs';
+
+  @override
+  String get homeCategoryCatering => 'Catering';
+
+  @override
+  String get homeCategoryDecoration => 'Decoration';
+
+  @override
+  String get homeCategoryCarRental => 'Car Rental';
+
+  @override
+  String get cityCairo => 'Cairo';
+
+  @override
+  String get cityAlexandria => 'Alexandria';
+
+  @override
+  String get cityGiza => 'Giza';
+
+  @override
+  String get cityElGouna => 'El Gouna';
+
+  @override
+  String get cityHurghada => 'Hurghada';
+
+  @override
+  String get citySharmElSheikh => 'Sharm El Sheikh';
+
+  @override
+  String cityVendorCount(int count) {
+    return '$count vendors';
+  }
+
+  @override
+  String get homeErrorMessage => 'We couldn\'t load your home feed right now.';
+
+  @override
+  String vendorStartingFrom(String amount) {
+    return 'From EGP $amount';
+  }
+
+  @override
+  String vendorReviewCount(int count) {
+    return '($count)';
+  }
 }

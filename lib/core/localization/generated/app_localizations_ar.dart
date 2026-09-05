@@ -370,4 +370,146 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get successAction => 'العودة للرئيسية';
+
+  @override
+  String get navHome => 'الرئيسية';
+
+  @override
+  String get navExplore => 'استكشاف';
+
+  @override
+  String get navFavorites => 'المفضلة';
+
+  @override
+  String get navBookings => 'الحجوزات';
+
+  @override
+  String get navProfile => 'حسابي';
+
+  @override
+  String get comingSoonExploreTitle => 'الاستكشاف قادم قريباً';
+
+  @override
+  String get comingSoonExploreMessage =>
+      'تصفح الفئات والبحث الكامل يصلان في المرحلة القادمة.';
+
+  @override
+  String get comingSoonFavoritesTitle => 'المفضلة قادمة قريباً';
+
+  @override
+  String get comingSoonFavoritesMessage =>
+      'حفظ مزودي الخدمة المفضلين لديكِ يصل في مرحلة لاحقة.';
+
+  @override
+  String get comingSoonBookingsTitle => 'الحجوزات قادمة قريباً';
+
+  @override
+  String get comingSoonBookingsMessage =>
+      'متابعة طلبات الحجز الخاصة بكِ تصل في مرحلة لاحقة.';
+
+  @override
+  String get profileTitle => 'حسابي';
+
+  @override
+  String get profileMoreComingSoon =>
+      'إدارة الحساب الكاملة — تعديل بياناتكِ، والإشعارات، والإعدادات — تصل في مرحلة لاحقة.';
+
+  @override
+  String get profileLanguage => 'اللغة';
+
+  @override
+  String get profileLogOut => 'تسجيل الخروج';
+
+  @override
+  String get homeGreetingMorning => 'صباح الخير';
+
+  @override
+  String get homeGreetingAfternoon => 'مساء الخير';
+
+  @override
+  String get homeGreetingEvening => 'مساء الخير';
+
+  @override
+  String get homeGreetingSubtitle => 'لنُخطط لشيء جميل اليوم.';
+
+  @override
+  String get homeHeroHeadline => 'خططي لحفل الزفاف\nالذي طالما حلمتِ به.';
+
+  @override
+  String get homeSearchHint => 'عمّاذا تبحثين؟';
+
+  @override
+  String get homeSectionCategories => 'الفئات';
+
+  @override
+  String get homeSectionFeatured => 'مزودو خدمة مميزون';
+
+  @override
+  String get homeSectionPopular => 'مزودو خدمة شائعون';
+
+  @override
+  String get homeSectionCities => 'المدن الأكثر بحثاً';
+
+  @override
+  String get homeSeeAll => 'عرض الكل';
+
+  @override
+  String get homeCategoryPhotographers => 'المصورون';
+
+  @override
+  String get homeCategoryMakeup => 'خبيرات المكياج';
+
+  @override
+  String get homeCategoryHalls => 'قاعات الأفراح';
+
+  @override
+  String get homeCategoryPlanners => 'منظمو حفلات الزفاف';
+
+  @override
+  String get homeCategoryDj => 'دي جي';
+
+  @override
+  String get homeCategoryCatering => 'الضيافة والتموين';
+
+  @override
+  String get homeCategoryDecoration => 'الديكور';
+
+  @override
+  String get homeCategoryCarRental => 'تأجير السيارات';
+
+  @override
+  String get cityCairo => 'القاهرة';
+
+  @override
+  String get cityAlexandria => 'الإسكندرية';
+
+  @override
+  String get cityGiza => 'الجيزة';
+
+  @override
+  String get cityElGouna => 'الجونة';
+
+  @override
+  String get cityHurghada => 'الغردقة';
+
+  @override
+  String get citySharmElSheikh => 'شرم الشيخ';
+
+  @override
+  String cityVendorCount(int count) {
+    return '$count مزود خدمة';
+  }
+
+  @override
+  String get homeErrorMessage => 'تعذّر تحميل الصفحة الرئيسية الآن.';
+
+  @override
+  String vendorStartingFrom(String amount) {
+    return 'يبدأ من $amount جنيه';
+  }
+
+  @override
+  String vendorReviewCount(int count) {
+    return '($count)';
+  }
 }

@@ -41,7 +41,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     ]);
     if (!mounted) return;
     final hasSession = results[0] as bool;
-    context.go(hasSession ? AppRoutes.showcase : AppRoutes.onboarding);
+    context.go(hasSession ? AppRoutes.home : AppRoutes.onboarding);
   }
 
   @override

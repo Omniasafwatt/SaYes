@@ -137,5 +137,67 @@
 
   "successTitle": "Your request has been sent!",
   "successMessage": "The vendor has received your booking request. We'll keep you updated.",
-  "successAction": "Back to Home"
+  "successAction": "Back to Home",
+
+  "navHome": "Home",
+  "navExplore": "Explore",
+  "navFavorites": "Favorites",
+  "navBookings": "Bookings",
+  "navProfile": "Profile",
+
+  "comingSoonExploreTitle": "Explore is on its way",
+  "comingSoonExploreMessage": "Full category browsing and search land in the next phase.",
+  "comingSoonFavoritesTitle": "Favorites is on its way",
+  "comingSoonFavoritesMessage": "Saving vendors you love lands in a later phase.",
+  "comingSoonBookingsTitle": "Bookings is on its way",
+  "comingSoonBookingsMessage": "Tracking your booking requests lands in a later phase.",
+
+  "profileTitle": "Profile",
+  "profileMoreComingSoon": "Full profile management — editing your details, notifications, and settings — lands in a later phase.",
+  "profileLanguage": "Language",
+  "profileLogOut": "Log Out",
+
+  "homeGreetingMorning": "Good morning",
+  "homeGreetingAfternoon": "Good afternoon",
+  "homeGreetingEvening": "Good evening",
+  "homeGreetingSubtitle": "Let's plan something beautiful today.",
+  "homeHeroHeadline": "Plan the wedding\nyou've always dreamed of.",
+  "homeSearchHint": "What are you looking for?",
+
+  "homeSectionCategories": "Categories",
+  "homeSectionFeatured": "Featured Vendors",
+  "homeSectionPopular": "Popular Vendors",
+  "homeSectionCities": "Popular Cities",
+  "homeSeeAll": "See all",
+
+  "homeCategoryPhotographers": "Photographers",
+  "homeCategoryMakeup": "Makeup Artists",
+  "homeCategoryHalls": "Wedding Halls",
+  "homeCategoryPlanners": "Wedding Planners",
+  "homeCategoryDj": "DJs",
+  "homeCategoryCatering": "Catering",
+  "homeCategoryDecoration": "Decoration",
+  "homeCategoryCarRental": "Car Rental",
+
+  "cityCairo": "Cairo",
+  "cityAlexandria": "Alexandria",
+  "cityGiza": "Giza",
+  "cityElGouna": "El Gouna",
+  "cityHurghada": "Hurghada",
+  "citySharmElSheikh": "Sharm El Sheikh",
+  "cityVendorCount": "{count} vendors",
+  "@cityVendorCount": {
+    "placeholders": { "count": {"type": "int"} }
+  },
+
+  "homeErrorMessage": "We couldn't load your home feed right now.",
+
+  "vendorStartingFrom": "From EGP {amount}",
+  "@vendorStartingFrom": {
+    "placeholders": { "amount": {"type": "String"} }
+  },
+  "vendorReviewCount": "({count})",
+  "@vendorReviewCount": {
+    "placeholders": { "count": {"type": "int"} }
+  }
 }

@@ -137,5 +137,67 @@
 
   "successTitle": "تم إرسال طلبك بنجاح!",
   "successMessage": "استلم مزود الخدمة طلب الحجز الخاص بك. سنُبقيك على اطّلاع.",
-  "successAction": "العودة للرئيسية"
+  "successAction": "العودة للرئيسية",
+
+  "navHome": "الرئيسية",
+  "navExplore": "استكشاف",
+  "navFavorites": "المفضلة",
+  "navBookings": "الحجوزات",
+  "navProfile": "حسابي",
+
+  "comingSoonExploreTitle": "الاستكشاف قادم قريباً",
+  "comingSoonExploreMessage": "تصفح الفئات والبحث الكامل يصلان في المرحلة القادمة.",
+  "comingSoonFavoritesTitle": "المفضلة قادمة قريباً",
+  "comingSoonFavoritesMessage": "حفظ مزودي الخدمة المفضلين لديكِ يصل في مرحلة لاحقة.",
+  "comingSoonBookingsTitle": "الحجوزات قادمة قريباً",
+  "comingSoonBookingsMessage": "متابعة طلبات الحجز الخاصة بكِ تصل في مرحلة لاحقة.",
+
+  "profileTitle": "حسابي",
+  "profileMoreComingSoon": "إدارة الحساب الكاملة — تعديل بياناتكِ، والإشعارات، والإعدادات — تصل في مرحلة لاحقة.",
+  "profileLanguage": "اللغة",
+  "profileLogOut": "تسجيل الخروج",
+
+  "homeGreetingMorning": "صباح الخير",
+  "homeGreetingAfternoon": "مساء الخير",
+  "homeGreetingEvening": "مساء الخير",
+  "homeGreetingSubtitle": "لنُخطط لشيء جميل اليوم.",
+  "homeHeroHeadline": "خططي لحفل الزفاف\nالذي طالما حلمتِ به.",
+  "homeSearchHint": "عمّاذا تبحثين؟",
+
+  "homeSectionCategories": "الفئات",
+  "homeSectionFeatured": "مزودو خدمة مميزون",
+  "homeSectionPopular": "مزودو خدمة شائعون",
+  "homeSectionCities": "المدن الأكثر بحثاً",
+  "homeSeeAll": "عرض الكل",
+
+  "homeCategoryPhotographers": "المصورون",
+  "homeCategoryMakeup": "خبيرات المكياج",
+  "homeCategoryHalls": "قاعات الأفراح",
+  "homeCategoryPlanners": "منظمو حفلات الزفاف",
+  "homeCategoryDj": "دي جي",
+  "homeCategoryCatering": "الضيافة والتموين",
+  "homeCategoryDecoration": "الديكور",
+  "homeCategoryCarRental": "تأجير السيارات",
+
+  "cityCairo": "القاهرة",
+  "cityAlexandria": "الإسكندرية",
+  "cityGiza": "الجيزة",
+  "cityElGouna": "الجونة",
+  "cityHurghada": "الغردقة",
+  "citySharmElSheikh": "شرم الشيخ",
+  "cityVendorCount": "{count} مزود خدمة",
+  "@cityVendorCount": {
+    "placeholders": { "count": {"type": "int"} }
+  },
+
+  "homeErrorMessage": "تعذّر تحميل الصفحة الرئيسية الآن.",
+
+  "vendorStartingFrom": "يبدأ من {amount} جنيه",
+  "@vendorStartingFrom": {
+    "placeholders": { "amount": {"type": "String"} }
+  },
+  "vendorReviewCount": "({count})",
+  "@vendorReviewCount": {
+    "placeholders": { "count": {"type": "int"} }
+  }
 }

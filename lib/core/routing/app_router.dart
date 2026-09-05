@@ -1,11 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/auth/presentation/reset_password_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
+import '../../features/home/presentation/coming_soon_screen.dart';
+import '../../features/home/presentation/customer_home_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
+import '../../features/profile/presentation/profile_placeholder_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../localization/generated/app_localizations.dart';
+import 'customer_shell.dart';
 
 /// Route paths. Every screen the app can navigate to gets a named constant
 /// here — no magic path strings scattered through feature code.
@@ -17,6 +23,12 @@ abstract final class AppRoutes {
   static const forgotPassword = '/forgot-password';
   static const resetPassword = '/reset-password';
   static const showcase = '/showcase';
+
+  static const home = '/home';
+  static const explore = '/explore';
+  static const favorites = '/favorites';
+  static const bookings = '/bookings';
+  static const profile = '/profile';
 }
 
 final appRouter = GoRouter(
@@ -49,6 +61,62 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.showcase,
       builder: (context, state) => const DesignSystemShowcaseScreen(),
+    ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) => CustomerShell(navigationShell: navigationShell),
+      branches: [
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.home, builder: (context, state) => const CustomerHomeScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.explore,
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context);
+                return ComingSoonScreen(
+                  icon: Icons.explore_rounded,
+                  title: l10n.comingSoonExploreTitle,
+                  message: l10n.comingSoonExploreMessage,
+                );
+              },
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.favorites,
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context);
+                return ComingSoonScreen(
+                  icon: Icons.favorite_rounded,
+                  title: l10n.comingSoonFavoritesTitle,
+                  message: l10n.comingSoonFavoritesMessage,
+                );
+              },
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.bookings,
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context);
+                return ComingSoonScreen(
+                  icon: Icons.calendar_month_rounded,
+                  title: l10n.comingSoonBookingsTitle,
+                  message: l10n.comingSoonBookingsMessage,
+                );
+              },
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.profile, builder: (context, state) => const ProfilePlaceholderScreen())],
+        ),
+      ],
     ),
   ],
 );
