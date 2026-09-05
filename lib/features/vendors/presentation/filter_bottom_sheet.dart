@@ -8,16 +8,23 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../categories/application/categories_controller.dart';
 import '../application/cities_provider.dart';
-import '../application/vendor_filters_controller.dart';
 import '../data/vendor_models.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
 
-/// Filter/sort bottom sheet for Search & vendor listing surfaces. Edits a
-/// local draft — nothing hits [vendorFiltersProvider] until Apply, so
-/// results underneath don't shift while the sheet is still open.
+/// Filter/sort bottom sheet shared by Search and the vendor listing screen.
+/// Edits a local draft seeded from [initialFilters] — nothing is applied
+/// until the user taps Apply, so results underneath don't shift while the
+/// sheet is open. The caller owns where the result goes: Search commits it
+/// to its shared [vendorFiltersProvider][1], while a listing screen commits
+/// it straight to that screen's own controller.
+///
+/// [1]: ../application/vendor_filters_controller.dart
 class FilterBottomSheet extends ConsumerStatefulWidget {
-  const FilterBottomSheet({super.key});
+  const FilterBottomSheet({super.key, required this.initialFilters, required this.onApply});
+
+  final VendorFilters initialFilters;
+  final ValueChanged<VendorFilters> onApply;
 
   @override
   ConsumerState<FilterBottomSheet> createState() => _FilterBottomSheetState();
@@ -33,7 +40,7 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
   @override
   void initState() {
     super.initState();
-    final current = ref.read(vendorFiltersProvider);
+    final current = widget.initialFilters;
     _categoryId = current.categoryId;
     _city = current.city;
     _minRating = current.minRating;
@@ -52,15 +59,15 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
   }
 
   void _apply() {
-    ref.read(vendorFiltersProvider.notifier).set(
-          VendorFilters(
-            categoryId: _categoryId,
-            city: _city,
-            minRating: _minRating,
-            priceRange: _priceRange,
-            sort: _sort,
-          ),
-        );
+    widget.onApply(
+      VendorFilters(
+        categoryId: _categoryId,
+        city: _city,
+        minRating: _minRating,
+        priceRange: _priceRange,
+        sort: _sort,
+      ),
+    );
     Navigator.of(context).pop();
   }
 

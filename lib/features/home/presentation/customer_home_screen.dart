@@ -17,6 +17,7 @@ import '../../../core/widgets/widgets.dart';
 import '../../favorites/application/favorites_controller.dart';
 import '../application/home_controller.dart';
 import '../../vendors/data/vendor_models.dart';
+import '../../vendors/presentation/vendor_listing_screen.dart';
 import '../data/home_models.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
@@ -173,7 +174,14 @@ class _HomeContent extends StatelessWidget {
         const SizedBox(height: AppSpacing.sectionGap),
         FadeSlideIn(
           delay: const Duration(milliseconds: 120),
-          child: SectionHeader(title: l10n.homeSectionFeatured),
+          child: SectionHeader(
+            title: l10n.homeSectionFeatured,
+            actionLabel: l10n.homeSeeAll,
+            onAction: () => context.push(
+              AppRoutes.vendorListing,
+              extra: VendorListingScreenArgs(title: l10n.homeSectionFeatured, initialSort: SortOption.featured),
+            ),
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         _VendorRow(
@@ -186,7 +194,14 @@ class _HomeContent extends StatelessWidget {
         const SizedBox(height: AppSpacing.sectionGap),
         FadeSlideIn(
           delay: const Duration(milliseconds: 180),
-          child: SectionHeader(title: l10n.homeSectionPopular),
+          child: SectionHeader(
+            title: l10n.homeSectionPopular,
+            actionLabel: l10n.homeSeeAll,
+            onAction: () => context.push(
+              AppRoutes.vendorListing,
+              extra: VendorListingScreenArgs(title: l10n.homeSectionPopular),
+            ),
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         _VendorRow(
@@ -308,6 +323,10 @@ class _CategoryRow extends StatelessWidget {
         itemBuilder: (context, index) {
           final category = categories[index];
           return PressableScale(
+            onTap: () => context.push(
+              AppRoutes.vendorListing,
+              extra: VendorListingScreenArgs(categoryId: category.id, title: category.name),
+            ),
             child: SizedBox(
               width: 76,
               child: Column(
@@ -411,6 +430,10 @@ class _CityRow extends StatelessWidget {
         itemBuilder: (context, index) {
           final city = cities[index];
           return PressableScale(
+            onTap: () => context.push(
+              AppRoutes.vendorListing,
+              extra: VendorListingScreenArgs(city: city.name, title: city.name),
+            ),
             child: Container(
               width: 168,
               padding: const EdgeInsets.all(AppSpacing.md),

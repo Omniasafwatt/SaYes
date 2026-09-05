@@ -626,4 +626,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sortFeatured => 'Featured';
+
+  @override
+  String get vendorListingEmptyTitle => 'No vendors found';
+
+  @override
+  String get vendorListingEmptyMessage =>
+      'Try adjusting your filters to see more results.';
+
+  @override
+  String get vendorListingErrorMessage =>
+      'We couldn\'t load these vendors right now.';
 }

@@ -619,4 +619,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sortFeatured => 'المميز';
+
+  @override
+  String get vendorListingEmptyTitle => 'لا يوجد مزودو خدمة';
+
+  @override
+  String get vendorListingEmptyMessage =>
+      'جربي تعديل الفلاتر لرؤية المزيد من النتائج.';
+
+  @override
+  String get vendorListingErrorMessage => 'تعذّر تحميل مزودي الخدمة الآن.';
 }

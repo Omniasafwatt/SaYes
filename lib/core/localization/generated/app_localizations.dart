@@ -1243,6 +1243,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Featured'**
   String get sortFeatured;
+
+  /// No description provided for @vendorListingEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vendors found'**
+  String get vendorListingEmptyTitle;
+
+  /// No description provided for @vendorListingEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your filters to see more results.'**
+  String get vendorListingEmptyMessage;
+
+  /// No description provided for @vendorListingErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load these vendors right now.'**
+  String get vendorListingErrorMessage;
 }
 
 class _AppLocalizationsDelegate

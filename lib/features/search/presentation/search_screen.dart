@@ -64,7 +64,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   Future<void> _openFilters() async {
     _focusNode.unfocus();
-    await showAppBottomSheet<void>(context: context, builder: (_) => const FilterBottomSheet());
+    final current = ref.read(vendorFiltersProvider);
+    await showAppBottomSheet<void>(
+      context: context,
+      builder: (_) => FilterBottomSheet(
+        initialFilters: current,
+        onApply: (filters) => ref.read(vendorFiltersProvider.notifier).set(filters),
+      ),
+    );
     ref.read(searchControllerProvider.notifier).applyFilters();
   }
 

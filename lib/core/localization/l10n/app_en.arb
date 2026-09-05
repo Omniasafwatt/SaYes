@@ -244,5 +244,9 @@
   "sortHighestRated": "Highest Rated",
   "sortLowestPrice": "Lowest Price",
   "sortHighestPrice": "Highest Price",
-  "sortFeatured": "Featured"
+  "sortFeatured": "Featured",
+
+  "vendorListingEmptyTitle": "No vendors found",
+  "vendorListingEmptyMessage": "Try adjusting your filters to see more results.",
+  "vendorListingErrorMessage": "We couldn't load these vendors right now."
 }

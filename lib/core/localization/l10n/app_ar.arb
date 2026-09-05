@@ -244,5 +244,9 @@
   "sortHighestRated": "الأعلى تقييماً",
   "sortLowestPrice": "الأقل سعراً",
   "sortHighestPrice": "الأعلى سعراً",
-  "sortFeatured": "المميز"
+  "sortFeatured": "المميز",
+
+  "vendorListingEmptyTitle": "لا يوجد مزودو خدمة",
+  "vendorListingEmptyMessage": "جربي تعديل الفلاتر لرؤية المزيد من النتائج.",
+  "vendorListingErrorMessage": "تعذّر تحميل مزودي الخدمة الآن."
 }
