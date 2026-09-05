@@ -1123,6 +1123,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search by vendor name, category, or city.'**
   String get searchEmptyPromptMessage;
+
+  /// No description provided for @filtersButtonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filtersButtonLabel;
+
+  /// No description provided for @filtersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filtersTitle;
+
+  /// No description provided for @filtersReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get filtersReset;
+
+  /// No description provided for @filtersApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filters'**
+  String get filtersApply;
+
+  /// No description provided for @filtersCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get filtersCategory;
+
+  /// No description provided for @filtersAllCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All Categories'**
+  String get filtersAllCategories;
+
+  /// No description provided for @filtersCity.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get filtersCity;
+
+  /// No description provided for @filtersAllCities.
+  ///
+  /// In en, this message translates to:
+  /// **'All Cities'**
+  String get filtersAllCities;
+
+  /// No description provided for @filtersRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get filtersRating;
+
+  /// No description provided for @filtersAnyRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Any'**
+  String get filtersAnyRating;
+
+  /// No description provided for @filtersRating4Plus.
+  ///
+  /// In en, this message translates to:
+  /// **'4.0+'**
+  String get filtersRating4Plus;
+
+  /// No description provided for @filtersRating45Plus.
+  ///
+  /// In en, this message translates to:
+  /// **'4.5+'**
+  String get filtersRating45Plus;
+
+  /// No description provided for @filtersPriceRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get filtersPriceRange;
+
+  /// No description provided for @filtersPriceRangeValue.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP {min} – EGP {max}'**
+  String filtersPriceRangeValue(String min, String max);
+
+  /// No description provided for @filtersSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort By'**
+  String get filtersSort;
+
+  /// No description provided for @sortRecommended.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended'**
+  String get sortRecommended;
+
+  /// No description provided for @sortHighestRated.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest Rated'**
+  String get sortHighestRated;
+
+  /// No description provided for @sortLowestPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest Price'**
+  String get sortLowestPrice;
+
+  /// No description provided for @sortHighestPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest Price'**
+  String get sortHighestPrice;
+
+  /// No description provided for @sortFeatured.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured'**
+  String get sortFeatured;
 }
 
 class _AppLocalizationsDelegate

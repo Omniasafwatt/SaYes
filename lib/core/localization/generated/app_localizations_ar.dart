@@ -557,4 +557,66 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get searchEmptyPromptMessage =>
       'ابحثي باسم مزود الخدمة، أو الفئة، أو المدينة.';
+
+  @override
+  String get filtersButtonLabel => 'الفلاتر';
+
+  @override
+  String get filtersTitle => 'الفلاتر';
+
+  @override
+  String get filtersReset => 'إعادة تعيين';
+
+  @override
+  String get filtersApply => 'تطبيق الفلاتر';
+
+  @override
+  String get filtersCategory => 'الفئة';
+
+  @override
+  String get filtersAllCategories => 'كل الفئات';
+
+  @override
+  String get filtersCity => 'المدينة';
+
+  @override
+  String get filtersAllCities => 'كل المدن';
+
+  @override
+  String get filtersRating => 'التقييم';
+
+  @override
+  String get filtersAnyRating => 'أي تقييم';
+
+  @override
+  String get filtersRating4Plus => '+4.0';
+
+  @override
+  String get filtersRating45Plus => '+4.5';
+
+  @override
+  String get filtersPriceRange => 'النطاق السعري';
+
+  @override
+  String filtersPriceRangeValue(String min, String max) {
+    return '$min – $max جنيه';
+  }
+
+  @override
+  String get filtersSort => 'الترتيب حسب';
+
+  @override
+  String get sortRecommended => 'الموصى به';
+
+  @override
+  String get sortHighestRated => 'الأعلى تقييماً';
+
+  @override
+  String get sortLowestPrice => 'الأقل سعراً';
+
+  @override
+  String get sortHighestPrice => 'الأعلى سعراً';
+
+  @override
+  String get sortFeatured => 'المميز';
 }

@@ -106,15 +106,26 @@ class VendorCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.star_rounded, size: 16, color: AppColors.gold),
-                          const SizedBox(width: 3),
-                          Text(rating.toStringAsFixed(1), style: context.typography.labelMd),
-                          const SizedBox(width: 3),
-                          Text(reviewCountLabel, style: context.typography.metadata),
-                        ],
+                      Flexible(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.star_rounded, size: 16, color: AppColors.gold),
+                            const SizedBox(width: 3),
+                            Text(rating.toStringAsFixed(1), style: context.typography.labelMd),
+                            const SizedBox(width: 3),
+                            Flexible(
+                              child: Text(
+                                reviewCountLabel,
+                                style: context.typography.metadata,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      const SizedBox(width: 4),
                       Text(startingPriceLabel, style: context.typography.price.copyWith(fontSize: 14)),
                     ],
                   ),

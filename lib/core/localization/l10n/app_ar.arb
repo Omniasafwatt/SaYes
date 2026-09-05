@@ -220,5 +220,29 @@
   },
   "searchErrorMessage": "تعذّر إتمام البحث. يرجى المحاولة مرة أخرى.",
   "searchEmptyPromptTitle": "اعثري على مزود الخدمة المثالي",
-  "searchEmptyPromptMessage": "ابحثي باسم مزود الخدمة، أو الفئة، أو المدينة."
+  "searchEmptyPromptMessage": "ابحثي باسم مزود الخدمة، أو الفئة، أو المدينة.",
+
+  "filtersButtonLabel": "الفلاتر",
+  "filtersTitle": "الفلاتر",
+  "filtersReset": "إعادة تعيين",
+  "filtersApply": "تطبيق الفلاتر",
+  "filtersCategory": "الفئة",
+  "filtersAllCategories": "كل الفئات",
+  "filtersCity": "المدينة",
+  "filtersAllCities": "كل المدن",
+  "filtersRating": "التقييم",
+  "filtersAnyRating": "أي تقييم",
+  "filtersRating4Plus": "+4.0",
+  "filtersRating45Plus": "+4.5",
+  "filtersPriceRange": "النطاق السعري",
+  "filtersPriceRangeValue": "{min} – {max} جنيه",
+  "@filtersPriceRangeValue": {
+    "placeholders": { "min": {"type": "String"}, "max": {"type": "String"} }
+  },
+  "filtersSort": "الترتيب حسب",
+  "sortRecommended": "الموصى به",
+  "sortHighestRated": "الأعلى تقييماً",
+  "sortLowestPrice": "الأقل سعراً",
+  "sortHighestPrice": "الأعلى سعراً",
+  "sortFeatured": "المميز"
 }

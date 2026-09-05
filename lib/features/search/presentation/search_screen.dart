@@ -11,6 +11,8 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../categories/application/categories_controller.dart';
 import '../../favorites/application/favorites_controller.dart';
+import '../../vendors/application/vendor_filters_controller.dart';
+import '../../vendors/presentation/filter_bottom_sheet.dart';
 import '../application/search_controller.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
@@ -60,11 +62,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     _focusNode.unfocus();
   }
 
+  Future<void> _openFilters() async {
+    _focusNode.unfocus();
+    await showAppBottomSheet<void>(context: context, builder: (_) => const FilterBottomSheet());
+    ref.read(searchControllerProvider.notifier).applyFilters();
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final state = ref.watch(searchControllerProvider);
     final favorites = ref.watch(favoritesControllerProvider);
+    final filtersActive = !ref.watch(vendorFiltersProvider).isDefault;
 
     return Scaffold(
       backgroundColor: AppColors.ivory,
@@ -116,7 +125,27 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: AppSpacing.sm),
+                  const SizedBox(width: AppSpacing.xs),
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      IconButton(
+                        onPressed: _openFilters,
+                        icon: const Icon(Icons.tune_rounded, color: AppColors.textPrimary),
+                        tooltip: l10n.filtersButtonLabel,
+                      ),
+                      if (filtersActive)
+                        PositionedDirectional(
+                          top: 6,
+                          end: 6,
+                          child: Container(
+                            width: 8,
+                            height: 8,
+                            decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                          ),
+                        ),
+                    ],
+                  ),
                   TextButton(
                     onPressed: () => Navigator.of(context).maybePop(),
                     child: Text(l10n.searchCancel),

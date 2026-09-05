@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../vendors/application/vendor_filters_controller.dart';
 import '../../vendors/data/vendor_models.dart';
 import '../../vendors/data/vendor_repository.dart';
 import '../data/recent_searches_service.dart';
@@ -54,7 +55,8 @@ class SearchController extends Notifier<SearchState> {
 
     state = SearchState(query: query, status: SearchStatus.loading, recentSearches: state.recentSearches);
     try {
-      final result = await ref.read(vendorRepositoryProvider).search(query: query, page: 1);
+      final filters = ref.read(vendorFiltersProvider);
+      final result = await ref.read(vendorRepositoryProvider).search(query: query, page: 1, filters: filters);
       state = SearchState(
         query: query,
         results: result.vendors,
@@ -70,6 +72,27 @@ class SearchController extends Notifier<SearchState> {
     }
   }
 
+  /// Re-runs the current query — even an empty one — against the active
+  /// [vendorFiltersProvider] snapshot, so applying filters from the sheet
+  /// works whether or not the user has typed anything (browse-all + filter).
+  Future<void> applyFilters() async {
+    state = SearchState(query: state.query, status: SearchStatus.loading, recentSearches: state.recentSearches);
+    try {
+      final filters = ref.read(vendorFiltersProvider);
+      final result = await ref.read(vendorRepositoryProvider).search(query: state.query, page: 1, filters: filters);
+      state = SearchState(
+        query: state.query,
+        results: result.vendors,
+        hasMore: result.hasMore,
+        page: 1,
+        status: result.vendors.isEmpty ? SearchStatus.noResults : SearchStatus.success,
+        recentSearches: state.recentSearches,
+      );
+    } catch (_) {
+      state = SearchState(query: state.query, status: SearchStatus.error, recentSearches: state.recentSearches);
+    }
+  }
+
   Future<void> loadMore() async {
     if (state.status != SearchStatus.success || !state.hasMore) return;
     state = SearchState(
@@ -82,7 +105,8 @@ class SearchController extends Notifier<SearchState> {
     );
     try {
       final nextPage = state.page + 1;
-      final result = await ref.read(vendorRepositoryProvider).search(query: state.query, page: nextPage);
+      final filters = ref.read(vendorFiltersProvider);
+      final result = await ref.read(vendorRepositoryProvider).search(query: state.query, page: nextPage, filters: filters);
       state = SearchState(
         query: state.query,
         results: [...state.results, ...result.vendors],

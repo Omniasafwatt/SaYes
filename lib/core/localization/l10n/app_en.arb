@@ -220,5 +220,29 @@
   },
   "searchErrorMessage": "We couldn't complete your search. Please try again.",
   "searchEmptyPromptTitle": "Find your perfect vendor",
-  "searchEmptyPromptMessage": "Search by vendor name, category, or city."
+  "searchEmptyPromptMessage": "Search by vendor name, category, or city.",
+
+  "filtersButtonLabel": "Filters",
+  "filtersTitle": "Filters",
+  "filtersReset": "Reset",
+  "filtersApply": "Apply Filters",
+  "filtersCategory": "Category",
+  "filtersAllCategories": "All Categories",
+  "filtersCity": "City",
+  "filtersAllCities": "All Cities",
+  "filtersRating": "Rating",
+  "filtersAnyRating": "Any",
+  "filtersRating4Plus": "4.0+",
+  "filtersRating45Plus": "4.5+",
+  "filtersPriceRange": "Price Range",
+  "filtersPriceRangeValue": "EGP {min} – EGP {max}",
+  "@filtersPriceRangeValue": {
+    "placeholders": { "min": {"type": "String"}, "max": {"type": "String"} }
+  },
+  "filtersSort": "Sort By",
+  "sortRecommended": "Recommended",
+  "sortHighestRated": "Highest Rated",
+  "sortLowestPrice": "Lowest Price",
+  "sortHighestPrice": "Highest Price",
+  "sortFeatured": "Featured"
 }

@@ -564,4 +564,66 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get searchEmptyPromptMessage =>
       'Search by vendor name, category, or city.';
+
+  @override
+  String get filtersButtonLabel => 'Filters';
+
+  @override
+  String get filtersTitle => 'Filters';
+
+  @override
+  String get filtersReset => 'Reset';
+
+  @override
+  String get filtersApply => 'Apply Filters';
+
+  @override
+  String get filtersCategory => 'Category';
+
+  @override
+  String get filtersAllCategories => 'All Categories';
+
+  @override
+  String get filtersCity => 'City';
+
+  @override
+  String get filtersAllCities => 'All Cities';
+
+  @override
+  String get filtersRating => 'Rating';
+
+  @override
+  String get filtersAnyRating => 'Any';
+
+  @override
+  String get filtersRating4Plus => '4.0+';
+
+  @override
+  String get filtersRating45Plus => '4.5+';
+
+  @override
+  String get filtersPriceRange => 'Price Range';
+
+  @override
+  String filtersPriceRangeValue(String min, String max) {
+    return 'EGP $min – EGP $max';
+  }
+
+  @override
+  String get filtersSort => 'Sort By';
+
+  @override
+  String get sortRecommended => 'Recommended';
+
+  @override
+  String get sortHighestRated => 'Highest Rated';
+
+  @override
+  String get sortLowestPrice => 'Lowest Price';
+
+  @override
+  String get sortHighestPrice => 'Highest Price';
+
+  @override
+  String get sortFeatured => 'Featured';
 }
