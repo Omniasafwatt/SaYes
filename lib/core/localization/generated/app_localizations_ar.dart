@@ -70,6 +70,177 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding3Reviews => 'التقييمات';
 
   @override
+  String get authLoginTitle => 'أهلاً بعودتكِ';
+
+  @override
+  String get authLoginSubtitle => 'سجّلي الدخول لمتابعة التخطيط ليوم أحلامكِ.';
+
+  @override
+  String get authForgotPassword => 'نسيتِ كلمة المرور؟';
+
+  @override
+  String get authSignInButton => 'تسجيل الدخول';
+
+  @override
+  String get authNoAccount => 'ليس لديكِ حساب؟';
+
+  @override
+  String get authCreateAccount => 'إنشاء حساب';
+
+  @override
+  String get authLoginError =>
+      'تعذّر تسجيل الدخول. يرجى التحقق من بياناتكِ والمحاولة مرة أخرى.';
+
+  @override
+  String get authRegisterTitle => 'أنشئي حسابكِ';
+
+  @override
+  String get authRegisterSubtitle => 'أخبرينا القليل عن نفسكِ للبدء.';
+
+  @override
+  String get authRoleCustomerTitle => 'أنا أخطط لزفافي';
+
+  @override
+  String get authRoleCustomerSubtitle =>
+      'اكتشفي مزودي الخدمة، احفظي المفضلة، واحجزي بكل ثقة.';
+
+  @override
+  String get authRoleCustomerTag1 => 'تصفح مزودي الخدمة';
+
+  @override
+  String get authRoleCustomerTag2 => 'حفظ المفضلة';
+
+  @override
+  String get authRoleCustomerTag3 => 'حجز سهل';
+
+  @override
+  String get authRoleVendorTitle => 'أنا مقدم خدمات أفراح';
+
+  @override
+  String get authRoleVendorSubtitle =>
+      'اعرضي أعمالكِ واستقبلي طلبات حجز من العرائس والعرسان.';
+
+  @override
+  String get authRoleVendorTag1 => 'عرض الأعمال السابقة';
+
+  @override
+  String get authRoleVendorTag2 => 'استقبال الحجوزات';
+
+  @override
+  String get authRoleVendorTag3 => 'نمِّي أعمالكِ';
+
+  @override
+  String get authNameLabel => 'الاسم الكامل';
+
+  @override
+  String get authNameHint => 'اسمكِ';
+
+  @override
+  String get authConfirmPasswordLabel => 'تأكيد كلمة المرور';
+
+  @override
+  String get authConfirmPasswordHint => 'أعيدي إدخال كلمة المرور';
+
+  @override
+  String get authCreateAccountButton => 'إنشاء حساب';
+
+  @override
+  String get authHaveAccount => 'لديكِ حساب بالفعل؟';
+
+  @override
+  String get authSignIn => 'تسجيل الدخول';
+
+  @override
+  String get authTermsNotice =>
+      'بالمتابعة، أنتِ توافقين على شروط الخدمة وسياسة الخصوصية الخاصة بـ سيّ يس.';
+
+  @override
+  String get authRegisterError => 'تعذّر إنشاء حسابكِ. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authForgotTitle => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get authForgotSubtitle =>
+      'أدخلي بريدكِ الإلكتروني وسنرسل لكِ رمزاً لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get authSendCodeButton => 'إرسال رمز إعادة التعيين';
+
+  @override
+  String get authForgotSuccessTitle => 'تحققي من بريدكِ الإلكتروني';
+
+  @override
+  String authForgotSuccessMessage(String email) {
+    return 'أرسلنا رمز إعادة التعيين إلى $email. أدخليه في الشاشة التالية لاختيار كلمة مرور جديدة.';
+  }
+
+  @override
+  String get authEnterCodeButton => 'إدخال رمز إعادة التعيين';
+
+  @override
+  String get authBackToLogin => 'العودة لتسجيل الدخول';
+
+  @override
+  String get authForgotError =>
+      'تعذّر إرسال رمز إعادة التعيين. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authResetTitle => 'تعيين كلمة مرور جديدة';
+
+  @override
+  String get authResetSubtitle =>
+      'أدخلي الرمز الذي أرسلناه واختاري كلمة مرور جديدة.';
+
+  @override
+  String get authCodeLabel => 'رمز إعادة التعيين';
+
+  @override
+  String get authCodeHint => 'أدخلي الرمز المكوّن من 6 أرقام';
+
+  @override
+  String get authNewPasswordLabel => 'كلمة المرور الجديدة';
+
+  @override
+  String get authNewPasswordHint => 'أدخلي كلمة مرور جديدة';
+
+  @override
+  String get authResetButton => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get authResetSuccessTitle => 'تم تحديث كلمة المرور';
+
+  @override
+  String get authResetSuccessMessage =>
+      'تم تغيير كلمة مرورك بنجاح. يمكنكِ الآن تسجيل الدخول بكلمة المرور الجديدة.';
+
+  @override
+  String get authResetSuccessButton => 'العودة لتسجيل الدخول';
+
+  @override
+  String get authResetError =>
+      'تعذّر إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get validationRequired => 'هذا الحقل مطلوب';
+
+  @override
+  String get validationEmailInvalid => 'أدخلي بريداً إلكترونياً صحيحاً';
+
+  @override
+  String get validationPasswordTooShort =>
+      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل';
+
+  @override
+  String get validationPasswordMismatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get validationNameTooShort => 'يرجى إدخال اسمكِ الكامل';
+
+  @override
+  String get validationCodeTooShort => 'أدخلي الرمز الذي أرسلناه إليكِ';
+
+  @override
   String get showcaseTitle => 'نظام التصميم';
 
   @override

@@ -70,6 +70,180 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding3Reviews => 'Reviews';
 
   @override
+  String get authLoginTitle => 'Welcome back';
+
+  @override
+  String get authLoginSubtitle =>
+      'Sign in to continue planning your dream day.';
+
+  @override
+  String get authForgotPassword => 'Forgot password?';
+
+  @override
+  String get authSignInButton => 'Sign In';
+
+  @override
+  String get authNoAccount => 'Don\'t have an account?';
+
+  @override
+  String get authCreateAccount => 'Create Account';
+
+  @override
+  String get authLoginError =>
+      'We couldn\'t sign you in. Please check your details and try again.';
+
+  @override
+  String get authRegisterTitle => 'Create your account';
+
+  @override
+  String get authRegisterSubtitle =>
+      'Tell us a little about yourself to get started.';
+
+  @override
+  String get authRoleCustomerTitle => 'I\'m planning my wedding';
+
+  @override
+  String get authRoleCustomerSubtitle =>
+      'Discover vendors, save favorites, and book with confidence.';
+
+  @override
+  String get authRoleCustomerTag1 => 'Browse Vendors';
+
+  @override
+  String get authRoleCustomerTag2 => 'Save Favorites';
+
+  @override
+  String get authRoleCustomerTag3 => 'Easy Booking';
+
+  @override
+  String get authRoleVendorTitle => 'I\'m a wedding professional';
+
+  @override
+  String get authRoleVendorSubtitle =>
+      'Showcase your work and receive booking requests from couples.';
+
+  @override
+  String get authRoleVendorTag1 => 'Showcase Portfolio';
+
+  @override
+  String get authRoleVendorTag2 => 'Get Bookings';
+
+  @override
+  String get authRoleVendorTag3 => 'Grow Your Business';
+
+  @override
+  String get authNameLabel => 'Full Name';
+
+  @override
+  String get authNameHint => 'Your name';
+
+  @override
+  String get authConfirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get authConfirmPasswordHint => 'Re-enter your password';
+
+  @override
+  String get authCreateAccountButton => 'Create Account';
+
+  @override
+  String get authHaveAccount => 'Already have an account?';
+
+  @override
+  String get authSignIn => 'Sign In';
+
+  @override
+  String get authTermsNotice =>
+      'By continuing, you agree to SayYes\'s Terms of Service and Privacy Policy.';
+
+  @override
+  String get authRegisterError =>
+      'We couldn\'t create your account. Please try again.';
+
+  @override
+  String get authForgotTitle => 'Reset your password';
+
+  @override
+  String get authForgotSubtitle =>
+      'Enter your email and we\'ll send you a code to reset your password.';
+
+  @override
+  String get authSendCodeButton => 'Send Reset Code';
+
+  @override
+  String get authForgotSuccessTitle => 'Check your email';
+
+  @override
+  String authForgotSuccessMessage(String email) {
+    return 'We\'ve sent a reset code to $email. Enter it on the next screen to choose a new password.';
+  }
+
+  @override
+  String get authEnterCodeButton => 'Enter Reset Code';
+
+  @override
+  String get authBackToLogin => 'Back to Sign In';
+
+  @override
+  String get authForgotError =>
+      'We couldn\'t send that reset code. Please try again.';
+
+  @override
+  String get authResetTitle => 'Set new password';
+
+  @override
+  String get authResetSubtitle =>
+      'Enter the code we sent you and choose a new password.';
+
+  @override
+  String get authCodeLabel => 'Reset Code';
+
+  @override
+  String get authCodeHint => 'Enter the 6-digit code';
+
+  @override
+  String get authNewPasswordLabel => 'New Password';
+
+  @override
+  String get authNewPasswordHint => 'Enter a new password';
+
+  @override
+  String get authResetButton => 'Reset Password';
+
+  @override
+  String get authResetSuccessTitle => 'Password updated';
+
+  @override
+  String get authResetSuccessMessage =>
+      'Your password has been changed. You can now sign in with your new password.';
+
+  @override
+  String get authResetSuccessButton => 'Back to Sign In';
+
+  @override
+  String get authResetError =>
+      'We couldn\'t reset your password. Please try again.';
+
+  @override
+  String get validationRequired => 'This field is required';
+
+  @override
+  String get validationEmailInvalid => 'Enter a valid email address';
+
+  @override
+  String get validationPasswordTooShort =>
+      'Password must be at least 8 characters';
+
+  @override
+  String get validationPasswordMismatch => 'Passwords don\'t match';
+
+  @override
+  String get validationNameTooShort => 'Please enter your full name';
+
+  @override
+  String get validationCodeTooShort => 'Enter the code we sent you';
+
+  @override
   String get showcaseTitle => 'Design System';
 
   @override

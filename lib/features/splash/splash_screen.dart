@@ -1,48 +1,47 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/animations/app_motion.dart';
 import '../../core/animations/floating_petals.dart';
 import '../../core/localization/generated/app_localizations.dart';
 import '../../core/routing/app_router.dart';
+import '../../core/storage/secure_storage_service.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/widgets/botanical_divider.dart';
 
-/// First screen shown on launch. Purely presentational plus a timed
-/// hand-off — there is no real session yet to check (auth lands in a later
-/// phase), so after the brand moment it always continues to the same
-/// placeholder destination. Once auth/onboarding exist, replace
-/// [_continue] with the real "has a valid session? → home : onboarding"
-/// branch described in the master spec.
-class SplashScreen extends StatefulWidget {
+/// First screen shown on launch. Shows the brand moment for a minimum
+/// beat while checking for a stored session in parallel, then routes to
+/// the signed-in destination or onboarding — the flow described in the
+/// project brief's splash diagram. Role-based branching (customer vs
+/// vendor shell) isn't wired yet since neither destination exists.
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  Timer? _timer;
+class _SplashScreenState extends ConsumerState<SplashScreen> {
+  static const _minimumDisplay = Duration(milliseconds: 2800);
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer(const Duration(milliseconds: 2800), _continue);
+    _resolveSession();
   }
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  void _continue() {
+  Future<void> _resolveSession() async {
+    final results = await Future.wait([
+      ref.read(secureStorageServiceProvider).hasSession(),
+      Future.delayed(_minimumDisplay),
+    ]);
     if (!mounted) return;
-    // TODO(auth): branch on stored-session validity once Phase 4 exists.
-    context.go(AppRoutes.onboarding);
+    final hasSession = results[0] as bool;
+    context.go(hasSession ? AppRoutes.showcase : AppRoutes.onboarding);
   }
 
   @override

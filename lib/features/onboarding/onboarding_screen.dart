@@ -40,8 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _finish() {
-    // TODO(auth): route to login/register once Phase 4 exists.
-    context.go(AppRoutes.showcase);
+    context.go(AppRoutes.login);
   }
 
   void _next() {

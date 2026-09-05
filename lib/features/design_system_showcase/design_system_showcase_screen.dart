@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/animations/entrance.dart';
 import '../../core/animations/floating_petals.dart';
 import '../../core/animations/success_check.dart';
 import '../../core/localization/generated/app_localizations.dart';
+import '../../core/routing/app_router.dart';
+import '../../core/storage/secure_storage_service.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
 import '../../core/theme/app_shadows.dart';
@@ -15,14 +19,16 @@ enum _StatePreview { empty, error, success }
 /// Phase 1 deliverable: a single screen exercising every design-system
 /// primitive so the whole foundation can be checked visually — in both
 /// languages — before any real feature screen gets built on top of it.
-class DesignSystemShowcaseScreen extends StatefulWidget {
+/// Doubles as the placeholder "signed-in" destination until Home (Phase 5)
+/// exists, hence the dev-only Log Out affordance in its header.
+class DesignSystemShowcaseScreen extends ConsumerStatefulWidget {
   const DesignSystemShowcaseScreen({super.key});
 
   @override
-  State<DesignSystemShowcaseScreen> createState() => _DesignSystemShowcaseScreenState();
+  ConsumerState<DesignSystemShowcaseScreen> createState() => _DesignSystemShowcaseScreenState();
 }
 
-class _DesignSystemShowcaseScreenState extends State<DesignSystemShowcaseScreen> {
+class _DesignSystemShowcaseScreenState extends ConsumerState<DesignSystemShowcaseScreen> {
   int _selectedChip = 0;
   bool _buttonLoading = false;
   final Set<int> _favorites = {1};
@@ -75,7 +81,20 @@ class _DesignSystemShowcaseScreenState extends State<DesignSystemShowcaseScreen>
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 8),
-              const Align(alignment: AlignmentDirectional.centerEnd, child: LanguageSwitcher()),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton.icon(
+                    onPressed: () async {
+                      await ref.read(secureStorageServiceProvider).clearSession();
+                      if (context.mounted) context.go(AppRoutes.onboarding);
+                    },
+                    icon: const Icon(Icons.logout_rounded, size: 16),
+                    label: const Text('Log out (dev)'),
+                  ),
+                  const LanguageSwitcher(),
+                ],
+              ),
               const SizedBox(height: 20),
               FadeSlideIn(
                 child: Text(l10n.appName, style: t.displayLg),

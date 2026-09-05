@@ -206,6 +206,324 @@ abstract class AppLocalizations {
   /// **'Reviews'**
   String get onboarding3Reviews;
 
+  /// No description provided for @authLoginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get authLoginTitle;
+
+  /// No description provided for @authLoginSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to continue planning your dream day.'**
+  String get authLoginSubtitle;
+
+  /// No description provided for @authForgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get authForgotPassword;
+
+  /// No description provided for @authSignInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get authSignInButton;
+
+  /// No description provided for @authNoAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get authNoAccount;
+
+  /// No description provided for @authCreateAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get authCreateAccount;
+
+  /// No description provided for @authLoginError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t sign you in. Please check your details and try again.'**
+  String get authLoginError;
+
+  /// No description provided for @authRegisterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your account'**
+  String get authRegisterTitle;
+
+  /// No description provided for @authRegisterSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us a little about yourself to get started.'**
+  String get authRegisterSubtitle;
+
+  /// No description provided for @authRoleCustomerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m planning my wedding'**
+  String get authRoleCustomerTitle;
+
+  /// No description provided for @authRoleCustomerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover vendors, save favorites, and book with confidence.'**
+  String get authRoleCustomerSubtitle;
+
+  /// No description provided for @authRoleCustomerTag1.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse Vendors'**
+  String get authRoleCustomerTag1;
+
+  /// No description provided for @authRoleCustomerTag2.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Favorites'**
+  String get authRoleCustomerTag2;
+
+  /// No description provided for @authRoleCustomerTag3.
+  ///
+  /// In en, this message translates to:
+  /// **'Easy Booking'**
+  String get authRoleCustomerTag3;
+
+  /// No description provided for @authRoleVendorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m a wedding professional'**
+  String get authRoleVendorTitle;
+
+  /// No description provided for @authRoleVendorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Showcase your work and receive booking requests from couples.'**
+  String get authRoleVendorSubtitle;
+
+  /// No description provided for @authRoleVendorTag1.
+  ///
+  /// In en, this message translates to:
+  /// **'Showcase Portfolio'**
+  String get authRoleVendorTag1;
+
+  /// No description provided for @authRoleVendorTag2.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Bookings'**
+  String get authRoleVendorTag2;
+
+  /// No description provided for @authRoleVendorTag3.
+  ///
+  /// In en, this message translates to:
+  /// **'Grow Your Business'**
+  String get authRoleVendorTag3;
+
+  /// No description provided for @authNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get authNameLabel;
+
+  /// No description provided for @authNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get authNameHint;
+
+  /// No description provided for @authConfirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get authConfirmPasswordLabel;
+
+  /// No description provided for @authConfirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter your password'**
+  String get authConfirmPasswordHint;
+
+  /// No description provided for @authCreateAccountButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get authCreateAccountButton;
+
+  /// No description provided for @authHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get authHaveAccount;
+
+  /// No description provided for @authSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get authSignIn;
+
+  /// No description provided for @authTermsNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing, you agree to SayYes\'s Terms of Service and Privacy Policy.'**
+  String get authTermsNotice;
+
+  /// No description provided for @authRegisterError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t create your account. Please try again.'**
+  String get authRegisterError;
+
+  /// No description provided for @authForgotTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your password'**
+  String get authForgotTitle;
+
+  /// No description provided for @authForgotSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email and we\'ll send you a code to reset your password.'**
+  String get authForgotSubtitle;
+
+  /// No description provided for @authSendCodeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Reset Code'**
+  String get authSendCodeButton;
+
+  /// No description provided for @authForgotSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email'**
+  String get authForgotSuccessTitle;
+
+  /// No description provided for @authForgotSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ve sent a reset code to {email}. Enter it on the next screen to choose a new password.'**
+  String authForgotSuccessMessage(String email);
+
+  /// No description provided for @authEnterCodeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Reset Code'**
+  String get authEnterCodeButton;
+
+  /// No description provided for @authBackToLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Sign In'**
+  String get authBackToLogin;
+
+  /// No description provided for @authForgotError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t send that reset code. Please try again.'**
+  String get authForgotError;
+
+  /// No description provided for @authResetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set new password'**
+  String get authResetTitle;
+
+  /// No description provided for @authResetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code we sent you and choose a new password.'**
+  String get authResetSubtitle;
+
+  /// No description provided for @authCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Code'**
+  String get authCodeLabel;
+
+  /// No description provided for @authCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit code'**
+  String get authCodeHint;
+
+  /// No description provided for @authNewPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get authNewPasswordLabel;
+
+  /// No description provided for @authNewPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a new password'**
+  String get authNewPasswordHint;
+
+  /// No description provided for @authResetButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get authResetButton;
+
+  /// No description provided for @authResetSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated'**
+  String get authResetSuccessTitle;
+
+  /// No description provided for @authResetSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password has been changed. You can now sign in with your new password.'**
+  String get authResetSuccessMessage;
+
+  /// No description provided for @authResetSuccessButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Sign In'**
+  String get authResetSuccessButton;
+
+  /// No description provided for @authResetError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t reset your password. Please try again.'**
+  String get authResetError;
+
+  /// No description provided for @validationRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get validationRequired;
+
+  /// No description provided for @validationEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address'**
+  String get validationEmailInvalid;
+
+  /// No description provided for @validationPasswordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get validationPasswordTooShort;
+
+  /// No description provided for @validationPasswordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords don\'t match'**
+  String get validationPasswordMismatch;
+
+  /// No description provided for @validationNameTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your full name'**
+  String get validationNameTooShort;
+
+  /// No description provided for @validationCodeTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code we sent you'**
+  String get validationCodeTooShort;
+
   /// No description provided for @showcaseTitle.
   ///
   /// In en, this message translates to:
