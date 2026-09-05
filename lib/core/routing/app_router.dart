@@ -10,6 +10,7 @@ import '../../features/home/presentation/coming_soon_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_placeholder_screen.dart';
+import '../../features/search/presentation/search_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../localization/generated/app_localizations.dart';
 import 'customer_shell.dart';
@@ -26,6 +27,7 @@ abstract final class AppRoutes {
   static const showcase = '/showcase';
 
   static const home = '/home';
+  static const search = '/search';
   static const explore = '/explore';
   static const favorites = '/favorites';
   static const bookings = '/bookings';
@@ -62,6 +64,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.showcase,
       builder: (context, state) => const DesignSystemShowcaseScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.search,
+      builder: (context, state) => const SearchScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => CustomerShell(navigationShell: navigationShell),

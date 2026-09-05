@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/localization/generated/app_localizations.dart';
+import '../../vendors/data/vendor_models.dart';
 import 'home_models.dart';
 
 /// Contract for the customer home feed. Categories, vendors, and cities are

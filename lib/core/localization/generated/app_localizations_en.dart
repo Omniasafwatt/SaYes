@@ -528,4 +528,40 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get categoriesErrorMessage =>
       'We couldn\'t load categories right now.';
+
+  @override
+  String get searchCancel => 'Cancel';
+
+  @override
+  String get searchRecentTitle => 'Recent Searches';
+
+  @override
+  String get searchClearAll => 'Clear all';
+
+  @override
+  String get searchSuggestionsTitle => 'Browse by Category';
+
+  @override
+  String searchResultsCount(int count) {
+    return '$count results';
+  }
+
+  @override
+  String get searchNoResultsTitle => 'No results found';
+
+  @override
+  String searchNoResultsMessage(String query) {
+    return 'We couldn\'t find any vendors matching \"$query\". Try a different search.';
+  }
+
+  @override
+  String get searchErrorMessage =>
+      'We couldn\'t complete your search. Please try again.';
+
+  @override
+  String get searchEmptyPromptTitle => 'Find your perfect vendor';
+
+  @override
+  String get searchEmptyPromptMessage =>
+      'Search by vendor name, category, or city.';
 }

@@ -1063,6 +1063,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t load categories right now.'**
   String get categoriesErrorMessage;
+
+  /// No description provided for @searchCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get searchCancel;
+
+  /// No description provided for @searchRecentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Searches'**
+  String get searchRecentTitle;
+
+  /// No description provided for @searchClearAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get searchClearAll;
+
+  /// No description provided for @searchSuggestionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse by Category'**
+  String get searchSuggestionsTitle;
+
+  /// No description provided for @searchResultsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results'**
+  String searchResultsCount(int count);
+
+  /// No description provided for @searchNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get searchNoResultsTitle;
+
+  /// No description provided for @searchNoResultsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find any vendors matching \"{query}\". Try a different search.'**
+  String searchNoResultsMessage(String query);
+
+  /// No description provided for @searchErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t complete your search. Please try again.'**
+  String get searchErrorMessage;
+
+  /// No description provided for @searchEmptyPromptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find your perfect vendor'**
+  String get searchEmptyPromptTitle;
+
+  /// No description provided for @searchEmptyPromptMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by vendor name, category, or city.'**
+  String get searchEmptyPromptMessage;
 }
 
 class _AppLocalizationsDelegate

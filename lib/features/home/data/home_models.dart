@@ -13,33 +13,6 @@ class CategoryModel {
   final IconData icon;
 }
 
-/// Vendor card data for home-feed carousels (featured/popular). A fuller
-/// vendor detail model arrives with Phase 9/10; this is intentionally the
-/// slice a listing card needs.
-class VendorSummary {
-  const VendorSummary({
-    required this.id,
-    required this.name,
-    required this.imageAsset,
-    required this.city,
-    required this.rating,
-    required this.reviewCount,
-    required this.startingPriceEgp,
-    this.isVerified = false,
-    this.isFeatured = false,
-  });
-
-  final String id;
-  final String name;
-  final String imageAsset;
-  final String city;
-  final double rating;
-  final int reviewCount;
-  final int startingPriceEgp;
-  final bool isVerified;
-  final bool isFeatured;
-}
-
 class CityModel {
   const CityModel({required this.id, required this.name, required this.vendorCount});
 

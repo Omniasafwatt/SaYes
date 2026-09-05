@@ -203,5 +203,22 @@
 
   "categoriesScreenTitle": "الفئات",
   "categoriesScreenSubtitle": "اكتشفي كل نوع من مزودي الخدمة ليوم زفافكِ.",
-  "categoriesErrorMessage": "تعذّر تحميل الفئات الآن."
+  "categoriesErrorMessage": "تعذّر تحميل الفئات الآن.",
+
+  "searchCancel": "إلغاء",
+  "searchRecentTitle": "عمليات البحث الأخيرة",
+  "searchClearAll": "مسح الكل",
+  "searchSuggestionsTitle": "تصفحي حسب الفئة",
+  "searchResultsCount": "{count} نتيجة",
+  "@searchResultsCount": {
+    "placeholders": { "count": {"type": "int"} }
+  },
+  "searchNoResultsTitle": "لا توجد نتائج",
+  "searchNoResultsMessage": "لم نجد أي مزودي خدمة مطابقين لـ \"{query}\". جرّبي بحثاً مختلفاً.",
+  "@searchNoResultsMessage": {
+    "placeholders": { "query": {"type": "String"} }
+  },
+  "searchErrorMessage": "تعذّر إتمام البحث. يرجى المحاولة مرة أخرى.",
+  "searchEmptyPromptTitle": "اعثري على مزود الخدمة المثالي",
+  "searchEmptyPromptMessage": "ابحثي باسم مزود الخدمة، أو الفئة، أو المدينة."
 }

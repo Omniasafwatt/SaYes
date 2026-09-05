@@ -16,6 +16,7 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../favorites/application/favorites_controller.dart';
 import '../application/home_controller.dart';
+import '../../vendors/data/vendor_models.dart';
 import '../data/home_models.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
@@ -262,26 +263,29 @@ class _SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: 16),
-        decoration: BoxDecoration(
-          color: AppColors.surface,
-          borderRadius: AppRadius.fullRadius,
-          border: Border.all(color: AppColors.outlineRose),
-          boxShadow: AppShadows.card,
-        ),
-        child: Row(
-          children: [
-            const Icon(Icons.search_rounded, color: AppColors.textSecondary, size: 20),
-            const SizedBox(width: AppSpacing.md),
-            Expanded(
-              child: Text(
-                AppLocalizations.of(context).homeSearchHint,
-                style: context.typography.bodyLg.copyWith(color: AppColors.textSecondary),
-                overflow: TextOverflow.ellipsis,
+      child: PressableScale(
+        onTap: () => context.push(AppRoutes.search),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: 16),
+          decoration: BoxDecoration(
+            color: AppColors.surface,
+            borderRadius: AppRadius.fullRadius,
+            border: Border.all(color: AppColors.outlineRose),
+            boxShadow: AppShadows.card,
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.search_rounded, color: AppColors.textSecondary, size: 20),
+              const SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: Text(
+                  AppLocalizations.of(context).homeSearchHint,
+                  style: context.typography.bodyLg.copyWith(color: AppColors.textSecondary),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -472,12 +476,17 @@ class _HomeLoadingSkeleton extends StatelessWidget {
         const SizedBox(height: AppSpacing.sectionGap),
         SkeletonBox(width: 180, height: 20),
         const SizedBox(height: AppSpacing.md),
-        Row(
-          children: [
-            SkeletonVendorCard(width: 220),
-            SizedBox(width: AppSpacing.md),
-            SkeletonVendorCard(width: 220),
-          ],
+        SizedBox(
+          height: 260,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            physics: const NeverScrollableScrollPhysics(),
+            children: const [
+              SkeletonVendorCard(width: 210),
+              SizedBox(width: AppSpacing.md),
+              SkeletonVendorCard(width: 210),
+            ],
+          ),
         ),
       ],
     );

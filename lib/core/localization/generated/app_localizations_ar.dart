@@ -522,4 +522,39 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get categoriesErrorMessage => 'تعذّر تحميل الفئات الآن.';
+
+  @override
+  String get searchCancel => 'إلغاء';
+
+  @override
+  String get searchRecentTitle => 'عمليات البحث الأخيرة';
+
+  @override
+  String get searchClearAll => 'مسح الكل';
+
+  @override
+  String get searchSuggestionsTitle => 'تصفحي حسب الفئة';
+
+  @override
+  String searchResultsCount(int count) {
+    return '$count نتيجة';
+  }
+
+  @override
+  String get searchNoResultsTitle => 'لا توجد نتائج';
+
+  @override
+  String searchNoResultsMessage(String query) {
+    return 'لم نجد أي مزودي خدمة مطابقين لـ \"$query\". جرّبي بحثاً مختلفاً.';
+  }
+
+  @override
+  String get searchErrorMessage => 'تعذّر إتمام البحث. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get searchEmptyPromptTitle => 'اعثري على مزود الخدمة المثالي';
+
+  @override
+  String get searchEmptyPromptMessage =>
+      'ابحثي باسم مزود الخدمة، أو الفئة، أو المدينة.';
 }

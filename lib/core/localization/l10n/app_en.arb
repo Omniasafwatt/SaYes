@@ -203,5 +203,22 @@
 
   "categoriesScreenTitle": "Categories",
   "categoriesScreenSubtitle": "Discover every kind of vendor for your big day.",
-  "categoriesErrorMessage": "We couldn't load categories right now."
+  "categoriesErrorMessage": "We couldn't load categories right now.",
+
+  "searchCancel": "Cancel",
+  "searchRecentTitle": "Recent Searches",
+  "searchClearAll": "Clear all",
+  "searchSuggestionsTitle": "Browse by Category",
+  "searchResultsCount": "{count} results",
+  "@searchResultsCount": {
+    "placeholders": { "count": {"type": "int"} }
+  },
+  "searchNoResultsTitle": "No results found",
+  "searchNoResultsMessage": "We couldn't find any vendors matching \"{query}\". Try a different search.",
+  "@searchNoResultsMessage": {
+    "placeholders": { "query": {"type": "String"} }
+  },
+  "searchErrorMessage": "We couldn't complete your search. Please try again.",
+  "searchEmptyPromptTitle": "Find your perfect vendor",
+  "searchEmptyPromptMessage": "Search by vendor name, category, or city."
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/localization/generated/app_localizations.dart';
 import '../../../core/localization/locale_controller.dart';
+import '../../vendors/data/vendor_models.dart';
 import '../data/home_models.dart';
 import '../data/home_repository.dart';
 
