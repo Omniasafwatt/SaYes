@@ -637,4 +637,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get vendorListingErrorMessage =>
       'We couldn\'t load these vendors right now.';
+
+  @override
+  String get vendorDetailAbout => 'About';
+
+  @override
+  String get vendorDetailPortfolio => 'Portfolio';
+
+  @override
+  String get vendorDetailPackages => 'Packages';
+
+  @override
+  String get vendorDetailReviews => 'Reviews';
+
+  @override
+  String get vendorDetailErrorMessage =>
+      'We couldn\'t load this vendor\'s profile right now.';
+
+  @override
+  String egpAmountLabel(String amount) {
+    return 'EGP $amount';
+  }
 }

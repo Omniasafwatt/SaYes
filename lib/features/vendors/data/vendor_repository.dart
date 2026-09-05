@@ -12,6 +12,8 @@ abstract class VendorRepository {
     int pageSize = 8,
     VendorFilters? filters,
   });
+
+  Future<VendorDetail> getVendorDetail(String id);
 }
 
 /// TEMPORARY placeholder implementation — same honest pattern as
@@ -236,7 +238,165 @@ class PlaceholderVendorRepository implements VendorRepository {
     ),
   ];
 
+  static const _descriptionByCategory = {
+    'photographers':
+        '{name} blends editorial composition with candid storytelling, so the album reads like the day itself rather than a performance of it.',
+    'makeup':
+        '{name} tailors every look to your skin, your dress, and the light you\'ll be photographed in, with a trial session included so wedding-day nerves are the only surprise.',
+    'halls':
+        '{name} pairs grand architecture with a team that handles the choreography of a wedding night — lighting, flow, and timing — so you can just be present in it.',
+    'planners':
+        '{name} takes the hundred small decisions off your plate and turns them into one clear plan, checking in exactly as often as you want and no more.',
+    'dj': '{name} reads a room the way a good host does, building the night instead of just running a set list, with equipment that disappears into the venue.',
+    'catering':
+        '{name} builds the menu around your families\' tastes rather than a fixed package, with a tasting session before you commit to a single dish.',
+    'decoration':
+        '{name} designs the kosha and table styling as one continuous look, sourcing flowers and fabric to match the season and the venue\'s own light.',
+    'car_rental':
+        '{name} maintains a fleet built for one job — the arrival — with a driver who knows the venue routes and the timing down to the minute.',
+  };
+
+  static const _packageTiersByCategory = <String, List<(String, String, double)>>{
+    'photographers': [
+      ('Essential Coverage', 'One photographer, 6 hours, edited digital gallery.', 1.0),
+      ('Full Day Story', 'Two photographers, full-day coverage, engagement shoot included.', 1.6),
+      ('Cinematic Duo', 'Photo and videography team, same-day highlight reel, premium album.', 2.4),
+    ],
+    'makeup': [
+      ('Bridal Day-Of', 'Bridal makeup and hair, on-site, wedding day only.', 1.0),
+      ('Trial + Day-Of', 'One trial session plus full wedding-day styling.', 1.5),
+      ('Bridal Party', 'Bride plus up to 4 bridesmaids, on-site team.', 2.2),
+    ],
+    'halls': [
+      ('Silver', 'Venue rental, standard lighting, in-house tables and chairs.', 1.0),
+      ('Gold', 'Silver plus upgraded lighting, welcome area, and valet.', 1.5),
+      ('Platinum', 'Full venue exclusivity, custom lighting design, dedicated coordinator.', 2.2),
+    ],
+    'planners': [
+      ('Month-Of Coordination', 'Final vendor confirmations and full day-of coordination.', 1.0),
+      ('Partial Planning', 'Vendor sourcing and planning support from 3 months out.', 1.8),
+      ('Full Planning', 'End-to-end planning from engagement to wedding day.', 2.8),
+    ],
+    'dj': [
+      ('Reception Set', 'DJ and sound system, up to 5 hours.', 1.0),
+      ('Full Night', 'DJ, MC hosting, and dance-floor lighting, up to 8 hours.', 1.6),
+      ('Premium Production', 'Full night plus live percussionist and custom lighting rig.', 2.3),
+    ],
+    'catering': [
+      ('Essential Menu', 'Three-course plated menu, standard service staff.', 1.0),
+      ('Signature Menu', 'Five-course menu with live cooking station.', 1.6),
+      ('Luxury Tasting Menu', 'Chef\'s tasting menu, premium bar service, dedicated staff.', 2.4),
+    ],
+    'decoration': [
+      ('Essential Kosha', 'Kosha backdrop and stage florals.', 1.0),
+      ('Full Venue Styling', 'Kosha, table centerpieces, and entrance styling.', 1.7),
+      ('Signature Design', 'Fully custom floral design across every space.', 2.6),
+    ],
+    'car_rental': [
+      ('Classic Arrival', 'One vehicle, decorated, with driver.', 1.0),
+      ('Bridal Party Fleet', 'Three vehicles for the couple and immediate family.', 2.2),
+      ('Full Convoy', 'Five vehicles plus a lead car for the couple.', 3.5),
+    ],
+  };
+
+  static const _galleryPoolByCategory = <String, List<String>>{
+    'photographers': [
+      'assets/images/bride_editorial_portrait.png',
+      'assets/images/bride_palace_staircase.png',
+      'assets/images/wedding_ceremony_setup.png',
+    ],
+    'makeup': [
+      'assets/images/makeup_artist_portfolio.png',
+      'assets/images/makeup_bride_closeup.png',
+      'assets/images/bride_editorial_portrait.png',
+    ],
+    'halls': [
+      'assets/images/wedding_hall_zamalek.png',
+      'assets/images/wedding_hall_ballroom_tables.png',
+      'assets/images/wedding_hall_sunset_nile.png',
+      'assets/images/wedding_hall_architecture.png',
+    ],
+    'planners': [
+      'assets/images/wedding_ceremony_setup.png',
+      'assets/images/bride_palace_staircase.png',
+      'assets/images/wedding_hall_ballroom_tables.png',
+    ],
+    'dj': ['assets/images/wedding_hall_zamalek.png', 'assets/images/wedding_ceremony_setup.png'],
+    'catering': ['assets/images/wedding_ceremony_setup.png', 'assets/images/wedding_hall_ballroom_tables.png'],
+    'decoration': [
+      'assets/images/wedding_ceremony_setup.png',
+      'assets/images/bridal_dress_couture.png',
+      'assets/images/wedding_hall_ballroom_tables.png',
+    ],
+    'car_rental': ['assets/images/rings_bouquet_avatar.png', 'assets/images/wedding_hall_zamalek.png'],
+  };
+
+  static const _reviewComments = [
+    'Everything was exactly as promised — communication was clear from the first call to the wedding day itself.',
+    'They handled a last-minute change without missing a beat. Genuinely grateful.',
+    'Worth every pound. The attention to detail showed in ways we didn\'t even ask for.',
+    'A few small hiccups on timing, but the team recovered quickly and it didn\'t affect the day.',
+    'Professional, warm, and exactly the vibe we wanted for our wedding.',
+    'Booked them after seeing a friend\'s wedding and they didn\'t disappoint.',
+  ];
+
+  static const _reviewerNames = ['Nour K.', 'Ahmed S.', 'Mariam T.', 'Youssef A.', 'Hana M.', 'Omar F.'];
+
+  static const _reviewDateLabels = ['2 weeks ago', '1 month ago', '3 months ago', '5 months ago'];
+
   Future<void> _simulateLatency() => Future.delayed(const Duration(milliseconds: 500));
+
+  @override
+  Future<VendorDetail> getVendorDetail(String id) async {
+    await _simulateLatency();
+    final vendor = _all.firstWhere((v) => v.id == id);
+
+    final tiers = _packageTiersByCategory[vendor.categoryId] ?? _packageTiersByCategory['halls']!;
+    final packages = [
+      for (var i = 0; i < tiers.length; i++)
+        PackageModel(
+          id: '${vendor.id}-pkg$i',
+          name: tiers[i].$1,
+          description: tiers[i].$2,
+          priceEgp: (vendor.startingPriceEgp * tiers[i].$3).round(),
+        ),
+    ];
+
+    final seed = vendor.id.hashCode.abs();
+    final reviews = [
+      for (var i = 0; i < 3; i++)
+        ReviewModel(
+          id: '${vendor.id}-rev$i',
+          authorName: _reviewerNames[(seed + i) % _reviewerNames.length],
+          rating: (vendor.rating - (i * 0.15)).clamp(3.5, 5.0),
+          comment: _reviewComments[(seed + i) % _reviewComments.length],
+          dateLabel: _reviewDateLabels[(seed + i) % _reviewDateLabels.length],
+        ),
+    ];
+
+    final gallery = _galleryPoolByCategory[vendor.categoryId] ?? const [];
+    final imageAssets = [
+      vendor.imageAsset,
+      ...gallery.where((asset) => asset != vendor.imageAsset).take(2),
+    ];
+
+    return VendorDetail(
+      id: vendor.id,
+      name: vendor.name,
+      imageAssets: imageAssets,
+      city: vendor.city,
+      categoryId: vendor.categoryId,
+      rating: vendor.rating,
+      reviewCount: vendor.reviewCount,
+      startingPriceEgp: vendor.startingPriceEgp,
+      description: (_descriptionByCategory[vendor.categoryId] ?? _descriptionByCategory['halls']!)
+          .replaceAll('{name}', vendor.name),
+      packages: packages,
+      reviews: reviews,
+      isVerified: vendor.isVerified,
+      isFeatured: vendor.isFeatured,
+    );
+  }
 
   @override
   Future<VendorSearchPage> search({

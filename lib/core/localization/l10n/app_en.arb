@@ -248,5 +248,15 @@
 
   "vendorListingEmptyTitle": "No vendors found",
   "vendorListingEmptyMessage": "Try adjusting your filters to see more results.",
-  "vendorListingErrorMessage": "We couldn't load these vendors right now."
+  "vendorListingErrorMessage": "We couldn't load these vendors right now.",
+
+  "vendorDetailAbout": "About",
+  "vendorDetailPortfolio": "Portfolio",
+  "vendorDetailPackages": "Packages",
+  "vendorDetailReviews": "Reviews",
+  "vendorDetailErrorMessage": "We couldn't load this vendor's profile right now.",
+  "egpAmountLabel": "EGP {amount}",
+  "@egpAmountLabel": {
+    "placeholders": { "amount": {"type": "String"} }
+  }
 }

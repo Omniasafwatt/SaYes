@@ -629,4 +629,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get vendorListingErrorMessage => 'تعذّر تحميل مزودي الخدمة الآن.';
+
+  @override
+  String get vendorDetailAbout => 'نبذة';
+
+  @override
+  String get vendorDetailPortfolio => 'معرض الأعمال';
+
+  @override
+  String get vendorDetailPackages => 'الباقات';
+
+  @override
+  String get vendorDetailReviews => 'التقييمات';
+
+  @override
+  String get vendorDetailErrorMessage =>
+      'تعذّر تحميل الملف الشخصي لمزود الخدمة الآن.';
+
+  @override
+  String egpAmountLabel(String amount) {
+    return '$amount جنيه';
+  }
 }

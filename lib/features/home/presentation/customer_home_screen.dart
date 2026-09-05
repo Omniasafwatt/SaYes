@@ -402,7 +402,7 @@ class _VendorRow extends StatelessWidget {
                   isFavorite: isFavorite,
                   onFavoriteToggle: () => ref.read(favoritesControllerProvider.notifier).toggle(vendor.id),
                   width: cardWidth,
-                  onTap: () {},
+                  onTap: () => context.push(AppRoutes.vendorDetail, extra: vendor.id),
                 );
               },
             ),

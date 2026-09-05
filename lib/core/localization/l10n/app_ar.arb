@@ -248,5 +248,15 @@
 
   "vendorListingEmptyTitle": "لا يوجد مزودو خدمة",
   "vendorListingEmptyMessage": "جربي تعديل الفلاتر لرؤية المزيد من النتائج.",
-  "vendorListingErrorMessage": "تعذّر تحميل مزودي الخدمة الآن."
+  "vendorListingErrorMessage": "تعذّر تحميل مزودي الخدمة الآن.",
+
+  "vendorDetailAbout": "نبذة",
+  "vendorDetailPortfolio": "معرض الأعمال",
+  "vendorDetailPackages": "الباقات",
+  "vendorDetailReviews": "التقييمات",
+  "vendorDetailErrorMessage": "تعذّر تحميل الملف الشخصي لمزود الخدمة الآن.",
+  "egpAmountLabel": "{amount} جنيه",
+  "@egpAmountLabel": {
+    "placeholders": { "amount": {"type": "String"} }
+  }
 }

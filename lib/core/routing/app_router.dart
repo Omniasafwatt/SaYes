@@ -12,6 +12,7 @@ import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_placeholder_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/vendors/presentation/vendor_detail_screen.dart';
 import '../../features/vendors/presentation/vendor_listing_screen.dart';
 import '../localization/generated/app_localizations.dart';
 import 'customer_shell.dart';
@@ -30,6 +31,7 @@ abstract final class AppRoutes {
   static const home = '/home';
   static const search = '/search';
   static const vendorListing = '/vendor-listing';
+  static const vendorDetail = '/vendor-detail';
   static const explore = '/explore';
   static const favorites = '/favorites';
   static const bookings = '/bookings';
@@ -74,6 +76,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.vendorListing,
       builder: (context, state) => VendorListingScreen(args: state.extra as VendorListingScreenArgs),
+    ),
+    GoRoute(
+      path: AppRoutes.vendorDetail,
+      builder: (context, state) => VendorDetailScreen(vendorId: state.extra as String),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => CustomerShell(navigationShell: navigationShell),

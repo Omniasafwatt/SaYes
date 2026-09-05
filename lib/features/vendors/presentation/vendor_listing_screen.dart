@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart' hide TextDirection;
 import '../../../core/animations/entrance.dart';
 import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
@@ -232,7 +234,7 @@ class _VendorListingResults extends StatelessWidget {
                 isFavorite: isFavorite,
                 onFavoriteToggle: () => ref.read(favoritesControllerProvider.notifier).toggle(vendor.id),
                 width: cardWidth,
-                onTap: () {},
+                onTap: () => context.push(AppRoutes.vendorDetail, extra: vendor.id),
               );
             },
           ),

@@ -1261,6 +1261,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t load these vendors right now.'**
   String get vendorListingErrorMessage;
+
+  /// No description provided for @vendorDetailAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get vendorDetailAbout;
+
+  /// No description provided for @vendorDetailPortfolio.
+  ///
+  /// In en, this message translates to:
+  /// **'Portfolio'**
+  String get vendorDetailPortfolio;
+
+  /// No description provided for @vendorDetailPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'Packages'**
+  String get vendorDetailPackages;
+
+  /// No description provided for @vendorDetailReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get vendorDetailReviews;
+
+  /// No description provided for @vendorDetailErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load this vendor\'s profile right now.'**
+  String get vendorDetailErrorMessage;
+
+  /// No description provided for @egpAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP {amount}'**
+  String egpAmountLabel(String amount);
 }
 
 class _AppLocalizationsDelegate
