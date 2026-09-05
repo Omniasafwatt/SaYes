@@ -517,4 +517,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String vendorReviewCount(int count) {
     return '($count)';
   }
+
+  @override
+  String get categoriesScreenTitle => 'Categories';
+
+  @override
+  String get categoriesScreenSubtitle =>
+      'Discover every kind of vendor for your big day.';
+
+  @override
+  String get categoriesErrorMessage =>
+      'We couldn\'t load categories right now.';
 }

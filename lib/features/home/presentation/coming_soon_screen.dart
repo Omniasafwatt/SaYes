@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/widgets.dart';
 
 /// Shared shell for nav tabs whose real feature hasn't been built yet
@@ -18,7 +19,18 @@ class ComingSoonScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.ivory,
       body: SafeArea(
-        child: AppStateView(icon: icon, title: title, message: message),
+        child: Column(
+          children: [
+            const Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(AppSpacing.screenMargin, AppSpacing.sm, AppSpacing.screenMargin, 0),
+                child: LanguageSwitcher(),
+              ),
+            ),
+            Expanded(child: AppStateView(icon: icon, title: title, message: message)),
+          ],
+        ),
       ),
     );
   }

@@ -199,5 +199,9 @@
   "vendorReviewCount": "({count})",
   "@vendorReviewCount": {
     "placeholders": { "count": {"type": "int"} }
-  }
+  },
+
+  "categoriesScreenTitle": "Categories",
+  "categoriesScreenSubtitle": "Discover every kind of vendor for your big day.",
+  "categoriesErrorMessage": "We couldn't load categories right now."
 }

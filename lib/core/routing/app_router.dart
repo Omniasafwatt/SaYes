@@ -4,6 +4,7 @@ import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/auth/presentation/reset_password_screen.dart';
+import '../../features/categories/presentation/categories_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
 import '../../features/home/presentation/coming_soon_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
@@ -69,19 +70,7 @@ final appRouter = GoRouter(
           routes: [GoRoute(path: AppRoutes.home, builder: (context, state) => const CustomerHomeScreen())],
         ),
         StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.explore,
-              builder: (context, state) {
-                final l10n = AppLocalizations.of(context);
-                return ComingSoonScreen(
-                  icon: Icons.explore_rounded,
-                  title: l10n.comingSoonExploreTitle,
-                  message: l10n.comingSoonExploreMessage,
-                );
-              },
-            ),
-          ],
+          routes: [GoRoute(path: AppRoutes.explore, builder: (context, state) => const CategoriesScreen())],
         ),
         StatefulShellBranch(
           routes: [

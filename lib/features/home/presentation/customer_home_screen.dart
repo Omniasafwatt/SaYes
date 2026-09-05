@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../core/animations/app_motion.dart';
 import '../../../core/animations/entrance.dart';
 import '../../../core/animations/pressable_scale.dart';
 import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
@@ -156,7 +158,11 @@ class _HomeContent extends StatelessWidget {
         const SizedBox(height: AppSpacing.sectionGap),
         FadeSlideIn(
           delay: const Duration(milliseconds: 80),
-          child: SectionHeader(title: l10n.homeSectionCategories),
+          child: SectionHeader(
+            title: l10n.homeSectionCategories,
+            actionLabel: l10n.homeSeeAll,
+            onAction: () => context.go(AppRoutes.explore),
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         FadeSlideIn(

@@ -1045,6 +1045,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'({count})'**
   String vendorReviewCount(int count);
+
+  /// No description provided for @categoriesScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categoriesScreenTitle;
+
+  /// No description provided for @categoriesScreenSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover every kind of vendor for your big day.'**
+  String get categoriesScreenSubtitle;
+
+  /// No description provided for @categoriesErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load categories right now.'**
+  String get categoriesErrorMessage;
 }
 
 class _AppLocalizationsDelegate

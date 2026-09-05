@@ -199,5 +199,9 @@
   "vendorReviewCount": "({count})",
   "@vendorReviewCount": {
     "placeholders": { "count": {"type": "int"} }
-  }
+  },
+
+  "categoriesScreenTitle": "الفئات",
+  "categoriesScreenSubtitle": "اكتشفي كل نوع من مزودي الخدمة ليوم زفافكِ.",
+  "categoriesErrorMessage": "تعذّر تحميل الفئات الآن."
 }

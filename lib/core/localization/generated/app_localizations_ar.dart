@@ -512,4 +512,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String vendorReviewCount(int count) {
     return '($count)';
   }
+
+  @override
+  String get categoriesScreenTitle => 'الفئات';
+
+  @override
+  String get categoriesScreenSubtitle =>
+      'اكتشفي كل نوع من مزودي الخدمة ليوم زفافكِ.';
+
+  @override
+  String get categoriesErrorMessage => 'تعذّر تحميل الفئات الآن.';
 }
