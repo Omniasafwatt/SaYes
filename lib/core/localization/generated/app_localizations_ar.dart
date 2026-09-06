@@ -696,4 +696,12 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get bookingRequestErrorMessage =>
       'تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get bookingSuccessViewBookings => 'عرض حجوزاتي';
+
+  @override
+  String bookingSuccessGuestsLabel(int count) {
+    return '$count ضيف';
+  }
 }

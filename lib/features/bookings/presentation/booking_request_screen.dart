@@ -10,6 +10,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../data/booking_repository.dart';
+import 'booking_success_screen.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
 
@@ -33,9 +34,7 @@ class BookingRequestArgs {
 }
 
 /// Collects event date, guest count, and an optional note, then submits the
-/// request. The confirmation shown here on success is deliberately minimal
-/// — a dedicated, fully designed Booking Success screen is its own later
-/// phase; this just needs to close the loop honestly today.
+/// request and hands off to [BookingSuccessScreen].
 class BookingRequestScreen extends ConsumerStatefulWidget {
   const BookingRequestScreen({super.key, required this.args});
 
@@ -50,7 +49,6 @@ class _BookingRequestScreenState extends ConsumerState<BookingRequestScreen> {
   DateTime? _eventDate;
   int _guestCount = 100;
   bool _submitting = false;
-  bool _submitted = false;
   String? _dateError;
 
   @override
@@ -89,7 +87,7 @@ class _BookingRequestScreenState extends ConsumerState<BookingRequestScreen> {
       _dateError = null;
     });
     try {
-      await ref.read(bookingRepositoryProvider).submitBookingRequest(
+      final booking = await ref.read(bookingRepositoryProvider).submitBookingRequest(
             vendorId: widget.args.vendorId,
             vendorName: widget.args.vendorName,
             vendorImageAsset: widget.args.vendorImageAsset,
@@ -99,7 +97,9 @@ class _BookingRequestScreenState extends ConsumerState<BookingRequestScreen> {
             guestCount: _guestCount,
             notes: _notesController.text.trim().isEmpty ? null : _notesController.text.trim(),
           );
-      if (mounted) setState(() => _submitted = true);
+      if (mounted) {
+        context.pushReplacement(AppRoutes.bookingSuccess, extra: booking);
+      }
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -114,23 +114,6 @@ class _BookingRequestScreenState extends ConsumerState<BookingRequestScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-
-    if (_submitted) {
-      return Scaffold(
-        backgroundColor: AppColors.ivory,
-        body: SafeArea(
-          child: AppStateView(
-            icon: Icons.check_circle_rounded,
-            title: l10n.successTitle,
-            message: l10n.successMessage,
-            actionLabel: l10n.successAction,
-            iconColor: AppColors.success,
-            iconBackground: AppColors.successContainer,
-            onAction: () => context.go(AppRoutes.home),
-          ),
-        ),
-      );
-    }
 
     final dateLabel = _eventDate == null
         ? l10n.bookingRequestSelectDate

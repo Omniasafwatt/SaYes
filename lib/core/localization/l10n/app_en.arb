@@ -276,5 +276,11 @@
   "bookingRequestGuestCount": "Guest Count",
   "bookingRequestNotes": "Additional Notes (optional)",
   "bookingRequestNotesHint": "Anything the vendor should know?",
-  "bookingRequestErrorMessage": "We couldn't send your request. Please try again."
+  "bookingRequestErrorMessage": "We couldn't send your request. Please try again.",
+
+  "bookingSuccessViewBookings": "View My Bookings",
+  "bookingSuccessGuestsLabel": "{count} guests",
+  "@bookingSuccessGuestsLabel": {
+    "placeholders": { "count": {"type": "int"} }
+  }
 }

@@ -276,5 +276,11 @@
   "bookingRequestGuestCount": "عدد الضيوف",
   "bookingRequestNotes": "ملاحظات إضافية (اختياري)",
   "bookingRequestNotesHint": "هل هناك ما يجب أن يعرفه مزود الخدمة؟",
-  "bookingRequestErrorMessage": "تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى."
+  "bookingRequestErrorMessage": "تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى.",
+
+  "bookingSuccessViewBookings": "عرض حجوزاتي",
+  "bookingSuccessGuestsLabel": "{count} ضيف",
+  "@bookingSuccessGuestsLabel": {
+    "placeholders": { "count": {"type": "int"} }
+  }
 }

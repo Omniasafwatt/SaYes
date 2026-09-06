@@ -1387,6 +1387,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t send your request. Please try again.'**
   String get bookingRequestErrorMessage;
+
+  /// No description provided for @bookingSuccessViewBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'View My Bookings'**
+  String get bookingSuccessViewBookings;
+
+  /// No description provided for @bookingSuccessGuestsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} guests'**
+  String bookingSuccessGuestsLabel(int count);
 }
 
 class _AppLocalizationsDelegate

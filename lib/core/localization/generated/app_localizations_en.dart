@@ -706,4 +706,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get bookingRequestErrorMessage =>
       'We couldn\'t send your request. Please try again.';
+
+  @override
+  String get bookingSuccessViewBookings => 'View My Bookings';
+
+  @override
+  String bookingSuccessGuestsLabel(int count) {
+    return '$count guests';
+  }
 }
