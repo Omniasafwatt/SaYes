@@ -1333,6 +1333,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t load reviews right now.'**
   String get vendorReviewsErrorMessage;
+
+  /// No description provided for @bookingRequestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Request'**
+  String get bookingRequestTitle;
+
+  /// No description provided for @bookingRequestSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get bookingRequestSummary;
+
+  /// No description provided for @bookingRequestEventDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Date'**
+  String get bookingRequestEventDate;
+
+  /// No description provided for @bookingRequestSelectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a date'**
+  String get bookingRequestSelectDate;
+
+  /// No description provided for @bookingRequestDateRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select an event date'**
+  String get bookingRequestDateRequired;
+
+  /// No description provided for @bookingRequestGuestCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest Count'**
+  String get bookingRequestGuestCount;
+
+  /// No description provided for @bookingRequestNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional Notes (optional)'**
+  String get bookingRequestNotes;
+
+  /// No description provided for @bookingRequestNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Anything the vendor should know?'**
+  String get bookingRequestNotesHint;
+
+  /// No description provided for @bookingRequestErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t send your request. Please try again.'**
+  String get bookingRequestErrorMessage;
 }
 
 class _AppLocalizationsDelegate

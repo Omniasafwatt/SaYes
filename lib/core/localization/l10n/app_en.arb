@@ -266,5 +266,15 @@
 
   "vendorReviewsEmptyTitle": "No reviews yet",
   "vendorReviewsEmptyMessage": "This vendor hasn't been reviewed yet.",
-  "vendorReviewsErrorMessage": "We couldn't load reviews right now."
+  "vendorReviewsErrorMessage": "We couldn't load reviews right now.",
+
+  "bookingRequestTitle": "Booking Request",
+  "bookingRequestSummary": "Summary",
+  "bookingRequestEventDate": "Event Date",
+  "bookingRequestSelectDate": "Select a date",
+  "bookingRequestDateRequired": "Please select an event date",
+  "bookingRequestGuestCount": "Guest Count",
+  "bookingRequestNotes": "Additional Notes (optional)",
+  "bookingRequestNotesHint": "Anything the vendor should know?",
+  "bookingRequestErrorMessage": "We couldn't send your request. Please try again."
 }

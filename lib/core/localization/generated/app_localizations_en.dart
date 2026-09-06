@@ -678,4 +678,32 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get vendorReviewsErrorMessage =>
       'We couldn\'t load reviews right now.';
+
+  @override
+  String get bookingRequestTitle => 'Booking Request';
+
+  @override
+  String get bookingRequestSummary => 'Summary';
+
+  @override
+  String get bookingRequestEventDate => 'Event Date';
+
+  @override
+  String get bookingRequestSelectDate => 'Select a date';
+
+  @override
+  String get bookingRequestDateRequired => 'Please select an event date';
+
+  @override
+  String get bookingRequestGuestCount => 'Guest Count';
+
+  @override
+  String get bookingRequestNotes => 'Additional Notes (optional)';
+
+  @override
+  String get bookingRequestNotesHint => 'Anything the vendor should know?';
+
+  @override
+  String get bookingRequestErrorMessage =>
+      'We couldn\'t send your request. Please try again.';
 }

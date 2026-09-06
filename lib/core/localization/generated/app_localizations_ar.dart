@@ -668,4 +668,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get vendorReviewsErrorMessage => 'تعذّر تحميل التقييمات الآن.';
+
+  @override
+  String get bookingRequestTitle => 'طلب الحجز';
+
+  @override
+  String get bookingRequestSummary => 'الملخص';
+
+  @override
+  String get bookingRequestEventDate => 'تاريخ المناسبة';
+
+  @override
+  String get bookingRequestSelectDate => 'اختاري تاريخاً';
+
+  @override
+  String get bookingRequestDateRequired => 'يرجى اختيار تاريخ المناسبة';
+
+  @override
+  String get bookingRequestGuestCount => 'عدد الضيوف';
+
+  @override
+  String get bookingRequestNotes => 'ملاحظات إضافية (اختياري)';
+
+  @override
+  String get bookingRequestNotesHint => 'هل هناك ما يجب أن يعرفه مزود الخدمة؟';
+
+  @override
+  String get bookingRequestErrorMessage =>
+      'تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى.';
 }

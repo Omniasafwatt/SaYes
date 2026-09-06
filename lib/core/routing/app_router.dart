@@ -4,6 +4,7 @@ import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/auth/presentation/reset_password_screen.dart';
+import '../../features/bookings/presentation/booking_request_screen.dart';
 import '../../features/categories/presentation/categories_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
 import '../../features/favorites/presentation/favorites_screen.dart';
@@ -39,6 +40,7 @@ abstract final class AppRoutes {
   static const vendorPortfolio = '/vendor-portfolio';
   static const vendorPackages = '/vendor-packages';
   static const vendorReviews = '/vendor-reviews';
+  static const bookingRequest = '/booking-request';
   static const explore = '/explore';
   static const favorites = '/favorites';
   static const bookings = '/bookings';
@@ -99,6 +101,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.vendorReviews,
       builder: (context, state) => VendorReviewsScreen(vendorId: state.extra as String),
+    ),
+    GoRoute(
+      path: AppRoutes.bookingRequest,
+      builder: (context, state) => BookingRequestScreen(args: state.extra as BookingRequestArgs),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => CustomerShell(navigationShell: navigationShell),

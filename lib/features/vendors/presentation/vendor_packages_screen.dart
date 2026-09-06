@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../core/animations/pressable_scale.dart';
 import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
-import '../../home/presentation/coming_soon_screen.dart';
+import '../../bookings/presentation/booking_request_screen.dart';
 import '../application/vendor_detail_controller.dart';
 import '../data/vendor_models.dart';
 
@@ -116,15 +118,20 @@ class _VendorPackagesScreenState extends ConsumerState<VendorPackagesScreen> {
                 label: l10n.vendorPackagesContinue,
                 onPressed: _selectedPackageId == null
                     ? null
-                    : () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => ComingSoonScreen(
-                              icon: Icons.calendar_month_rounded,
-                              title: l10n.comingSoonBookingsTitle,
-                              message: l10n.comingSoonBookingsMessage,
-                            ),
+                    : () {
+                        final detail = detailAsync.value!;
+                        final package = detail.packages.firstWhere((p) => p.id == _selectedPackageId);
+                        context.push(
+                          AppRoutes.bookingRequest,
+                          extra: BookingRequestArgs(
+                            vendorId: detail.id,
+                            vendorName: detail.name,
+                            vendorImageAsset: detail.imageAssets.first,
+                            packageName: package.name,
+                            packagePriceEgp: package.priceEgp,
                           ),
-                        ),
+                        );
+                      },
               ),
             ],
           ),

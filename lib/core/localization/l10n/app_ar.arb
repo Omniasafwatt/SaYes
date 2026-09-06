@@ -266,5 +266,15 @@
 
   "vendorReviewsEmptyTitle": "لا توجد تقييمات بعد",
   "vendorReviewsEmptyMessage": "لم يتم تقييم مزود الخدمة هذا بعد.",
-  "vendorReviewsErrorMessage": "تعذّر تحميل التقييمات الآن."
+  "vendorReviewsErrorMessage": "تعذّر تحميل التقييمات الآن.",
+
+  "bookingRequestTitle": "طلب الحجز",
+  "bookingRequestSummary": "الملخص",
+  "bookingRequestEventDate": "تاريخ المناسبة",
+  "bookingRequestSelectDate": "اختاري تاريخاً",
+  "bookingRequestDateRequired": "يرجى اختيار تاريخ المناسبة",
+  "bookingRequestGuestCount": "عدد الضيوف",
+  "bookingRequestNotes": "ملاحظات إضافية (اختياري)",
+  "bookingRequestNotesHint": "هل هناك ما يجب أن يعرفه مزود الخدمة؟",
+  "bookingRequestErrorMessage": "تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى."
 }
