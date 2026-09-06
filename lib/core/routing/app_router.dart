@@ -12,7 +12,7 @@ import '../../features/design_system_showcase/design_system_showcase_screen.dart
 import '../../features/favorites/presentation/favorites_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
-import '../../features/profile/presentation/profile_placeholder_screen.dart';
+import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/vendors/presentation/vendor_detail_screen.dart';
@@ -127,7 +127,7 @@ final appRouter = GoRouter(
           routes: [GoRoute(path: AppRoutes.bookings, builder: (context, state) => const CustomerBookingsScreen())],
         ),
         StatefulShellBranch(
-          routes: [GoRoute(path: AppRoutes.profile, builder: (context, state) => const ProfilePlaceholderScreen())],
+          routes: [GoRoute(path: AppRoutes.profile, builder: (context, state) => const ProfileScreen())],
         ),
       ],
     ),

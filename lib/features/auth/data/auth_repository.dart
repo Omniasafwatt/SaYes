@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/storage/secure_storage_service.dart';
+import '../../profile/data/user_profile.dart';
+import '../../profile/data/user_profile_repository.dart';
 import 'auth_models.dart';
 
 /// Contract the UI/controller layer codes against. Screens and
@@ -34,9 +36,10 @@ abstract class AuthRepository {
 /// the API contract is provided; nothing above this class should need to
 /// change.
 class PlaceholderAuthRepository implements AuthRepository {
-  PlaceholderAuthRepository(this._secureStorage);
+  PlaceholderAuthRepository(this._secureStorage, this._userProfile);
 
   final SecureStorageService _secureStorage;
+  final UserProfileRepository _userProfile;
 
   Future<void> _simulateLatency() => Future.delayed(const Duration(milliseconds: 900));
 
@@ -44,6 +47,15 @@ class PlaceholderAuthRepository implements AuthRepository {
   Future<void> login({required String email, required String password}) async {
     await _simulateLatency();
     await _secureStorage.saveSession(accessToken: 'placeholder-access-$email', refreshToken: 'placeholder-refresh-$email');
+    // No real backend to look up the account's actual name. If this same
+    // email registered or logged in before on this device, its saved
+    // profile (including any edits) carries over — otherwise seed a
+    // fresh one from the email so the Profile screen has something
+    // better than blank.
+    final existing = await _userProfile.getProfile();
+    if (existing == null || existing.email != email) {
+      await _userProfile.saveProfile(UserProfile(name: email.split('@').first, email: email));
+    }
   }
 
   @override
@@ -55,6 +67,7 @@ class PlaceholderAuthRepository implements AuthRepository {
   }) async {
     await _simulateLatency();
     await _secureStorage.saveSession(accessToken: 'placeholder-access-$email', refreshToken: 'placeholder-refresh-$email');
+    await _userProfile.saveProfile(UserProfile(name: name, email: email));
   }
 
   @override
@@ -70,9 +83,13 @@ class PlaceholderAuthRepository implements AuthRepository {
   @override
   Future<void> logout() async {
     await _secureStorage.clearSession();
+    // Deliberately keeps the cached profile — logging back in with the
+    // same email should recall it, the way a real backend would. It's
+    // only ever replaced, in login() above, when a different email signs
+    // in on this device.
   }
 }
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
-  return PlaceholderAuthRepository(ref.watch(secureStorageServiceProvider));
+  return PlaceholderAuthRepository(ref.watch(secureStorageServiceProvider), ref.watch(userProfileRepositoryProvider));
 });

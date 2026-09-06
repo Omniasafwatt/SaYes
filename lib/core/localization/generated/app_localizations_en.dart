@@ -426,6 +426,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileLogOut => 'Log Out';
 
   @override
+  String get profileEditProfile => 'Edit Profile';
+
+  @override
+  String get profileAccountSection => 'Account';
+
+  @override
+  String get profilePreferencesSection => 'Preferences';
+
+  @override
+  String get profileName => 'Name';
+
+  @override
+  String get profilePhone => 'Phone';
+
+  @override
+  String get profilePhoneHint => 'Add a phone number';
+
+  @override
+  String get profileNoPhone => 'Not added';
+
+  @override
+  String get profileSaveChanges => 'Save Changes';
+
+  @override
+  String get profileNotifications => 'Notifications';
+
+  @override
+  String get profileBookingUpdates => 'Booking updates';
+
+  @override
+  String get profileBookingUpdatesSubtitle => 'Status changes on your requests';
+
+  @override
+  String get profilePromotions => 'Promotions & offers';
+
+  @override
+  String get profilePromotionsSubtitle => 'Occasional vendor deals and offers';
+
+  @override
   String get homeGreetingMorning => 'Good morning';
 
   @override

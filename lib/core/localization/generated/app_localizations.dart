@@ -872,6 +872,84 @@ abstract class AppLocalizations {
   /// **'Log Out'**
   String get profileLogOut;
 
+  /// No description provided for @profileEditProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get profileEditProfile;
+
+  /// No description provided for @profileAccountSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get profileAccountSection;
+
+  /// No description provided for @profilePreferencesSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get profilePreferencesSection;
+
+  /// No description provided for @profileName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get profileName;
+
+  /// No description provided for @profilePhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get profilePhone;
+
+  /// No description provided for @profilePhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a phone number'**
+  String get profilePhoneHint;
+
+  /// No description provided for @profileNoPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Not added'**
+  String get profileNoPhone;
+
+  /// No description provided for @profileSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get profileSaveChanges;
+
+  /// No description provided for @profileNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get profileNotifications;
+
+  /// No description provided for @profileBookingUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking updates'**
+  String get profileBookingUpdates;
+
+  /// No description provided for @profileBookingUpdatesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Status changes on your requests'**
+  String get profileBookingUpdatesSubtitle;
+
+  /// No description provided for @profilePromotions.
+  ///
+  /// In en, this message translates to:
+  /// **'Promotions & offers'**
+  String get profilePromotions;
+
+  /// No description provided for @profilePromotionsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Occasional vendor deals and offers'**
+  String get profilePromotionsSubtitle;
+
   /// No description provided for @homeGreetingMorning.
   ///
   /// In en, this message translates to:

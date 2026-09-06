@@ -421,6 +421,46 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileLogOut => 'تسجيل الخروج';
 
   @override
+  String get profileEditProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get profileAccountSection => 'الحساب';
+
+  @override
+  String get profilePreferencesSection => 'التفضيلات';
+
+  @override
+  String get profileName => 'الاسم';
+
+  @override
+  String get profilePhone => 'رقم الهاتف';
+
+  @override
+  String get profilePhoneHint => 'أضيفي رقم هاتف';
+
+  @override
+  String get profileNoPhone => 'لم تتم الإضافة';
+
+  @override
+  String get profileSaveChanges => 'حفظ التغييرات';
+
+  @override
+  String get profileNotifications => 'الإشعارات';
+
+  @override
+  String get profileBookingUpdates => 'تحديثات الحجوزات';
+
+  @override
+  String get profileBookingUpdatesSubtitle =>
+      'تغييرات حالة طلبات الحجز الخاصة بكِ';
+
+  @override
+  String get profilePromotions => 'العروض والتخفيضات';
+
+  @override
+  String get profilePromotionsSubtitle => 'عروض مزودي الخدمة من حين لآخر';
+
+  @override
   String get homeGreetingMorning => 'صباح الخير';
 
   @override
