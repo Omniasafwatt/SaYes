@@ -794,18 +794,28 @@ class AppLocalizationsEn extends AppLocalizations {
       'New booking requests from couples will appear here.';
 
   @override
-  String get vendorBookingsComingSoonTitle =>
-      'Booking requests are on their way';
-
-  @override
-  String get vendorBookingsComingSoonMessage =>
-      'Managing incoming requests and responding to couples lands in a later phase.';
-
-  @override
   String get vendorProfileComingSoonTitle =>
       'Your business profile is on its way';
 
   @override
   String get vendorProfileComingSoonMessage =>
       'Editing your listing, portfolio, and packages lands in a later phase.';
+
+  @override
+  String get vendorBookingsAccept => 'Accept';
+
+  @override
+  String get vendorBookingsDecline => 'Decline';
+
+  @override
+  String get vendorBookingsDeclineConfirmTitle => 'Decline this request?';
+
+  @override
+  String get vendorBookingsDeclineConfirmMessage => 'This can\'t be undone.';
+
+  @override
+  String get vendorBookingsDeclineConfirmAction => 'Decline';
+
+  @override
+  String get vendorBookingsCancelAction => 'Cancel';
 }

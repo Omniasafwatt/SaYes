@@ -17,6 +17,7 @@ import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/vendor_bookings/presentation/vendor_bookings_screen.dart';
 import '../../features/vendor_dashboard/presentation/vendor_dashboard_screen.dart';
 import '../../features/vendors/presentation/vendor_detail_screen.dart';
 import '../../features/vendors/presentation/vendor_listing_screen.dart';
@@ -147,19 +148,7 @@ final appRouter = GoRouter(
           routes: [GoRoute(path: AppRoutes.vendorHome, builder: (context, state) => const VendorDashboardScreen())],
         ),
         StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.vendorBookings,
-              builder: (context, state) {
-                final l10n = AppLocalizations.of(context);
-                return ComingSoonScreen(
-                  icon: Icons.calendar_month_outlined,
-                  title: l10n.vendorBookingsComingSoonTitle,
-                  message: l10n.vendorBookingsComingSoonMessage,
-                );
-              },
-            ),
-          ],
+          routes: [GoRoute(path: AppRoutes.vendorBookings, builder: (context, state) => const VendorBookingsScreen())],
         ),
         StatefulShellBranch(
           routes: [

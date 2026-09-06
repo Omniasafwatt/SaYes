@@ -783,16 +783,28 @@ class AppLocalizationsAr extends AppLocalizations {
       'ستظهر هنا طلبات الحجز الجديدة من العرائس والعرسان.';
 
   @override
-  String get vendorBookingsComingSoonTitle => 'طلبات الحجز قادمة قريباً';
-
-  @override
-  String get vendorBookingsComingSoonMessage =>
-      'إدارة الطلبات الواردة والرد على العرائس والعرسان تصل في مرحلة لاحقة.';
-
-  @override
   String get vendorProfileComingSoonTitle => 'ملفك التجاري قادم قريباً';
 
   @override
   String get vendorProfileComingSoonMessage =>
       'تعديل قائمتك ومعرض أعمالك وباقاتك يصل في مرحلة لاحقة.';
+
+  @override
+  String get vendorBookingsAccept => 'قبول';
+
+  @override
+  String get vendorBookingsDecline => 'رفض';
+
+  @override
+  String get vendorBookingsDeclineConfirmTitle => 'هل تريدين رفض هذا الطلب؟';
+
+  @override
+  String get vendorBookingsDeclineConfirmMessage =>
+      'لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get vendorBookingsDeclineConfirmAction => 'رفض';
+
+  @override
+  String get vendorBookingsCancelAction => 'إلغاء';
 }

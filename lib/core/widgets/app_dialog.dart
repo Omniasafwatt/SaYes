@@ -7,8 +7,13 @@ import '../theme/app_typography.dart';
 import 'buttons.dart';
 
 /// Confirmation-style dialog — e.g. "Upgrade your plan to add more
-/// portfolio items." Primary/secondary labels and actions are always
-/// caller-supplied so this stays localization-agnostic.
+/// portfolio items." Primary/secondary labels are caller-supplied so this
+/// stays localization-agnostic; [onPrimary]/[onSecondary] only need to
+/// express what happens after the dialog closes — this widget always
+/// dismisses itself first via the root navigator (matching where
+/// [showDialog] pushes the route by default), so a caller whose own
+/// context comes from inside a nested navigator (e.g. a
+/// StatefulShellRoute branch) can't accidentally pop the wrong one.
 Future<T?> showAppDialog<T>({
   required BuildContext context,
   required String title,
@@ -22,6 +27,11 @@ Future<T?> showAppDialog<T>({
     context: context,
     barrierColor: AppColors.textPrimary.withValues(alpha: 0.45),
     builder: (dialogContext) {
+      void closeThen(VoidCallback? callback) {
+        Navigator.of(dialogContext, rootNavigator: true).pop();
+        callback?.call();
+      }
+
       return Dialog(
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.cardPaddingLg),
@@ -34,14 +44,10 @@ Future<T?> showAppDialog<T>({
               Text(message, style: dialogContext.typography.bodyMd, textAlign: TextAlign.center),
               const SizedBox(height: AppSpacing.xxl),
               if (primaryLabel != null)
-                AppButton(label: primaryLabel, onPressed: onPrimary ?? () => Navigator.of(dialogContext).pop()),
+                AppButton(label: primaryLabel, onPressed: () => closeThen(onPrimary)),
               if (secondaryLabel != null) ...[
                 const SizedBox(height: AppSpacing.sm),
-                AppButton(
-                  label: secondaryLabel,
-                  variant: AppButtonVariant.text,
-                  onPressed: onSecondary ?? () => Navigator.of(dialogContext).pop(),
-                ),
+                AppButton(label: secondaryLabel, variant: AppButtonVariant.text, onPressed: () => closeThen(onSecondary)),
               ],
             ],
           ),

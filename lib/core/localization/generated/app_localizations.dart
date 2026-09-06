@@ -1550,18 +1550,6 @@ abstract class AppLocalizations {
   /// **'New booking requests from couples will appear here.'**
   String get vendorDashboardEmptyRequestsMessage;
 
-  /// No description provided for @vendorBookingsComingSoonTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Booking requests are on their way'**
-  String get vendorBookingsComingSoonTitle;
-
-  /// No description provided for @vendorBookingsComingSoonMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Managing incoming requests and responding to couples lands in a later phase.'**
-  String get vendorBookingsComingSoonMessage;
-
   /// No description provided for @vendorProfileComingSoonTitle.
   ///
   /// In en, this message translates to:
@@ -1573,6 +1561,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Editing your listing, portfolio, and packages lands in a later phase.'**
   String get vendorProfileComingSoonMessage;
+
+  /// No description provided for @vendorBookingsAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get vendorBookingsAccept;
+
+  /// No description provided for @vendorBookingsDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get vendorBookingsDecline;
+
+  /// No description provided for @vendorBookingsDeclineConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline this request?'**
+  String get vendorBookingsDeclineConfirmTitle;
+
+  /// No description provided for @vendorBookingsDeclineConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be undone.'**
+  String get vendorBookingsDeclineConfirmMessage;
+
+  /// No description provided for @vendorBookingsDeclineConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get vendorBookingsDeclineConfirmAction;
+
+  /// No description provided for @vendorBookingsCancelAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get vendorBookingsCancelAction;
 }
 
 class _AppLocalizationsDelegate
