@@ -714,4 +714,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String bookingSuccessGuestsLabel(int count) {
     return '$count guests';
   }
+
+  @override
+  String get customerBookingsEmptyTitle => 'No bookings yet';
+
+  @override
+  String get customerBookingsEmptyMessage =>
+      'Your booking requests will appear here.';
+
+  @override
+  String get customerBookingsErrorMessage =>
+      'We couldn\'t load your bookings right now.';
 }

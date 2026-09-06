@@ -704,4 +704,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String bookingSuccessGuestsLabel(int count) {
     return '$count ضيف';
   }
+
+  @override
+  String get customerBookingsEmptyTitle => 'لا توجد حجوزات بعد';
+
+  @override
+  String get customerBookingsEmptyMessage => 'ستظهر طلبات الحجز الخاصة بك هنا.';
+
+  @override
+  String get customerBookingsErrorMessage => 'تعذّر تحميل حجوزاتك الآن.';
 }

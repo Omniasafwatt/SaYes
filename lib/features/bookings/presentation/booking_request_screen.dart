@@ -9,6 +9,7 @@ import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
+import '../application/bookings_controller.dart';
 import '../data/booking_repository.dart';
 import 'booking_success_screen.dart';
 
@@ -97,6 +98,7 @@ class _BookingRequestScreenState extends ConsumerState<BookingRequestScreen> {
             guestCount: _guestCount,
             notes: _notesController.text.trim().isEmpty ? null : _notesController.text.trim(),
           );
+      ref.read(bookingsControllerProvider.notifier).refresh();
       if (mounted) {
         context.pushReplacement(AppRoutes.bookingSuccess, extra: booking);
       }

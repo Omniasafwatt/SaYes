@@ -1399,6 +1399,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} guests'**
   String bookingSuccessGuestsLabel(int count);
+
+  /// No description provided for @customerBookingsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No bookings yet'**
+  String get customerBookingsEmptyTitle;
+
+  /// No description provided for @customerBookingsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your booking requests will appear here.'**
+  String get customerBookingsEmptyMessage;
+
+  /// No description provided for @customerBookingsErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load your bookings right now.'**
+  String get customerBookingsErrorMessage;
 }
 
 class _AppLocalizationsDelegate

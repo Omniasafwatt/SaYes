@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
@@ -7,10 +6,10 @@ import '../../features/auth/presentation/reset_password_screen.dart';
 import '../../features/bookings/data/booking_models.dart';
 import '../../features/bookings/presentation/booking_request_screen.dart';
 import '../../features/bookings/presentation/booking_success_screen.dart';
+import '../../features/bookings/presentation/customer_bookings_screen.dart';
 import '../../features/categories/presentation/categories_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
 import '../../features/favorites/presentation/favorites_screen.dart';
-import '../../features/home/presentation/coming_soon_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_placeholder_screen.dart';
@@ -21,7 +20,6 @@ import '../../features/vendors/presentation/vendor_listing_screen.dart';
 import '../../features/vendors/presentation/vendor_packages_screen.dart';
 import '../../features/vendors/presentation/vendor_portfolio_screen.dart';
 import '../../features/vendors/presentation/vendor_reviews_screen.dart';
-import '../localization/generated/app_localizations.dart';
 import 'customer_shell.dart';
 
 /// Route paths. Every screen the app can navigate to gets a named constant
@@ -126,19 +124,7 @@ final appRouter = GoRouter(
           routes: [GoRoute(path: AppRoutes.favorites, builder: (context, state) => const FavoritesScreen())],
         ),
         StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.bookings,
-              builder: (context, state) {
-                final l10n = AppLocalizations.of(context);
-                return ComingSoonScreen(
-                  icon: Icons.calendar_month_rounded,
-                  title: l10n.comingSoonBookingsTitle,
-                  message: l10n.comingSoonBookingsMessage,
-                );
-              },
-            ),
-          ],
+          routes: [GoRoute(path: AppRoutes.bookings, builder: (context, state) => const CustomerBookingsScreen())],
         ),
         StatefulShellBranch(
           routes: [GoRoute(path: AppRoutes.profile, builder: (context, state) => const ProfilePlaceholderScreen())],

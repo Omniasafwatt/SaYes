@@ -282,5 +282,9 @@
   "bookingSuccessGuestsLabel": "{count} ضيف",
   "@bookingSuccessGuestsLabel": {
     "placeholders": { "count": {"type": "int"} }
-  }
+  },
+
+  "customerBookingsEmptyTitle": "لا توجد حجوزات بعد",
+  "customerBookingsEmptyMessage": "ستظهر طلبات الحجز الخاصة بك هنا.",
+  "customerBookingsErrorMessage": "تعذّر تحميل حجوزاتك الآن."
 }
