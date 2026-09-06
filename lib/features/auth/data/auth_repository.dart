@@ -47,14 +47,15 @@ class PlaceholderAuthRepository implements AuthRepository {
   Future<void> login({required String email, required String password}) async {
     await _simulateLatency();
     await _secureStorage.saveSession(accessToken: 'placeholder-access-$email', refreshToken: 'placeholder-refresh-$email');
-    // No real backend to look up the account's actual name. If this same
-    // email registered or logged in before on this device, its saved
-    // profile (including any edits) carries over — otherwise seed a
-    // fresh one from the email so the Profile screen has something
-    // better than blank.
+    // No real backend to look up the account's actual name or role. If this
+    // same email registered or logged in before on this device, its saved
+    // profile (including any edits and its real role) carries over —
+    // otherwise seed a fresh one from the email, defaulting to customer
+    // since that's the far more common case and there's no way to ask
+    // which role a not-yet-seen account actually is.
     final existing = await _userProfile.getProfile();
     if (existing == null || existing.email != email) {
-      await _userProfile.saveProfile(UserProfile(name: email.split('@').first, email: email));
+      await _userProfile.saveProfile(UserProfile(name: email.split('@').first, email: email, role: UserRole.customer));
     }
   }
 
@@ -67,7 +68,7 @@ class PlaceholderAuthRepository implements AuthRepository {
   }) async {
     await _simulateLatency();
     await _secureStorage.saveSession(accessToken: 'placeholder-access-$email', refreshToken: 'placeholder-refresh-$email');
-    await _userProfile.saveProfile(UserProfile(name: name, email: email));
+    await _userProfile.saveProfile(UserProfile(name: name, email: email, role: role));
   }
 
   @override

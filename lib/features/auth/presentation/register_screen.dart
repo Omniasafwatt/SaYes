@@ -50,7 +50,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         );
     if (!mounted) return;
     if (success) {
-      context.go(AppRoutes.home);
+      context.go(_role == UserRole.vendor ? AppRoutes.vendorHome : AppRoutes.home);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.authRegisterError)));
     }

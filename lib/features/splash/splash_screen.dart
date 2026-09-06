@@ -12,12 +12,14 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/widgets/botanical_divider.dart';
+import '../auth/data/auth_models.dart';
+import '../profile/data/user_profile_repository.dart';
 
 /// First screen shown on launch. Shows the brand moment for a minimum
 /// beat while checking for a stored session in parallel, then routes to
 /// the signed-in destination or onboarding — the flow described in the
-/// project brief's splash diagram. Role-based branching (customer vs
-/// vendor shell) isn't wired yet since neither destination exists.
+/// project brief's splash diagram. A restored session branches by the
+/// cached profile's role into the customer or vendor shell.
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
@@ -41,7 +43,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     ]);
     if (!mounted) return;
     final hasSession = results[0] as bool;
-    context.go(hasSession ? AppRoutes.home : AppRoutes.onboarding);
+    if (!hasSession) {
+      context.go(AppRoutes.onboarding);
+      return;
+    }
+    final profile = await ref.read(userProfileRepositoryProvider).getProfile();
+    if (!mounted) return;
+    context.go(profile?.role == UserRole.vendor ? AppRoutes.vendorHome : AppRoutes.home);
   }
 
   @override

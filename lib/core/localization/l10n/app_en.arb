@@ -144,6 +144,7 @@
   "navFavorites": "Favorites",
   "navBookings": "Bookings",
   "navProfile": "Profile",
+  "navDashboard": "Dashboard",
 
   "comingSoonExploreTitle": "Explore is on its way",
   "comingSoonExploreMessage": "Full category browsing and search land in the next phase.",
@@ -299,5 +300,18 @@
 
   "customerBookingsEmptyTitle": "No bookings yet",
   "customerBookingsEmptyMessage": "Your booking requests will appear here.",
-  "customerBookingsErrorMessage": "We couldn't load your bookings right now."
+  "customerBookingsErrorMessage": "We couldn't load your bookings right now.",
+
+  "vendorDashboardSubtitle": "Here's how your business is doing.",
+  "vendorDashboardNewRequests": "New Requests",
+  "vendorDashboardThisMonth": "This Month",
+  "vendorDashboardRating": "Rating",
+  "vendorDashboardRecentRequestsTitle": "Recent Requests",
+  "vendorDashboardViewAll": "View all",
+  "vendorDashboardEmptyRequestsTitle": "No requests yet",
+  "vendorDashboardEmptyRequestsMessage": "New booking requests from couples will appear here.",
+  "vendorBookingsComingSoonTitle": "Booking requests are on their way",
+  "vendorBookingsComingSoonMessage": "Managing incoming requests and responding to couples lands in a later phase.",
+  "vendorProfileComingSoonTitle": "Your business profile is on its way",
+  "vendorProfileComingSoonMessage": "Editing your listing, portfolio, and packages lands in a later phase."
 }

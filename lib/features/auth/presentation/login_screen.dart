@@ -7,7 +7,9 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/widgets/widgets.dart';
+import '../../profile/data/user_profile_repository.dart';
 import '../application/auth_controller.dart';
+import '../data/auth_models.dart';
 import 'widgets/auth_hero_scaffold.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -37,7 +39,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         );
     if (!mounted) return;
     if (success) {
-      context.go(AppRoutes.home);
+      final profile = await ref.read(userProfileRepositoryProvider).getProfile();
+      if (!mounted) return;
+      context.go(profile?.role == UserRole.vendor ? AppRoutes.vendorHome : AppRoutes.home);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.authLoginError)));
     }

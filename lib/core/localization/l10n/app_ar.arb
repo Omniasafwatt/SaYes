@@ -144,6 +144,7 @@
   "navFavorites": "المفضلة",
   "navBookings": "الحجوزات",
   "navProfile": "حسابي",
+  "navDashboard": "لوحة التحكم",
 
   "comingSoonExploreTitle": "الاستكشاف قادم قريباً",
   "comingSoonExploreMessage": "تصفح الفئات والبحث الكامل يصلان في المرحلة القادمة.",
@@ -299,5 +300,18 @@
 
   "customerBookingsEmptyTitle": "لا توجد حجوزات بعد",
   "customerBookingsEmptyMessage": "ستظهر طلبات الحجز الخاصة بك هنا.",
-  "customerBookingsErrorMessage": "تعذّر تحميل حجوزاتك الآن."
+  "customerBookingsErrorMessage": "تعذّر تحميل حجوزاتك الآن.",
+
+  "vendorDashboardSubtitle": "نظرة عامة على أداء عملك.",
+  "vendorDashboardNewRequests": "طلبات جديدة",
+  "vendorDashboardThisMonth": "هذا الشهر",
+  "vendorDashboardRating": "التقييم",
+  "vendorDashboardRecentRequestsTitle": "الطلبات الأخيرة",
+  "vendorDashboardViewAll": "عرض الكل",
+  "vendorDashboardEmptyRequestsTitle": "لا توجد طلبات بعد",
+  "vendorDashboardEmptyRequestsMessage": "ستظهر هنا طلبات الحجز الجديدة من العرائس والعرسان.",
+  "vendorBookingsComingSoonTitle": "طلبات الحجز قادمة قريباً",
+  "vendorBookingsComingSoonMessage": "إدارة الطلبات الواردة والرد على العرائس والعرسان تصل في مرحلة لاحقة.",
+  "vendorProfileComingSoonTitle": "ملفك التجاري قادم قريباً",
+  "vendorProfileComingSoonMessage": "تعديل قائمتك ومعرض أعمالك وباقاتك يصل في مرحلة لاحقة."
 }

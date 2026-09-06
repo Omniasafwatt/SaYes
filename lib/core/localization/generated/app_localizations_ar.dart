@@ -387,6 +387,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get navProfile => 'حسابي';
 
   @override
+  String get navDashboard => 'لوحة التحكم';
+
+  @override
   String get comingSoonExploreTitle => 'الاستكشاف قادم قريباً';
 
   @override
@@ -753,4 +756,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get customerBookingsErrorMessage => 'تعذّر تحميل حجوزاتك الآن.';
+
+  @override
+  String get vendorDashboardSubtitle => 'نظرة عامة على أداء عملك.';
+
+  @override
+  String get vendorDashboardNewRequests => 'طلبات جديدة';
+
+  @override
+  String get vendorDashboardThisMonth => 'هذا الشهر';
+
+  @override
+  String get vendorDashboardRating => 'التقييم';
+
+  @override
+  String get vendorDashboardRecentRequestsTitle => 'الطلبات الأخيرة';
+
+  @override
+  String get vendorDashboardViewAll => 'عرض الكل';
+
+  @override
+  String get vendorDashboardEmptyRequestsTitle => 'لا توجد طلبات بعد';
+
+  @override
+  String get vendorDashboardEmptyRequestsMessage =>
+      'ستظهر هنا طلبات الحجز الجديدة من العرائس والعرسان.';
+
+  @override
+  String get vendorBookingsComingSoonTitle => 'طلبات الحجز قادمة قريباً';
+
+  @override
+  String get vendorBookingsComingSoonMessage =>
+      'إدارة الطلبات الواردة والرد على العرائس والعرسان تصل في مرحلة لاحقة.';
+
+  @override
+  String get vendorProfileComingSoonTitle => 'ملفك التجاري قادم قريباً';
+
+  @override
+  String get vendorProfileComingSoonMessage =>
+      'تعديل قائمتك ومعرض أعمالك وباقاتك يصل في مرحلة لاحقة.';
 }

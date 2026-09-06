@@ -812,6 +812,12 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get navProfile;
 
+  /// No description provided for @navDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get navDashboard;
+
   /// No description provided for @comingSoonExploreTitle.
   ///
   /// In en, this message translates to:
@@ -1495,6 +1501,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t load your bookings right now.'**
   String get customerBookingsErrorMessage;
+
+  /// No description provided for @vendorDashboardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s how your business is doing.'**
+  String get vendorDashboardSubtitle;
+
+  /// No description provided for @vendorDashboardNewRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'New Requests'**
+  String get vendorDashboardNewRequests;
+
+  /// No description provided for @vendorDashboardThisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This Month'**
+  String get vendorDashboardThisMonth;
+
+  /// No description provided for @vendorDashboardRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get vendorDashboardRating;
+
+  /// No description provided for @vendorDashboardRecentRequestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Requests'**
+  String get vendorDashboardRecentRequestsTitle;
+
+  /// No description provided for @vendorDashboardViewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get vendorDashboardViewAll;
+
+  /// No description provided for @vendorDashboardEmptyRequestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get vendorDashboardEmptyRequestsTitle;
+
+  /// No description provided for @vendorDashboardEmptyRequestsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'New booking requests from couples will appear here.'**
+  String get vendorDashboardEmptyRequestsMessage;
+
+  /// No description provided for @vendorBookingsComingSoonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking requests are on their way'**
+  String get vendorBookingsComingSoonTitle;
+
+  /// No description provided for @vendorBookingsComingSoonMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Managing incoming requests and responding to couples lands in a later phase.'**
+  String get vendorBookingsComingSoonMessage;
+
+  /// No description provided for @vendorProfileComingSoonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your business profile is on its way'**
+  String get vendorProfileComingSoonTitle;
+
+  /// No description provided for @vendorProfileComingSoonMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Editing your listing, portfolio, and packages lands in a later phase.'**
+  String get vendorProfileComingSoonMessage;
 }
 
 class _AppLocalizationsDelegate

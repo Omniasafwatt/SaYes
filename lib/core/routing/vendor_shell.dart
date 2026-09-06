@@ -3,9 +3,12 @@ import 'package:go_router/go_router.dart';
 import '../localization/generated/app_localizations.dart';
 import 'app_nav_shell.dart';
 
-/// Bottom navigation shell for the signed-in customer experience.
-class CustomerShell extends StatelessWidget {
-  const CustomerShell({super.key, required this.navigationShell});
+/// Bottom navigation shell for the signed-in vendor experience — same dock
+/// styling as [CustomerShell], a different (shorter) tab set: a vendor
+/// manages one business, not a browsing catalog, so there's no
+/// Explore/Favorites equivalent here.
+class VendorShell extends StatelessWidget {
+  const VendorShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
@@ -15,9 +18,7 @@ class CustomerShell extends StatelessWidget {
     return AppNavShell(
       navigationShell: navigationShell,
       items: [
-        AppNavItemData(icon: Icons.home_outlined, activeIcon: Icons.home_rounded, label: l10n.navHome),
-        AppNavItemData(icon: Icons.explore_outlined, activeIcon: Icons.explore_rounded, label: l10n.navExplore),
-        AppNavItemData(icon: Icons.favorite_border_rounded, activeIcon: Icons.favorite_rounded, label: l10n.navFavorites),
+        AppNavItemData(icon: Icons.dashboard_outlined, activeIcon: Icons.dashboard_rounded, label: l10n.navDashboard),
         AppNavItemData(
           icon: Icons.calendar_month_outlined,
           activeIcon: Icons.calendar_month_rounded,

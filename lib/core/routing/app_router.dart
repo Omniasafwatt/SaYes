@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
@@ -10,17 +11,21 @@ import '../../features/bookings/presentation/customer_bookings_screen.dart';
 import '../../features/categories/presentation/categories_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
 import '../../features/favorites/presentation/favorites_screen.dart';
+import '../../features/home/presentation/coming_soon_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/vendor_dashboard/presentation/vendor_dashboard_screen.dart';
 import '../../features/vendors/presentation/vendor_detail_screen.dart';
 import '../../features/vendors/presentation/vendor_listing_screen.dart';
 import '../../features/vendors/presentation/vendor_packages_screen.dart';
 import '../../features/vendors/presentation/vendor_portfolio_screen.dart';
 import '../../features/vendors/presentation/vendor_reviews_screen.dart';
+import '../localization/generated/app_localizations.dart';
 import 'customer_shell.dart';
+import 'vendor_shell.dart';
 
 /// Route paths. Every screen the app can navigate to gets a named constant
 /// here — no magic path strings scattered through feature code.
@@ -46,6 +51,10 @@ abstract final class AppRoutes {
   static const favorites = '/favorites';
   static const bookings = '/bookings';
   static const profile = '/profile';
+
+  static const vendorHome = '/vendor-home';
+  static const vendorBookings = '/vendor-bookings';
+  static const vendorProfile = '/vendor-profile';
 }
 
 final appRouter = GoRouter(
@@ -128,6 +137,44 @@ final appRouter = GoRouter(
         ),
         StatefulShellBranch(
           routes: [GoRoute(path: AppRoutes.profile, builder: (context, state) => const ProfileScreen())],
+        ),
+      ],
+    ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) => VendorShell(navigationShell: navigationShell),
+      branches: [
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.vendorHome, builder: (context, state) => const VendorDashboardScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.vendorBookings,
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context);
+                return ComingSoonScreen(
+                  icon: Icons.calendar_month_outlined,
+                  title: l10n.vendorBookingsComingSoonTitle,
+                  message: l10n.vendorBookingsComingSoonMessage,
+                );
+              },
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.vendorProfile,
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context);
+                return ComingSoonScreen(
+                  icon: Icons.storefront_outlined,
+                  title: l10n.vendorProfileComingSoonTitle,
+                  message: l10n.vendorProfileComingSoonMessage,
+                );
+              },
+            ),
+          ],
         ),
       ],
     ),

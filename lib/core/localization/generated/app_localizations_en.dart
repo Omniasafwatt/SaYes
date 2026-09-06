@@ -392,6 +392,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navProfile => 'Profile';
 
   @override
+  String get navDashboard => 'Dashboard';
+
+  @override
   String get comingSoonExploreTitle => 'Explore is on its way';
 
   @override
@@ -764,4 +767,45 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get customerBookingsErrorMessage =>
       'We couldn\'t load your bookings right now.';
+
+  @override
+  String get vendorDashboardSubtitle => 'Here\'s how your business is doing.';
+
+  @override
+  String get vendorDashboardNewRequests => 'New Requests';
+
+  @override
+  String get vendorDashboardThisMonth => 'This Month';
+
+  @override
+  String get vendorDashboardRating => 'Rating';
+
+  @override
+  String get vendorDashboardRecentRequestsTitle => 'Recent Requests';
+
+  @override
+  String get vendorDashboardViewAll => 'View all';
+
+  @override
+  String get vendorDashboardEmptyRequestsTitle => 'No requests yet';
+
+  @override
+  String get vendorDashboardEmptyRequestsMessage =>
+      'New booking requests from couples will appear here.';
+
+  @override
+  String get vendorBookingsComingSoonTitle =>
+      'Booking requests are on their way';
+
+  @override
+  String get vendorBookingsComingSoonMessage =>
+      'Managing incoming requests and responding to couples lands in a later phase.';
+
+  @override
+  String get vendorProfileComingSoonTitle =>
+      'Your business profile is on its way';
+
+  @override
+  String get vendorProfileComingSoonMessage =>
+      'Editing your listing, portfolio, and packages lands in a later phase.';
 }
