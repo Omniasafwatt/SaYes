@@ -377,7 +377,7 @@ class PlaceholderVendorRepository implements VendorRepository {
     final gallery = _galleryPoolByCategory[vendor.categoryId] ?? const [];
     final imageAssets = [
       vendor.imageAsset,
-      ...gallery.where((asset) => asset != vendor.imageAsset).take(2),
+      ...gallery.where((asset) => asset != vendor.imageAsset),
     ];
 
     return VendorDetail(

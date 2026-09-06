@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart' hide TextDirection;
 import '../../../core/animations/entrance.dart';
 import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
@@ -14,6 +16,7 @@ import '../../favorites/application/favorites_controller.dart';
 import '../../home/presentation/coming_soon_screen.dart';
 import '../application/vendor_detail_controller.dart';
 import '../data/vendor_models.dart';
+import 'portfolio_viewer.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
 
@@ -222,7 +225,16 @@ class _VendorDetailContent extends ConsumerWidget {
               Text(detail.description, style: context.typography.bodyLg),
               const SizedBox(height: AppSpacing.sectionGap),
 
-              Text(l10n.vendorDetailPortfolio, style: context.typography.titleLg),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(l10n.vendorDetailPortfolio, style: context.typography.titleLg),
+                  TextButton(
+                    onPressed: () => context.push(AppRoutes.vendorPortfolio, extra: detail.id),
+                    child: Text(l10n.homeSeeAll),
+                  ),
+                ],
+              ),
               const SizedBox(height: AppSpacing.sm),
             ],
           ),
@@ -234,11 +246,14 @@ class _VendorDetailContent extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
             itemCount: detail.imageAssets.length,
             separatorBuilder: (context, index) => const SizedBox(width: AppSpacing.sm),
-            itemBuilder: (context, index) => AppAssetImage(
-              path: detail.imageAssets[index],
-              width: 140,
-              height: 140,
-              borderRadius: AppRadius.lgRadius,
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () => showPortfolioViewer(context, images: detail.imageAssets, initialIndex: index),
+              child: AppAssetImage(
+                path: detail.imageAssets[index],
+                width: 140,
+                height: 140,
+                borderRadius: AppRadius.lgRadius,
+              ),
             ),
           ),
         ),
