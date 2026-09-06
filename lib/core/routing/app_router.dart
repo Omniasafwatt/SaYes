@@ -6,6 +6,7 @@ import '../../features/auth/presentation/register_screen.dart';
 import '../../features/auth/presentation/reset_password_screen.dart';
 import '../../features/categories/presentation/categories_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
+import '../../features/favorites/presentation/favorites_screen.dart';
 import '../../features/home/presentation/coming_soon_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
@@ -103,19 +104,7 @@ final appRouter = GoRouter(
           routes: [GoRoute(path: AppRoutes.explore, builder: (context, state) => const CategoriesScreen())],
         ),
         StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: AppRoutes.favorites,
-              builder: (context, state) {
-                final l10n = AppLocalizations.of(context);
-                return ComingSoonScreen(
-                  icon: Icons.favorite_rounded,
-                  title: l10n.comingSoonFavoritesTitle,
-                  message: l10n.comingSoonFavoritesMessage,
-                );
-              },
-            ),
-          ],
+          routes: [GoRoute(path: AppRoutes.favorites, builder: (context, state) => const FavoritesScreen())],
         ),
         StatefulShellBranch(
           routes: [

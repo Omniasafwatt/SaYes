@@ -1,18 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../data/favorites_repository.dart';
 
-/// In-memory favorite vendor ids so the heart toggle on vendor cards is
-/// real and interactive starting from Home. This is intentionally not
-/// persisted — Phase 13 (Favorites) replaces this with a repository backed
-/// by the real API and local persistence; nothing that reads
-/// [favoritesControllerProvider] will need to change when that happens.
+/// Favorite vendor ids, restored from [FavoritesRepository] on startup and
+/// written through on every toggle — so the heart on any vendor card stays
+/// correct across app restarts. Read by every card/detail screen that shows
+/// a favorite toggle; none of them need to change when this repository
+/// swaps to a real backend-synced implementation.
 class FavoritesController extends Notifier<Set<String>> {
   @override
-  Set<String> build() => <String>{};
+  Set<String> build() {
+    _restorePersisted();
+    return <String>{};
+  }
+
+  Future<void> _restorePersisted() async {
+    final ids = await ref.read(favoritesRepositoryProvider).getFavoriteIds();
+    state = ids;
+  }
 
   void toggle(String vendorId) {
     final next = {...state};
     if (!next.remove(vendorId)) next.add(vendorId);
     state = next;
+    ref.read(favoritesRepositoryProvider).setFavoriteIds(next);
   }
 
   bool isFavorite(String vendorId) => state.contains(vendorId);

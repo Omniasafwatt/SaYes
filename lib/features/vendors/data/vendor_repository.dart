@@ -14,6 +14,11 @@ abstract class VendorRepository {
   });
 
   Future<VendorDetail> getVendorDetail(String id);
+
+  /// Vendor cards for a set of ids, e.g. a customer's favorites. Order is
+  /// not guaranteed to match [ids] — callers that care about order (none
+  /// currently do) should re-sort client-side.
+  Future<List<VendorSummary>> getVendorsByIds(List<String> ids);
 }
 
 /// TEMPORARY placeholder implementation — same honest pattern as
@@ -517,6 +522,13 @@ class PlaceholderVendorRepository implements VendorRepository {
       isVerified: vendor.isVerified,
       isFeatured: vendor.isFeatured,
     );
+  }
+
+  @override
+  Future<List<VendorSummary>> getVendorsByIds(List<String> ids) async {
+    await _simulateLatency();
+    final idSet = ids.toSet();
+    return _all.where((v) => idSet.contains(v.id)).toList();
   }
 
   @override
