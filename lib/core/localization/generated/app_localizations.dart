@@ -1297,6 +1297,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'EGP {amount}'**
   String egpAmountLabel(String amount);
+
+  /// No description provided for @vendorPackagesSelectPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a package to continue.'**
+  String get vendorPackagesSelectPrompt;
+
+  /// No description provided for @vendorPackagesContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get vendorPackagesContinue;
+
+  /// No description provided for @vendorPackagesSelectedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get vendorPackagesSelectedLabel;
 }
 
 class _AppLocalizationsDelegate

@@ -256,46 +256,166 @@ class PlaceholderVendorRepository implements VendorRepository {
         '{name} maintains a fleet built for one job — the arrival — with a driver who knows the venue routes and the timing down to the minute.',
   };
 
-  static const _packageTiersByCategory = <String, List<(String, String, double)>>{
+  static const _packageTiersByCategory = <String, List<(String, String, double, List<String>)>>{
     'photographers': [
-      ('Essential Coverage', 'One photographer, 6 hours, edited digital gallery.', 1.0),
-      ('Full Day Story', 'Two photographers, full-day coverage, engagement shoot included.', 1.6),
-      ('Cinematic Duo', 'Photo and videography team, same-day highlight reel, premium album.', 2.4),
+      (
+        'Essential Coverage',
+        'One photographer, 6 hours, edited digital gallery.',
+        1.0,
+        ['1 photographer, 6 hours', 'Fully edited digital gallery', 'Online delivery within 3 weeks'],
+      ),
+      (
+        'Full Day Story',
+        'Two photographers, full-day coverage, engagement shoot included.',
+        1.6,
+        ['2 photographers, full-day coverage', 'Engagement shoot included', 'Printed 30-page album'],
+      ),
+      (
+        'Cinematic Duo',
+        'Photo and videography team, same-day highlight reel, premium album.',
+        2.4,
+        ['Photo + videography team', 'Same-day edit highlight reel', 'Premium leather-bound album'],
+      ),
     ],
     'makeup': [
-      ('Bridal Day-Of', 'Bridal makeup and hair, on-site, wedding day only.', 1.0),
-      ('Trial + Day-Of', 'One trial session plus full wedding-day styling.', 1.5),
-      ('Bridal Party', 'Bride plus up to 4 bridesmaids, on-site team.', 2.2),
+      (
+        'Bridal Day-Of',
+        'Bridal makeup and hair, on-site, wedding day only.',
+        1.0,
+        ['Bridal makeup and hair', 'On-site at your venue', 'Touch-up kit included'],
+      ),
+      (
+        'Trial + Day-Of',
+        'One trial session plus full wedding-day styling.',
+        1.5,
+        ['1 trial session', 'Full wedding-day styling', 'False lashes and airbrush finish'],
+      ),
+      (
+        'Bridal Party',
+        'Bride plus up to 4 bridesmaids, on-site team.',
+        2.2,
+        ['Bride + up to 4 bridesmaids', 'On-site team of 3 stylists', 'Trial session for the bride'],
+      ),
     ],
     'halls': [
-      ('Silver', 'Venue rental, standard lighting, in-house tables and chairs.', 1.0),
-      ('Gold', 'Silver plus upgraded lighting, welcome area, and valet.', 1.5),
-      ('Platinum', 'Full venue exclusivity, custom lighting design, dedicated coordinator.', 2.2),
+      (
+        'Silver',
+        'Venue rental, standard lighting, in-house tables and chairs.',
+        1.0,
+        ['Venue rental (up to 8 hours)', 'Standard lighting rig', 'In-house tables and chairs'],
+      ),
+      (
+        'Gold',
+        'Silver plus upgraded lighting, welcome area, and valet.',
+        1.5,
+        ['Everything in Silver', 'Upgraded ambient lighting', 'Welcome area and valet service'],
+      ),
+      (
+        'Platinum',
+        'Full venue exclusivity, custom lighting design, dedicated coordinator.',
+        2.2,
+        ['Full venue exclusivity', 'Custom lighting design', 'Dedicated on-site coordinator'],
+      ),
     ],
     'planners': [
-      ('Month-Of Coordination', 'Final vendor confirmations and full day-of coordination.', 1.0),
-      ('Partial Planning', 'Vendor sourcing and planning support from 3 months out.', 1.8),
-      ('Full Planning', 'End-to-end planning from engagement to wedding day.', 2.8),
+      (
+        'Month-Of Coordination',
+        'Final vendor confirmations and full day-of coordination.',
+        1.0,
+        ['Final vendor confirmations', 'Full day-of coordination', 'Timeline built 1 month out'],
+      ),
+      (
+        'Partial Planning',
+        'Vendor sourcing and planning support from 3 months out.',
+        1.8,
+        ['Vendor sourcing and negotiation', 'Planning support from 3 months out', 'Day-of coordination included'],
+      ),
+      (
+        'Full Planning',
+        'End-to-end planning from engagement to wedding day.',
+        2.8,
+        ['End-to-end planning from engagement', 'Budget tracking and vendor management', 'Unlimited planning check-ins'],
+      ),
     ],
     'dj': [
-      ('Reception Set', 'DJ and sound system, up to 5 hours.', 1.0),
-      ('Full Night', 'DJ, MC hosting, and dance-floor lighting, up to 8 hours.', 1.6),
-      ('Premium Production', 'Full night plus live percussionist and custom lighting rig.', 2.3),
+      (
+        'Reception Set',
+        'DJ and sound system, up to 5 hours.',
+        1.0,
+        ['DJ and sound system', 'Up to 5 hours coverage', 'Wireless mic for speeches'],
+      ),
+      (
+        'Full Night',
+        'DJ, MC hosting, and dance-floor lighting, up to 8 hours.',
+        1.6,
+        ['DJ + MC hosting', 'Dance-floor lighting rig', 'Up to 8 hours coverage'],
+      ),
+      (
+        'Premium Production',
+        'Full night plus live percussionist and custom lighting rig.',
+        2.3,
+        ['Everything in Full Night', 'Live percussionist', 'Custom uplighting design'],
+      ),
     ],
     'catering': [
-      ('Essential Menu', 'Three-course plated menu, standard service staff.', 1.0),
-      ('Signature Menu', 'Five-course menu with live cooking station.', 1.6),
-      ('Luxury Tasting Menu', 'Chef\'s tasting menu, premium bar service, dedicated staff.', 2.4),
+      (
+        'Essential Menu',
+        'Three-course plated menu, standard service staff.',
+        1.0,
+        ['3-course plated menu', 'Standard service staff', 'Standard tableware included'],
+      ),
+      (
+        'Signature Menu',
+        'Five-course menu with live cooking station.',
+        1.6,
+        ['5-course menu', 'Live cooking station', 'Upgraded tableware and linens'],
+      ),
+      (
+        'Luxury Tasting Menu',
+        'Chef\'s tasting menu, premium bar service, dedicated staff.',
+        2.4,
+        ['Chef\'s tasting menu', 'Premium bar service', 'Dedicated service staff'],
+      ),
     ],
     'decoration': [
-      ('Essential Kosha', 'Kosha backdrop and stage florals.', 1.0),
-      ('Full Venue Styling', 'Kosha, table centerpieces, and entrance styling.', 1.7),
-      ('Signature Design', 'Fully custom floral design across every space.', 2.6),
+      (
+        'Essential Kosha',
+        'Kosha backdrop and stage florals.',
+        1.0,
+        ['Kosha backdrop design', 'Stage floral arrangements', 'Setup and breakdown included'],
+      ),
+      (
+        'Full Venue Styling',
+        'Kosha, table centerpieces, and entrance styling.',
+        1.7,
+        ['Kosha backdrop design', 'Table centerpieces', 'Entrance and aisle styling'],
+      ),
+      (
+        'Signature Design',
+        'Fully custom floral design across every space.',
+        2.6,
+        ['Fully custom floral concept', 'Design across every space', 'Dedicated on-site florist team'],
+      ),
     ],
     'car_rental': [
-      ('Classic Arrival', 'One vehicle, decorated, with driver.', 1.0),
-      ('Bridal Party Fleet', 'Three vehicles for the couple and immediate family.', 2.2),
-      ('Full Convoy', 'Five vehicles plus a lead car for the couple.', 3.5),
+      (
+        'Classic Arrival',
+        'One vehicle, decorated, with driver.',
+        1.0,
+        ['1 decorated vehicle', 'Professional driver', 'Ribbon and floral trim'],
+      ),
+      (
+        'Bridal Party Fleet',
+        'Three vehicles for the couple and immediate family.',
+        2.2,
+        ['3 vehicles', 'Covers couple + immediate family', 'Matching decoration across fleet'],
+      ),
+      (
+        'Full Convoy',
+        'Five vehicles plus a lead car for the couple.',
+        3.5,
+        ['5 vehicles + lead car', 'Coordinated convoy route', 'Premium decoration on lead car'],
+      ),
     ],
   };
 
@@ -359,6 +479,7 @@ class PlaceholderVendorRepository implements VendorRepository {
           name: tiers[i].$1,
           description: tiers[i].$2,
           priceEgp: (vendor.startingPriceEgp * tiers[i].$3).round(),
+          inclusions: tiers[i].$4,
         ),
     ];
 

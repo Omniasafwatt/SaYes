@@ -650,4 +650,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String egpAmountLabel(String amount) {
     return '$amount جنيه';
   }
+
+  @override
+  String get vendorPackagesSelectPrompt => 'اختاري باقة للمتابعة.';
+
+  @override
+  String get vendorPackagesContinue => 'متابعة';
+
+  @override
+  String get vendorPackagesSelectedLabel => 'تم الاختيار';
 }

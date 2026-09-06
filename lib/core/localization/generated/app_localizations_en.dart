@@ -658,4 +658,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String egpAmountLabel(String amount) {
     return 'EGP $amount';
   }
+
+  @override
+  String get vendorPackagesSelectPrompt => 'Select a package to continue.';
+
+  @override
+  String get vendorPackagesContinue => 'Continue';
+
+  @override
+  String get vendorPackagesSelectedLabel => 'Selected';
 }

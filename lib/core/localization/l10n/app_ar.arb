@@ -258,5 +258,9 @@
   "egpAmountLabel": "{amount} جنيه",
   "@egpAmountLabel": {
     "placeholders": { "amount": {"type": "String"} }
-  }
+  },
+
+  "vendorPackagesSelectPrompt": "اختاري باقة للمتابعة.",
+  "vendorPackagesContinue": "متابعة",
+  "vendorPackagesSelectedLabel": "تم الاختيار"
 }

@@ -13,7 +13,6 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../categories/application/categories_controller.dart';
 import '../../favorites/application/favorites_controller.dart';
-import '../../home/presentation/coming_soon_screen.dart';
 import '../application/vendor_detail_controller.dart';
 import '../data/vendor_models.dart';
 import 'portfolio_viewer.dart';
@@ -81,7 +80,7 @@ class VendorDetailScreen extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: detailAsync.maybeWhen(
-        data: (detail) => _BookingBar(startingPriceEgp: detail.startingPriceEgp, l10n: l10n),
+        data: (detail) => _BookingBar(vendorId: detail.id, startingPriceEgp: detail.startingPriceEgp, l10n: l10n),
         orElse: () => null,
       ),
     );
@@ -116,8 +115,9 @@ class _CircleIconButton extends StatelessWidget {
 }
 
 class _BookingBar extends StatelessWidget {
-  const _BookingBar({required this.startingPriceEgp, required this.l10n});
+  const _BookingBar({required this.vendorId, required this.startingPriceEgp, required this.l10n});
 
+  final String vendorId;
   final int startingPriceEgp;
   final AppLocalizations l10n;
 
@@ -146,15 +146,7 @@ class _BookingBar extends StatelessWidget {
               width: 195,
               child: AppButton(
                 label: l10n.primaryButtonLabel,
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => ComingSoonScreen(
-                      icon: Icons.calendar_month_rounded,
-                      title: l10n.comingSoonBookingsTitle,
-                      message: l10n.comingSoonBookingsMessage,
-                    ),
-                  ),
-                ),
+                onPressed: () => context.push(AppRoutes.vendorPackages, extra: vendorId),
               ),
             ),
           ],
@@ -263,7 +255,16 @@ class _VendorDetailContent extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: AppSpacing.sectionGap),
-              Text(l10n.vendorDetailPackages, style: context.typography.titleLg),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(l10n.vendorDetailPackages, style: context.typography.titleLg),
+                  TextButton(
+                    onPressed: () => context.push(AppRoutes.vendorPackages, extra: detail.id),
+                    child: Text(l10n.homeSeeAll),
+                  ),
+                ],
+              ),
               const SizedBox(height: AppSpacing.sm),
               for (final package in detail.packages) ...[
                 _PackageCard(package: package, l10n: l10n),

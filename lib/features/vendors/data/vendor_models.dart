@@ -70,14 +70,23 @@ class VendorFilters {
       sort == SortOption.recommended;
 }
 
-/// One pricing tier a vendor offers, shown on the Vendor Details screen.
+/// One pricing tier a vendor offers. [description] is the one-line summary
+/// shown on the Vendor Details preview card; [inclusions] is the fuller
+/// bullet breakdown shown on the full Packages screen.
 class PackageModel {
-  const PackageModel({required this.id, required this.name, required this.description, required this.priceEgp});
+  const PackageModel({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.priceEgp,
+    required this.inclusions,
+  });
 
   final String id;
   final String name;
   final String description;
   final int priceEgp;
+  final List<String> inclusions;
 }
 
 /// One customer review, shown on the Vendor Details screen. [dateLabel] is

@@ -258,5 +258,9 @@
   "egpAmountLabel": "EGP {amount}",
   "@egpAmountLabel": {
     "placeholders": { "amount": {"type": "String"} }
-  }
+  },
+
+  "vendorPackagesSelectPrompt": "Select a package to continue.",
+  "vendorPackagesContinue": "Continue",
+  "vendorPackagesSelectedLabel": "Selected"
 }
