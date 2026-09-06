@@ -262,5 +262,9 @@
 
   "vendorPackagesSelectPrompt": "Select a package to continue.",
   "vendorPackagesContinue": "Continue",
-  "vendorPackagesSelectedLabel": "Selected"
+  "vendorPackagesSelectedLabel": "Selected",
+
+  "vendorReviewsEmptyTitle": "No reviews yet",
+  "vendorReviewsEmptyMessage": "This vendor hasn't been reviewed yet.",
+  "vendorReviewsErrorMessage": "We couldn't load reviews right now."
 }

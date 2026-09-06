@@ -108,6 +108,26 @@ class ReviewModel {
   final String dateLabel;
 }
 
+/// One page of a vendor's full review list — reviews are never all loaded
+/// at once, same as vendor search/listing.
+class VendorReviewsPage {
+  const VendorReviewsPage({required this.reviews, required this.hasMore});
+
+  final List<ReviewModel> reviews;
+  final bool hasMore;
+}
+
+/// How a vendor's reviews split across star ratings, for the bar chart at
+/// the top of the full Reviews screen. [counts] has exactly 5 entries,
+/// index 0 = 1-star count through index 4 = 5-star count.
+class RatingBreakdown {
+  const RatingBreakdown({required this.counts});
+
+  final List<int> counts;
+
+  int get total => counts.fold(0, (sum, count) => sum + count);
+}
+
 /// Full vendor profile for the Vendor Details screen: everything
 /// [VendorSummary] has, plus a photo gallery, an about description, and
 /// preview lists of packages/reviews (full package selection and the full

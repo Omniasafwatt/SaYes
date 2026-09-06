@@ -272,7 +272,16 @@ class _VendorDetailContent extends ConsumerWidget {
               ],
               const SizedBox(height: AppSpacing.sectionGap - AppSpacing.sm),
 
-              Text(l10n.vendorDetailReviews, style: context.typography.titleLg),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(l10n.vendorDetailReviews, style: context.typography.titleLg),
+                  TextButton(
+                    onPressed: () => context.push(AppRoutes.vendorReviews, extra: detail.id),
+                    child: Text(l10n.homeSeeAll),
+                  ),
+                ],
+              ),
               const SizedBox(height: AppSpacing.sm),
               for (final review in detail.reviews) ...[
                 _ReviewCard(review: review),

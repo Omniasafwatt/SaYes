@@ -1315,6 +1315,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Selected'**
   String get vendorPackagesSelectedLabel;
+
+  /// No description provided for @vendorReviewsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get vendorReviewsEmptyTitle;
+
+  /// No description provided for @vendorReviewsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This vendor hasn\'t been reviewed yet.'**
+  String get vendorReviewsEmptyMessage;
+
+  /// No description provided for @vendorReviewsErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t load reviews right now.'**
+  String get vendorReviewsErrorMessage;
 }
 
 class _AppLocalizationsDelegate

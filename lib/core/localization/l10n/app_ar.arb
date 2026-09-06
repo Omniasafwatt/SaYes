@@ -262,5 +262,9 @@
 
   "vendorPackagesSelectPrompt": "اختاري باقة للمتابعة.",
   "vendorPackagesContinue": "متابعة",
-  "vendorPackagesSelectedLabel": "تم الاختيار"
+  "vendorPackagesSelectedLabel": "تم الاختيار",
+
+  "vendorReviewsEmptyTitle": "لا توجد تقييمات بعد",
+  "vendorReviewsEmptyMessage": "لم يتم تقييم مزود الخدمة هذا بعد.",
+  "vendorReviewsErrorMessage": "تعذّر تحميل التقييمات الآن."
 }

@@ -667,4 +667,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vendorPackagesSelectedLabel => 'Selected';
+
+  @override
+  String get vendorReviewsEmptyTitle => 'No reviews yet';
+
+  @override
+  String get vendorReviewsEmptyMessage =>
+      'This vendor hasn\'t been reviewed yet.';
+
+  @override
+  String get vendorReviewsErrorMessage =>
+      'We couldn\'t load reviews right now.';
 }

@@ -659,4 +659,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get vendorPackagesSelectedLabel => 'تم الاختيار';
+
+  @override
+  String get vendorReviewsEmptyTitle => 'لا توجد تقييمات بعد';
+
+  @override
+  String get vendorReviewsEmptyMessage => 'لم يتم تقييم مزود الخدمة هذا بعد.';
+
+  @override
+  String get vendorReviewsErrorMessage => 'تعذّر تحميل التقييمات الآن.';
 }

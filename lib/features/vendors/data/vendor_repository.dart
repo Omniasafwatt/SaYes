@@ -19,6 +19,15 @@ abstract class VendorRepository {
   /// not guaranteed to match [ids] — callers that care about order (none
   /// currently do) should re-sort client-side.
   Future<List<VendorSummary>> getVendorsByIds(List<String> ids);
+
+  /// A vendor's full review list, paginated — the 3-review preview on
+  /// Vendor Details is a slice of this same underlying data.
+  Future<VendorReviewsPage> getVendorReviews({required String vendorId, required int page, int pageSize = 10});
+
+  /// Star-rating distribution for the full Reviews screen's bar chart.
+  /// Cheap on its own (doesn't require fetching every review) even against
+  /// a real backend, so it's a separate call from [getVendorReviews].
+  Future<RatingBreakdown> getRatingBreakdown(String vendorId);
 }
 
 /// TEMPORARY placeholder implementation — same honest pattern as
@@ -471,6 +480,23 @@ class PlaceholderVendorRepository implements VendorRepository {
 
   Future<void> _simulateLatency() => Future.delayed(const Duration(milliseconds: 500));
 
+  /// One synthetic review at [index] for [vendor] — deterministic, so the
+  /// same index always produces the same review. Shared by the Vendor
+  /// Details preview (indices 0-2) and the full paginated Reviews screen,
+  /// so the preview is a genuine slice of the same data, not a separate
+  /// fabrication.
+  ReviewModel _reviewAt(VendorSummary vendor, int index) {
+    final seed = vendor.id.hashCode.abs();
+    final wobble = ((seed + index) % 5) - 2; // -2..2, centered on the vendor's own rating
+    return ReviewModel(
+      id: '${vendor.id}-rev$index',
+      authorName: _reviewerNames[(seed + index) % _reviewerNames.length],
+      rating: (vendor.rating + wobble * 0.2).clamp(3.0, 5.0),
+      comment: _reviewComments[(seed + index) % _reviewComments.length],
+      dateLabel: _reviewDateLabels[(seed + index) % _reviewDateLabels.length],
+    );
+  }
+
   @override
   Future<VendorDetail> getVendorDetail(String id) async {
     await _simulateLatency();
@@ -488,17 +514,7 @@ class PlaceholderVendorRepository implements VendorRepository {
         ),
     ];
 
-    final seed = vendor.id.hashCode.abs();
-    final reviews = [
-      for (var i = 0; i < 3; i++)
-        ReviewModel(
-          id: '${vendor.id}-rev$i',
-          authorName: _reviewerNames[(seed + i) % _reviewerNames.length],
-          rating: (vendor.rating - (i * 0.15)).clamp(3.5, 5.0),
-          comment: _reviewComments[(seed + i) % _reviewComments.length],
-          dateLabel: _reviewDateLabels[(seed + i) % _reviewDateLabels.length],
-        ),
-    ];
+    final reviews = [for (var i = 0; i < 3; i++) _reviewAt(vendor, i)];
 
     final gallery = _galleryPoolByCategory[vendor.categoryId] ?? const [];
     final imageAssets = [
@@ -522,6 +538,35 @@ class PlaceholderVendorRepository implements VendorRepository {
       isVerified: vendor.isVerified,
       isFeatured: vendor.isFeatured,
     );
+  }
+
+  @override
+  Future<VendorReviewsPage> getVendorReviews({required String vendorId, required int page, int pageSize = 10}) async {
+    await _simulateLatency();
+    final vendor = _all.firstWhere((v) => v.id == vendorId);
+    final total = vendor.reviewCount;
+    final start = (page - 1) * pageSize;
+    if (start >= total) return const VendorReviewsPage(reviews: [], hasMore: false);
+    final end = (start + pageSize).clamp(0, total);
+    final reviews = [for (var i = start; i < end; i++) _reviewAt(vendor, i)];
+    return VendorReviewsPage(reviews: reviews, hasMore: end < total);
+  }
+
+  @override
+  Future<RatingBreakdown> getRatingBreakdown(String vendorId) async {
+    await _simulateLatency();
+    final vendor = _all.firstWhere((v) => v.id == vendorId);
+    // Weight each star bucket by closeness to the vendor's average rating,
+    // so a 4.9-rated vendor skews heavily toward 5-star and a 4.5-rated one
+    // still shows a plausible scattering of 3s and 4s.
+    final weights = [
+      for (var star = 1; star <= 5; star++) (1 - (vendor.rating - star).abs() / 2.5).clamp(0.05, 1.0),
+    ];
+    final weightSum = weights.reduce((a, b) => a + b);
+    final counts = [for (final w in weights) ((w / weightSum) * vendor.reviewCount).round()];
+    final roundingDrift = vendor.reviewCount - counts.reduce((a, b) => a + b);
+    counts[4] += roundingDrift; // reconcile rounding against the 5-star bucket
+    return RatingBreakdown(counts: counts);
   }
 
   @override
