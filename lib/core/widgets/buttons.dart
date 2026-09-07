@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../animations/shimmer_sweep.dart';
+import '../animations/app_motion.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
@@ -11,9 +11,9 @@ enum AppButtonVariant { primary, secondary, text }
 /// loading state so no screen has to hand-roll "disable + spinner" logic.
 ///
 /// An enabled, non-loading primary button also carries the app's standard
-/// static CTA shadow plus a slow gold shimmer sweep — the app's one
-/// recurring "this is the one to tap" cue, so it stays a meaningful signal
-/// rather than noise.
+/// static CTA shadow over a slow, living rose-to-gold gradient — a quiet
+/// "this is the one to tap" cue, so it stays a meaningful signal rather
+/// than noise.
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
@@ -50,24 +50,71 @@ class AppButton extends StatelessWidget {
             ],
           );
 
+    final isActivePrimary = variant == AppButtonVariant.primary && !loading && onPressed != null;
+
     final button = switch (variant) {
-      AppButtonVariant.primary => ElevatedButton(onPressed: loading ? null : onPressed, child: child),
+      AppButtonVariant.primary => ElevatedButton(
+          onPressed: loading ? null : onPressed,
+          style: isActivePrimary ? ElevatedButton.styleFrom(backgroundColor: Colors.transparent) : null,
+          child: child,
+        ),
       AppButtonVariant.secondary => OutlinedButton(onPressed: loading ? null : onPressed, child: child),
       AppButtonVariant.text => TextButton(onPressed: loading ? null : onPressed, child: child),
     };
 
-    final isActivePrimary = variant == AppButtonVariant.primary && !loading && onPressed != null;
-
     final result = isActivePrimary
         ? DecoratedBox(
             decoration: BoxDecoration(borderRadius: AppRadius.fullRadius, boxShadow: AppShadows.cta),
-            child: ClipRRect(
-              borderRadius: AppRadius.fullRadius,
-              child: ShimmerSweep(color: AppColors.gold, opacity: 0.28, child: button),
-            ),
+            child: _LivingGradientFill(child: button),
           )
         : button;
 
     return expand ? SizedBox(width: double.infinity, child: result) : result;
+  }
+}
+
+/// A slow, continuous color breathe behind the primary CTA — rose deepens
+/// toward the brand's magenta, then warms toward a hint of gold, and back.
+/// No moving band, no clipping to worry about: just the fill color itself
+/// drifting, so it reads as alive without ever competing with the label.
+class _LivingGradientFill extends StatefulWidget {
+  const _LivingGradientFill({required this.child});
+
+  final Widget child;
+
+  @override
+  State<_LivingGradientFill> createState() => _LivingGradientFillState();
+}
+
+class _LivingGradientFillState extends State<_LivingGradientFill> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller =
+      AnimationController(vsync: this, duration: AppMotion.shimmerCycle)..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) => DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: AppRadius.fullRadius,
+          gradient: LinearGradient(
+            begin: AlignmentDirectional.centerStart,
+            end: AlignmentDirectional.centerEnd,
+            colors: [
+              Color.lerp(AppColors.primary, AppColors.primaryDeep, _controller.value)!,
+              Color.lerp(AppColors.primaryDeep, AppColors.gold, _controller.value * 0.6)!,
+            ],
+          ),
+        ),
+        child: child,
+      ),
+      child: widget.child,
+    );
   }
 }
