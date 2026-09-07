@@ -794,14 +794,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'New booking requests from couples will appear here.';
 
   @override
-  String get vendorProfileComingSoonTitle =>
-      'Your business profile is on its way';
-
-  @override
-  String get vendorProfileComingSoonMessage =>
-      'Editing your listing, portfolio, and packages lands in a later phase.';
-
-  @override
   String get vendorBookingsAccept => 'Accept';
 
   @override
@@ -818,4 +810,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vendorBookingsCancelAction => 'Cancel';
+
+  @override
+  String get vendorProfileTitle => 'Business Profile';
+
+  @override
+  String get vendorProfileListingSection => 'Your Listing';
+
+  @override
+  String get vendorProfilePortfolio => 'Portfolio';
+
+  @override
+  String get vendorProfilePackages => 'Packages';
+
+  @override
+  String get vendorProfileBusinessDetails => 'Business Details';
+
+  @override
+  String get vendorProfileComingSoonBadge => 'Coming soon';
 }

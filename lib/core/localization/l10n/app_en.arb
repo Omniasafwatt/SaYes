@@ -310,13 +310,18 @@
   "vendorDashboardViewAll": "View all",
   "vendorDashboardEmptyRequestsTitle": "No requests yet",
   "vendorDashboardEmptyRequestsMessage": "New booking requests from couples will appear here.",
-  "vendorProfileComingSoonTitle": "Your business profile is on its way",
-  "vendorProfileComingSoonMessage": "Editing your listing, portfolio, and packages lands in a later phase.",
 
   "vendorBookingsAccept": "Accept",
   "vendorBookingsDecline": "Decline",
   "vendorBookingsDeclineConfirmTitle": "Decline this request?",
   "vendorBookingsDeclineConfirmMessage": "This can't be undone.",
   "vendorBookingsDeclineConfirmAction": "Decline",
-  "vendorBookingsCancelAction": "Cancel"
+  "vendorBookingsCancelAction": "Cancel",
+
+  "vendorProfileTitle": "Business Profile",
+  "vendorProfileListingSection": "Your Listing",
+  "vendorProfilePortfolio": "Portfolio",
+  "vendorProfilePackages": "Packages",
+  "vendorProfileBusinessDetails": "Business Details",
+  "vendorProfileComingSoonBadge": "Coming soon"
 }

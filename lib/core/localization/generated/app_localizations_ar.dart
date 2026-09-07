@@ -783,13 +783,6 @@ class AppLocalizationsAr extends AppLocalizations {
       'ستظهر هنا طلبات الحجز الجديدة من العرائس والعرسان.';
 
   @override
-  String get vendorProfileComingSoonTitle => 'ملفك التجاري قادم قريباً';
-
-  @override
-  String get vendorProfileComingSoonMessage =>
-      'تعديل قائمتك ومعرض أعمالك وباقاتك يصل في مرحلة لاحقة.';
-
-  @override
   String get vendorBookingsAccept => 'قبول';
 
   @override
@@ -807,4 +800,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get vendorBookingsCancelAction => 'إلغاء';
+
+  @override
+  String get vendorProfileTitle => 'الملف التجاري';
+
+  @override
+  String get vendorProfileListingSection => 'قائمتك';
+
+  @override
+  String get vendorProfilePortfolio => 'معرض الأعمال';
+
+  @override
+  String get vendorProfilePackages => 'الباقات';
+
+  @override
+  String get vendorProfileBusinessDetails => 'بيانات النشاط التجاري';
+
+  @override
+  String get vendorProfileComingSoonBadge => 'قريباً';
 }

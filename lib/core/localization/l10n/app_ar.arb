@@ -310,13 +310,18 @@
   "vendorDashboardViewAll": "عرض الكل",
   "vendorDashboardEmptyRequestsTitle": "لا توجد طلبات بعد",
   "vendorDashboardEmptyRequestsMessage": "ستظهر هنا طلبات الحجز الجديدة من العرائس والعرسان.",
-  "vendorProfileComingSoonTitle": "ملفك التجاري قادم قريباً",
-  "vendorProfileComingSoonMessage": "تعديل قائمتك ومعرض أعمالك وباقاتك يصل في مرحلة لاحقة.",
 
   "vendorBookingsAccept": "قبول",
   "vendorBookingsDecline": "رفض",
   "vendorBookingsDeclineConfirmTitle": "هل تريدين رفض هذا الطلب؟",
   "vendorBookingsDeclineConfirmMessage": "لا يمكن التراجع عن هذا الإجراء.",
   "vendorBookingsDeclineConfirmAction": "رفض",
-  "vendorBookingsCancelAction": "إلغاء"
+  "vendorBookingsCancelAction": "إلغاء",
+
+  "vendorProfileTitle": "الملف التجاري",
+  "vendorProfileListingSection": "قائمتك",
+  "vendorProfilePortfolio": "معرض الأعمال",
+  "vendorProfilePackages": "الباقات",
+  "vendorProfileBusinessDetails": "بيانات النشاط التجاري",
+  "vendorProfileComingSoonBadge": "قريباً"
 }

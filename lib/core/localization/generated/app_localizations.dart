@@ -1550,18 +1550,6 @@ abstract class AppLocalizations {
   /// **'New booking requests from couples will appear here.'**
   String get vendorDashboardEmptyRequestsMessage;
 
-  /// No description provided for @vendorProfileComingSoonTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Your business profile is on its way'**
-  String get vendorProfileComingSoonTitle;
-
-  /// No description provided for @vendorProfileComingSoonMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Editing your listing, portfolio, and packages lands in a later phase.'**
-  String get vendorProfileComingSoonMessage;
-
   /// No description provided for @vendorBookingsAccept.
   ///
   /// In en, this message translates to:
@@ -1597,6 +1585,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get vendorBookingsCancelAction;
+
+  /// No description provided for @vendorProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Profile'**
+  String get vendorProfileTitle;
+
+  /// No description provided for @vendorProfileListingSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Listing'**
+  String get vendorProfileListingSection;
+
+  /// No description provided for @vendorProfilePortfolio.
+  ///
+  /// In en, this message translates to:
+  /// **'Portfolio'**
+  String get vendorProfilePortfolio;
+
+  /// No description provided for @vendorProfilePackages.
+  ///
+  /// In en, this message translates to:
+  /// **'Packages'**
+  String get vendorProfilePackages;
+
+  /// No description provided for @vendorProfileBusinessDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Details'**
+  String get vendorProfileBusinessDetails;
+
+  /// No description provided for @vendorProfileComingSoonBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get vendorProfileComingSoonBadge;
 }
 
 class _AppLocalizationsDelegate
