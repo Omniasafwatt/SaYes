@@ -564,12 +564,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categoriesScreenTitle => 'Categories';
 
   @override
-  String get categoriesScreenSubtitle =>
-      'Discover every kind of vendor for your big day.';
-
-  @override
   String get categoriesErrorMessage =>
       'We couldn\'t load categories right now.';
+
+  @override
+  String get categoriesFilterAll => 'All';
 
   @override
   String get searchCancel => 'Cancel';

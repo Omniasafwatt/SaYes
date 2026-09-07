@@ -216,8 +216,8 @@
   },
 
   "categoriesScreenTitle": "Categories",
-  "categoriesScreenSubtitle": "Discover every kind of vendor for your big day.",
   "categoriesErrorMessage": "We couldn't load categories right now.",
+  "categoriesFilterAll": "All",
 
   "searchCancel": "Cancel",
   "searchRecentTitle": "Recent Searches",

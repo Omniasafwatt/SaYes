@@ -1136,17 +1136,17 @@ abstract class AppLocalizations {
   /// **'Categories'**
   String get categoriesScreenTitle;
 
-  /// No description provided for @categoriesScreenSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Discover every kind of vendor for your big day.'**
-  String get categoriesScreenSubtitle;
-
   /// No description provided for @categoriesErrorMessage.
   ///
   /// In en, this message translates to:
   /// **'We couldn\'t load categories right now.'**
   String get categoriesErrorMessage;
+
+  /// No description provided for @categoriesFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get categoriesFilterAll;
 
   /// No description provided for @searchCancel.
   ///

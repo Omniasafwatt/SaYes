@@ -560,11 +560,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get categoriesScreenTitle => 'الفئات';
 
   @override
-  String get categoriesScreenSubtitle =>
-      'اكتشفي كل نوع من مزودي الخدمة ليوم زفافكِ.';
+  String get categoriesErrorMessage => 'تعذّر تحميل الفئات الآن.';
 
   @override
-  String get categoriesErrorMessage => 'تعذّر تحميل الفئات الآن.';
+  String get categoriesFilterAll => 'الكل';
 
   @override
   String get searchCancel => 'إلغاء';

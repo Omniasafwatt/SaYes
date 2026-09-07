@@ -216,8 +216,8 @@
   },
 
   "categoriesScreenTitle": "الفئات",
-  "categoriesScreenSubtitle": "اكتشفي كل نوع من مزودي الخدمة ليوم زفافكِ.",
   "categoriesErrorMessage": "تعذّر تحميل الفئات الآن.",
+  "categoriesFilterAll": "الكل",
 
   "searchCancel": "إلغاء",
   "searchRecentTitle": "عمليات البحث الأخيرة",
