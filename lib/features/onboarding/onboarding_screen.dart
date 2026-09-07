@@ -74,8 +74,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               showFloatingPetals: i == 0,
             ),
           ),
-          SafeArea(
-            child: _TopBar(showSkip: _page < 2, onSkip: _finish),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SafeArea(
+              bottom: false,
+              child: _TopBar(showSkip: _page < 2, onSkip: _finish),
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
