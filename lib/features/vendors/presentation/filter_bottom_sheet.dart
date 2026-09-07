@@ -32,7 +32,7 @@ class FilterBottomSheet extends ConsumerStatefulWidget {
 
 class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
   late String? _categoryId;
-  late String? _city;
+  late String? _cityId;
   late double? _minRating;
   late RangeValues _priceRange;
   late SortOption _sort;
@@ -42,7 +42,7 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
     super.initState();
     final current = widget.initialFilters;
     _categoryId = current.categoryId;
-    _city = current.city;
+    _cityId = current.cityId;
     _minRating = current.minRating;
     _priceRange = current.priceRange;
     _sort = current.sort;
@@ -51,7 +51,7 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
   void _reset() {
     setState(() {
       _categoryId = null;
-      _city = null;
+      _cityId = null;
       _minRating = null;
       _priceRange = const RangeValues(0, 80000);
       _sort = SortOption.recommended;
@@ -62,7 +62,7 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
     widget.onApply(
       VendorFilters(
         categoryId: _categoryId,
-        city: _city,
+        cityId: _cityId,
         minRating: _minRating,
         priceRange: _priceRange,
         sort: _sort,
@@ -141,14 +141,14 @@ class _FilterBottomSheetState extends ConsumerState<FilterBottomSheet> {
                 children: [
                   AppChip(
                     label: l10n.filtersAllCities,
-                    selected: _city == null,
-                    onTap: () => setState(() => _city = null),
+                    selected: _cityId == null,
+                    onTap: () => setState(() => _cityId = null),
                   ),
                   for (final city in cities)
                     AppChip(
                       label: city.name,
-                      selected: _city == city.name,
-                      onTap: () => setState(() => _city = city.name),
+                      selected: _cityId == city.id,
+                      onTap: () => setState(() => _cityId = city.id),
                     ),
                 ],
               ),

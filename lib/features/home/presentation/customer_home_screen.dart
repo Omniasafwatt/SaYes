@@ -405,7 +405,7 @@ class _CityRow extends StatelessWidget {
           return PressableScale(
             onTap: () => context.push(
               AppRoutes.vendorListing,
-              extra: VendorListingScreenArgs(city: city.name, title: city.name),
+              extra: VendorListingScreenArgs(cityId: city.id, title: city.name),
             ),
             child: Container(
               width: 168,

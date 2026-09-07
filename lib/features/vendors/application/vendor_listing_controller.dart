@@ -5,7 +5,7 @@ import '../data/vendor_repository.dart';
 /// Identifies one vendor listing instance — a category, a city, or neither
 /// (a plain "Featured"/"Popular" browse). Records give free structural
 /// equality, which is exactly what a provider family key needs.
-typedef VendorListingArgs = ({String? categoryId, String? city, SortOption initialSort});
+typedef VendorListingArgs = ({String? categoryId, String? cityId, SortOption initialSort});
 
 enum VendorListingStatus { loading, loadingMore, success, empty, error }
 
@@ -34,7 +34,7 @@ class VendorListingController extends AutoDisposeFamilyNotifier<VendorListingSta
   @override
   VendorListingState build(VendorListingArgs arg) {
     final initial = VendorListingState(
-      filters: VendorFilters(categoryId: arg.categoryId, city: arg.city, sort: arg.initialSort),
+      filters: VendorFilters(categoryId: arg.categoryId, cityId: arg.cityId, sort: arg.initialSort),
     );
     Future.microtask(() => _fetch(1, initial.filters));
     return initial;

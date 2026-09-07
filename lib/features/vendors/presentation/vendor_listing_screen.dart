@@ -21,17 +21,19 @@ final _priceFormat = NumberFormat('#,##0', 'en_US');
 /// [title] is resolved by the caller (a category/city name, or a section
 /// title like "Featured Vendors") since it's already localized there —
 /// the screen itself never needs to know which entry point it came from.
+/// [cityId] is a [CityModel.id], not that display name — see
+/// [VendorFilters.cityId].
 class VendorListingScreenArgs {
   const VendorListingScreenArgs({
     required this.title,
     this.categoryId,
-    this.city,
+    this.cityId,
     this.initialSort = SortOption.recommended,
   });
 
   final String title;
   final String? categoryId;
-  final String? city;
+  final String? cityId;
   final SortOption initialSort;
 }
 
@@ -52,7 +54,7 @@ class _VendorListingScreenState extends ConsumerState<VendorListingScreen> {
   final _scrollController = ScrollController();
   late final VendorListingArgs _key = (
     categoryId: widget.args.categoryId,
-    city: widget.args.city,
+    cityId: widget.args.cityId,
     initialSort: widget.args.initialSort,
   );
 

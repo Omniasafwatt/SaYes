@@ -49,21 +49,27 @@ enum SortOption { recommended, highestRated, lowestPrice, highestPrice, featured
 class VendorFilters {
   const VendorFilters({
     this.categoryId,
-    this.city,
+    this.cityId,
     this.minRating,
     this.priceRange = const RangeValues(0, 80000),
     this.sort = SortOption.recommended,
   });
 
   final String? categoryId;
-  final String? city;
+
+  /// A [CityModel.id], not its localized display name — vendor city data
+  /// is plain, unlocalized text ("Zamalek, Cairo"), so matching against a
+  /// translated city name would silently fail whenever the app isn't in
+  /// English. The repository owns translating an id to whatever it needs
+  /// to match against.
+  final String? cityId;
   final double? minRating;
   final RangeValues priceRange;
   final SortOption sort;
 
   bool get isDefault =>
       categoryId == null &&
-      city == null &&
+      cityId == null &&
       minRating == null &&
       priceRange.start == 0 &&
       priceRange.end == 80000 &&

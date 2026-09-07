@@ -252,6 +252,20 @@ class PlaceholderVendorRepository implements VendorRepository {
     ),
   ];
 
+  /// [VendorFilters.cityId] to the (unlocalized) keyword actually present
+  /// in [VendorSummary.city] strings like "Zamalek, Cairo" — a real backend
+  /// would filter by a real city id server-side; this placeholder's mock
+  /// vendors only carry free-text city names, so matching has to go
+  /// through this lookup instead of comparing ids directly.
+  static const _cityKeywords = {
+    'cairo': 'Cairo',
+    'alexandria': 'Alexandria',
+    'giza': 'Giza',
+    'el_gouna': 'El Gouna',
+    'hurghada': 'Hurghada',
+    'sharm': 'Sharm El Sheikh',
+  };
+
   static const _descriptionByCategory = {
     'photographers':
         '{name} blends editorial composition with candid storytelling, so the album reads like the day itself rather than a performance of it.',
@@ -594,9 +608,9 @@ class PlaceholderVendorRepository implements VendorRepository {
       if (filters.categoryId != null) {
         results = results.where((v) => v.categoryId == filters.categoryId);
       }
-      if (filters.city != null) {
-        final city = filters.city!.toLowerCase();
-        results = results.where((v) => v.city.toLowerCase().contains(city));
+      if (filters.cityId != null) {
+        final keyword = (_cityKeywords[filters.cityId] ?? filters.cityId!).toLowerCase();
+        results = results.where((v) => v.city.toLowerCase().contains(keyword));
       }
       if (filters.minRating != null) {
         results = results.where((v) => v.rating >= filters.minRating!);
