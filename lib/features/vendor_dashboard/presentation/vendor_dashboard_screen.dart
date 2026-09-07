@@ -11,6 +11,7 @@ import '../../../core/theme/app_shadows.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
+import '../../notifications/presentation/notification_bell.dart';
 import '../../profile/application/user_profile_controller.dart';
 import '../../vendor_bookings/data/vendor_booking_request.dart';
 import '../application/vendor_dashboard_controller.dart';
@@ -18,8 +19,7 @@ import '../application/vendor_dashboard_controller.dart';
 /// Overview screen for the signed-in vendor experience — the Dashboard tab
 /// of [VendorShell]. Recent requests here are the same data the Bookings
 /// tab manages; rating is a separate placeholder metric (see
-/// [PlaceholderVendorDashboardRepository]). The Profile tab that a vendor
-/// would use to edit their actual listing lands in a later phase.
+/// [PlaceholderVendorDashboardRepository]).
 class VendorDashboardScreen extends ConsumerWidget {
   const VendorDashboardScreen({super.key});
 
@@ -101,6 +101,8 @@ class _DashboardHeader extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(width: AppSpacing.sm),
+          const NotificationBell(),
           const SizedBox(width: AppSpacing.sm),
           const LanguageSwitcher(),
         ],

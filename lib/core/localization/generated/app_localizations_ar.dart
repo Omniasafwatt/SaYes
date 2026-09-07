@@ -818,4 +818,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get vendorProfileComingSoonBadge => 'قريباً';
+
+  @override
+  String get notificationsTitle => 'الإشعارات';
+
+  @override
+  String get notificationsMarkAllRead => 'تعليم الكل كمقروء';
+
+  @override
+  String get notificationsEmptyTitle => 'لا توجد إشعارات بعد';
+
+  @override
+  String get notificationsEmptyMessage =>
+      'سنعلمكِ عندما يحتاج شيء ما إلى انتباهك.';
 }

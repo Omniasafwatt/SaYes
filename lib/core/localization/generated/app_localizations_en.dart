@@ -828,4 +828,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vendorProfileComingSoonBadge => 'Coming soon';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notificationsMarkAllRead => 'Mark all as read';
+
+  @override
+  String get notificationsEmptyTitle => 'No notifications yet';
+
+  @override
+  String get notificationsEmptyMessage =>
+      'We\'ll let you know when something needs your attention.';
 }

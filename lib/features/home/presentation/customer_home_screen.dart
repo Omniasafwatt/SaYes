@@ -15,6 +15,7 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../favorites/application/favorites_controller.dart';
+import '../../notifications/presentation/notification_bell.dart';
 import '../application/home_controller.dart';
 import '../../vendors/data/vendor_models.dart';
 import '../../vendors/presentation/vendor_listing_screen.dart';
@@ -104,37 +105,9 @@ class _HomeHeader extends StatelessWidget {
             ),
           ),
           const SizedBox(width: AppSpacing.sm),
-          const _NotificationBell(),
+          const NotificationBell(),
           const SizedBox(width: AppSpacing.sm),
           const LanguageSwitcher(),
-        ],
-      ),
-    );
-  }
-}
-
-class _NotificationBell extends StatelessWidget {
-  const _NotificationBell();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: const BoxDecoration(color: AppColors.surface, shape: BoxShape.circle, boxShadow: AppShadows.card),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Icon(Icons.notifications_none_rounded, color: AppColors.textPrimary, size: 20),
-          PositionedDirectional(
-            top: 9,
-            end: 10,
-            child: Container(
-              width: 7,
-              height: 7,
-              decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
-            ),
-          ),
         ],
       ),
     );

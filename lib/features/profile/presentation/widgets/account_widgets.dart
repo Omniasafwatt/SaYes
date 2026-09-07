@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/localization/generated/app_localizations.dart';
 import '../../../../core/localization/locale_controller.dart';
 import '../../../../core/routing/app_router.dart';
+import '../../../../core/session_reset.dart';
 import '../../../../core/storage/secure_storage_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radius.dart';
@@ -197,6 +198,11 @@ class AccountLogOutButton extends ConsumerWidget {
       onPressed: () async {
         await ref.read(secureStorageServiceProvider).clearSession();
         if (context.mounted) context.go(AppRoutes.onboarding);
+        // Forces every session-scoped provider (profile, notifications,
+        // bookings, favorites, …) to rebuild from scratch — see
+        // sessionEpoch's doc comment for why this can't happen via ref
+        // alone.
+        sessionEpoch.value++;
       },
     );
   }

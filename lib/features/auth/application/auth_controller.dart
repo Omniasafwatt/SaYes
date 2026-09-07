@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../profile/application/user_profile_controller.dart';
 import '../data/auth_models.dart';
 import '../data/auth_repository.dart';
 
@@ -11,19 +12,32 @@ class AuthController extends Notifier<AsyncValue<void>> {
   @override
   AsyncValue<void> build() => const AsyncValue.data(null);
 
-  Future<bool> login({required String email, required String password}) => _run(
-        () => ref.read(authRepositoryProvider).login(email: email, password: password),
-      );
+  /// login/register write straight to [UserProfileRepository] without
+  /// going through [userProfileControllerProvider] — fine on a cold start
+  /// where nothing has read that provider yet, but if it was already built
+  /// (e.g. logging into a second account in the same running app session)
+  /// it would otherwise keep serving whatever it resolved to before this
+  /// call, never learning the repository underneath it just changed.
+  void _refreshProfile() => ref.invalidate(userProfileControllerProvider);
+
+  Future<bool> login({required String email, required String password}) async {
+    final success = await _run(() => ref.read(authRepositoryProvider).login(email: email, password: password));
+    if (success) _refreshProfile();
+    return success;
+  }
 
   Future<bool> register({
     required String name,
     required String email,
     required String password,
     required UserRole role,
-  }) =>
-      _run(
-        () => ref.read(authRepositoryProvider).register(name: name, email: email, password: password, role: role),
-      );
+  }) async {
+    final success = await _run(
+      () => ref.read(authRepositoryProvider).register(name: name, email: email, password: password, role: role),
+    );
+    if (success) _refreshProfile();
+    return success;
+  }
 
   Future<bool> sendPasswordReset({required String email}) => _run(
         () => ref.read(authRepositoryProvider).sendPasswordReset(email: email),

@@ -323,5 +323,10 @@
   "vendorProfilePortfolio": "Portfolio",
   "vendorProfilePackages": "Packages",
   "vendorProfileBusinessDetails": "Business Details",
-  "vendorProfileComingSoonBadge": "Coming soon"
+  "vendorProfileComingSoonBadge": "Coming soon",
+
+  "notificationsTitle": "Notifications",
+  "notificationsMarkAllRead": "Mark all as read",
+  "notificationsEmptyTitle": "No notifications yet",
+  "notificationsEmptyMessage": "We'll let you know when something needs your attention."
 }

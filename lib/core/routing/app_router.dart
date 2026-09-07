@@ -11,6 +11,7 @@ import '../../features/categories/presentation/categories_screen.dart';
 import '../../features/design_system_showcase/design_system_showcase_screen.dart';
 import '../../features/favorites/presentation/favorites_screen.dart';
 import '../../features/home/presentation/customer_home_screen.dart';
+import '../../features/notifications/presentation/notifications_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
@@ -46,6 +47,7 @@ abstract final class AppRoutes {
   static const vendorReviews = '/vendor-reviews';
   static const bookingRequest = '/booking-request';
   static const bookingSuccess = '/booking-success';
+  static const notifications = '/notifications';
   static const explore = '/explore';
   static const favorites = '/favorites';
   static const bookings = '/bookings';
@@ -118,6 +120,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.bookingSuccess,
       builder: (context, state) => BookingSuccessScreen(booking: state.extra as BookingModel),
+    ),
+    GoRoute(
+      path: AppRoutes.notifications,
+      builder: (context, state) => const NotificationsScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => CustomerShell(navigationShell: navigationShell),

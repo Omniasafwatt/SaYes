@@ -323,5 +323,10 @@
   "vendorProfilePortfolio": "معرض الأعمال",
   "vendorProfilePackages": "الباقات",
   "vendorProfileBusinessDetails": "بيانات النشاط التجاري",
-  "vendorProfileComingSoonBadge": "قريباً"
+  "vendorProfileComingSoonBadge": "قريباً",
+
+  "notificationsTitle": "الإشعارات",
+  "notificationsMarkAllRead": "تعليم الكل كمقروء",
+  "notificationsEmptyTitle": "لا توجد إشعارات بعد",
+  "notificationsEmptyMessage": "سنعلمكِ عندما يحتاج شيء ما إلى انتباهك."
 }
