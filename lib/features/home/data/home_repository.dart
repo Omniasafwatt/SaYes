@@ -28,14 +28,54 @@ class PlaceholderHomeRepository implements HomeRepository {
   Future<List<CategoryModel>> getCategories(AppLocalizations l10n) async {
     await _simulateLatency();
     return [
-      CategoryModel(id: 'photographers', name: l10n.homeCategoryPhotographers, icon: Icons.camera_alt_rounded),
-      CategoryModel(id: 'makeup', name: l10n.homeCategoryMakeup, icon: Icons.brush_rounded),
-      CategoryModel(id: 'halls', name: l10n.homeCategoryHalls, icon: Icons.villa_rounded),
-      CategoryModel(id: 'planners', name: l10n.homeCategoryPlanners, icon: Icons.event_note_rounded),
-      CategoryModel(id: 'dj', name: l10n.homeCategoryDj, icon: Icons.headphones_rounded),
-      CategoryModel(id: 'catering', name: l10n.homeCategoryCatering, icon: Icons.restaurant_rounded),
-      CategoryModel(id: 'decoration', name: l10n.homeCategoryDecoration, icon: Icons.local_florist_rounded),
-      CategoryModel(id: 'car_rental', name: l10n.homeCategoryCarRental, icon: Icons.directions_car_filled_rounded),
+      CategoryModel(
+        id: 'photographers',
+        name: l10n.homeCategoryPhotographers,
+        icon: Icons.camera_alt_rounded,
+        imageAsset: 'assets/images/bride_editorial_portrait.png',
+      ),
+      CategoryModel(
+        id: 'makeup',
+        name: l10n.homeCategoryMakeup,
+        icon: Icons.brush_rounded,
+        imageAsset: 'assets/images/makeup_artist_portfolio.png',
+      ),
+      CategoryModel(
+        id: 'halls',
+        name: l10n.homeCategoryHalls,
+        icon: Icons.villa_rounded,
+        imageAsset: 'assets/images/wedding_hall_zamalek.png',
+      ),
+      CategoryModel(
+        id: 'planners',
+        name: l10n.homeCategoryPlanners,
+        icon: Icons.event_note_rounded,
+        imageAsset: 'assets/images/wedding_ceremony_setup.png',
+      ),
+      CategoryModel(
+        id: 'dj',
+        name: l10n.homeCategoryDj,
+        icon: Icons.headphones_rounded,
+        imageAsset: 'assets/images/wedding_hall_sunset_nile.png',
+      ),
+      CategoryModel(
+        id: 'catering',
+        name: l10n.homeCategoryCatering,
+        icon: Icons.restaurant_rounded,
+        imageAsset: 'assets/images/wedding_hall_ballroom_tables.png',
+      ),
+      CategoryModel(
+        id: 'decoration',
+        name: l10n.homeCategoryDecoration,
+        icon: Icons.local_florist_rounded,
+        imageAsset: 'assets/images/bridal_dress_couture.png',
+      ),
+      CategoryModel(
+        id: 'car_rental',
+        name: l10n.homeCategoryCarRental,
+        icon: Icons.directions_car_filled_rounded,
+        imageAsset: 'assets/images/rings_bouquet_avatar.png',
+      ),
     ];
   }
 
