@@ -42,8 +42,10 @@ class _PressableScaleState extends State<PressableScale> {
       onTapUp: (_) => _setPressed(false),
       child: AnimatedScale(
         scale: _pressed ? widget.scaleTo : 1.0,
-        duration: AppMotion.fast,
-        curve: AppMotion.press,
+        // Quick ease-out going down, a touch of spring overshoot coming back
+        // up — the release is what should feel alive, not the press itself.
+        duration: _pressed ? AppMotion.fast : AppMotion.medium,
+        curve: _pressed ? AppMotion.press : AppMotion.spring,
         child: widget.child,
       ),
     );

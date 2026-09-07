@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import '../animations/app_motion.dart';
+import '../animations/shimmer_sweep.dart';
 import '../theme/app_colors.dart';
+import '../theme/app_radius.dart';
 
 enum AppButtonVariant { primary, secondary, text }
 
 /// The only button widget the app should use. Wraps Material buttons (so
 /// theme-level styling, ink, and a11y stay intact) and adds a consistent
 /// loading state so no screen has to hand-roll "disable + spinner" logic.
-class AppButton extends StatelessWidget {
+///
+/// An enabled, non-loading primary button also carries a soft breathing
+/// glow and a slow gold shimmer sweep — the app's one recurring "this is
+/// the one to tap" cue, so it stays a meaningful signal rather than noise.
+class AppButton extends StatefulWidget {
   const AppButton({
     super.key,
     required this.label,
@@ -25,10 +32,24 @@ class AppButton extends StatelessWidget {
   final bool expand;
 
   @override
-  Widget build(BuildContext context) {
-    final spinnerColor = variant == AppButtonVariant.primary ? AppColors.textOnPrimary : AppColors.primary;
+  State<AppButton> createState() => _AppButtonState();
+}
 
-    final child = loading
+class _AppButtonState extends State<AppButton> with SingleTickerProviderStateMixin {
+  late final AnimationController _glowController =
+      AnimationController(vsync: this, duration: AppMotion.glowPulse)..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _glowController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final spinnerColor = widget.variant == AppButtonVariant.primary ? AppColors.textOnPrimary : AppColors.primary;
+
+    final child = widget.loading
         ? SizedBox(
             width: 18,
             height: 18,
@@ -37,17 +58,43 @@ class AppButton extends StatelessWidget {
         : Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (icon != null) ...[Icon(icon, size: 18), const SizedBox(width: 8)],
-              Text(label),
+              if (widget.icon != null) ...[Icon(widget.icon, size: 18), const SizedBox(width: 8)],
+              Text(widget.label),
             ],
           );
 
-    final button = switch (variant) {
-      AppButtonVariant.primary => ElevatedButton(onPressed: loading ? null : onPressed, child: child),
-      AppButtonVariant.secondary => OutlinedButton(onPressed: loading ? null : onPressed, child: child),
-      AppButtonVariant.text => TextButton(onPressed: loading ? null : onPressed, child: child),
+    final button = switch (widget.variant) {
+      AppButtonVariant.primary => ElevatedButton(onPressed: widget.loading ? null : widget.onPressed, child: child),
+      AppButtonVariant.secondary => OutlinedButton(onPressed: widget.loading ? null : widget.onPressed, child: child),
+      AppButtonVariant.text => TextButton(onPressed: widget.loading ? null : widget.onPressed, child: child),
     };
 
-    return expand ? SizedBox(width: double.infinity, child: button) : button;
+    final isActivePrimary = widget.variant == AppButtonVariant.primary && !widget.loading && widget.onPressed != null;
+
+    final result = isActivePrimary
+        ? AnimatedBuilder(
+            animation: _glowController,
+            builder: (context, glowChild) => DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: AppRadius.fullRadius,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.glowCta.withValues(alpha: 0.28 + 0.22 * _glowController.value),
+                    blurRadius: 16 + 10 * _glowController.value,
+                    offset: const Offset(0, 6),
+                    spreadRadius: -2,
+                  ),
+                ],
+              ),
+              child: glowChild,
+            ),
+            child: ClipRRect(
+              borderRadius: AppRadius.fullRadius,
+              child: ShimmerSweep(color: AppColors.gold, opacity: 0.28, child: button),
+            ),
+          )
+        : button;
+
+    return widget.expand ? SizedBox(width: double.infinity, child: result) : result;
   }
 }

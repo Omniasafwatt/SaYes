@@ -21,4 +21,10 @@ abstract final class AppMotion {
   /// later items just reuse the max delay — keeps long lists from feeling
   /// like they take forever to finish animating in.
   static const int staggerCap = 8;
+
+  /// Full cycle length for slow, continuous ambient effects (shimmer sweeps,
+  /// breathing glows) — deliberately unhurried so they read as premium
+  /// ambience rather than a busy loading indicator.
+  static const Duration shimmerCycle = Duration(milliseconds: 3200);
+  static const Duration glowPulse = Duration(milliseconds: 1800);
 }

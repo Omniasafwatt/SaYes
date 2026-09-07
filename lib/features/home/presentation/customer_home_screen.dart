@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../core/animations/app_motion.dart';
 import '../../../core/animations/entrance.dart';
+import '../../../core/animations/floating_petals.dart';
 import '../../../core/animations/pressable_scale.dart';
 import '../../../core/localization/generated/app_localizations.dart';
 import '../../../core/routing/app_router.dart';
@@ -226,6 +227,7 @@ class _HeroBanner extends StatelessWidget {
                   ),
                 ),
               ),
+              const FloatingPetals(petalCount: 6, color: Colors.white, maxOpacity: 0.4),
               Padding(
                 padding: const EdgeInsets.all(AppSpacing.lg),
                 child: Align(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/animations/floating_petals.dart';
 import '../../../../core/animations/pressable_scale.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radius.dart';
@@ -60,6 +61,9 @@ class AuthHeroScaffold extends StatelessWidget {
                         stops: const [0, 0.55, 1],
                       ),
                     ),
+                  ),
+                  const Positioned.fill(
+                    child: FloatingPetals(petalCount: 6, color: Colors.white, maxOpacity: 0.45),
                   ),
                 ],
               ),
