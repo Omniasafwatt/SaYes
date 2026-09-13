@@ -13,9 +13,9 @@ import '../../core/theme/app_typography.dart';
 import '../../core/widgets/widgets.dart';
 
 const _kOnboardingImages = [
-  'assets/images/bride_palace_staircase.png',
-  'assets/images/wedding_ceremony_setup.png',
-  'assets/images/wedding_hall_ballroom_tables.png',
+  'assets/images/maria-orlova-BruuboWUC_U-unsplash.jpg',
+  'assets/images/asdrubal-luna-Fp5v1bp_0JI-unsplash.jpg',
+  'assets/images/tracy-truhan-7-D5C6ioPCw-unsplash.jpg',
 ];
 
 /// Three-screen intro: dream wedding → trusted vendors → plan everything.
@@ -274,7 +274,7 @@ class _PageIndicator extends StatelessWidget {
           height: 7,
           decoration: BoxDecoration(
             borderRadius: AppRadius.fullRadius,
-            gradient: active ? const LinearGradient(colors: [AppColors.primary, AppColors.gold]) : null,
+            gradient: active ? const LinearGradient(colors: [AppColors.primary, AppColors.primaryDeep]) : null,
             color: active ? null : Colors.white.withValues(alpha: 0.4),
           ),
         );
@@ -296,7 +296,7 @@ class _NextButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsetsDirectional.only(start: 22, end: 8, top: 10, bottom: 10),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(colors: [AppColors.primary, AppColors.primaryDeep]),
+          color: AppColors.primary,
           borderRadius: AppRadius.fullRadius,
           boxShadow: AppShadows.cta,
         ),

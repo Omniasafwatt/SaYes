@@ -280,22 +280,3 @@ class SettingsSwitchRow extends StatelessWidget {
     );
   }
 }
-
-/// Small muted tag for a not-yet-built row — e.g. a vendor's Portfolio
-/// entry before listing management exists. Deliberately plain (no icon,
-/// no color-coding) so it doesn't read as a real status like the booking
-/// [BookingStatusBadge]s do.
-class ComingSoonTag extends StatelessWidget {
-  const ComingSoonTag({super.key, required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(color: AppColors.surfaceBlush, borderRadius: AppRadius.fullRadius),
-      child: Text(label, style: context.typography.labelSm.copyWith(color: AppColors.textSecondary)),
-    );
-  }
-}

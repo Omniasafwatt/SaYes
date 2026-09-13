@@ -98,7 +98,7 @@ class _FavoritesList extends ConsumerWidget {
           delay: Duration(milliseconds: 30 * index.clamp(0, 6)),
           child: VendorCard(
             imageUrl: vendor.imageAsset,
-            isAssetImage: true,
+            isAssetImage: !isNetworkImage(vendor.imageAsset),
             name: vendor.name,
             city: vendor.city,
             rating: vendor.rating,

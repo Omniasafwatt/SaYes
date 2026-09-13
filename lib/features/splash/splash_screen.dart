@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/animations/app_motion.dart';
 import '../../core/animations/floating_petals.dart';
@@ -14,6 +15,7 @@ import '../../core/theme/app_typography.dart';
 import '../../core/widgets/botanical_divider.dart';
 import '../auth/data/auth_models.dart';
 import '../profile/data/user_profile_repository.dart';
+import '../vendor_listing/data/vendor_listing_repository.dart';
 
 /// First screen shown on launch. Shows the brand moment for a minimum
 /// beat while checking for a stored session in parallel, then routes to
@@ -28,7 +30,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 }
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
-  static const _minimumDisplay = Duration(milliseconds: 2800);
+  static const _minimumDisplay = Duration(seconds: 5);
 
   @override
   void initState() {
@@ -47,9 +49,28 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       context.go(AppRoutes.onboarding);
       return;
     }
-    final profile = await ref.read(userProfileRepositoryProvider).getProfile();
-    if (!mounted) return;
-    context.go(profile?.role == UserRole.vendor ? AppRoutes.vendorHome : AppRoutes.home);
+    try {
+      final profile = await ref.read(userProfileRepositoryProvider).getProfile();
+      if (!mounted) return;
+      switch (profile?.role) {
+        case UserRole.admin:
+          context.go(AppRoutes.adminHome);
+        case UserRole.vendor:
+          final hasProfile = await ref.read(vendorListingRepositoryProvider).hasProfile();
+          if (!mounted) return;
+          context.go(hasProfile ? AppRoutes.vendorHome : AppRoutes.vendorSetup);
+        case UserRole.customer:
+        case null:
+          context.go(AppRoutes.home);
+      }
+    } catch (_) {
+      // A stored session that can no longer be resolved (expired refresh
+      // token, network failure) is as good as no session — fall back to
+      // the signed-out entry point rather than leaving the splash stuck.
+      await ref.read(secureStorageServiceProvider).clearSession();
+      if (!mounted) return;
+      context.go(AppRoutes.onboarding);
+    }
   }
 
   @override
@@ -81,7 +102,32 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                     style: t.labelSm.copyWith(color: AppColors.roseGold),
                   ).animate(delay: AppMotion.medium).fadeIn(duration: AppMotion.slow),
                   const SizedBox(height: 6),
-                  Text(l10n.appName, style: t.displayLg)
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Transform.flip(
+                        flipX: true,
+                        child: SvgPicture.asset('assets/images/botanical_sprig.svg', height: 64),
+                      ),
+                      const SizedBox(width: 10),
+                      Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: Text(
+                          l10n.appName,
+                          style: const TextStyle(
+                            fontFamily: AppFontFamily.wordmark,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 46,
+                            height: 1,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      SvgPicture.asset('assets/images/botanical_sprig.svg', height: 64),
+                    ],
+                  )
                       .animate(delay: const Duration(milliseconds: 460))
                       .fadeIn(duration: AppMotion.slow)
                       .moveY(begin: 10, end: 0, duration: AppMotion.slow, curve: AppMotion.entrance),
@@ -133,8 +179,8 @@ class _Logo extends StatelessWidget {
           )
               .animate(onPlay: (c) => c.repeat(reverse: true))
               .scaleXY(begin: 0.94, end: 1.04, duration: const Duration(milliseconds: 3600), curve: Curves.easeInOut),
-          Image.asset(
-            'assets/images/logo_ring_emblem.png',
+          SvgPicture.asset(
+            'assets/images/logo_ring_emblem.svg',
             width: 132,
             height: 132,
             fit: BoxFit.contain,

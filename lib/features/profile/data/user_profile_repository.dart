@@ -1,42 +1,43 @@
-import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/network/api_client.dart';
 import 'user_profile.dart';
 
-/// Contract for reading and writing the customer's own profile.
+/// Contract for reading and writing the signed-in account's own profile.
 abstract class UserProfileRepository {
   Future<UserProfile?> getProfile();
   Future<void> saveProfile(UserProfile profile);
   Future<void> clearProfile();
 }
 
-/// TEMPORARY placeholder implementation — same honest pattern as the other
-/// Placeholder repositories: no backend exists yet to own profile data, so
-/// this persists on-device via shared_preferences. Replace with a real
-/// Dio-backed implementation once the API contract exists;
-/// [UserProfileController] won't need to change.
-class PlaceholderUserProfileRepository implements UserProfileRepository {
-  static const _key = 'sayyes_user_profile';
+/// Real implementation — the profile lives entirely on the server now
+/// (`GET`/`PATCH /users/me`), so there's nothing to cache locally or clear
+/// on logout; every read is a fresh call, which is exactly what's needed
+/// for role-based routing to stay correct if an admin changes an account's
+/// role server-side between sessions.
+class ApiUserProfileRepository implements UserProfileRepository {
+  ApiUserProfileRepository(this._api);
+
+  final ApiClient _api;
 
   @override
   Future<UserProfile?> getProfile() async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getString(_key);
-    if (raw == null) return null;
-    return UserProfile.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+    final data = await _api.get('/users/me') as Map<String, dynamic>;
+    return UserProfile.fromJson(data);
   }
 
   @override
   Future<void> saveProfile(UserProfile profile) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_key, jsonEncode(profile.toJson()));
+    // Only name and phone are ever mutable server-side (see API docs) —
+    // email/role are set at registration and never sent back on a PATCH.
+    await _api.patch('/users/me', data: {'name': profile.name, 'phone': profile.phone});
   }
 
   @override
   Future<void> clearProfile() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_key);
+    // No-op: nothing cached locally to clear anymore.
   }
 }
 
-final userProfileRepositoryProvider = Provider<UserProfileRepository>((ref) => PlaceholderUserProfileRepository());
+final userProfileRepositoryProvider = Provider<UserProfileRepository>(
+  (ref) => ApiUserProfileRepository(ref.watch(apiClientProvider)),
+);

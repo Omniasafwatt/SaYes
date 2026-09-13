@@ -16,6 +16,7 @@ class UserProfileController extends AsyncNotifier<UserProfile?> {
   /// always carries over from whatever was already cached.
   Future<void> updateProfile({required String name, String? phone}) async {
     final updated = UserProfile(
+      id: state.value?.id ?? '',
       name: name,
       email: state.value?.email ?? '',
       phone: phone,

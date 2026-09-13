@@ -1,0 +1,27 @@
+<svg width="264" height="228" viewBox="0 0 264 228" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ringL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7F0F25"/>
+      <stop offset="1" stop-color="#530918"/>
+    </linearGradient>
+    <linearGradient id="ringR" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#CD98A2"/>
+      <stop offset="1" stop-color="#7F0F25"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sparkle -->
+  <path d="M132,22 C135,37 135,37 150,40 C135,43 135,43 132,58 C129,43 129,43 114,40 C129,37 129,37 132,22 Z" fill="#530918"/>
+  <circle cx="104" cy="68" r="4.5" fill="#CD98A2"/>
+  <circle cx="166" cy="74" r="3.5" fill="#B2344D"/>
+
+  <!-- interlocking rings -->
+  <circle cx="110" cy="125" r="46" fill="none" stroke="url(#ringL)" stroke-width="9"/>
+  <circle cx="154" cy="125" r="46" fill="none" stroke="url(#ringR)" stroke-width="9"/>
+  <rect x="128" y="121" width="9" height="9" fill="#530918" transform="rotate(45 132.5 125.5)"/>
+
+  <!-- petals -->
+  <ellipse cx="94" cy="182" rx="20" ry="9" fill="#CD98A2" transform="rotate(-35 94 182)"/>
+  <ellipse cx="172" cy="182" rx="20" ry="9" fill="#7F0F25" transform="rotate(35 172 182)"/>
+  <circle cx="133" cy="196" r="4.5" fill="#530918"/>
+</svg>

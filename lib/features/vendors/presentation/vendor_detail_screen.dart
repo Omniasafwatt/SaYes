@@ -240,7 +240,7 @@ class _VendorDetailContent extends ConsumerWidget {
             separatorBuilder: (context, index) => const SizedBox(width: AppSpacing.sm),
             itemBuilder: (context, index) => GestureDetector(
               onTap: () => showPortfolioViewer(context, images: detail.imageAssets, initialIndex: index),
-              child: AppAssetImage(
+              child: AppSmartImage(
                 path: detail.imageAssets[index],
                 width: 140,
                 height: 140,
@@ -325,7 +325,7 @@ class _HeroGalleryState extends State<_HeroGallery> {
             controller: _pageController,
             itemCount: widget.imageAssets.length,
             onPageChanged: (page) => setState(() => _page = page),
-            itemBuilder: (context, index) => AppAssetImage(path: widget.imageAssets[index], width: double.infinity, height: 340),
+            itemBuilder: (context, index) => AppSmartImage(path: widget.imageAssets[index], width: double.infinity, height: 340),
           ),
           if (widget.imageAssets.length > 1)
             Padding(

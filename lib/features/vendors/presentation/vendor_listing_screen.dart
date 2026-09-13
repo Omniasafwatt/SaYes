@@ -223,7 +223,7 @@ class _VendorListingResults extends StatelessWidget {
               final isFavorite = favoriteIds.contains(vendor.id);
               return VendorCard(
                 imageUrl: vendor.imageAsset,
-                isAssetImage: true,
+                isAssetImage: !isNetworkImage(vendor.imageAsset),
                 name: vendor.name,
                 city: vendor.city,
                 rating: vendor.rating,

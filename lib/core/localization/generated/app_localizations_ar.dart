@@ -136,6 +136,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get authNameHint => 'اسمكِ';
 
   @override
+  String get authPhoneLabel => 'رقم الهاتف';
+
+  @override
+  String get authPhoneHint => '+20 1xx xxx xxxx';
+
+  @override
   String get authConfirmPasswordLabel => 'تأكيد كلمة المرور';
 
   @override
@@ -184,6 +190,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get authForgotError =>
       'تعذّر إرسال رمز إعادة التعيين. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authForgotDevTokenNotice =>
+      'خادم تجريبي — لم يُرسَل أي بريد إلكتروني فعليًا. رمزك هو:';
 
   @override
   String get authResetTitle => 'تعيين كلمة مرور جديدة';
@@ -239,6 +249,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get validationCodeTooShort => 'أدخلي الرمز الذي أرسلناه إليكِ';
+
+  @override
+  String get validationPhoneInvalid => 'أدخلي رقم هاتف صحيح';
 
   @override
   String get showcaseTitle => 'نظام التصميم';
@@ -479,6 +492,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeHeroHeadline => 'خططي لحفل الزفاف\nالذي طالما حلمتِ به.';
 
   @override
+  String get homeHeroSubtitle => 'اكتشفي موردين موثوقين لكل تفصيلة.';
+
+  @override
+  String get homeHeroCta => 'استكشفي الآن';
+
+  @override
   String get homeSearchHint => 'عمّاذا تبحثين؟';
 
   @override
@@ -494,7 +513,46 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeSectionCities => 'المدن الأكثر بحثاً';
 
   @override
+  String get homeSectionInspiration => 'إلهام لحفل زفافك';
+
+  @override
   String get homeSeeAll => 'عرض الكل';
+
+  @override
+  String get homeStatsVendorsValue => '+500';
+
+  @override
+  String get homeStatsVendorsLabel => 'مزود موثّق';
+
+  @override
+  String get homeStatsCouplesValue => '+12 ألف';
+
+  @override
+  String get homeStatsCouplesLabel => 'عروسين سعداء';
+
+  @override
+  String get homeStatsCitiesValue => '6';
+
+  @override
+  String get homeStatsCitiesLabel => 'مدن';
+
+  @override
+  String get homeInspirationPalaceTag => 'قصور';
+
+  @override
+  String get homeInspirationPalaceCaption => 'رومانسية القصور';
+
+  @override
+  String get homeInspirationSeasideTag => 'شاطئ';
+
+  @override
+  String get homeInspirationSeasideCaption => 'عهد على الشاطئ';
+
+  @override
+  String get homeInspirationGardenTag => 'حدائق';
+
+  @override
+  String get homeInspirationGardenCaption => 'أناقة الحدائق';
 
   @override
   String get homeCategoryPhotographers => 'المصورون';
@@ -816,7 +874,266 @@ class AppLocalizationsAr extends AppLocalizations {
   String get vendorProfileBusinessDetails => 'بيانات النشاط التجاري';
 
   @override
-  String get vendorProfileComingSoonBadge => 'قريباً';
+  String vendorListingPhotoCount(int count) {
+    return '$count صورة';
+  }
+
+  @override
+  String vendorListingPackageCount(int count) {
+    return '$count باقة';
+  }
+
+  @override
+  String get vendorListingPortfolioTitle => 'إدارة معرض الأعمال';
+
+  @override
+  String get vendorListingPortfolioEmptyTitle => 'لا توجد صور بعد';
+
+  @override
+  String get vendorListingPortfolioEmptyMessage =>
+      'أضيفي صورًا ليتمكن العروسان من رؤية أعمالك.';
+
+  @override
+  String get vendorListingAddPhoto => 'إضافة صورة';
+
+  @override
+  String get vendorListingChoosePhotoTitle => 'اختاري صورة';
+
+  @override
+  String get vendorListingRemovePhotoTitle => 'إزالة هذه الصورة؟';
+
+  @override
+  String get vendorListingRemovePhotoMessage =>
+      'لن تظهر بعد الآن في قائمتك العامة.';
+
+  @override
+  String get vendorListingRemoveAction => 'إزالة';
+
+  @override
+  String get vendorListingPackagesTitle => 'إدارة الباقات';
+
+  @override
+  String get vendorListingPackagesEmptyTitle => 'لا توجد باقات بعد';
+
+  @override
+  String get vendorListingPackagesEmptyMessage =>
+      'أضيفي باقة ليعرف العروسان ما تقدمينه.';
+
+  @override
+  String get vendorListingAddPackage => 'إضافة باقة';
+
+  @override
+  String get vendorListingEditPackage => 'تعديل الباقة';
+
+  @override
+  String get vendorListingPackageName => 'اسم الباقة';
+
+  @override
+  String get vendorListingPackageNameHint => 'مثال: تغطية اليوم الكامل';
+
+  @override
+  String get vendorListingPackageDescription => 'وصف مختصر';
+
+  @override
+  String get vendorListingPackageDescriptionHint => 'أول سطر سيراه العروسان';
+
+  @override
+  String get vendorListingPackagePrice => 'السعر الابتدائي (جنيه)';
+
+  @override
+  String get vendorListingPackageInclusions => 'ما تتضمنه الباقة';
+
+  @override
+  String get vendorListingPackageInclusionsHint => 'عنصر واحد في كل سطر';
+
+  @override
+  String get vendorListingDeletePackageTitle => 'حذف هذه الباقة؟';
+
+  @override
+  String get vendorListingDeletePackageMessage =>
+      'ستتم إزالتها من قائمتك العامة.';
+
+  @override
+  String get vendorListingDeleteAction => 'حذف';
+
+  @override
+  String get vendorListingBusinessDetailsTitle => 'بيانات النشاط التجاري';
+
+  @override
+  String get vendorListingBusinessName => 'اسم النشاط التجاري';
+
+  @override
+  String get vendorListingCategory => 'الفئة';
+
+  @override
+  String get vendorListingCity => 'المدينة / المنطقة';
+
+  @override
+  String get vendorListingCityHint => 'مثال: الزمالك، القاهرة';
+
+  @override
+  String get vendorListingStartingPrice => 'السعر الابتدائي (جنيه)';
+
+  @override
+  String get vendorListingDescription => 'عن نشاطك التجاري';
+
+  @override
+  String get vendorListingDescriptionHint => 'أخبري العروسين بما يميز خدمتك';
+
+  @override
+  String get vendorListingSavedMessage => 'تم تحديث بيانات النشاط التجاري';
+
+  @override
+  String get vendorListingCategoryLockedNote =>
+      'يتم تحديد الفئة عند إنشاء ملفك ولا يمكن تغييرها هنا.';
+
+  @override
+  String get vendorListingStartingPriceNote =>
+      'يتم حساب هذا تلقائيًا من أرخص باقة لديك.';
+
+  @override
+  String get vendorSetupTitle => 'أنشئ ملف نشاطك التجاري';
+
+  @override
+  String get vendorSetupSubtitle =>
+      'أخبر العرائس والعرسان بما تقدمه قبل ظهور ملفك للعامة.';
+
+  @override
+  String get vendorSetupCategoryHint => 'اختر فئتك';
+
+  @override
+  String get vendorSetupCategoryRequired => 'يرجى اختيار فئة';
+
+  @override
+  String get vendorSetupCity => 'المدينة / المنطقة';
+
+  @override
+  String get vendorSetupCityHint => 'مثال: الزمالك، القاهرة';
+
+  @override
+  String get vendorSetupBio => 'عن نشاطك التجاري';
+
+  @override
+  String get vendorSetupBioHint => 'أخبر العرائس والعرسان بما يميز خدمتك';
+
+  @override
+  String get vendorSetupSubmit => 'إنشاء ملفي';
+
+  @override
+  String get vendorSetupError => 'تعذر إنشاء ملفك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get vendorProfileSubscription => 'الاشتراك';
+
+  @override
+  String get subscriptionMyPlanTitle => 'باقتي';
+
+  @override
+  String get subscriptionCurrentPlanBadge => 'الباقة الحالية';
+
+  @override
+  String subscriptionTrialDaysRemaining(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count أيام متبقية في الفترة التجريبية',
+      one: 'يوم واحد متبقٍ في الفترة التجريبية',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get subscriptionComparePlans => 'مقارنة الباقات';
+
+  @override
+  String get subscriptionPlansTitle => 'اختر باقتك';
+
+  @override
+  String get subscriptionMonthly => '/ شهريًا';
+
+  @override
+  String get subscriptionYearly => '/ سنويًا';
+
+  @override
+  String get subscriptionUnlimited => 'غير محدود';
+
+  @override
+  String subscriptionMaxPackages(String count) {
+    return '$count باقات';
+  }
+
+  @override
+  String subscriptionMaxPortfolioItems(String count) {
+    return '$count صور معرض';
+  }
+
+  @override
+  String get subscriptionSwitchAction => 'التبديل إلى هذه الباقة';
+
+  @override
+  String get subscriptionSwitchConfirmTitle => 'تبديل الباقة؟';
+
+  @override
+  String get subscriptionSwitchConfirmMessage =>
+      'ستُطبَّق باقتك الجديدة فورًا.';
+
+  @override
+  String get subscriptionSwitchSuccess => 'تم تحديث الباقة';
+
+  @override
+  String get subscriptionSwitchError =>
+      'تعذر تبديل باقتك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get subscriptionHistoryTitle => 'سجل الباقات';
+
+  @override
+  String get vendorReviewsWriteAction => 'اكتب تقييمًا';
+
+  @override
+  String get vendorReviewsWriteTitle => 'قيّم تجربتك';
+
+  @override
+  String get vendorReviewsRatingLabel => 'تقييمك';
+
+  @override
+  String get vendorReviewsRatingRequired => 'يرجى اختيار تقييم';
+
+  @override
+  String get vendorReviewsCommentLabel => 'مراجعتك';
+
+  @override
+  String get vendorReviewsCommentHint => 'شارك تجربتك مع هذا المورد';
+
+  @override
+  String get vendorReviewsSubmitAction => 'إرسال التقييم';
+
+  @override
+  String get vendorReviewsSubmitSuccess => 'شكرًا على تقييمك!';
+
+  @override
+  String get vendorReviewsSubmitError =>
+      'تعذر إرسال تقييمك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get vendorReviewsEditTitle => 'تعديل تقييمك';
+
+  @override
+  String get vendorReviewsEditAction => 'تعديل';
+
+  @override
+  String get vendorReviewsDeleteTitle => 'حذف تقييمك؟';
+
+  @override
+  String get vendorReviewsDeleteMessage =>
+      'هذا يحذف تقييمك لهذا المورد نهائيًا.';
+
+  @override
+  String get vendorReviewsDeleteAction => 'حذف';
+
+  @override
+  String get vendorReviewsDeleteError =>
+      'تعذر حذف تقييمك. يرجى المحاولة مرة أخرى.';
 
   @override
   String get notificationsTitle => 'الإشعارات';
@@ -830,4 +1147,490 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get notificationsEmptyMessage =>
       'سنعلمكِ عندما يحتاج شيء ما إلى انتباهك.';
+
+  @override
+  String get adminPanelTitle => 'لوحة التحكم';
+
+  @override
+  String get adminNavDashboard => 'الرئيسية';
+
+  @override
+  String get adminNavVendors => 'الموردون';
+
+  @override
+  String get adminNavUsers => 'المستخدمون';
+
+  @override
+  String get adminNavBookings => 'الحجوزات';
+
+  @override
+  String get adminNavReviews => 'التقييمات';
+
+  @override
+  String get adminNavCategories => 'الفئات';
+
+  @override
+  String get adminNavPlans => 'باقات الاشتراك';
+
+  @override
+  String get adminNavAnalytics => 'التحليلات';
+
+  @override
+  String get adminNavSettings => 'الإعدادات';
+
+  @override
+  String get adminDashboardWelcome => 'نظرة عامة على المنصة';
+
+  @override
+  String get adminDashboardEmptyTitle => 'لا توجد إحصائيات بعد';
+
+  @override
+  String get adminDashboardEmptyMessage =>
+      'ستظهر عدادات المنصة هنا بمجرد توفر بيانات.';
+
+  @override
+  String get adminDashboardQuickLinks => 'روابط سريعة';
+
+  @override
+  String get adminCategoriesEmptyTitle => 'لا توجد فئات بعد';
+
+  @override
+  String get adminCategoriesEmptyMessage =>
+      'أضف فئة ليتمكن الموردون من الإدراج تحتها.';
+
+  @override
+  String get adminCategoryAddAction => 'إضافة فئة';
+
+  @override
+  String get adminCategoryAddTitle => 'إضافة فئة';
+
+  @override
+  String get adminCategoryEditTitle => 'تعديل الفئة';
+
+  @override
+  String get adminCategoryNameLabel => 'اسم الفئة';
+
+  @override
+  String get adminCategoryNameHint => 'مثال: قاعة أفراح';
+
+  @override
+  String get adminCategoryActiveLabel => 'نشطة';
+
+  @override
+  String get adminCategoryActiveSubtitle =>
+      'الفئات غير النشطة مخفية عن العملاء';
+
+  @override
+  String get adminCategorySaveAction => 'حفظ الفئة';
+
+  @override
+  String get adminCategorySavedMessage => 'تم حفظ الفئة';
+
+  @override
+  String get adminCategoryDeletedMessage => 'تم حذف الفئة';
+
+  @override
+  String get adminCategoryErrorMessage =>
+      'تعذر حفظ هذه الفئة. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get adminCategoryDeleteTitle => 'حذف هذه الفئة؟';
+
+  @override
+  String get adminCategoryDeleteMessage =>
+      'الموردون المدرجون بها بالفعل لن يتأثروا، لكنها لن تقبل موردين جدد بعد الآن.';
+
+  @override
+  String get adminCategoryDeleteAction => 'حذف';
+
+  @override
+  String get adminCategoryInactiveBadge => 'غير نشطة';
+
+  @override
+  String get adminVendorsEmptyTitle => 'لم يتم العثور على موردين';
+
+  @override
+  String get adminVendorsEmptyMessage => 'جرّب تعديل عوامل التصفية.';
+
+  @override
+  String get adminVendorsFilterTitle => 'تصفية الموردين';
+
+  @override
+  String get adminVendorsFilterCategory => 'الفئة';
+
+  @override
+  String get adminVendorsFilterCity => 'المدينة';
+
+  @override
+  String get adminVendorsFilterCityHint => 'مثال: القاهرة';
+
+  @override
+  String get adminVendorsFilterVerifiedOnly => 'الموثّقون فقط';
+
+  @override
+  String get adminVendorsFilterAll => 'الكل';
+
+  @override
+  String get adminVendorsApplyFilters => 'تطبيق عوامل التصفية';
+
+  @override
+  String get adminVendorVerifiedBadge => 'موثّق';
+
+  @override
+  String get adminVendorUnverifiedBadge => 'غير موثّق';
+
+  @override
+  String get adminVendorVerifyAction => 'توثيق المورد';
+
+  @override
+  String get adminVendorUnverifyAction => 'إلغاء توثيق المورد';
+
+  @override
+  String get adminVendorDetailTitle => 'تفاصيل المورد';
+
+  @override
+  String get adminVendorContactSection => 'بيانات التواصل';
+
+  @override
+  String get adminVendorSubscriptionSection => 'الاشتراك';
+
+  @override
+  String get adminVendorNoSubscription =>
+      'لا يوجد اشتراك نشط — على الباقة المجانية افتراضيًا.';
+
+  @override
+  String get adminVendorAssignPlanAction => 'تعيين باقة';
+
+  @override
+  String get adminVendorCancelSubscriptionAction => 'إلغاء الاشتراك';
+
+  @override
+  String get adminVendorCancelSubscriptionTitle => 'إلغاء هذا الاشتراك؟';
+
+  @override
+  String get adminVendorCancelSubscriptionMessage =>
+      'سيعود المورد إلى حدود الباقة المجانية.';
+
+  @override
+  String get adminVendorDeleteSubscriptionAction => 'حذف السجل';
+
+  @override
+  String get adminVendorDeleteSubscriptionTitle => 'حذف سجل الاشتراك هذا؟';
+
+  @override
+  String get adminVendorDeleteSubscriptionMessage =>
+      'يحذفه نهائيًا — يختلف عن الإلغاء الذي يكتفي بتعليمه كغير نشط.';
+
+  @override
+  String get adminVendorSubscriptionCancelledMessage => 'تم إلغاء الاشتراك';
+
+  @override
+  String get adminVendorSubscriptionDeletedMessage => 'تم حذف سجل الاشتراك';
+
+  @override
+  String get adminSelectPlanTitle => 'اختر باقة';
+
+  @override
+  String get adminUsersEmptyTitle => 'لم يتم العثور على مستخدمين';
+
+  @override
+  String get adminUsersEmptyMessage => 'جرّب تعديل عوامل التصفية.';
+
+  @override
+  String get adminUsersFilterTitle => 'تصفية المستخدمين';
+
+  @override
+  String get adminUsersSearchHint => 'ابحث بالاسم أو البريد الإلكتروني';
+
+  @override
+  String get adminUsersFilterRole => 'الدور';
+
+  @override
+  String get adminUsersFilterActive => 'النشطون فقط';
+
+  @override
+  String get adminUserDetailTitle => 'تفاصيل المستخدم';
+
+  @override
+  String get adminUserRoleLabel => 'الدور';
+
+  @override
+  String get adminUserActiveLabel => 'الحساب نشط';
+
+  @override
+  String get adminUserActiveSubtitle =>
+      'المستخدمون المعطّلون لا يمكنهم تسجيل الدخول';
+
+  @override
+  String get adminUserRoleChangedMessage => 'تم تحديث الدور';
+
+  @override
+  String get adminRoleCustomer => 'عميل';
+
+  @override
+  String get adminRoleVendor => 'مورد';
+
+  @override
+  String get adminRoleAdmin => 'مسؤول';
+
+  @override
+  String get adminBookingsEmptyTitle => 'لم يتم العثور على حجوزات';
+
+  @override
+  String get adminBookingsEmptyMessage => 'جرّب تعديل عوامل التصفية.';
+
+  @override
+  String get adminBookingsFilterTitle => 'تصفية الحجوزات';
+
+  @override
+  String get adminBookingsFilterStatus => 'الحالة';
+
+  @override
+  String get adminBookingStatusPending => 'قيد الانتظار';
+
+  @override
+  String get adminBookingStatusAccepted => 'مقبول';
+
+  @override
+  String get adminBookingStatusRejected => 'مرفوض';
+
+  @override
+  String get adminBookingStatusCancelled => 'ملغي';
+
+  @override
+  String get adminBookingAcceptAction => 'قبول';
+
+  @override
+  String get adminBookingRejectAction => 'رفض';
+
+  @override
+  String get adminReviewsEmptyTitle => 'لم يتم العثور على تقييمات';
+
+  @override
+  String get adminReviewsEmptyMessage => 'جرّب تعديل عوامل التصفية.';
+
+  @override
+  String get adminReviewsFilterTitle => 'تصفية التقييمات';
+
+  @override
+  String get adminReviewsFilterHiddenOnly => 'المخفية فقط';
+
+  @override
+  String get adminReviewHiddenBadge => 'مخفي';
+
+  @override
+  String get adminReviewHideAction => 'إخفاء';
+
+  @override
+  String get adminReviewUnhideAction => 'إظهار';
+
+  @override
+  String get adminReviewDeleteAction => 'حذف';
+
+  @override
+  String get adminReviewDeleteTitle => 'حذف هذا التقييم؟';
+
+  @override
+  String get adminReviewDeleteMessage =>
+      'هذا يحذفه نهائيًا — يمكن للعميل نشر تقييم جديد.';
+
+  @override
+  String get adminSettingsGeneralSection => 'المنصة';
+
+  @override
+  String get adminSettingsRegistrationEnabled => 'تفعيل التسجيل';
+
+  @override
+  String get adminSettingsRegistrationEnabledSubtitle =>
+      'السماح بإنشاء حسابات جديدة';
+
+  @override
+  String get adminSettingsMaintenanceMode => 'وضع الصيانة';
+
+  @override
+  String get adminSettingsMaintenanceModeSubtitle =>
+      'يحجب حركة المرور غير الإدارية — استخدمه بحذر';
+
+  @override
+  String get adminSettingsSubscriptionRequired => 'الاشتراك مطلوب';
+
+  @override
+  String get adminSettingsSubscriptionRequiredSubtitle =>
+      'يجب أن يكون الموردون على باقة مدفوعة للإدراج';
+
+  @override
+  String get adminSettingsFreeMode => 'الوضع المجاني';
+
+  @override
+  String get adminSettingsFreeModeSubtitle =>
+      'كل مورد يحصل على وصول كامل دون تكلفة';
+
+  @override
+  String get adminSettingsTrialSection => 'الفترة التجريبية';
+
+  @override
+  String get adminSettingsTrialEnabled => 'تفعيل الفترة التجريبية';
+
+  @override
+  String get adminSettingsTrialEnabledSubtitle =>
+      'يحصل الموردون الجدد على فترة تجريبية مجانية';
+
+  @override
+  String get adminSettingsTrialDays => 'مدة الفترة التجريبية (أيام)';
+
+  @override
+  String get adminSettingsVendorSection => 'الموردون';
+
+  @override
+  String get adminSettingsVendorAutoVerification => 'توثيق تلقائي للموردين';
+
+  @override
+  String get adminSettingsVendorAutoVerificationSubtitle =>
+      'تخطي المراجعة اليدوية عند التسجيل';
+
+  @override
+  String get adminSettingsFeaturedSearch => 'تعزيز الظهور المميز';
+
+  @override
+  String get adminSettingsFeaturedSearchSubtitle =>
+      'موردو الباقة المميزة يظهرون أعلى في نتائج البحث';
+
+  @override
+  String get adminSettingsUploadSection => 'الرفع';
+
+  @override
+  String get adminSettingsUploadMaxSizeMb =>
+      'الحد الأقصى لحجم الرفع (ميجابايت)';
+
+  @override
+  String get adminSettingsUploadAllowedTypes => 'أنواع الملفات المسموحة';
+
+  @override
+  String get adminSettingsUploadAllowedTypesHint =>
+      'مفصولة بفواصل، مثال: image/jpeg, image/png';
+
+  @override
+  String get adminSettingsSaveAction => 'حفظ الإعدادات';
+
+  @override
+  String get adminSettingsSavedMessage => 'تم حفظ الإعدادات';
+
+  @override
+  String get adminSettingsErrorMessage =>
+      'تعذر حفظ الإعدادات. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get adminAnalyticsRevenue => 'الإيرادات';
+
+  @override
+  String get adminAnalyticsGrowth => 'النمو';
+
+  @override
+  String get adminAnalyticsBookings => 'الحجوزات';
+
+  @override
+  String get adminAnalyticsReviews => 'التقييمات';
+
+  @override
+  String get adminAnalyticsConversion => 'التحويل';
+
+  @override
+  String get adminAnalyticsTopCategories => 'أفضل الفئات';
+
+  @override
+  String get adminAnalyticsDateRange => 'النطاق الزمني';
+
+  @override
+  String get adminAnalyticsNoDataTitle => 'لا يوجد ما يُعرض';
+
+  @override
+  String get adminAnalyticsNoData => 'لا توجد بيانات لهذا النطاق بعد.';
+
+  @override
+  String get adminAnalyticsFrom => 'من';
+
+  @override
+  String get adminAnalyticsTo => 'إلى';
+
+  @override
+  String get adminPlansEmptyTitle => 'لا توجد باقات بعد';
+
+  @override
+  String get adminPlansEmptyMessage => 'أضف باقة ليشترك بها الموردون.';
+
+  @override
+  String get adminPlanAddAction => 'إضافة باقة';
+
+  @override
+  String get adminPlanAddTitle => 'إضافة باقة';
+
+  @override
+  String get adminPlanEditTitle => 'تعديل الباقة';
+
+  @override
+  String get adminPlanNameLabel => 'اسم الباقة';
+
+  @override
+  String get adminPlanDescriptionLabel => 'الوصف';
+
+  @override
+  String get adminPlanPriceLabel => 'السعر (جنيه / شهريًا)';
+
+  @override
+  String get adminPlanPriorityLabel => 'درجة الأولوية';
+
+  @override
+  String get adminPlanMaxPackagesLabel =>
+      'الحد الأقصى للباقات (اتركه فارغًا = غير محدود)';
+
+  @override
+  String get adminPlanMaxPortfolioLabel =>
+      'الحد الأقصى لصور المعرض (اتركه فارغًا = غير محدود)';
+
+  @override
+  String get adminPlanFeaturedLabel => 'شارة مميزة';
+
+  @override
+  String get adminPlanFeaturedSubtitle => 'تُظهر شارة ذهبية في مقارنة الباقات';
+
+  @override
+  String get adminPlanActiveLabel => 'نشطة';
+
+  @override
+  String get adminPlanActiveSubtitle => 'الباقات غير النشطة مخفية عن الموردين';
+
+  @override
+  String get adminPlanSaveAction => 'حفظ الباقة';
+
+  @override
+  String get adminPlanSavedMessage => 'تم حفظ الباقة';
+
+  @override
+  String get adminPlanDeletedMessage => 'تم حذف الباقة';
+
+  @override
+  String get adminPlanErrorMessage =>
+      'تعذر حفظ هذه الباقة. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get adminPlanDeleteTitle => 'حذف هذه الباقة؟';
+
+  @override
+  String get adminPlanDeleteMessage =>
+      'سيُرفض الحذف إذا كان أي مورد ما زال مشتركًا بها.';
+
+  @override
+  String get adminPlanDeleteAction => 'حذف';
+
+  @override
+  String get adminPlanInactiveBadge => 'غير نشطة';
+
+  @override
+  String get adminGenericErrorMessage => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get adminApplyAction => 'تطبيق';
+
+  @override
+  String get adminClearFiltersAction => 'مسح';
 }

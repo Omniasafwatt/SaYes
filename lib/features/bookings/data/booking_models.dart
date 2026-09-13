@@ -1,9 +1,9 @@
 import '../../../core/widgets/badges.dart';
+import '../../vendors/data/vendor_models.dart';
+import 'booking_message_codec.dart';
 
 /// One submitted booking request. [eventDate] is stored as a plain DateTime
-/// (date only — time-of-day isn't collected yet); the vendor's own
-/// name/image are copied in at submission time rather than re-fetched, so
-/// this record stays readable even if that vendor is later removed.
+/// (date only — time-of-day isn't collected yet).
 class BookingModel {
   const BookingModel({
     required this.id,
@@ -31,31 +31,36 @@ class BookingModel {
   final BookingStatus status;
   final DateTime createdAt;
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'vendorId': vendorId,
-        'vendorName': vendorName,
-        'vendorImageAsset': vendorImageAsset,
-        'packageName': packageName,
-        'packagePriceEgp': packagePriceEgp,
-        'eventDate': eventDate.toIso8601String(),
-        'guestCount': guestCount,
-        'notes': notes,
-        'status': status.name,
-        'createdAt': createdAt.toIso8601String(),
-      };
-
-  factory BookingModel.fromJson(Map<String, dynamic> json) => BookingModel(
-        id: json['id'] as String,
-        vendorId: json['vendorId'] as String,
-        vendorName: json['vendorName'] as String,
-        vendorImageAsset: json['vendorImageAsset'] as String,
-        packageName: json['packageName'] as String,
-        packagePriceEgp: json['packagePriceEgp'] as int,
-        eventDate: DateTime.parse(json['eventDate'] as String),
-        guestCount: json['guestCount'] as int,
-        notes: json['notes'] as String?,
-        status: BookingStatus.values.byName(json['status'] as String),
-        createdAt: DateTime.parse(json['createdAt'] as String),
-      );
+  /// Maps a real `/bookings` API record. Neither the vendor's display name
+  /// nor the package/price/guest-count are available on this record at all
+  /// — `GET /bookings/mine` doesn't include the vendor's `user` relation,
+  /// and there's no package/price/guest-count field server-side to begin
+  /// with — so all of it comes back out of the encoded `message` field
+  /// instead (see `booking_message_codec.dart`), falling back to a generic
+  /// label only for a booking this app didn't create itself.
+  factory BookingModel.fromApiJson(
+    Map<String, dynamic> json, {
+    required String fallbackVendorName,
+    required String fallbackPackageName,
+  }) {
+    final vendor = json['vendor'] as Map<String, dynamic>?;
+    final decoded = decodeBookingMessage(
+      json['message'] as String?,
+      fallbackVendorName: fallbackVendorName,
+      fallbackPackageName: fallbackPackageName,
+    );
+    return BookingModel(
+      id: json['id'] as String,
+      vendorId: json['vendorId'] as String? ?? vendor?['id'] as String? ?? '',
+      vendorName: decoded.vendorName,
+      vendorImageAsset: (vendor?['avatarUrl'] as String?) ?? kFallbackVendorImage,
+      packageName: decoded.packageName,
+      packagePriceEgp: decoded.packagePriceEgp,
+      eventDate: DateTime.tryParse(json['eventDate'] as String? ?? '') ?? DateTime.now(),
+      guestCount: decoded.guestCount,
+      notes: decoded.notes,
+      status: bookingStatusFromApi(json['status'] as String?),
+      createdAt: DateTime.tryParse(json['createdAt'] as String? ?? '') ?? DateTime.now(),
+    );
+  }
 }

@@ -27,6 +27,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmController = TextEditingController();
   UserRole _role = UserRole.customer;
@@ -35,6 +36,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
     _confirmController.dispose();
     super.dispose();
@@ -45,12 +47,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final success = await ref.read(authControllerProvider.notifier).register(
           name: _nameController.text.trim(),
           email: _emailController.text.trim(),
+          phone: _phoneController.text.trim(),
           password: _passwordController.text,
           role: _role,
         );
     if (!mounted) return;
     if (success) {
-      context.go(_role == UserRole.vendor ? AppRoutes.vendorHome : AppRoutes.home);
+      context.go(_role == UserRole.vendor ? AppRoutes.vendorSetup : AppRoutes.home);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.authRegisterError)));
     }
@@ -63,7 +66,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final t = context.typography;
 
     return AuthHeroScaffold(
-      imagePath: 'assets/images/rings_bouquet_avatar.png',
+      imagePath: 'assets/images/chuttersnap-NYqEk7a42yc-unsplash.jpg',
       title: l10n.authRegisterTitle,
       subtitle: l10n.authRegisterSubtitle,
       showBack: true,
@@ -105,6 +108,15 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               keyboardType: TextInputType.emailAddress,
               prefixIcon: Icons.mail_outline_rounded,
               validator: Validators.email(l10n),
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            AppTextField(
+              label: l10n.authPhoneLabel,
+              hint: l10n.authPhoneHint,
+              controller: _phoneController,
+              keyboardType: TextInputType.phone,
+              prefixIcon: Icons.phone_outlined,
+              validator: Validators.phone(l10n),
             ),
             const SizedBox(height: AppSpacing.lg),
             AppTextField(

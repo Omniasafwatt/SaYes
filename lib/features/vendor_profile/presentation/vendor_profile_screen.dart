@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
@@ -9,13 +11,14 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../profile/application/user_profile_controller.dart';
 import '../../profile/presentation/widgets/account_widgets.dart';
+import '../../vendor_listing/application/vendor_listing_controller.dart';
 
 /// Profile tab for the signed-in vendor experience. Account-level settings
 /// (contact info, language, notifications, logging out) are identical to
 /// the customer Profile screen and share its widgets; the "Your Listing"
-/// section is new here — a vendor's actual portfolio and packages aren't
-/// editable yet, so each row is honest about that rather than pretending
-/// the feature exists.
+/// section links out to the dedicated portfolio/packages/business-details
+/// management screens, each showing a live summary of what's on the
+/// vendor's public listing right now.
 class VendorProfileScreen extends ConsumerWidget {
   const VendorProfileScreen({super.key});
 
@@ -24,6 +27,7 @@ class VendorProfileScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final t = context.typography;
     final profileAsync = ref.watch(userProfileControllerProvider);
+    final listingAsync = ref.watch(vendorListingControllerProvider);
 
     return Scaffold(
       backgroundColor: AppColors.ivory,
@@ -54,19 +58,35 @@ class VendorProfileScreen extends ConsumerWidget {
                   SettingsRow(
                     icon: Icons.photo_library_outlined,
                     title: l10n.vendorProfilePortfolio,
-                    trailing: ComingSoonTag(label: l10n.vendorProfileComingSoonBadge),
+                    trailing: Text(
+                      l10n.vendorListingPhotoCount(listingAsync.valueOrNull?.portfolio.length ?? 0),
+                      style: t.bodyMd,
+                    ),
+                    onTap: () => context.push(AppRoutes.vendorPortfolioManage),
                   ),
                   const Divider(height: 1),
                   SettingsRow(
                     icon: Icons.local_offer_outlined,
                     title: l10n.vendorProfilePackages,
-                    trailing: ComingSoonTag(label: l10n.vendorProfileComingSoonBadge),
+                    trailing: Text(
+                      l10n.vendorListingPackageCount(listingAsync.valueOrNull?.packages.length ?? 0),
+                      style: t.bodyMd,
+                    ),
+                    onTap: () => context.push(AppRoutes.vendorPackagesManage),
                   ),
                   const Divider(height: 1),
                   SettingsRow(
                     icon: Icons.storefront_outlined,
                     title: l10n.vendorProfileBusinessDetails,
-                    trailing: ComingSoonTag(label: l10n.vendorProfileComingSoonBadge),
+                    trailing: const SizedBox.shrink(),
+                    onTap: () => context.push(AppRoutes.vendorBusinessDetails),
+                  ),
+                  const Divider(height: 1),
+                  SettingsRow(
+                    icon: Icons.workspace_premium_outlined,
+                    title: l10n.vendorProfileSubscription,
+                    trailing: const SizedBox.shrink(),
+                    onTap: () => context.push(AppRoutes.subscription),
                   ),
                 ],
               ),

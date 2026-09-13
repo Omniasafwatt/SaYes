@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' hide TextDirection;
 import '../../../core/animations/app_motion.dart';
 import '../../../core/animations/entrance.dart';
 import '../../../core/animations/floating_petals.dart';
@@ -24,13 +24,6 @@ import '../data/home_models.dart';
 
 final _priceFormat = NumberFormat('#,##0', 'en_US');
 
-String _greetingFor(AppLocalizations l10n) {
-  final hour = DateTime.now().hour;
-  if (hour < 12) return l10n.homeGreetingMorning;
-  if (hour < 17) return l10n.homeGreetingAfternoon;
-  return l10n.homeGreetingEvening;
-}
-
 class CustomerHomeScreen extends ConsumerWidget {
   const CustomerHomeScreen({super.key});
 
@@ -46,7 +39,7 @@ class CustomerHomeScreen extends ConsumerWidget {
         bottom: false,
         child: Column(
           children: [
-            _HomeHeader(l10n: l10n),
+            const _HomeHeader(),
             Expanded(
               child: homeAsync.when(
                 data: (data) => RefreshIndicator(
@@ -79,37 +72,64 @@ class CustomerHomeScreen extends ConsumerWidget {
 }
 
 class _HomeHeader extends StatelessWidget {
-  const _HomeHeader({required this.l10n});
-  final AppLocalizations l10n;
+  const _HomeHeader();
 
   @override
   Widget build(BuildContext context) {
-    final t = context.typography;
     return Padding(
       padding: const EdgeInsets.fromLTRB(AppSpacing.screenMargin, AppSpacing.sm, AppSpacing.screenMargin, AppSpacing.sm),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: const BoxDecoration(color: AppColors.surfaceBlush, shape: BoxShape.circle),
-            child: const Icon(Icons.person_rounded, color: AppColors.primary),
-          ),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      child: SizedBox(
+        height: 44,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Row(
               children: [
-                Text(_greetingFor(l10n), style: t.titleMd),
-                Text(l10n.homeGreetingSubtitle, style: t.caption, maxLines: 1, overflow: TextOverflow.ellipsis),
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: const BoxDecoration(color: AppColors.surfaceBlush, shape: BoxShape.circle),
+                  child: const Icon(Icons.person_rounded, color: AppColors.primary),
+                ),
+                const Spacer(),
+                const NotificationBell(),
+                const SizedBox(width: AppSpacing.sm),
+                const LanguageSwitcher(),
               ],
             ),
+            const _HomeWordmark(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Centered brand wordmark for the home nav — replaces the old text
+/// greeting. Same calm script treatment as the splash logo (not bold),
+/// with a soft tinted shadow for depth; forced LTR so "SayYes" never
+/// mirrors under Arabic.
+class _HomeWordmark extends StatelessWidget {
+  const _HomeWordmark();
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Text(
+          'SayYes',
+          style: TextStyle(
+            fontFamily: AppFontFamily.wordmark,
+            fontWeight: FontWeight.w400,
+            fontSize: 30,
+            height: 1,
+            color: AppColors.primary,
+            shadows: [
+              Shadow(color: AppColors.primaryDeep.withValues(alpha: 0.25), offset: const Offset(0, 1.5), blurRadius: 4),
+            ],
           ),
-          const SizedBox(width: AppSpacing.sm),
-          const NotificationBell(),
-          const SizedBox(width: AppSpacing.sm),
-          const LanguageSwitcher(),
-        ],
+        ),
       ),
     );
   }
@@ -128,23 +148,11 @@ class _HomeContent extends StatelessWidget {
       physics: const AlwaysScrollableScrollPhysics(),
       padding: const EdgeInsets.only(bottom: AppSpacing.sectionGap * 2),
       children: [
-        FadeSlideIn(child: _HeroBanner(l10n: l10n)),
-        const SizedBox(height: AppSpacing.lg),
+        FadeSlideIn(child: _HeroSection(l10n: l10n, categories: data.categories)),
+        const SizedBox(height: _HeroSection.categoryOverlap + AppSpacing.sectionGap),
         FadeSlideIn(delay: const Duration(milliseconds: 40), child: const _SearchBar()),
         const SizedBox(height: AppSpacing.sectionGap),
-        FadeSlideIn(
-          delay: const Duration(milliseconds: 80),
-          child: SectionHeader(
-            title: l10n.homeSectionCategories,
-            actionLabel: l10n.homeSeeAll,
-            onAction: () => context.go(AppRoutes.explore),
-          ),
-        ),
-        const SizedBox(height: AppSpacing.md),
-        FadeSlideIn(
-          delay: const Duration(milliseconds: 100),
-          child: _CategoryRow(categories: data.categories),
-        ),
+        FadeSlideIn(delay: const Duration(milliseconds: 80), child: _TrustStatsRow(l10n: l10n)),
         const SizedBox(height: AppSpacing.sectionGap),
         FadeSlideIn(
           delay: const Duration(milliseconds: 120),
@@ -187,6 +195,13 @@ class _HomeContent extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.sectionGap),
         FadeSlideIn(
+          delay: const Duration(milliseconds: 220),
+          child: SectionHeader(title: l10n.homeSectionInspiration),
+        ),
+        const SizedBox(height: AppSpacing.md),
+        FadeSlideIn(delay: const Duration(milliseconds: 230), child: _InspirationSection(l10n: l10n)),
+        const SizedBox(height: AppSpacing.sectionGap),
+        FadeSlideIn(
           delay: const Duration(milliseconds: 240),
           child: SectionHeader(title: l10n.homeSectionCities),
         ),
@@ -200,47 +215,93 @@ class _HomeContent extends StatelessWidget {
   }
 }
 
+/// Full-bleed hero photo with the category row floating half over its
+/// bottom edge — the category circles overlap the image by
+/// [categoryOverlap], so a caller must reserve that much extra space
+/// below this widget before the next section.
+class _HeroSection extends StatelessWidget {
+  const _HeroSection({required this.l10n, required this.categories});
+  final AppLocalizations l10n;
+  final List<CategoryModel> categories;
+
+  static const categoryOverlap = 64.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        _HeroBanner(l10n: l10n),
+        PositionedDirectional(
+          start: 0,
+          end: 0,
+          bottom: -categoryOverlap,
+          child: _CategoryRow(categories: categories),
+        ),
+      ],
+    );
+  }
+}
+
 class _HeroBanner extends StatelessWidget {
   const _HeroBanner({required this.l10n});
   final AppLocalizations l10n;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
-      child: ClipRRect(
-        borderRadius: AppRadius.xlRadius,
-        child: SizedBox(
-          height: 210,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.asset('assets/images/wedding_hall_zamalek.png', fit: BoxFit.cover)
-                  .animate(onPlay: (c) => c.repeat(reverse: true))
-                  .scaleXY(begin: 1, end: 1.06, duration: const Duration(seconds: 10), curve: Curves.easeInOut),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.black.withValues(alpha: 0.05), Colors.black.withValues(alpha: 0.55)],
-                  ),
-                ),
+    return SizedBox(
+      height: 270,
+      width: double.infinity,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset('assets/images/samantha-gades-CsrwM-bHQIg-unsplash.jpg', fit: BoxFit.cover)
+              .animate(onPlay: (c) => c.repeat(reverse: true))
+              .scaleXY(begin: 1, end: 1.06, duration: const Duration(seconds: 10), curve: Curves.easeInOut),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.black.withValues(alpha: 0.35), Colors.black.withValues(alpha: 0.05)],
               ),
-              const FloatingPetals(petalCount: 6, color: Colors.white, maxOpacity: 0.4),
-              Padding(
-                padding: const EdgeInsets.all(AppSpacing.lg),
-                child: Align(
-                  alignment: AlignmentDirectional.bottomStart,
-                  child: Text(
-                    l10n.homeHeroHeadline,
-                    style: context.typography.displaySm.copyWith(color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          const FloatingPetals(petalCount: 6, color: Colors.white, maxOpacity: 0.4),
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: AppSpacing.screenMargin, end: AppSpacing.screenMargin),
+            child: Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 260),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      l10n.homeHeroHeadline,
+                      textAlign: TextAlign.end,
+                      style: context.typography.headlineLg.copyWith(color: Colors.white),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      l10n.homeHeroSubtitle,
+                      textAlign: TextAlign.end,
+                      style: context.typography.bodyMd.copyWith(color: Colors.white.withValues(alpha: 0.85)),
+                    ),
+                    const SizedBox(height: 14),
+                    AppButton(
+                      label: l10n.homeHeroCta,
+                      icon: Icons.arrow_forward_rounded,
+                      expand: false,
+                      onPressed: () => context.go(AppRoutes.explore),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -282,6 +343,169 @@ class _SearchBar extends StatelessWidget {
   }
 }
 
+/// Three trust signals in a single elevated strip — a quiet "you're in good
+/// company" cue right under the search bar, before any vendor content has
+/// even loaded. Uses [AppColors.bronze] rather than the gold reserved for
+/// ratings/verified badges, so this reads as its own distinct accent.
+class _TrustStatsRow extends StatelessWidget {
+  const _TrustStatsRow({required this.l10n});
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    final stats = [
+      (icon: Icons.verified_rounded, value: l10n.homeStatsVendorsValue, label: l10n.homeStatsVendorsLabel),
+      (icon: Icons.favorite_rounded, value: l10n.homeStatsCouplesValue, label: l10n.homeStatsCouplesLabel),
+      (icon: Icons.location_city_rounded, value: l10n.homeStatsCitiesValue, label: l10n.homeStatsCitiesLabel),
+    ];
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+        decoration: BoxDecoration(color: AppColors.primary, borderRadius: AppRadius.lgRadius, boxShadow: AppShadows.card),
+        child: Row(
+          children: [
+            for (final (i, stat) in stats.indexed) ...[
+              if (i != 0)
+                SizedBox(height: 40, child: VerticalDivider(width: 1, thickness: 1, color: AppColors.ivory.withValues(alpha: 0.25))),
+              Expanded(
+                child: Column(
+                  children: [
+                    Icon(stat.icon, color: AppColors.ivory, size: 22),
+                    const SizedBox(height: 6),
+                    Text(stat.value, style: context.typography.headlineSm.copyWith(color: AppColors.ivory)),
+                    const SizedBox(height: 2),
+                    Text(
+                      stat.label,
+                      style: context.typography.metadata.copyWith(color: AppColors.ivory.withValues(alpha: 0.8)),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// An asymmetric photo collage — one tall tile beside two stacked ones —
+/// deliberately different from the horizontal-scroll rows everywhere else
+/// on this page, so the eye gets a beat of visual variety before the final
+/// Cities section. Each tile is a mood, not a filter: there's no backend
+/// concept of "wedding themes" yet, so tapping one is an honest shortcut
+/// into Explore rather than a fake, unimplemented filter.
+class _InspirationSection extends StatelessWidget {
+  const _InspirationSection({required this.l10n});
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
+      child: SizedBox(
+        height: 260,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: _InspirationTile(
+                imageAsset: 'assets/images/maria-orlova-BruuboWUC_U-unsplash.jpg',
+                tag: l10n.homeInspirationPalaceTag,
+                caption: l10n.homeInspirationPalaceCaption,
+              ),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: _InspirationTile(
+                      imageAsset: 'assets/images/brittney-weng-Yy1tmz_G3uQ-unsplash.jpg',
+                      tag: l10n.homeInspirationSeasideTag,
+                      caption: l10n.homeInspirationSeasideCaption,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.md),
+                  Expanded(
+                    child: _InspirationTile(
+                      imageAsset: 'assets/images/nyana-stoica-Mhb0KT7iVjU-unsplash.jpg',
+                      tag: l10n.homeInspirationGardenTag,
+                      caption: l10n.homeInspirationGardenCaption,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _InspirationTile extends StatelessWidget {
+  const _InspirationTile({required this.imageAsset, required this.tag, required this.caption});
+
+  final String imageAsset;
+  final String tag;
+  final String caption;
+
+  @override
+  Widget build(BuildContext context) {
+    return PressableScale(
+      borderRadius: AppRadius.xlRadius,
+      onTap: () => context.go(AppRoutes.explore),
+      child: ClipRRect(
+        borderRadius: AppRadius.xlRadius,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(imageAsset, fit: BoxFit.cover),
+            DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.transparent, Colors.black.withValues(alpha: 0.7)],
+                  stops: const [0.45, 1],
+                ),
+              ),
+            ),
+            PositionedDirectional(
+              top: 10,
+              start: 10,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(color: AppColors.bronze, borderRadius: AppRadius.fullRadius),
+                child: Text(
+                  tag,
+                  style: context.typography.labelSm.copyWith(color: Colors.white, letterSpacing: 1),
+                ),
+              ),
+            ),
+            PositionedDirectional(
+              bottom: 10,
+              start: 12,
+              end: 12,
+              child: Text(
+                caption,
+                style: context.typography.titleMd.copyWith(color: Colors.white, fontFamily: AppFontFamily.latinSerif),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _CategoryRow extends StatelessWidget {
   const _CategoryRow({required this.categories});
   final List<CategoryModel> categories;
@@ -309,8 +533,16 @@ class _CategoryRow extends StatelessWidget {
                   Container(
                     width: 60,
                     height: 60,
-                    decoration: const BoxDecoration(color: AppColors.surfaceBlush, shape: BoxShape.circle),
-                    child: Icon(category.icon, color: AppColors.primary, size: 26),
+                    padding: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.surface,
+                      border: Border.all(color: AppColors.outlineRose),
+                      boxShadow: AppShadows.card,
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(category.imageAsset, fit: BoxFit.cover),
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
@@ -364,7 +596,7 @@ class _VendorRow extends StatelessWidget {
                 final isFavorite = favoriteIds.contains(vendor.id);
                 return VendorCard(
                   imageUrl: vendor.imageAsset,
-                  isAssetImage: true,
+                  isAssetImage: !isNetworkImage(vendor.imageAsset),
                   name: vendor.name,
                   city: vendor.city,
                   rating: vendor.rating,
@@ -413,17 +645,17 @@ class _CityRow extends StatelessWidget {
               width: 168,
               padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: AppColors.primary,
                 borderRadius: AppRadius.lgRadius,
-                border: Border.all(color: AppColors.outlineNeutral),
+                boxShadow: AppShadows.card,
               ),
               child: Row(
                 children: [
                   Container(
                     width: 40,
                     height: 40,
-                    decoration: const BoxDecoration(color: AppColors.surfaceBlush, shape: BoxShape.circle),
-                    child: const Icon(Icons.location_city_rounded, color: AppColors.roseGold, size: 20),
+                    decoration: BoxDecoration(color: AppColors.ivory.withValues(alpha: 0.18), shape: BoxShape.circle),
+                    child: const Icon(Icons.location_city_rounded, color: AppColors.ivory, size: 20),
                   ),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
@@ -431,10 +663,15 @@ class _CityRow extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(city.name, style: context.typography.titleMd, maxLines: 1, overflow: TextOverflow.ellipsis),
+                        Text(
+                          city.name,
+                          style: context.typography.titleMd.copyWith(color: AppColors.ivory),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         Text(
                           l10n.cityVendorCount(city.vendorCount),
-                          style: context.typography.metadata,
+                          style: context.typography.metadata.copyWith(color: AppColors.ivory.withValues(alpha: 0.8)),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -457,32 +694,31 @@ class _HomeLoadingSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin, vertical: AppSpacing.md),
+      padding: const EdgeInsets.only(top: AppSpacing.md, bottom: AppSpacing.md),
       children: [
-        SkeletonBox(height: 210, borderRadius: AppRadius.xlRadius),
-        const SizedBox(height: AppSpacing.sectionGap),
-        SkeletonBox(width: 160, height: 20),
-        const SizedBox(height: AppSpacing.md),
-        Row(
-          children: [
-            for (var i = 0; i < 4; i++) ...[
-              const SkeletonBox(width: 60, height: 60, borderRadius: BorderRadius.all(Radius.circular(30))),
-              if (i != 3) const SizedBox(width: AppSpacing.md),
-            ],
-          ],
-        ),
-        const SizedBox(height: AppSpacing.sectionGap),
-        SkeletonBox(width: 180, height: 20),
-        const SizedBox(height: AppSpacing.md),
-        SizedBox(
-          height: 260,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            physics: const NeverScrollableScrollPhysics(),
-            children: const [
-              SkeletonVendorCard(width: 210),
-              SizedBox(width: AppSpacing.md),
-              SkeletonVendorCard(width: 210),
+        const SkeletonBox(height: 270, width: double.infinity),
+        const SizedBox(height: AppSpacing.sectionGap + 32),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SkeletonBox(width: 160, height: 20),
+              const SizedBox(height: AppSpacing.sectionGap),
+              SkeletonBox(width: 180, height: 20),
+              const SizedBox(height: AppSpacing.md),
+              SizedBox(
+                height: 260,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: const [
+                    SkeletonVendorCard(width: 210),
+                    SizedBox(width: AppSpacing.md),
+                    SkeletonVendorCard(width: 210),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

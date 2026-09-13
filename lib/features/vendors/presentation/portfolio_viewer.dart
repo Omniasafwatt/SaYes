@@ -56,7 +56,7 @@ class _PortfolioViewerScreenState extends State<_PortfolioViewerScreen> {
               itemBuilder: (context, index) => InteractiveViewer(
                 minScale: 1,
                 maxScale: 4,
-                child: Center(child: AppAssetImage(path: widget.images[index], fit: BoxFit.contain)),
+                child: Center(child: AppSmartImage(path: widget.images[index], fit: BoxFit.contain)),
               ),
             ),
             SafeArea(

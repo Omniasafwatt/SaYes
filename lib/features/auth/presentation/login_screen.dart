@@ -8,6 +8,7 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/widgets/widgets.dart';
 import '../../profile/data/user_profile_repository.dart';
+import '../../vendor_listing/data/vendor_listing_repository.dart';
 import '../application/auth_controller.dart';
 import '../data/auth_models.dart';
 import 'widgets/auth_hero_scaffold.dart';
@@ -39,9 +40,27 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         );
     if (!mounted) return;
     if (success) {
-      final profile = await ref.read(userProfileRepositoryProvider).getProfile();
-      if (!mounted) return;
-      context.go(profile?.role == UserRole.vendor ? AppRoutes.vendorHome : AppRoutes.home);
+      try {
+        final profile = await ref.read(userProfileRepositoryProvider).getProfile();
+        if (!mounted) return;
+        switch (profile?.role) {
+          case UserRole.admin:
+            context.go(AppRoutes.adminHome);
+          case UserRole.vendor:
+            final hasProfile = await ref.read(vendorListingRepositoryProvider).hasProfile();
+            if (!mounted) return;
+            context.go(hasProfile ? AppRoutes.vendorHome : AppRoutes.vendorSetup);
+          case UserRole.customer:
+          case null:
+            context.go(AppRoutes.home);
+        }
+      } catch (_) {
+        // Login itself succeeded — a hiccup fetching the profile right
+        // after shouldn't strand the user on this screen with no path
+        // forward. Land on the customer home; role-specific screens will
+        // surface their own error state if something is still wrong.
+        if (mounted) context.go(AppRoutes.home);
+      }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.authLoginError)));
     }
@@ -53,7 +72,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final loading = ref.watch(authControllerProvider).isLoading;
 
     return AuthHeroScaffold(
-      imagePath: 'assets/images/bride_editorial_portrait.png',
+      imagePath: 'assets/images/andres-molina-WKXKCghIwUk-unsplash.jpg',
       title: l10n.authLoginTitle,
       subtitle: l10n.authLoginSubtitle,
       child: Form(

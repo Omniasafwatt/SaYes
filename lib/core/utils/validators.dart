@@ -37,6 +37,16 @@ abstract final class Validators {
     return (value) => (value == null || value.trim().length < 2) ? l10n.validationNameTooShort : null;
   }
 
+  static final _phoneRegex = RegExp(r'^\+?[0-9]{8,15}$');
+
+  static String? Function(String?) phone(AppLocalizations l10n) {
+    return (value) {
+      if (value == null || value.trim().isEmpty) return l10n.validationRequired;
+      if (!_phoneRegex.hasMatch(value.trim())) return l10n.validationPhoneInvalid;
+      return null;
+    };
+  }
+
   static String? Function(String?) code(AppLocalizations l10n) {
     return (value) => (value == null || value.trim().length < 4) ? l10n.validationCodeTooShort : null;
   }

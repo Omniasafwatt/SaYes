@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 /// Font families. Latin uses Playfair Display (serif, editorial) + Plus
-/// Jakarta Sans (functional). Arabic swaps in a matching premium pairing:
-/// Amiri (Naskh serif) + Cairo (geometric sans) — chosen to mirror the
-/// weight/contrast relationship of the Latin pair, per the Stitch mockups.
+/// Jakarta Sans (functional). Arabic uses a single family — Cairo —
+/// everywhere, display and body alike, per explicit request rather than
+/// pairing a separate Arabic serif with it.
 abstract final class AppFontFamily {
   static const latinSerif = 'PlayfairDisplay';
   static const latinSans = 'PlusJakartaSans';
-  static const arabicSerif = 'Amiri';
   static const arabicSans = 'Cairo';
+
+  /// Script wordmark — the "SayYes" brand lockup only (splash, home nav).
+  /// Never for body copy or Arabic (it has no Arabic glyphs).
+  static const wordmark = 'BeauRivage';
 }
 
 /// Full named type scale, exposed as a [ThemeExtension] so every screen
@@ -53,7 +56,7 @@ class AppTypographyExtension extends ThemeExtension<AppTypographyExtension> {
   final TextStyle metadata;
 
   factory AppTypographyExtension.build({required bool arabic}) {
-    final serif = arabic ? AppFontFamily.arabicSerif : AppFontFamily.latinSerif;
+    final serif = arabic ? AppFontFamily.arabicSans : AppFontFamily.latinSerif;
     final sans = arabic ? AppFontFamily.arabicSans : AppFontFamily.latinSans;
 
     TextStyle style({

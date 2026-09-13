@@ -135,7 +135,7 @@ class _BookingCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                AppAssetImage(
+                AppSmartImage(
                   path: booking.vendorImageAsset,
                   width: 56,
                   height: 56,

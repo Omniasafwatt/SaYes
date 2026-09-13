@@ -3,7 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/localization/generated/app_localizations.dart';
 import '../../../core/routing/app_router.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/widgets/widgets.dart';
 import '../application/auth_controller.dart';
@@ -20,6 +23,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   bool _sent = false;
+  String? _devToken;
 
   @override
   void dispose() {
@@ -29,10 +33,13 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
 
   Future<void> _submit(AppLocalizations l10n) async {
     if (!(_formKey.currentState?.validate() ?? false)) return;
-    final success = await ref.read(authControllerProvider.notifier).sendPasswordReset(email: _emailController.text.trim());
+    final result = await ref.read(authControllerProvider.notifier).sendPasswordReset(email: _emailController.text.trim());
     if (!mounted) return;
-    if (success) {
-      setState(() => _sent = true);
+    if (result != null) {
+      setState(() {
+        _sent = true;
+        _devToken = result.isEmpty ? null : result;
+      });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.authForgotError)));
     }
@@ -59,6 +66,32 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                     actionLabel: l10n.authEnterCodeButton,
                     onAction: () => context.push(AppRoutes.resetPassword, extra: _emailController.text.trim()),
                   ),
+                  if (_devToken != null) ...[
+                    const SizedBox(height: AppSpacing.lg),
+                    Container(
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        color: AppColors.surfaceBlush,
+                        borderRadius: AppRadius.lgRadius,
+                        border: Border.all(color: AppColors.outlineRose),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            l10n.authForgotDevTokenNotice,
+                            textAlign: TextAlign.center,
+                            style: context.typography.caption,
+                          ),
+                          const SizedBox(height: 6),
+                          SelectableText(
+                            _devToken!,
+                            textAlign: TextAlign.center,
+                            style: context.typography.titleLg.copyWith(color: AppColors.primary, letterSpacing: 2),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: AppSpacing.lg),
                   TextButton(onPressed: () => context.pop(), child: Text(l10n.authBackToLogin)),
                 ],

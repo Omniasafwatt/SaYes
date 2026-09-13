@@ -29,19 +29,35 @@ class AuthController extends Notifier<AsyncValue<void>> {
   Future<bool> register({
     required String name,
     required String email,
+    required String phone,
     required String password,
     required UserRole role,
   }) async {
     final success = await _run(
-      () => ref.read(authRepositoryProvider).register(name: name, email: email, password: password, role: role),
+      () => ref
+          .read(authRepositoryProvider)
+          .register(name: name, email: email, phone: phone, password: password, role: role),
     );
     if (success) _refreshProfile();
     return success;
   }
 
-  Future<bool> sendPasswordReset({required String email}) => _run(
-        () => ref.read(authRepositoryProvider).sendPasswordReset(email: email),
-      );
+  /// Returns, on success: `''` if a real email was sent, or the backend's
+  /// dev-mode reset token if this deployment returns one directly (no email
+  /// infrastructure configured) — the screen shows it inline when non-empty
+  /// so the flow stays usable against a test server. Returns `null` on
+  /// failure.
+  Future<String?> sendPasswordReset({required String email}) async {
+    state = const AsyncValue.loading();
+    try {
+      final devToken = await ref.read(authRepositoryProvider).sendPasswordReset(email: email);
+      state = const AsyncValue.data(null);
+      return devToken ?? '';
+    } catch (error, stackTrace) {
+      state = AsyncValue.error(error, stackTrace);
+      return null;
+    }
+  }
 
   Future<bool> resetPassword({required String email, required String code, required String newPassword}) => _run(
         () => ref.read(authRepositoryProvider).resetPassword(email: email, code: code, newPassword: newPassword),

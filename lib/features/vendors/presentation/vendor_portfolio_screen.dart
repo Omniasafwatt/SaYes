@@ -61,7 +61,7 @@ class VendorPortfolioScreen extends ConsumerWidget {
                   itemCount: detail.imageAssets.length,
                   itemBuilder: (context, index) => GestureDetector(
                     onTap: () => showPortfolioViewer(context, images: detail.imageAssets, initialIndex: index),
-                    child: AppAssetImage(path: detail.imageAssets[index], borderRadius: AppRadius.lgRadius),
+                    child: AppSmartImage(path: detail.imageAssets[index], borderRadius: AppRadius.lgRadius),
                   ),
                 ),
                 loading: () => GridView.builder(

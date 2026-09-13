@@ -6,21 +6,24 @@ import '../../auth/data/auth_models.dart';
 /// backend). [role] drives which shell (customer vs vendor) the app routes
 /// into on splash/login/register — see [UserRole].
 class UserProfile {
-  const UserProfile({required this.name, required this.email, this.phone, required this.role});
+  const UserProfile({required this.id, required this.name, required this.email, this.phone, required this.role});
 
+  final String id;
   final String name;
   final String email;
   final String? phone;
   final UserRole role;
 
-  Map<String, dynamic> toJson() => {'name': name, 'email': email, 'phone': phone, 'role': role.name};
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'email': email, 'phone': phone, 'role': role.name};
 
   factory UserProfile.fromJson(Map<String, dynamic> json) => UserProfile(
+        id: json['id'] as String? ?? '',
         name: json['name'] as String,
         email: json['email'] as String,
         phone: json['phone'] as String?,
-        // Falls back to customer for profiles cached before this field
-        // existed, rather than throwing on the very next session restore.
-        role: UserRole.values.byName(json['role'] as String? ?? UserRole.customer.name),
+        // The API returns roles upper-cased ("CUSTOMER"); lower-case before
+        // matching against the enum's own (lower-case) names. Falls back to
+        // customer if missing, rather than throwing on session restore.
+        role: UserRole.values.byName((json['role'] as String? ?? UserRole.customer.name).toLowerCase()),
       );
 }

@@ -161,7 +161,7 @@ class _BookingRequestScreenState extends ConsumerState<BookingRequestScreen> {
                     ),
                     child: Row(
                       children: [
-                        AppAssetImage(
+                        AppSmartImage(
                           path: widget.args.vendorImageAsset,
                           width: 56,
                           height: 56,

@@ -1,9 +1,8 @@
 import '../../../core/widgets/badges.dart';
+import '../../bookings/data/booking_message_codec.dart';
 
 /// A couple's booking request as the vendor sees it — the other side of a
-/// customer's own [BookingModel]. A real backend would link the two by a
-/// shared booking id; this placeholder has no such link since customer and
-/// vendor accounts here don't share any actual backend record.
+/// customer's own `BookingModel`, linked by the same real booking id.
 class VendorBookingRequest {
   const VendorBookingRequest({
     required this.id,
@@ -39,27 +38,26 @@ class VendorBookingRequest {
         createdAt: createdAt,
       );
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'customerName': customerName,
-        'packageName': packageName,
-        'packagePriceEgp': packagePriceEgp,
-        'eventDate': eventDate.toIso8601String(),
-        'guestCount': guestCount,
-        'notes': notes,
-        'status': status.name,
-        'createdAt': createdAt.toIso8601String(),
-      };
-
-  factory VendorBookingRequest.fromJson(Map<String, dynamic> json) => VendorBookingRequest(
-        id: json['id'] as String,
-        customerName: json['customerName'] as String,
-        packageName: json['packageName'] as String,
-        packagePriceEgp: json['packagePriceEgp'] as int,
-        eventDate: DateTime.parse(json['eventDate'] as String),
-        guestCount: json['guestCount'] as int,
-        notes: json['notes'] as String?,
-        status: BookingStatus.values.byName(json['status'] as String),
-        createdAt: DateTime.parse(json['createdAt'] as String),
-      );
+  /// Maps a real `/bookings/incoming` record — see `BookingModel.fromApiJson`
+  /// (the customer-side twin of this factory) for why package/price come out
+  /// of the encoded `message` field rather than their own JSON keys.
+  factory VendorBookingRequest.fromApiJson(Map<String, dynamic> json) {
+    final customer = (json['customer'] ?? json['user']) as Map<String, dynamic>?;
+    final decoded = decodeBookingMessage(
+      json['message'] as String?,
+      fallbackVendorName: '',
+      fallbackPackageName: 'Booking request',
+    );
+    return VendorBookingRequest(
+      id: json['id'] as String,
+      customerName: (customer?['name'] as String?) ?? 'Customer',
+      packageName: decoded.packageName,
+      packagePriceEgp: decoded.packagePriceEgp,
+      eventDate: DateTime.tryParse(json['eventDate'] as String? ?? '') ?? DateTime.now(),
+      guestCount: decoded.guestCount,
+      notes: decoded.notes,
+      status: bookingStatusFromApi(json['status'] as String?),
+      createdAt: DateTime.tryParse(json['createdAt'] as String? ?? '') ?? DateTime.now(),
+    );
+  }
 }

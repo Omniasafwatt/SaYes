@@ -14,6 +14,7 @@ import '../../../core/widgets/widgets.dart';
 import '../../categories/application/categories_controller.dart';
 import '../../favorites/application/favorites_controller.dart';
 import '../../vendors/application/vendor_filters_controller.dart';
+import '../../vendors/data/vendor_models.dart';
 import '../../vendors/presentation/filter_bottom_sheet.dart';
 import '../application/search_controller.dart';
 
@@ -334,7 +335,7 @@ class _SearchResultsList extends StatelessWidget {
               final isFavorite = favoriteIds.contains(vendor.id);
               return VendorCard(
                 imageUrl: vendor.imageAsset,
-                isAssetImage: true,
+                isAssetImage: !isNetworkImage(vendor.imageAsset),
                 name: vendor.name,
                 city: vendor.city,
                 rating: vendor.rating,

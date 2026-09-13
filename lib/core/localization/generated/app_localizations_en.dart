@@ -138,6 +138,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authNameHint => 'Your name';
 
   @override
+  String get authPhoneLabel => 'Phone Number';
+
+  @override
+  String get authPhoneHint => '+20 1xx xxx xxxx';
+
+  @override
   String get authConfirmPasswordLabel => 'Confirm Password';
 
   @override
@@ -187,6 +193,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get authForgotError =>
       'We couldn\'t send that reset code. Please try again.';
+
+  @override
+  String get authForgotDevTokenNotice =>
+      'Test server — no email was actually sent. Your reset code is:';
 
   @override
   String get authResetTitle => 'Set new password';
@@ -242,6 +252,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validationCodeTooShort => 'Enter the code we sent you';
+
+  @override
+  String get validationPhoneInvalid => 'Enter a valid phone number';
 
   @override
   String get showcaseTitle => 'Design System';
@@ -483,6 +496,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeHeroHeadline => 'Plan the wedding\nyou\'ve always dreamed of.';
 
   @override
+  String get homeHeroSubtitle => 'Discover trusted vendors for every detail.';
+
+  @override
+  String get homeHeroCta => 'Explore Now';
+
+  @override
   String get homeSearchHint => 'What are you looking for?';
 
   @override
@@ -498,7 +517,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeSectionCities => 'Popular Cities';
 
   @override
+  String get homeSectionInspiration => 'Wedding Inspiration';
+
+  @override
   String get homeSeeAll => 'See all';
+
+  @override
+  String get homeStatsVendorsValue => '500+';
+
+  @override
+  String get homeStatsVendorsLabel => 'Verified Vendors';
+
+  @override
+  String get homeStatsCouplesValue => '12K+';
+
+  @override
+  String get homeStatsCouplesLabel => 'Happy Couples';
+
+  @override
+  String get homeStatsCitiesValue => '6';
+
+  @override
+  String get homeStatsCitiesLabel => 'Cities';
+
+  @override
+  String get homeInspirationPalaceTag => 'PALACE';
+
+  @override
+  String get homeInspirationPalaceCaption => 'Palace Romance';
+
+  @override
+  String get homeInspirationSeasideTag => 'SEASIDE';
+
+  @override
+  String get homeInspirationSeasideCaption => 'Seaside Vows';
+
+  @override
+  String get homeInspirationGardenTag => 'GARDEN';
+
+  @override
+  String get homeInspirationGardenCaption => 'Garden Elegance';
 
   @override
   String get homeCategoryPhotographers => 'Photographers';
@@ -826,7 +884,270 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vendorProfileBusinessDetails => 'Business Details';
 
   @override
-  String get vendorProfileComingSoonBadge => 'Coming soon';
+  String vendorListingPhotoCount(int count) {
+    return '$count photos';
+  }
+
+  @override
+  String vendorListingPackageCount(int count) {
+    return '$count packages';
+  }
+
+  @override
+  String get vendorListingPortfolioTitle => 'Manage Portfolio';
+
+  @override
+  String get vendorListingPortfolioEmptyTitle => 'No photos yet';
+
+  @override
+  String get vendorListingPortfolioEmptyMessage =>
+      'Add photos so couples can see your work.';
+
+  @override
+  String get vendorListingAddPhoto => 'Add Photo';
+
+  @override
+  String get vendorListingChoosePhotoTitle => 'Choose a Photo';
+
+  @override
+  String get vendorListingRemovePhotoTitle => 'Remove this photo?';
+
+  @override
+  String get vendorListingRemovePhotoMessage =>
+      'It will no longer show on your public listing.';
+
+  @override
+  String get vendorListingRemoveAction => 'Remove';
+
+  @override
+  String get vendorListingPackagesTitle => 'Manage Packages';
+
+  @override
+  String get vendorListingPackagesEmptyTitle => 'No packages yet';
+
+  @override
+  String get vendorListingPackagesEmptyMessage =>
+      'Add a package so couples know what you offer.';
+
+  @override
+  String get vendorListingAddPackage => 'Add Package';
+
+  @override
+  String get vendorListingEditPackage => 'Edit Package';
+
+  @override
+  String get vendorListingPackageName => 'Package Name';
+
+  @override
+  String get vendorListingPackageNameHint => 'e.g. Full Day Coverage';
+
+  @override
+  String get vendorListingPackageDescription => 'Short Description';
+
+  @override
+  String get vendorListingPackageDescriptionHint =>
+      'One line couples will see first';
+
+  @override
+  String get vendorListingPackagePrice => 'Starting Price (EGP)';
+
+  @override
+  String get vendorListingPackageInclusions => 'What\'s Included';
+
+  @override
+  String get vendorListingPackageInclusionsHint => 'One item per line';
+
+  @override
+  String get vendorListingDeletePackageTitle => 'Delete this package?';
+
+  @override
+  String get vendorListingDeletePackageMessage =>
+      'It will be removed from your public listing.';
+
+  @override
+  String get vendorListingDeleteAction => 'Delete';
+
+  @override
+  String get vendorListingBusinessDetailsTitle => 'Business Details';
+
+  @override
+  String get vendorListingBusinessName => 'Business Name';
+
+  @override
+  String get vendorListingCategory => 'Category';
+
+  @override
+  String get vendorListingCity => 'City / Area';
+
+  @override
+  String get vendorListingCityHint => 'e.g. Zamalek, Cairo';
+
+  @override
+  String get vendorListingStartingPrice => 'Starting Price (EGP)';
+
+  @override
+  String get vendorListingDescription => 'About Your Business';
+
+  @override
+  String get vendorListingDescriptionHint =>
+      'Tell couples what makes your service special';
+
+  @override
+  String get vendorListingSavedMessage => 'Business details updated';
+
+  @override
+  String get vendorListingCategoryLockedNote =>
+      'Category is set when you create your profile and can\'t be changed here.';
+
+  @override
+  String get vendorListingStartingPriceNote =>
+      'This is calculated automatically from your cheapest package.';
+
+  @override
+  String get vendorSetupTitle => 'Set Up Your Vendor Profile';
+
+  @override
+  String get vendorSetupSubtitle =>
+      'Tell couples what you offer before your listing goes live.';
+
+  @override
+  String get vendorSetupCategoryHint => 'Select your category';
+
+  @override
+  String get vendorSetupCategoryRequired => 'Please choose a category';
+
+  @override
+  String get vendorSetupCity => 'City / Area';
+
+  @override
+  String get vendorSetupCityHint => 'e.g. Zamalek, Cairo';
+
+  @override
+  String get vendorSetupBio => 'About Your Business';
+
+  @override
+  String get vendorSetupBioHint =>
+      'Tell couples what makes your service special';
+
+  @override
+  String get vendorSetupSubmit => 'Create My Profile';
+
+  @override
+  String get vendorSetupError =>
+      'We couldn\'t create your profile. Please try again.';
+
+  @override
+  String get vendorProfileSubscription => 'Subscription';
+
+  @override
+  String get subscriptionMyPlanTitle => 'My Plan';
+
+  @override
+  String get subscriptionCurrentPlanBadge => 'Current Plan';
+
+  @override
+  String subscriptionTrialDaysRemaining(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days left in trial',
+      one: '1 day left in trial',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get subscriptionComparePlans => 'Compare Plans';
+
+  @override
+  String get subscriptionPlansTitle => 'Choose Your Plan';
+
+  @override
+  String get subscriptionMonthly => '/ month';
+
+  @override
+  String get subscriptionYearly => '/ year';
+
+  @override
+  String get subscriptionUnlimited => 'Unlimited';
+
+  @override
+  String subscriptionMaxPackages(String count) {
+    return '$count packages';
+  }
+
+  @override
+  String subscriptionMaxPortfolioItems(String count) {
+    return '$count portfolio photos';
+  }
+
+  @override
+  String get subscriptionSwitchAction => 'Switch to This Plan';
+
+  @override
+  String get subscriptionSwitchConfirmTitle => 'Switch plan?';
+
+  @override
+  String get subscriptionSwitchConfirmMessage =>
+      'Your new plan applies immediately.';
+
+  @override
+  String get subscriptionSwitchSuccess => 'Plan updated';
+
+  @override
+  String get subscriptionSwitchError =>
+      'We couldn\'t switch your plan. Please try again.';
+
+  @override
+  String get subscriptionHistoryTitle => 'Plan History';
+
+  @override
+  String get vendorReviewsWriteAction => 'Write a Review';
+
+  @override
+  String get vendorReviewsWriteTitle => 'Rate Your Experience';
+
+  @override
+  String get vendorReviewsRatingLabel => 'Your Rating';
+
+  @override
+  String get vendorReviewsRatingRequired => 'Please select a rating';
+
+  @override
+  String get vendorReviewsCommentLabel => 'Your Review';
+
+  @override
+  String get vendorReviewsCommentHint => 'Share how it went with this vendor';
+
+  @override
+  String get vendorReviewsSubmitAction => 'Submit Review';
+
+  @override
+  String get vendorReviewsSubmitSuccess => 'Thanks for your review!';
+
+  @override
+  String get vendorReviewsSubmitError =>
+      'We couldn\'t submit your review. Please try again.';
+
+  @override
+  String get vendorReviewsEditTitle => 'Edit Your Review';
+
+  @override
+  String get vendorReviewsEditAction => 'Edit';
+
+  @override
+  String get vendorReviewsDeleteTitle => 'Delete your review?';
+
+  @override
+  String get vendorReviewsDeleteMessage =>
+      'This permanently removes your review for this vendor.';
+
+  @override
+  String get vendorReviewsDeleteAction => 'Delete';
+
+  @override
+  String get vendorReviewsDeleteError =>
+      'We couldn\'t delete your review. Please try again.';
 
   @override
   String get notificationsTitle => 'Notifications';
@@ -840,4 +1161,493 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationsEmptyMessage =>
       'We\'ll let you know when something needs your attention.';
+
+  @override
+  String get adminPanelTitle => 'Admin Panel';
+
+  @override
+  String get adminNavDashboard => 'Dashboard';
+
+  @override
+  String get adminNavVendors => 'Vendors';
+
+  @override
+  String get adminNavUsers => 'Users';
+
+  @override
+  String get adminNavBookings => 'Bookings';
+
+  @override
+  String get adminNavReviews => 'Reviews';
+
+  @override
+  String get adminNavCategories => 'Categories';
+
+  @override
+  String get adminNavPlans => 'Subscription Plans';
+
+  @override
+  String get adminNavAnalytics => 'Analytics';
+
+  @override
+  String get adminNavSettings => 'Settings';
+
+  @override
+  String get adminDashboardWelcome => 'Platform overview';
+
+  @override
+  String get adminDashboardEmptyTitle => 'No stats yet';
+
+  @override
+  String get adminDashboardEmptyMessage =>
+      'Platform counters will show up here once there\'s data.';
+
+  @override
+  String get adminDashboardQuickLinks => 'Quick Links';
+
+  @override
+  String get adminCategoriesEmptyTitle => 'No categories yet';
+
+  @override
+  String get adminCategoriesEmptyMessage =>
+      'Add a category so vendors can list under it.';
+
+  @override
+  String get adminCategoryAddAction => 'Add Category';
+
+  @override
+  String get adminCategoryAddTitle => 'Add Category';
+
+  @override
+  String get adminCategoryEditTitle => 'Edit Category';
+
+  @override
+  String get adminCategoryNameLabel => 'Category Name';
+
+  @override
+  String get adminCategoryNameHint => 'e.g. Wedding Hall';
+
+  @override
+  String get adminCategoryActiveLabel => 'Active';
+
+  @override
+  String get adminCategoryActiveSubtitle =>
+      'Inactive categories are hidden from customers';
+
+  @override
+  String get adminCategorySaveAction => 'Save Category';
+
+  @override
+  String get adminCategorySavedMessage => 'Category saved';
+
+  @override
+  String get adminCategoryDeletedMessage => 'Category deleted';
+
+  @override
+  String get adminCategoryErrorMessage =>
+      'We couldn\'t save this category. Please try again.';
+
+  @override
+  String get adminCategoryDeleteTitle => 'Delete this category?';
+
+  @override
+  String get adminCategoryDeleteMessage =>
+      'Vendors already in it are not affected, but it will no longer accept new ones.';
+
+  @override
+  String get adminCategoryDeleteAction => 'Delete';
+
+  @override
+  String get adminCategoryInactiveBadge => 'Inactive';
+
+  @override
+  String get adminVendorsEmptyTitle => 'No vendors found';
+
+  @override
+  String get adminVendorsEmptyMessage => 'Try adjusting your filters.';
+
+  @override
+  String get adminVendorsFilterTitle => 'Filter Vendors';
+
+  @override
+  String get adminVendorsFilterCategory => 'Category';
+
+  @override
+  String get adminVendorsFilterCity => 'City';
+
+  @override
+  String get adminVendorsFilterCityHint => 'e.g. Cairo';
+
+  @override
+  String get adminVendorsFilterVerifiedOnly => 'Verified only';
+
+  @override
+  String get adminVendorsFilterAll => 'All';
+
+  @override
+  String get adminVendorsApplyFilters => 'Apply Filters';
+
+  @override
+  String get adminVendorVerifiedBadge => 'Verified';
+
+  @override
+  String get adminVendorUnverifiedBadge => 'Unverified';
+
+  @override
+  String get adminVendorVerifyAction => 'Verify Vendor';
+
+  @override
+  String get adminVendorUnverifyAction => 'Unverify Vendor';
+
+  @override
+  String get adminVendorDetailTitle => 'Vendor Details';
+
+  @override
+  String get adminVendorContactSection => 'Contact';
+
+  @override
+  String get adminVendorSubscriptionSection => 'Subscription';
+
+  @override
+  String get adminVendorNoSubscription =>
+      'No active subscription — on the free plan by default.';
+
+  @override
+  String get adminVendorAssignPlanAction => 'Assign a Plan';
+
+  @override
+  String get adminVendorCancelSubscriptionAction => 'Cancel Subscription';
+
+  @override
+  String get adminVendorCancelSubscriptionTitle => 'Cancel this subscription?';
+
+  @override
+  String get adminVendorCancelSubscriptionMessage =>
+      'The vendor will drop back to the free plan\'s limits.';
+
+  @override
+  String get adminVendorDeleteSubscriptionAction => 'Delete Record';
+
+  @override
+  String get adminVendorDeleteSubscriptionTitle =>
+      'Delete this subscription record?';
+
+  @override
+  String get adminVendorDeleteSubscriptionMessage =>
+      'Permanently removes it — this is different from cancelling, which just marks it inactive.';
+
+  @override
+  String get adminVendorSubscriptionCancelledMessage =>
+      'Subscription cancelled';
+
+  @override
+  String get adminVendorSubscriptionDeletedMessage =>
+      'Subscription record deleted';
+
+  @override
+  String get adminSelectPlanTitle => 'Select a Plan';
+
+  @override
+  String get adminUsersEmptyTitle => 'No users found';
+
+  @override
+  String get adminUsersEmptyMessage => 'Try adjusting your filters.';
+
+  @override
+  String get adminUsersFilterTitle => 'Filter Users';
+
+  @override
+  String get adminUsersSearchHint => 'Search name or email';
+
+  @override
+  String get adminUsersFilterRole => 'Role';
+
+  @override
+  String get adminUsersFilterActive => 'Active only';
+
+  @override
+  String get adminUserDetailTitle => 'User Details';
+
+  @override
+  String get adminUserRoleLabel => 'Role';
+
+  @override
+  String get adminUserActiveLabel => 'Account Active';
+
+  @override
+  String get adminUserActiveSubtitle => 'Deactivated users can\'t log in';
+
+  @override
+  String get adminUserRoleChangedMessage => 'Role updated';
+
+  @override
+  String get adminRoleCustomer => 'Customer';
+
+  @override
+  String get adminRoleVendor => 'Vendor';
+
+  @override
+  String get adminRoleAdmin => 'Admin';
+
+  @override
+  String get adminBookingsEmptyTitle => 'No bookings found';
+
+  @override
+  String get adminBookingsEmptyMessage => 'Try adjusting your filters.';
+
+  @override
+  String get adminBookingsFilterTitle => 'Filter Bookings';
+
+  @override
+  String get adminBookingsFilterStatus => 'Status';
+
+  @override
+  String get adminBookingStatusPending => 'Pending';
+
+  @override
+  String get adminBookingStatusAccepted => 'Accepted';
+
+  @override
+  String get adminBookingStatusRejected => 'Rejected';
+
+  @override
+  String get adminBookingStatusCancelled => 'Cancelled';
+
+  @override
+  String get adminBookingAcceptAction => 'Accept';
+
+  @override
+  String get adminBookingRejectAction => 'Reject';
+
+  @override
+  String get adminReviewsEmptyTitle => 'No reviews found';
+
+  @override
+  String get adminReviewsEmptyMessage => 'Try adjusting your filters.';
+
+  @override
+  String get adminReviewsFilterTitle => 'Filter Reviews';
+
+  @override
+  String get adminReviewsFilterHiddenOnly => 'Hidden only';
+
+  @override
+  String get adminReviewHiddenBadge => 'Hidden';
+
+  @override
+  String get adminReviewHideAction => 'Hide';
+
+  @override
+  String get adminReviewUnhideAction => 'Unhide';
+
+  @override
+  String get adminReviewDeleteAction => 'Delete';
+
+  @override
+  String get adminReviewDeleteTitle => 'Delete this review?';
+
+  @override
+  String get adminReviewDeleteMessage =>
+      'This permanently removes it — the customer can post a new one.';
+
+  @override
+  String get adminSettingsGeneralSection => 'Platform';
+
+  @override
+  String get adminSettingsRegistrationEnabled => 'Registration Enabled';
+
+  @override
+  String get adminSettingsRegistrationEnabledSubtitle =>
+      'Allow new accounts to sign up';
+
+  @override
+  String get adminSettingsMaintenanceMode => 'Maintenance Mode';
+
+  @override
+  String get adminSettingsMaintenanceModeSubtitle =>
+      'Blocks non-admin traffic — use with care';
+
+  @override
+  String get adminSettingsSubscriptionRequired => 'Subscription Required';
+
+  @override
+  String get adminSettingsSubscriptionRequiredSubtitle =>
+      'Vendors must be on a paid plan to list';
+
+  @override
+  String get adminSettingsFreeMode => 'Free Mode';
+
+  @override
+  String get adminSettingsFreeModeSubtitle =>
+      'Every vendor gets full access at no cost';
+
+  @override
+  String get adminSettingsTrialSection => 'Trial';
+
+  @override
+  String get adminSettingsTrialEnabled => 'Trial Enabled';
+
+  @override
+  String get adminSettingsTrialEnabledSubtitle =>
+      'New vendors get a free trial period';
+
+  @override
+  String get adminSettingsTrialDays => 'Trial Length (days)';
+
+  @override
+  String get adminSettingsVendorSection => 'Vendors';
+
+  @override
+  String get adminSettingsVendorAutoVerification => 'Auto-Verify Vendors';
+
+  @override
+  String get adminSettingsVendorAutoVerificationSubtitle =>
+      'Skip manual review on signup';
+
+  @override
+  String get adminSettingsFeaturedSearch => 'Featured Search Boost';
+
+  @override
+  String get adminSettingsFeaturedSearchSubtitle =>
+      'Featured-plan vendors rank higher in search';
+
+  @override
+  String get adminSettingsUploadSection => 'Uploads';
+
+  @override
+  String get adminSettingsUploadMaxSizeMb => 'Max Upload Size (MB)';
+
+  @override
+  String get adminSettingsUploadAllowedTypes => 'Allowed File Types';
+
+  @override
+  String get adminSettingsUploadAllowedTypesHint =>
+      'Comma-separated, e.g. image/jpeg, image/png';
+
+  @override
+  String get adminSettingsSaveAction => 'Save Settings';
+
+  @override
+  String get adminSettingsSavedMessage => 'Settings saved';
+
+  @override
+  String get adminSettingsErrorMessage =>
+      'We couldn\'t save settings. Please try again.';
+
+  @override
+  String get adminAnalyticsRevenue => 'Revenue';
+
+  @override
+  String get adminAnalyticsGrowth => 'Growth';
+
+  @override
+  String get adminAnalyticsBookings => 'Bookings';
+
+  @override
+  String get adminAnalyticsReviews => 'Reviews';
+
+  @override
+  String get adminAnalyticsConversion => 'Conversion';
+
+  @override
+  String get adminAnalyticsTopCategories => 'Top Categories';
+
+  @override
+  String get adminAnalyticsDateRange => 'Date Range';
+
+  @override
+  String get adminAnalyticsNoDataTitle => 'Nothing to show';
+
+  @override
+  String get adminAnalyticsNoData => 'No data for this range yet.';
+
+  @override
+  String get adminAnalyticsFrom => 'From';
+
+  @override
+  String get adminAnalyticsTo => 'To';
+
+  @override
+  String get adminPlansEmptyTitle => 'No plans yet';
+
+  @override
+  String get adminPlansEmptyMessage =>
+      'Add a plan for vendors to subscribe to.';
+
+  @override
+  String get adminPlanAddAction => 'Add Plan';
+
+  @override
+  String get adminPlanAddTitle => 'Add Plan';
+
+  @override
+  String get adminPlanEditTitle => 'Edit Plan';
+
+  @override
+  String get adminPlanNameLabel => 'Plan Name';
+
+  @override
+  String get adminPlanDescriptionLabel => 'Description';
+
+  @override
+  String get adminPlanPriceLabel => 'Price (EGP / month)';
+
+  @override
+  String get adminPlanPriorityLabel => 'Priority Score';
+
+  @override
+  String get adminPlanMaxPackagesLabel => 'Max Packages (blank = unlimited)';
+
+  @override
+  String get adminPlanMaxPortfolioLabel =>
+      'Max Portfolio Photos (blank = unlimited)';
+
+  @override
+  String get adminPlanFeaturedLabel => 'Featured Badge';
+
+  @override
+  String get adminPlanFeaturedSubtitle => 'Shows a gold badge on Compare Plans';
+
+  @override
+  String get adminPlanActiveLabel => 'Active';
+
+  @override
+  String get adminPlanActiveSubtitle =>
+      'Inactive plans are hidden from vendors';
+
+  @override
+  String get adminPlanSaveAction => 'Save Plan';
+
+  @override
+  String get adminPlanSavedMessage => 'Plan saved';
+
+  @override
+  String get adminPlanDeletedMessage => 'Plan deleted';
+
+  @override
+  String get adminPlanErrorMessage =>
+      'We couldn\'t save this plan. Please try again.';
+
+  @override
+  String get adminPlanDeleteTitle => 'Delete this plan?';
+
+  @override
+  String get adminPlanDeleteMessage =>
+      'Refused if any vendor is still subscribed to it.';
+
+  @override
+  String get adminPlanDeleteAction => 'Delete';
+
+  @override
+  String get adminPlanInactiveBadge => 'Inactive';
+
+  @override
+  String get adminGenericErrorMessage =>
+      'Something went wrong. Please try again.';
+
+  @override
+  String get adminApplyAction => 'Apply';
+
+  @override
+  String get adminClearFiltersAction => 'Clear';
 }

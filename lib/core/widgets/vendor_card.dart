@@ -53,19 +53,21 @@ class VendorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return PressableScale(
       onTap: onTap,
-      child: Container(
+      child: SizedBox(
         width: width,
-        decoration: BoxDecoration(color: AppColors.surface, borderRadius: AppRadius.xlRadius, boxShadow: AppShadows.card),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
-                  child: isAssetImage
-                      ? AppAssetImage(path: imageUrl, height: 150, width: width)
-                      : AppNetworkImage(url: imageUrl, height: 150, width: width),
+                  borderRadius: AppRadius.xxlRadius,
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(boxShadow: AppShadows.card),
+                    child: isAssetImage
+                        ? AppAssetImage(path: imageUrl, height: 150, width: width)
+                        : AppNetworkImage(url: imageUrl, height: 150, width: width),
+                  ),
                 ),
                 if (isFeatured && featuredLabel != null)
                   PositionedDirectional(top: 10, start: 10, child: FeaturedBadge(label: featuredLabel!)),
@@ -77,7 +79,7 @@ class VendorCard extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(AppSpacing.cardPaddingSm),
+              padding: const EdgeInsets.only(top: AppSpacing.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -126,7 +128,7 @@ class VendorCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 4),
-                      Text(startingPriceLabel, style: context.typography.price.copyWith(fontSize: 14)),
+                      Text(startingPriceLabel, style: context.typography.price.copyWith(fontSize: 14, color: AppColors.primary)),
                     ],
                   ),
                 ],

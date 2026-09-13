@@ -1,8 +1,7 @@
-import 'dart:convert';
-import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../../core/widgets/badges.dart';
+import '../../../core/network/api_client.dart';
+import '../../../core/network/pagination.dart';
+import 'booking_message_codec.dart';
 import 'booking_models.dart';
 
 /// Contract for submitting and reading back a customer's booking requests.
@@ -21,20 +20,27 @@ abstract class BookingRepository {
   });
 }
 
-/// TEMPORARY placeholder implementation — same honest pattern as the other
-/// Placeholder repositories: no backend exists yet to receive a real
-/// booking request or notify the vendor, so this only persists on-device
-/// via shared_preferences and always resolves as "pending". Replace with a
-/// real Dio-backed implementation once the API contract exists; screens
-/// reading through [BookingRepository] won't need to change.
-class PlaceholderBookingRepository implements BookingRepository {
-  static const _key = 'sayyes_bookings';
+/// Real implementation, backed by `POST /bookings` + `GET /bookings/mine`.
+/// The create endpoint only accepts `{vendorId, eventDate, message}` — see
+/// `booking_message_codec.dart` for how package/guest-count still ride
+/// along despite that.
+class ApiBookingRepository implements BookingRepository {
+  ApiBookingRepository(this._api);
+
+  final ApiClient _api;
 
   @override
   Future<List<BookingModel>> getBookings() async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getStringList(_key) ?? const [];
-    return raw.map((entry) => BookingModel.fromJson(jsonDecode(entry) as Map<String, dynamic>)).toList();
+    final data = await _api.get('/bookings/mine');
+    final parsed = parsePage(data, requestedPage: 1);
+    return [
+      for (final item in parsed.items)
+        BookingModel.fromApiJson(
+          item as Map<String, dynamic>,
+          fallbackVendorName: 'Vendor',
+          fallbackPackageName: 'Booking request',
+        ),
+    ];
   }
 
   @override
@@ -48,10 +54,21 @@ class PlaceholderBookingRepository implements BookingRepository {
     required int guestCount,
     String? notes,
   }) async {
-    await Future.delayed(const Duration(milliseconds: 900));
+    final message = encodeBookingMessage(
+      vendorName: vendorName,
+      packageName: packageName,
+      packagePriceEgp: packagePriceEgp,
+      guestCount: guestCount,
+      notes: notes,
+    );
+    final data = await _api.post('/bookings', data: {
+      'vendorId': vendorId,
+      'eventDate': eventDate.toIso8601String().split('T').first,
+      'message': message,
+    }) as Map<String, dynamic>;
 
-    final booking = BookingModel(
-      id: 'booking-${DateTime.now().microsecondsSinceEpoch}-${Random().nextInt(1 << 32)}',
+    return BookingModel(
+      id: data['id'] as String,
       vendorId: vendorId,
       vendorName: vendorName,
       vendorImageAsset: vendorImageAsset,
@@ -60,16 +77,10 @@ class PlaceholderBookingRepository implements BookingRepository {
       eventDate: eventDate,
       guestCount: guestCount,
       notes: notes,
-      status: BookingStatus.pending,
-      createdAt: DateTime.now(),
+      status: bookingStatusFromApi(data['status'] as String?),
+      createdAt: DateTime.tryParse(data['createdAt'] as String? ?? '') ?? DateTime.now(),
     );
-
-    final prefs = await SharedPreferences.getInstance();
-    final current = prefs.getStringList(_key) ?? const [];
-    await prefs.setStringList(_key, [...current, jsonEncode(booking.toJson())]);
-
-    return booking;
   }
 }
 
-final bookingRepositoryProvider = Provider<BookingRepository>((ref) => PlaceholderBookingRepository());
+final bookingRepositoryProvider = Provider<BookingRepository>((ref) => ApiBookingRepository(ref.watch(apiClientProvider)));

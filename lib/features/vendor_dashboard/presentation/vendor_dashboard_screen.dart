@@ -18,8 +18,8 @@ import '../application/vendor_dashboard_controller.dart';
 
 /// Overview screen for the signed-in vendor experience — the Dashboard tab
 /// of [VendorShell]. Recent requests here are the same data the Bookings
-/// tab manages; rating is a separate placeholder metric (see
-/// [PlaceholderVendorDashboardRepository]).
+/// tab manages; rating is a separate metric sourced from the vendor's own
+/// `GET /vendors/me` (see [ApiVendorDashboardRepository]).
 class VendorDashboardScreen extends ConsumerWidget {
   const VendorDashboardScreen({super.key});
 

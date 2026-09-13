@@ -16,6 +16,7 @@ class AppTextField extends StatefulWidget {
     this.textInputAction,
     this.errorText,
     this.maxLines = 1,
+    this.enabled = true,
   });
 
   final String? label;
@@ -29,6 +30,7 @@ class AppTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final String? errorText;
   final int maxLines;
+  final bool enabled;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -50,6 +52,7 @@ class _AppTextFieldState extends State<AppTextField> {
         ],
         TextFormField(
           controller: widget.controller,
+          enabled: widget.enabled,
           obscureText: _obscured,
           keyboardType: widget.keyboardType,
           validator: widget.validator,

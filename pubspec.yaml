@@ -56,6 +56,12 @@ dependencies:
   shared_preferences: ^2.3.3
   flutter_secure_storage: ^9.2.2
 
+  # Networking
+  dio: ^5.7.0
+
+  # Real device photo picking for vendor portfolio uploads
+  image_picker: ^1.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -82,6 +88,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/categories/
     - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -91,6 +98,12 @@ flutter:
   # https://flutter.dev/to/asset-from-package
 
   fonts:
+    # Wordmark script — brand name / logo lockup only, never body text
+    - family: BeauRivage
+      fonts:
+        - asset: assets/fonts/BeauRivage-Regular.ttf
+          weight: 400
+
     # Latin display/headline serif — matches the Stitch mockups' editorial headings
     - family: PlayfairDisplay
       fonts:
@@ -126,21 +139,7 @@ flutter:
           weight: 400
           style: italic
 
-    # Arabic display/headline serif — premium Naskh pairing for Playfair Display
-    - family: Amiri
-      fonts:
-        - asset: assets/fonts/Amiri-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Amiri-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Amiri-Italic.ttf
-          weight: 400
-          style: italic
-        - asset: assets/fonts/Amiri-BoldItalic.ttf
-          weight: 700
-          style: italic
-
-    # Arabic body/UI sans — geometric pairing for Plus Jakarta Sans
+    # Arabic — used everywhere in Arabic (display and body alike)
     - family: Cairo
       fonts:
         - asset: assets/fonts/Cairo-Variable.ttf

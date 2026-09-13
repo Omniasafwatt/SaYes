@@ -1,4 +1,15 @@
 import 'package:go_router/go_router.dart';
+import '../../features/admin/presentation/admin_analytics_screen.dart';
+import '../../features/admin/presentation/admin_bookings_screen.dart';
+import '../../features/admin/presentation/admin_categories_screen.dart';
+import '../../features/admin/presentation/admin_dashboard_screen.dart';
+import '../../features/admin/presentation/admin_reviews_screen.dart';
+import '../../features/admin/presentation/admin_settings_screen.dart';
+import '../../features/admin/presentation/admin_subscription_plans_screen.dart';
+import '../../features/admin/presentation/admin_user_detail_screen.dart';
+import '../../features/admin/presentation/admin_users_screen.dart';
+import '../../features/admin/presentation/admin_vendor_detail_screen.dart';
+import '../../features/admin/presentation/admin_vendors_screen.dart';
 import '../../features/auth/presentation/forgot_password_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
@@ -16,14 +27,21 @@ import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/subscription/presentation/compare_plans_screen.dart';
+import '../../features/subscription/presentation/my_plan_screen.dart';
 import '../../features/vendor_bookings/presentation/vendor_bookings_screen.dart';
 import '../../features/vendor_dashboard/presentation/vendor_dashboard_screen.dart';
+import '../../features/vendor_listing/presentation/vendor_business_details_screen.dart';
+import '../../features/vendor_listing/presentation/vendor_packages_manage_screen.dart';
+import '../../features/vendor_listing/presentation/vendor_portfolio_manage_screen.dart';
+import '../../features/vendor_listing/presentation/vendor_setup_screen.dart';
 import '../../features/vendor_profile/presentation/vendor_profile_screen.dart';
 import '../../features/vendors/presentation/vendor_detail_screen.dart';
 import '../../features/vendors/presentation/vendor_listing_screen.dart';
 import '../../features/vendors/presentation/vendor_packages_screen.dart';
 import '../../features/vendors/presentation/vendor_portfolio_screen.dart';
 import '../../features/vendors/presentation/vendor_reviews_screen.dart';
+import 'admin_shell.dart';
 import 'customer_shell.dart';
 import 'vendor_shell.dart';
 
@@ -53,9 +71,27 @@ abstract final class AppRoutes {
   static const bookings = '/bookings';
   static const profile = '/profile';
 
+  static const vendorSetup = '/vendor-setup';
   static const vendorHome = '/vendor-home';
   static const vendorBookings = '/vendor-bookings';
   static const vendorProfile = '/vendor-profile';
+  static const vendorPortfolioManage = '/vendor-portfolio-manage';
+  static const vendorPackagesManage = '/vendor-packages-manage';
+  static const vendorBusinessDetails = '/vendor-business-details';
+  static const subscription = '/subscription';
+  static const subscriptionPlans = '/subscription-plans';
+
+  static const adminHome = '/admin-home';
+  static const adminVendors = '/admin-vendors';
+  static const adminUsers = '/admin-users';
+  static const adminBookings = '/admin-bookings';
+  static const adminReviews = '/admin-reviews';
+  static const adminCategories = '/admin-categories';
+  static const adminSubscriptionPlans = '/admin-subscription-plans';
+  static const adminAnalytics = '/admin-analytics';
+  static const adminSettings = '/admin-settings';
+  static const adminVendorDetail = '/admin-vendor-detail';
+  static const adminUserDetail = '/admin-user-detail';
 }
 
 final appRouter = GoRouter(
@@ -125,6 +161,38 @@ final appRouter = GoRouter(
       path: AppRoutes.notifications,
       builder: (context, state) => const NotificationsScreen(),
     ),
+    GoRoute(
+      path: AppRoutes.vendorPortfolioManage,
+      builder: (context, state) => const VendorPortfolioManageScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.vendorPackagesManage,
+      builder: (context, state) => const VendorPackagesManageScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.vendorBusinessDetails,
+      builder: (context, state) => const VendorBusinessDetailsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.vendorSetup,
+      builder: (context, state) => const VendorSetupScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.subscription,
+      builder: (context, state) => const MyPlanScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.subscriptionPlans,
+      builder: (context, state) => const ComparePlansScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.adminVendorDetail,
+      builder: (context, state) => AdminVendorDetailScreen(vendorId: state.extra as String),
+    ),
+    GoRoute(
+      path: AppRoutes.adminUserDetail,
+      builder: (context, state) => AdminUserDetailScreen(userId: state.extra as String),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) => CustomerShell(navigationShell: navigationShell),
       branches: [
@@ -156,6 +224,38 @@ final appRouter = GoRouter(
         ),
         StatefulShellBranch(
           routes: [GoRoute(path: AppRoutes.vendorProfile, builder: (context, state) => const VendorProfileScreen())],
+        ),
+      ],
+    ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) => AdminShell(navigationShell: navigationShell),
+      branches: [
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminHome, builder: (context, state) => const AdminDashboardScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminVendors, builder: (context, state) => const AdminVendorsScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminUsers, builder: (context, state) => const AdminUsersScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminBookings, builder: (context, state) => const AdminBookingsScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminReviews, builder: (context, state) => const AdminReviewsScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminCategories, builder: (context, state) => const AdminCategoriesScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminSubscriptionPlans, builder: (context, state) => const AdminSubscriptionPlansScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminAnalytics, builder: (context, state) => const AdminAnalyticsScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [GoRoute(path: AppRoutes.adminSettings, builder: (context, state) => const AdminSettingsScreen())],
         ),
       ],
     ),

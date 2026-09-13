@@ -241,7 +241,11 @@ class _DesignSystemShowcaseScreenState extends ConsumerState<DesignSystemShowcas
   }
 
   Widget _buildVendorCards(AppLocalizations l10n) {
-    final images = ['wedding_hall_zamalek', 'makeup_artist_portfolio', 'bridal_dress_couture'];
+    final images = [
+      'samantha-gades-CsrwM-bHQIg-unsplash.jpg',
+      'brayden-prato-DxadoKT8AdE-unsplash.jpg',
+      'hsin-hsiung-chen-oA-ow8TtbPY-unsplash.jpg',
+    ];
     return SizedBox(
       height: 260,
       child: ListView.separated(
@@ -251,7 +255,7 @@ class _DesignSystemShowcaseScreenState extends ConsumerState<DesignSystemShowcas
         separatorBuilder: (context, index) => const SizedBox(width: AppSpacing.md),
         itemBuilder: (context, i) {
           return VendorCard(
-            imageUrl: 'assets/images/${images[i]}.png',
+            imageUrl: 'assets/images/${images[i]}',
             isAssetImage: true,
             name: l10n.vendorSampleName,
             city: l10n.vendorSampleCity,

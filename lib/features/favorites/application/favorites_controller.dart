@@ -19,10 +19,27 @@ class FavoritesController extends Notifier<Set<String>> {
   }
 
   void toggle(String vendorId) {
+    final repository = ref.read(favoritesRepositoryProvider);
+    final wasFavorite = state.contains(vendorId);
     final next = {...state};
-    if (!next.remove(vendorId)) next.add(vendorId);
+    if (wasFavorite) {
+      next.remove(vendorId);
+    } else {
+      next.add(vendorId);
+    }
     state = next;
-    ref.read(favoritesRepositoryProvider).setFavoriteIds(next);
+
+    final future = wasFavorite ? repository.removeFavorite(vendorId) : repository.addFavorite(vendorId);
+    future.catchError((Object _) {
+      // Roll back on failure so the heart icon never lies about server state.
+      final reverted = {...state};
+      if (wasFavorite) {
+        reverted.add(vendorId);
+      } else {
+        reverted.remove(vendorId);
+      }
+      state = reverted;
+    });
   }
 
   bool isFavorite(String vendorId) => state.contains(vendorId);

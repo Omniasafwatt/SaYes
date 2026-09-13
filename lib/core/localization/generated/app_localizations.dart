@@ -332,6 +332,18 @@ abstract class AppLocalizations {
   /// **'Your name'**
   String get authNameHint;
 
+  /// No description provided for @authPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get authPhoneLabel;
+
+  /// No description provided for @authPhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'+20 1xx xxx xxxx'**
+  String get authPhoneHint;
+
   /// No description provided for @authConfirmPasswordLabel.
   ///
   /// In en, this message translates to:
@@ -421,6 +433,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t send that reset code. Please try again.'**
   String get authForgotError;
+
+  /// No description provided for @authForgotDevTokenNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Test server — no email was actually sent. Your reset code is:'**
+  String get authForgotDevTokenNotice;
 
   /// No description provided for @authResetTitle.
   ///
@@ -523,6 +541,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter the code we sent you'**
   String get validationCodeTooShort;
+
+  /// No description provided for @validationPhoneInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get validationPhoneInvalid;
 
   /// No description provided for @showcaseTitle.
   ///
@@ -986,6 +1010,18 @@ abstract class AppLocalizations {
   /// **'Plan the wedding\nyou\'ve always dreamed of.'**
   String get homeHeroHeadline;
 
+  /// No description provided for @homeHeroSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover trusted vendors for every detail.'**
+  String get homeHeroSubtitle;
+
+  /// No description provided for @homeHeroCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore Now'**
+  String get homeHeroCta;
+
   /// No description provided for @homeSearchHint.
   ///
   /// In en, this message translates to:
@@ -1016,11 +1052,89 @@ abstract class AppLocalizations {
   /// **'Popular Cities'**
   String get homeSectionCities;
 
+  /// No description provided for @homeSectionInspiration.
+  ///
+  /// In en, this message translates to:
+  /// **'Wedding Inspiration'**
+  String get homeSectionInspiration;
+
   /// No description provided for @homeSeeAll.
   ///
   /// In en, this message translates to:
   /// **'See all'**
   String get homeSeeAll;
+
+  /// No description provided for @homeStatsVendorsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'500+'**
+  String get homeStatsVendorsValue;
+
+  /// No description provided for @homeStatsVendorsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Vendors'**
+  String get homeStatsVendorsLabel;
+
+  /// No description provided for @homeStatsCouplesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'12K+'**
+  String get homeStatsCouplesValue;
+
+  /// No description provided for @homeStatsCouplesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Happy Couples'**
+  String get homeStatsCouplesLabel;
+
+  /// No description provided for @homeStatsCitiesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'6'**
+  String get homeStatsCitiesValue;
+
+  /// No description provided for @homeStatsCitiesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cities'**
+  String get homeStatsCitiesLabel;
+
+  /// No description provided for @homeInspirationPalaceTag.
+  ///
+  /// In en, this message translates to:
+  /// **'PALACE'**
+  String get homeInspirationPalaceTag;
+
+  /// No description provided for @homeInspirationPalaceCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Palace Romance'**
+  String get homeInspirationPalaceCaption;
+
+  /// No description provided for @homeInspirationSeasideTag.
+  ///
+  /// In en, this message translates to:
+  /// **'SEASIDE'**
+  String get homeInspirationSeasideTag;
+
+  /// No description provided for @homeInspirationSeasideCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Seaside Vows'**
+  String get homeInspirationSeasideCaption;
+
+  /// No description provided for @homeInspirationGardenTag.
+  ///
+  /// In en, this message translates to:
+  /// **'GARDEN'**
+  String get homeInspirationGardenTag;
+
+  /// No description provided for @homeInspirationGardenCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Garden Elegance'**
+  String get homeInspirationGardenCaption;
 
   /// No description provided for @homeCategoryPhotographers.
   ///
@@ -1616,11 +1730,473 @@ abstract class AppLocalizations {
   /// **'Business Details'**
   String get vendorProfileBusinessDetails;
 
-  /// No description provided for @vendorProfileComingSoonBadge.
+  /// No description provided for @vendorListingPhotoCount.
   ///
   /// In en, this message translates to:
-  /// **'Coming soon'**
-  String get vendorProfileComingSoonBadge;
+  /// **'{count} photos'**
+  String vendorListingPhotoCount(int count);
+
+  /// No description provided for @vendorListingPackageCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} packages'**
+  String vendorListingPackageCount(int count);
+
+  /// No description provided for @vendorListingPortfolioTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Portfolio'**
+  String get vendorListingPortfolioTitle;
+
+  /// No description provided for @vendorListingPortfolioEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No photos yet'**
+  String get vendorListingPortfolioEmptyTitle;
+
+  /// No description provided for @vendorListingPortfolioEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add photos so couples can see your work.'**
+  String get vendorListingPortfolioEmptyMessage;
+
+  /// No description provided for @vendorListingAddPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Photo'**
+  String get vendorListingAddPhoto;
+
+  /// No description provided for @vendorListingChoosePhotoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a Photo'**
+  String get vendorListingChoosePhotoTitle;
+
+  /// No description provided for @vendorListingRemovePhotoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this photo?'**
+  String get vendorListingRemovePhotoTitle;
+
+  /// No description provided for @vendorListingRemovePhotoMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It will no longer show on your public listing.'**
+  String get vendorListingRemovePhotoMessage;
+
+  /// No description provided for @vendorListingRemoveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get vendorListingRemoveAction;
+
+  /// No description provided for @vendorListingPackagesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Packages'**
+  String get vendorListingPackagesTitle;
+
+  /// No description provided for @vendorListingPackagesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No packages yet'**
+  String get vendorListingPackagesEmptyTitle;
+
+  /// No description provided for @vendorListingPackagesEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a package so couples know what you offer.'**
+  String get vendorListingPackagesEmptyMessage;
+
+  /// No description provided for @vendorListingAddPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Package'**
+  String get vendorListingAddPackage;
+
+  /// No description provided for @vendorListingEditPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Package'**
+  String get vendorListingEditPackage;
+
+  /// No description provided for @vendorListingPackageName.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Name'**
+  String get vendorListingPackageName;
+
+  /// No description provided for @vendorListingPackageNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Full Day Coverage'**
+  String get vendorListingPackageNameHint;
+
+  /// No description provided for @vendorListingPackageDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Short Description'**
+  String get vendorListingPackageDescription;
+
+  /// No description provided for @vendorListingPackageDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'One line couples will see first'**
+  String get vendorListingPackageDescriptionHint;
+
+  /// No description provided for @vendorListingPackagePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting Price (EGP)'**
+  String get vendorListingPackagePrice;
+
+  /// No description provided for @vendorListingPackageInclusions.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s Included'**
+  String get vendorListingPackageInclusions;
+
+  /// No description provided for @vendorListingPackageInclusionsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'One item per line'**
+  String get vendorListingPackageInclusionsHint;
+
+  /// No description provided for @vendorListingDeletePackageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this package?'**
+  String get vendorListingDeletePackageTitle;
+
+  /// No description provided for @vendorListingDeletePackageMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be removed from your public listing.'**
+  String get vendorListingDeletePackageMessage;
+
+  /// No description provided for @vendorListingDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get vendorListingDeleteAction;
+
+  /// No description provided for @vendorListingBusinessDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Details'**
+  String get vendorListingBusinessDetailsTitle;
+
+  /// No description provided for @vendorListingBusinessName.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Name'**
+  String get vendorListingBusinessName;
+
+  /// No description provided for @vendorListingCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get vendorListingCategory;
+
+  /// No description provided for @vendorListingCity.
+  ///
+  /// In en, this message translates to:
+  /// **'City / Area'**
+  String get vendorListingCity;
+
+  /// No description provided for @vendorListingCityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Zamalek, Cairo'**
+  String get vendorListingCityHint;
+
+  /// No description provided for @vendorListingStartingPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting Price (EGP)'**
+  String get vendorListingStartingPrice;
+
+  /// No description provided for @vendorListingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'About Your Business'**
+  String get vendorListingDescription;
+
+  /// No description provided for @vendorListingDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell couples what makes your service special'**
+  String get vendorListingDescriptionHint;
+
+  /// No description provided for @vendorListingSavedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Business details updated'**
+  String get vendorListingSavedMessage;
+
+  /// No description provided for @vendorListingCategoryLockedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Category is set when you create your profile and can\'t be changed here.'**
+  String get vendorListingCategoryLockedNote;
+
+  /// No description provided for @vendorListingStartingPriceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is calculated automatically from your cheapest package.'**
+  String get vendorListingStartingPriceNote;
+
+  /// No description provided for @vendorSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Up Your Vendor Profile'**
+  String get vendorSetupTitle;
+
+  /// No description provided for @vendorSetupSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell couples what you offer before your listing goes live.'**
+  String get vendorSetupSubtitle;
+
+  /// No description provided for @vendorSetupCategoryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your category'**
+  String get vendorSetupCategoryHint;
+
+  /// No description provided for @vendorSetupCategoryRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a category'**
+  String get vendorSetupCategoryRequired;
+
+  /// No description provided for @vendorSetupCity.
+  ///
+  /// In en, this message translates to:
+  /// **'City / Area'**
+  String get vendorSetupCity;
+
+  /// No description provided for @vendorSetupCityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Zamalek, Cairo'**
+  String get vendorSetupCityHint;
+
+  /// No description provided for @vendorSetupBio.
+  ///
+  /// In en, this message translates to:
+  /// **'About Your Business'**
+  String get vendorSetupBio;
+
+  /// No description provided for @vendorSetupBioHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell couples what makes your service special'**
+  String get vendorSetupBioHint;
+
+  /// No description provided for @vendorSetupSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Create My Profile'**
+  String get vendorSetupSubmit;
+
+  /// No description provided for @vendorSetupError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t create your profile. Please try again.'**
+  String get vendorSetupError;
+
+  /// No description provided for @vendorProfileSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get vendorProfileSubscription;
+
+  /// No description provided for @subscriptionMyPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Plan'**
+  String get subscriptionMyPlanTitle;
+
+  /// No description provided for @subscriptionCurrentPlanBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Plan'**
+  String get subscriptionCurrentPlanBadge;
+
+  /// No description provided for @subscriptionTrialDaysRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day left in trial} other{{count} days left in trial}}'**
+  String subscriptionTrialDaysRemaining(int count);
+
+  /// No description provided for @subscriptionComparePlans.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare Plans'**
+  String get subscriptionComparePlans;
+
+  /// No description provided for @subscriptionPlansTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Your Plan'**
+  String get subscriptionPlansTitle;
+
+  /// No description provided for @subscriptionMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'/ month'**
+  String get subscriptionMonthly;
+
+  /// No description provided for @subscriptionYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'/ year'**
+  String get subscriptionYearly;
+
+  /// No description provided for @subscriptionUnlimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited'**
+  String get subscriptionUnlimited;
+
+  /// No description provided for @subscriptionMaxPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} packages'**
+  String subscriptionMaxPackages(String count);
+
+  /// No description provided for @subscriptionMaxPortfolioItems.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} portfolio photos'**
+  String subscriptionMaxPortfolioItems(String count);
+
+  /// No description provided for @subscriptionSwitchAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to This Plan'**
+  String get subscriptionSwitchAction;
+
+  /// No description provided for @subscriptionSwitchConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch plan?'**
+  String get subscriptionSwitchConfirmTitle;
+
+  /// No description provided for @subscriptionSwitchConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your new plan applies immediately.'**
+  String get subscriptionSwitchConfirmMessage;
+
+  /// No description provided for @subscriptionSwitchSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan updated'**
+  String get subscriptionSwitchSuccess;
+
+  /// No description provided for @subscriptionSwitchError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t switch your plan. Please try again.'**
+  String get subscriptionSwitchError;
+
+  /// No description provided for @subscriptionHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan History'**
+  String get subscriptionHistoryTitle;
+
+  /// No description provided for @vendorReviewsWriteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a Review'**
+  String get vendorReviewsWriteAction;
+
+  /// No description provided for @vendorReviewsWriteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Your Experience'**
+  String get vendorReviewsWriteTitle;
+
+  /// No description provided for @vendorReviewsRatingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rating'**
+  String get vendorReviewsRatingLabel;
+
+  /// No description provided for @vendorReviewsRatingRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a rating'**
+  String get vendorReviewsRatingRequired;
+
+  /// No description provided for @vendorReviewsCommentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Review'**
+  String get vendorReviewsCommentLabel;
+
+  /// No description provided for @vendorReviewsCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share how it went with this vendor'**
+  String get vendorReviewsCommentHint;
+
+  /// No description provided for @vendorReviewsSubmitAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Review'**
+  String get vendorReviewsSubmitAction;
+
+  /// No description provided for @vendorReviewsSubmitSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks for your review!'**
+  String get vendorReviewsSubmitSuccess;
+
+  /// No description provided for @vendorReviewsSubmitError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t submit your review. Please try again.'**
+  String get vendorReviewsSubmitError;
+
+  /// No description provided for @vendorReviewsEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Your Review'**
+  String get vendorReviewsEditTitle;
+
+  /// No description provided for @vendorReviewsEditAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get vendorReviewsEditAction;
+
+  /// No description provided for @vendorReviewsDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your review?'**
+  String get vendorReviewsDeleteTitle;
+
+  /// No description provided for @vendorReviewsDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently removes your review for this vendor.'**
+  String get vendorReviewsDeleteMessage;
+
+  /// No description provided for @vendorReviewsDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get vendorReviewsDeleteAction;
+
+  /// No description provided for @vendorReviewsDeleteError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t delete your review. Please try again.'**
+  String get vendorReviewsDeleteError;
 
   /// No description provided for @notificationsTitle.
   ///
@@ -1645,6 +2221,930 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We\'ll let you know when something needs your attention.'**
   String get notificationsEmptyMessage;
+
+  /// No description provided for @adminPanelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin Panel'**
+  String get adminPanelTitle;
+
+  /// No description provided for @adminNavDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get adminNavDashboard;
+
+  /// No description provided for @adminNavVendors.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendors'**
+  String get adminNavVendors;
+
+  /// No description provided for @adminNavUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get adminNavUsers;
+
+  /// No description provided for @adminNavBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get adminNavBookings;
+
+  /// No description provided for @adminNavReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get adminNavReviews;
+
+  /// No description provided for @adminNavCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get adminNavCategories;
+
+  /// No description provided for @adminNavPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription Plans'**
+  String get adminNavPlans;
+
+  /// No description provided for @adminNavAnalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get adminNavAnalytics;
+
+  /// No description provided for @adminNavSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get adminNavSettings;
+
+  /// No description provided for @adminDashboardWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform overview'**
+  String get adminDashboardWelcome;
+
+  /// No description provided for @adminDashboardEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No stats yet'**
+  String get adminDashboardEmptyTitle;
+
+  /// No description provided for @adminDashboardEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform counters will show up here once there\'s data.'**
+  String get adminDashboardEmptyMessage;
+
+  /// No description provided for @adminDashboardQuickLinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Links'**
+  String get adminDashboardQuickLinks;
+
+  /// No description provided for @adminCategoriesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No categories yet'**
+  String get adminCategoriesEmptyTitle;
+
+  /// No description provided for @adminCategoriesEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a category so vendors can list under it.'**
+  String get adminCategoriesEmptyMessage;
+
+  /// No description provided for @adminCategoryAddAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Category'**
+  String get adminCategoryAddAction;
+
+  /// No description provided for @adminCategoryAddTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Category'**
+  String get adminCategoryAddTitle;
+
+  /// No description provided for @adminCategoryEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Category'**
+  String get adminCategoryEditTitle;
+
+  /// No description provided for @adminCategoryNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Name'**
+  String get adminCategoryNameLabel;
+
+  /// No description provided for @adminCategoryNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Wedding Hall'**
+  String get adminCategoryNameHint;
+
+  /// No description provided for @adminCategoryActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get adminCategoryActiveLabel;
+
+  /// No description provided for @adminCategoryActiveSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive categories are hidden from customers'**
+  String get adminCategoryActiveSubtitle;
+
+  /// No description provided for @adminCategorySaveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Category'**
+  String get adminCategorySaveAction;
+
+  /// No description provided for @adminCategorySavedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Category saved'**
+  String get adminCategorySavedMessage;
+
+  /// No description provided for @adminCategoryDeletedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Category deleted'**
+  String get adminCategoryDeletedMessage;
+
+  /// No description provided for @adminCategoryErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t save this category. Please try again.'**
+  String get adminCategoryErrorMessage;
+
+  /// No description provided for @adminCategoryDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this category?'**
+  String get adminCategoryDeleteTitle;
+
+  /// No description provided for @adminCategoryDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendors already in it are not affected, but it will no longer accept new ones.'**
+  String get adminCategoryDeleteMessage;
+
+  /// No description provided for @adminCategoryDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get adminCategoryDeleteAction;
+
+  /// No description provided for @adminCategoryInactiveBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get adminCategoryInactiveBadge;
+
+  /// No description provided for @adminVendorsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vendors found'**
+  String get adminVendorsEmptyTitle;
+
+  /// No description provided for @adminVendorsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your filters.'**
+  String get adminVendorsEmptyMessage;
+
+  /// No description provided for @adminVendorsFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Vendors'**
+  String get adminVendorsFilterTitle;
+
+  /// No description provided for @adminVendorsFilterCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get adminVendorsFilterCategory;
+
+  /// No description provided for @adminVendorsFilterCity.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get adminVendorsFilterCity;
+
+  /// No description provided for @adminVendorsFilterCityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Cairo'**
+  String get adminVendorsFilterCityHint;
+
+  /// No description provided for @adminVendorsFilterVerifiedOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified only'**
+  String get adminVendorsFilterVerifiedOnly;
+
+  /// No description provided for @adminVendorsFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get adminVendorsFilterAll;
+
+  /// No description provided for @adminVendorsApplyFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filters'**
+  String get adminVendorsApplyFilters;
+
+  /// No description provided for @adminVendorVerifiedBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get adminVendorVerifiedBadge;
+
+  /// No description provided for @adminVendorUnverifiedBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Unverified'**
+  String get adminVendorUnverifiedBadge;
+
+  /// No description provided for @adminVendorVerifyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Vendor'**
+  String get adminVendorVerifyAction;
+
+  /// No description provided for @adminVendorUnverifyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Unverify Vendor'**
+  String get adminVendorUnverifyAction;
+
+  /// No description provided for @adminVendorDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor Details'**
+  String get adminVendorDetailTitle;
+
+  /// No description provided for @adminVendorContactSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get adminVendorContactSection;
+
+  /// No description provided for @adminVendorSubscriptionSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get adminVendorSubscriptionSection;
+
+  /// No description provided for @adminVendorNoSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'No active subscription — on the free plan by default.'**
+  String get adminVendorNoSubscription;
+
+  /// No description provided for @adminVendorAssignPlanAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign a Plan'**
+  String get adminVendorAssignPlanAction;
+
+  /// No description provided for @adminVendorCancelSubscriptionAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Subscription'**
+  String get adminVendorCancelSubscriptionAction;
+
+  /// No description provided for @adminVendorCancelSubscriptionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this subscription?'**
+  String get adminVendorCancelSubscriptionTitle;
+
+  /// No description provided for @adminVendorCancelSubscriptionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The vendor will drop back to the free plan\'s limits.'**
+  String get adminVendorCancelSubscriptionMessage;
+
+  /// No description provided for @adminVendorDeleteSubscriptionAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Record'**
+  String get adminVendorDeleteSubscriptionAction;
+
+  /// No description provided for @adminVendorDeleteSubscriptionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this subscription record?'**
+  String get adminVendorDeleteSubscriptionTitle;
+
+  /// No description provided for @adminVendorDeleteSubscriptionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Permanently removes it — this is different from cancelling, which just marks it inactive.'**
+  String get adminVendorDeleteSubscriptionMessage;
+
+  /// No description provided for @adminVendorSubscriptionCancelledMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription cancelled'**
+  String get adminVendorSubscriptionCancelledMessage;
+
+  /// No description provided for @adminVendorSubscriptionDeletedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription record deleted'**
+  String get adminVendorSubscriptionDeletedMessage;
+
+  /// No description provided for @adminSelectPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a Plan'**
+  String get adminSelectPlanTitle;
+
+  /// No description provided for @adminUsersEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No users found'**
+  String get adminUsersEmptyTitle;
+
+  /// No description provided for @adminUsersEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your filters.'**
+  String get adminUsersEmptyMessage;
+
+  /// No description provided for @adminUsersFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Users'**
+  String get adminUsersFilterTitle;
+
+  /// No description provided for @adminUsersSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search name or email'**
+  String get adminUsersSearchHint;
+
+  /// No description provided for @adminUsersFilterRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get adminUsersFilterRole;
+
+  /// No description provided for @adminUsersFilterActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active only'**
+  String get adminUsersFilterActive;
+
+  /// No description provided for @adminUserDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'User Details'**
+  String get adminUserDetailTitle;
+
+  /// No description provided for @adminUserRoleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get adminUserRoleLabel;
+
+  /// No description provided for @adminUserActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Active'**
+  String get adminUserActiveLabel;
+
+  /// No description provided for @adminUserActiveSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivated users can\'t log in'**
+  String get adminUserActiveSubtitle;
+
+  /// No description provided for @adminUserRoleChangedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Role updated'**
+  String get adminUserRoleChangedMessage;
+
+  /// No description provided for @adminRoleCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer'**
+  String get adminRoleCustomer;
+
+  /// No description provided for @adminRoleVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor'**
+  String get adminRoleVendor;
+
+  /// No description provided for @adminRoleAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get adminRoleAdmin;
+
+  /// No description provided for @adminBookingsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No bookings found'**
+  String get adminBookingsEmptyTitle;
+
+  /// No description provided for @adminBookingsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your filters.'**
+  String get adminBookingsEmptyMessage;
+
+  /// No description provided for @adminBookingsFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Bookings'**
+  String get adminBookingsFilterTitle;
+
+  /// No description provided for @adminBookingsFilterStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get adminBookingsFilterStatus;
+
+  /// No description provided for @adminBookingStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get adminBookingStatusPending;
+
+  /// No description provided for @adminBookingStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get adminBookingStatusAccepted;
+
+  /// No description provided for @adminBookingStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get adminBookingStatusRejected;
+
+  /// No description provided for @adminBookingStatusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get adminBookingStatusCancelled;
+
+  /// No description provided for @adminBookingAcceptAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get adminBookingAcceptAction;
+
+  /// No description provided for @adminBookingRejectAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get adminBookingRejectAction;
+
+  /// No description provided for @adminReviewsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews found'**
+  String get adminReviewsEmptyTitle;
+
+  /// No description provided for @adminReviewsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting your filters.'**
+  String get adminReviewsEmptyMessage;
+
+  /// No description provided for @adminReviewsFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter Reviews'**
+  String get adminReviewsFilterTitle;
+
+  /// No description provided for @adminReviewsFilterHiddenOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden only'**
+  String get adminReviewsFilterHiddenOnly;
+
+  /// No description provided for @adminReviewHiddenBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get adminReviewHiddenBadge;
+
+  /// No description provided for @adminReviewHideAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get adminReviewHideAction;
+
+  /// No description provided for @adminReviewUnhideAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Unhide'**
+  String get adminReviewUnhideAction;
+
+  /// No description provided for @adminReviewDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get adminReviewDeleteAction;
+
+  /// No description provided for @adminReviewDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this review?'**
+  String get adminReviewDeleteTitle;
+
+  /// No description provided for @adminReviewDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently removes it — the customer can post a new one.'**
+  String get adminReviewDeleteMessage;
+
+  /// No description provided for @adminSettingsGeneralSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform'**
+  String get adminSettingsGeneralSection;
+
+  /// No description provided for @adminSettingsRegistrationEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration Enabled'**
+  String get adminSettingsRegistrationEnabled;
+
+  /// No description provided for @adminSettingsRegistrationEnabledSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow new accounts to sign up'**
+  String get adminSettingsRegistrationEnabledSubtitle;
+
+  /// No description provided for @adminSettingsMaintenanceMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintenance Mode'**
+  String get adminSettingsMaintenanceMode;
+
+  /// No description provided for @adminSettingsMaintenanceModeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocks non-admin traffic — use with care'**
+  String get adminSettingsMaintenanceModeSubtitle;
+
+  /// No description provided for @adminSettingsSubscriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription Required'**
+  String get adminSettingsSubscriptionRequired;
+
+  /// No description provided for @adminSettingsSubscriptionRequiredSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendors must be on a paid plan to list'**
+  String get adminSettingsSubscriptionRequiredSubtitle;
+
+  /// No description provided for @adminSettingsFreeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Mode'**
+  String get adminSettingsFreeMode;
+
+  /// No description provided for @adminSettingsFreeModeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every vendor gets full access at no cost'**
+  String get adminSettingsFreeModeSubtitle;
+
+  /// No description provided for @adminSettingsTrialSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial'**
+  String get adminSettingsTrialSection;
+
+  /// No description provided for @adminSettingsTrialEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial Enabled'**
+  String get adminSettingsTrialEnabled;
+
+  /// No description provided for @adminSettingsTrialEnabledSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New vendors get a free trial period'**
+  String get adminSettingsTrialEnabledSubtitle;
+
+  /// No description provided for @adminSettingsTrialDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial Length (days)'**
+  String get adminSettingsTrialDays;
+
+  /// No description provided for @adminSettingsVendorSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendors'**
+  String get adminSettingsVendorSection;
+
+  /// No description provided for @adminSettingsVendorAutoVerification.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-Verify Vendors'**
+  String get adminSettingsVendorAutoVerification;
+
+  /// No description provided for @adminSettingsVendorAutoVerificationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip manual review on signup'**
+  String get adminSettingsVendorAutoVerificationSubtitle;
+
+  /// No description provided for @adminSettingsFeaturedSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Search Boost'**
+  String get adminSettingsFeaturedSearch;
+
+  /// No description provided for @adminSettingsFeaturedSearchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured-plan vendors rank higher in search'**
+  String get adminSettingsFeaturedSearchSubtitle;
+
+  /// No description provided for @adminSettingsUploadSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploads'**
+  String get adminSettingsUploadSection;
+
+  /// No description provided for @adminSettingsUploadMaxSizeMb.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Upload Size (MB)'**
+  String get adminSettingsUploadMaxSizeMb;
+
+  /// No description provided for @adminSettingsUploadAllowedTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'Allowed File Types'**
+  String get adminSettingsUploadAllowedTypes;
+
+  /// No description provided for @adminSettingsUploadAllowedTypesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Comma-separated, e.g. image/jpeg, image/png'**
+  String get adminSettingsUploadAllowedTypesHint;
+
+  /// No description provided for @adminSettingsSaveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Settings'**
+  String get adminSettingsSaveAction;
+
+  /// No description provided for @adminSettingsSavedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings saved'**
+  String get adminSettingsSavedMessage;
+
+  /// No description provided for @adminSettingsErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t save settings. Please try again.'**
+  String get adminSettingsErrorMessage;
+
+  /// No description provided for @adminAnalyticsRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue'**
+  String get adminAnalyticsRevenue;
+
+  /// No description provided for @adminAnalyticsGrowth.
+  ///
+  /// In en, this message translates to:
+  /// **'Growth'**
+  String get adminAnalyticsGrowth;
+
+  /// No description provided for @adminAnalyticsBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get adminAnalyticsBookings;
+
+  /// No description provided for @adminAnalyticsReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get adminAnalyticsReviews;
+
+  /// No description provided for @adminAnalyticsConversion.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversion'**
+  String get adminAnalyticsConversion;
+
+  /// No description provided for @adminAnalyticsTopCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Categories'**
+  String get adminAnalyticsTopCategories;
+
+  /// No description provided for @adminAnalyticsDateRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Date Range'**
+  String get adminAnalyticsDateRange;
+
+  /// No description provided for @adminAnalyticsNoDataTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to show'**
+  String get adminAnalyticsNoDataTitle;
+
+  /// No description provided for @adminAnalyticsNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data for this range yet.'**
+  String get adminAnalyticsNoData;
+
+  /// No description provided for @adminAnalyticsFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get adminAnalyticsFrom;
+
+  /// No description provided for @adminAnalyticsTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get adminAnalyticsTo;
+
+  /// No description provided for @adminPlansEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No plans yet'**
+  String get adminPlansEmptyTitle;
+
+  /// No description provided for @adminPlansEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a plan for vendors to subscribe to.'**
+  String get adminPlansEmptyMessage;
+
+  /// No description provided for @adminPlanAddAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Plan'**
+  String get adminPlanAddAction;
+
+  /// No description provided for @adminPlanAddTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Plan'**
+  String get adminPlanAddTitle;
+
+  /// No description provided for @adminPlanEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Plan'**
+  String get adminPlanEditTitle;
+
+  /// No description provided for @adminPlanNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan Name'**
+  String get adminPlanNameLabel;
+
+  /// No description provided for @adminPlanDescriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get adminPlanDescriptionLabel;
+
+  /// No description provided for @adminPlanPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Price (EGP / month)'**
+  String get adminPlanPriceLabel;
+
+  /// No description provided for @adminPlanPriorityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority Score'**
+  String get adminPlanPriorityLabel;
+
+  /// No description provided for @adminPlanMaxPackagesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Packages (blank = unlimited)'**
+  String get adminPlanMaxPackagesLabel;
+
+  /// No description provided for @adminPlanMaxPortfolioLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Portfolio Photos (blank = unlimited)'**
+  String get adminPlanMaxPortfolioLabel;
+
+  /// No description provided for @adminPlanFeaturedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Badge'**
+  String get adminPlanFeaturedLabel;
+
+  /// No description provided for @adminPlanFeaturedSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows a gold badge on Compare Plans'**
+  String get adminPlanFeaturedSubtitle;
+
+  /// No description provided for @adminPlanActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get adminPlanActiveLabel;
+
+  /// No description provided for @adminPlanActiveSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive plans are hidden from vendors'**
+  String get adminPlanActiveSubtitle;
+
+  /// No description provided for @adminPlanSaveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Plan'**
+  String get adminPlanSaveAction;
+
+  /// No description provided for @adminPlanSavedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan saved'**
+  String get adminPlanSavedMessage;
+
+  /// No description provided for @adminPlanDeletedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan deleted'**
+  String get adminPlanDeletedMessage;
+
+  /// No description provided for @adminPlanErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t save this plan. Please try again.'**
+  String get adminPlanErrorMessage;
+
+  /// No description provided for @adminPlanDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this plan?'**
+  String get adminPlanDeleteTitle;
+
+  /// No description provided for @adminPlanDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Refused if any vendor is still subscribed to it.'**
+  String get adminPlanDeleteMessage;
+
+  /// No description provided for @adminPlanDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get adminPlanDeleteAction;
+
+  /// No description provided for @adminPlanInactiveBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get adminPlanInactiveBadge;
+
+  /// No description provided for @adminGenericErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get adminGenericErrorMessage;
+
+  /// No description provided for @adminApplyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get adminApplyAction;
+
+  /// No description provided for @adminClearFiltersAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get adminClearFiltersAction;
 }
 
 class _AppLocalizationsDelegate

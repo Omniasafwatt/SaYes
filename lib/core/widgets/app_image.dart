@@ -48,3 +48,25 @@ class AppAssetImage extends StatelessWidget {
     return borderRadius != null ? ClipRRect(borderRadius: borderRadius!, child: image) : image;
   }
 }
+
+/// Renders [path] as a real network image when it looks like one, otherwise
+/// as a bundled asset. Vendor photos are Cloudinary URLs once real data is
+/// wired in, but the "no photo yet" fallback is a local asset — this lets
+/// every gallery/grid that shows vendor imagery handle both through one
+/// string field instead of each screen re-checking the scheme itself.
+class AppSmartImage extends StatelessWidget {
+  const AppSmartImage({super.key, required this.path, this.fit = BoxFit.cover, this.borderRadius, this.width, this.height});
+  final String path;
+  final BoxFit fit;
+  final BorderRadius? borderRadius;
+  final double? width;
+  final double? height;
+
+  @override
+  Widget build(BuildContext context) {
+    final isNetwork = path.startsWith('http://') || path.startsWith('https://');
+    return isNetwork
+        ? AppNetworkImage(url: path, fit: fit, borderRadius: borderRadius, width: width, height: height)
+        : AppAssetImage(path: path, fit: fit, borderRadius: borderRadius, width: width, height: height);
+  }
+}

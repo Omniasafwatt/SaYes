@@ -15,8 +15,8 @@ final _priceFormat = NumberFormat('#,##0', 'en_US');
 
 /// The vendor's incoming booking requests — the Bookings tab of
 /// [VendorShell]. A pending request can be accepted or declined; the
-/// change persists locally (see [PlaceholderVendorBookingsRepository]) and
-/// is reflected on the Dashboard tab's stats immediately after.
+/// change is sent to the API immediately (see [ApiVendorBookingsRepository])
+/// and is reflected on the Dashboard tab's stats right after.
 class VendorBookingsScreen extends ConsumerWidget {
   const VendorBookingsScreen({super.key});
 

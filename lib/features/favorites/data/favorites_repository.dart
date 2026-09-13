@@ -1,32 +1,44 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/network/api_client.dart';
 
-/// Contract for persisting favorite vendor ids. [FavoritesController] reads
-/// this once on startup and writes through it on every toggle.
+/// Contract for a customer's favorited vendor ids. The real API is
+/// add/remove-by-id, not a bulk replace, so [FavoritesController] calls
+/// through one id at a time on every toggle rather than writing the whole
+/// set back.
 abstract class FavoritesRepository {
   Future<Set<String>> getFavoriteIds();
-  Future<void> setFavoriteIds(Set<String> ids);
+  Future<void> addFavorite(String vendorId);
+  Future<void> removeFavorite(String vendorId);
 }
 
-/// TEMPORARY placeholder implementation — same honest pattern as the other
-/// Placeholder repositories: no backend exists yet to sync favorites across
-/// a customer's devices, so this only persists on-device via
-/// shared_preferences. Replace with a real Dio-backed implementation once
-/// the API contract exists; [FavoritesController] won't need to change.
-class PlaceholderFavoritesRepository implements FavoritesRepository {
-  static const _key = 'sayyes_favorite_vendor_ids';
+/// Real implementation, backed by `GET/POST/DELETE /users/me/favorites`.
+/// The list endpoint's exact item shape isn't pinned down in the API docs
+/// (it may return bare vendor ids or full vendor objects) — [getFavoriteIds]
+/// handles either so this doesn't break if that ever changes.
+class ApiFavoritesRepository implements FavoritesRepository {
+  ApiFavoritesRepository(this._api);
+
+  final ApiClient _api;
 
   @override
   Future<Set<String>> getFavoriteIds() async {
-    final prefs = await SharedPreferences.getInstance();
-    return (prefs.getStringList(_key) ?? const []).toSet();
+    final data = await _api.get('/users/me/favorites');
+    final items = data is List ? data : (data is Map ? data['items'] as List? : null) ?? const [];
+    return {
+      for (final item in items)
+        if (item is String) item else if (item is Map) (item['vendorId'] ?? item['id']) as String,
+    };
   }
 
   @override
-  Future<void> setFavoriteIds(Set<String> ids) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(_key, ids.toList());
+  Future<void> addFavorite(String vendorId) async {
+    await _api.post('/users/me/favorites/$vendorId');
+  }
+
+  @override
+  Future<void> removeFavorite(String vendorId) async {
+    await _api.delete('/users/me/favorites/$vendorId');
   }
 }
 
-final favoritesRepositoryProvider = Provider<FavoritesRepository>((ref) => PlaceholderFavoritesRepository());
+final favoritesRepositoryProvider = Provider<FavoritesRepository>((ref) => ApiFavoritesRepository(ref.watch(apiClientProvider)));
