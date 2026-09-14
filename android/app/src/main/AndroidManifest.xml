@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required for every network call the app makes (login, register, all
+         API/image loading) — without it, requests fail silently on a real
+         device even though debug/web runs never surface the gap. -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="sayyes"
         android:name="${applicationName}"
