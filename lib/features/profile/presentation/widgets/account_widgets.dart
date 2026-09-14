@@ -170,14 +170,6 @@ class PreferencesCard extends ConsumerWidget {
             value: notificationPrefs.bookingUpdates,
             onChanged: (value) => ref.read(notificationPreferencesControllerProvider.notifier).setBookingUpdates(value),
           ),
-          const Divider(height: 1),
-          SettingsSwitchRow(
-            icon: Icons.local_offer_rounded,
-            title: l10n.profilePromotions,
-            subtitle: l10n.profilePromotionsSubtitle,
-            value: notificationPrefs.promotions,
-            onChanged: (value) => ref.read(notificationPreferencesControllerProvider.notifier).setPromotions(value),
-          ),
         ],
       ),
     );

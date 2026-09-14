@@ -375,6 +375,7 @@ class AdminReviewsController extends AutoDisposeNotifier<AdminReviewsState> {
           if (r.id == id)
             AdminReviewSummary(
               id: r.id,
+              vendorId: r.vendorId,
               vendorName: r.vendorName,
               customerName: r.customerName,
               rating: r.rating,
@@ -407,3 +408,13 @@ class AdminReviewsController extends AutoDisposeNotifier<AdminReviewsState> {
 final adminReviewsControllerProvider = NotifierProvider.autoDispose<AdminReviewsController, AdminReviewsState>(
   AdminReviewsController.new,
 );
+
+/// Resolves a vendor's display name for a review row whose `GET
+/// /admin/reviews` entry only carried `{vendorId}` — see
+/// [AdminReviewSummary.vendorName]'s doc comment. Cached per vendor id, so
+/// a page of reviews from the same handful of vendors only triggers one
+/// lookup each rather than one per row.
+final adminVendorNameProvider = FutureProvider.autoDispose.family<String, String>((ref, vendorId) async {
+  final vendor = await ref.watch(adminRepositoryProvider).getVendor(vendorId);
+  return vendor.businessName;
+});

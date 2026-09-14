@@ -1,13 +1,17 @@
-/// What a notification is about — drives which icon it shows. Mirrors the
-/// two categories a user can toggle on the Profile screen's notification
-/// switches, so "turn off promotions" and "what kind of thing is this"
-/// share one vocabulary.
-enum NotificationCategory { bookingUpdate, promotion }
+/// What actually happened to a booking — drives both the notification's
+/// icon/accent color and, since it's folded into [NotificationItem.id],
+/// whether a status change re-surfaces as unread. There's no real
+/// notification log in the API (no timestamped "this event happened"
+/// record) — only current-state bookings — so a booking that flips from
+/// pending to accepted becomes a *new* notification id rather than an
+/// update to the old one, which is what makes "new status → unread again"
+/// work without any extra server-side support.
+enum NotificationKind { requestSent, requestAccepted, requestRejected, incomingRequest }
 
 class NotificationItem {
   const NotificationItem({
     required this.id,
-    required this.category,
+    required this.kind,
     required this.title,
     required this.body,
     required this.createdAt,
@@ -15,7 +19,7 @@ class NotificationItem {
   });
 
   final String id;
-  final NotificationCategory category;
+  final NotificationKind kind;
   final String title;
   final String body;
   final DateTime createdAt;
@@ -23,28 +27,10 @@ class NotificationItem {
 
   NotificationItem copyWithRead(bool value) => NotificationItem(
         id: id,
-        category: category,
+        kind: kind,
         title: title,
         body: body,
         createdAt: createdAt,
         read: value,
-      );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'category': category.name,
-        'title': title,
-        'body': body,
-        'createdAt': createdAt.toIso8601String(),
-        'read': read,
-      };
-
-  factory NotificationItem.fromJson(Map<String, dynamic> json) => NotificationItem(
-        id: json['id'] as String,
-        category: NotificationCategory.values.byName(json['category'] as String),
-        title: json['title'] as String,
-        body: json['body'] as String,
-        createdAt: DateTime.parse(json['createdAt'] as String),
-        read: json['read'] as bool,
       );
 }

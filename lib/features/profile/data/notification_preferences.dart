@@ -1,17 +1,13 @@
-/// Which notification categories the customer wants. Purely a stored
-/// preference today — there's no push infrastructure yet to actually honor
-/// it, but the preference itself is real and will carry straight over once
-/// that exists.
+/// Whether the account wants booking-update notifications at all. Purely a
+/// stored preference today — there's no push infrastructure yet to
+/// actually deliver anything while the app isn't open, but the in-app
+/// notification inbox itself does honor it (off means it renders empty).
 class NotificationPreferences {
-  const NotificationPreferences({this.bookingUpdates = true, this.promotions = false});
+  const NotificationPreferences({this.bookingUpdates = true});
 
   final bool bookingUpdates;
-  final bool promotions;
 
-  NotificationPreferences copyWith({bool? bookingUpdates, bool? promotions}) {
-    return NotificationPreferences(
-      bookingUpdates: bookingUpdates ?? this.bookingUpdates,
-      promotions: promotions ?? this.promotions,
-    );
+  NotificationPreferences copyWith({bool? bookingUpdates}) {
+    return NotificationPreferences(bookingUpdates: bookingUpdates ?? this.bookingUpdates);
   }
 }

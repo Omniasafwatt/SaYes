@@ -15,8 +15,6 @@ class NotificationPreferencesController extends Notifier<NotificationPreferences
 
   void setBookingUpdates(bool value) => _update(state.copyWith(bookingUpdates: value));
 
-  void setPromotions(bool value) => _update(state.copyWith(promotions: value));
-
   void _update(NotificationPreferences next) {
     state = next;
     ref.read(notificationPreferencesRepositoryProvider).savePreferences(next);

@@ -172,8 +172,6 @@
   "profileNotifications": "الإشعارات",
   "profileBookingUpdates": "تحديثات الحجوزات",
   "profileBookingUpdatesSubtitle": "تغييرات حالة طلبات الحجز الخاصة بكِ",
-  "profilePromotions": "العروض والتخفيضات",
-  "profilePromotionsSubtitle": "عروض مزودي الخدمة من حين لآخر",
 
   "homeGreetingMorning": "صباح الخير",
   "homeGreetingAfternoon": "مساء الخير",
@@ -191,11 +189,8 @@
   "homeSectionInspiration": "إلهام لحفل زفافك",
   "homeSeeAll": "عرض الكل",
 
-  "homeStatsVendorsValue": "+500",
   "homeStatsVendorsLabel": "مزود موثّق",
-  "homeStatsCouplesValue": "+12 ألف",
-  "homeStatsCouplesLabel": "عروسين سعداء",
-  "homeStatsCitiesValue": "6",
+  "homeStatsCategoriesLabel": "فئة",
   "homeStatsCitiesLabel": "مدن",
 
   "homeInspirationPalaceTag": "قصور",
@@ -441,6 +436,19 @@
   "notificationsEmptyTitle": "لا توجد إشعارات بعد",
   "notificationsEmptyMessage": "سنعلمكِ عندما يحتاج شيء ما إلى انتباهك.",
 
+  "notificationSentTitle": "تم إرسال طلب الحجز",
+  "notificationSentBody": "طلبك إلى {vendorName} في الطريق — هنبلغك لما يردّوا.",
+  "notificationAcceptedTitle": "تم قبول طلب الحجز",
+  "notificationAcceptedBody": "{vendorName} وافق على طلبك بتاريخ {date}.",
+  "notificationRejectedTitle": "تم رفض طلب الحجز",
+  "notificationRejectedBody": "{vendorName} رفض طلبك. استكشفي موردين تانيين لموعدك.",
+  "notificationIncomingTitle": "طلب حجز جديد",
+  "notificationIncomingBody": "{customerName} طلب {packageName} بتاريخ {date}.",
+  "notificationVendorAcceptedTitle": "وافقت على حجز",
+  "notificationVendorAcceptedBody": "أكّدت طلب {customerName} بتاريخ {date}.",
+  "notificationVendorRejectedTitle": "رفضت حجز",
+  "notificationVendorRejectedBody": "رفضت طلب {customerName}.",
+
   "adminPanelTitle": "لوحة التحكم",
   "adminNavDashboard": "الرئيسية",
   "adminNavVendors": "الموردون",
@@ -534,6 +542,7 @@
   "adminReviewsFilterTitle": "تصفية التقييمات",
   "adminReviewsFilterHiddenOnly": "المخفية فقط",
   "adminReviewHiddenBadge": "مخفي",
+  "adminReviewUnknownVendor": "مورد",
   "adminReviewHideAction": "إخفاء",
   "adminReviewUnhideAction": "إظهار",
   "adminReviewDeleteAction": "حذف",
@@ -601,6 +610,8 @@
   "adminPlanDeleteMessage": "سيُرفض الحذف إذا كان أي مورد ما زال مشتركًا بها.",
   "adminPlanDeleteAction": "حذف",
   "adminPlanInactiveBadge": "غير نشطة",
+  "adminPlanActivateAction": "تفعيل",
+  "adminPlanDeactivateAction": "إلغاء التفعيل",
 
   "adminGenericErrorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
   "adminApplyAction": "تطبيق",

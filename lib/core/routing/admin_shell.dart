@@ -12,11 +12,15 @@ import '../theme/app_typography.dart';
 import 'app_router.dart';
 
 /// Deliberately not another bottom-nav dock — the admin back-office has too
-/// many sections for that, and a control-panel-style dark side drawer over
-/// a charcoal app bar reads as a distinct "you're in the back office now"
-/// register, versus the ivory/bottom-dock look everywhere else in the app.
-/// Still built on the same [StatefulNavigationShell] pattern as
-/// [CustomerShell]/[VendorShell] so each section keeps its own stack.
+/// many sections for that, and a dedicated side drawer reads as a distinct
+/// "you're in the back office now" register, versus the bottom-dock look
+/// everywhere else in the app. The drawer itself stays on the app's normal
+/// ivory background rather than a dark panel — the selected section is the
+/// one rendered as a solid primary pill with white text; everything else is
+/// plain dark text on ivory. No black, gold, or dark-panel background
+/// anywhere in it. Still built on the same [StatefulNavigationShell]
+/// pattern as [CustomerShell]/[VendorShell] so each section keeps its own
+/// stack.
 class AdminShell extends ConsumerWidget {
   const AdminShell({super.key, required this.navigationShell});
 
@@ -56,7 +60,7 @@ class AdminShell extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.ivory,
       drawer: Drawer(
-        backgroundColor: AppColors.textPrimary,
+        backgroundColor: AppColors.ivory,
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -68,9 +72,9 @@ class AdminShell extends ConsumerWidget {
                     Container(
                       width: 44,
                       height: 44,
-                      decoration: const BoxDecoration(color: AppColors.gold, shape: BoxShape.circle),
+                      decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
                       alignment: Alignment.center,
-                      child: const Icon(Icons.shield_moon_rounded, color: AppColors.textPrimary, size: 22),
+                      child: const Icon(Icons.shield_moon_rounded, color: Colors.white, size: 22),
                     ),
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
@@ -79,11 +83,11 @@ class AdminShell extends ConsumerWidget {
                         children: [
                           Text(
                             l10n.adminPanelTitle,
-                            style: context.typography.titleLg.copyWith(color: Colors.white),
+                            style: context.typography.titleLg.copyWith(color: AppColors.textPrimary),
                           ),
                           Text(
                             profileAsync.valueOrNull?.name ?? '',
-                            style: context.typography.caption.copyWith(color: Colors.white.withValues(alpha: 0.6)),
+                            style: context.typography.caption.copyWith(color: AppColors.textSecondary),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -93,7 +97,7 @@ class AdminShell extends ConsumerWidget {
                   ],
                 ),
               ),
-              const Divider(color: Colors.white12, height: 1),
+              const Divider(color: AppColors.outlineNeutral, height: 1),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
@@ -112,7 +116,7 @@ class AdminShell extends ConsumerWidget {
                   ],
                 ),
               ),
-              const Divider(color: Colors.white12, height: 1),
+              const Divider(color: AppColors.outlineNeutral, height: 1),
               Padding(
                 padding: const EdgeInsets.all(AppSpacing.md),
                 child: _DrawerItem(
@@ -120,7 +124,6 @@ class AdminShell extends ConsumerWidget {
                   activeIcon: Icons.logout_rounded,
                   label: l10n.profileLogOut,
                   selected: false,
-                  iconColor: AppColors.primaryLight,
                   onTap: () async {
                     Navigator.of(context).pop();
                     await ref.read(secureStorageServiceProvider).clearSession();
@@ -134,7 +137,7 @@ class AdminShell extends ConsumerWidget {
         ),
       ),
       appBar: AppBar(
-        backgroundColor: AppColors.textPrimary,
+        backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         // The global AppBarTheme pins icon color to AppColors.textPrimary
         // (dark) for the ivory app bars everywhere else — invisible against
@@ -166,7 +169,6 @@ class _DrawerItem extends StatelessWidget {
     required this.label,
     required this.selected,
     required this.onTap,
-    this.iconColor,
   });
 
   final IconData icon;
@@ -174,15 +176,14 @@ class _DrawerItem extends StatelessWidget {
   final String label;
   final bool selected;
   final VoidCallback onTap;
-  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
-    final color = selected ? AppColors.gold : (iconColor ?? Colors.white.withValues(alpha: 0.85));
+    final color = selected ? Colors.white : AppColors.textPrimary;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 2),
       child: Material(
-        color: selected ? Colors.white.withValues(alpha: 0.08) : Colors.transparent,
+        color: selected ? AppColors.primary : Colors.transparent,
         borderRadius: AppRadius.mdRadius,
         child: InkWell(
           borderRadius: AppRadius.mdRadius,

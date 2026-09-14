@@ -16,6 +16,11 @@ abstract class HomeRepository {
   Future<List<VendorSummary>> getFeaturedVendors();
   Future<List<VendorSummary>> getPopularVendors();
   Future<List<CityModel>> getPopularCities(AppLocalizations l10n);
+
+  /// The platform's real total vendor count, for the Home trust-stats
+  /// strip — a single-item fetch just to read `meta.total`, not a full
+  /// vendor page.
+  Future<int> getTotalVendorCount();
 }
 
 /// One real category's presentation details — the API only knows a
@@ -118,6 +123,16 @@ class ApiHomeRepository implements HomeRepository {
       for (var i = 0; i < _cityIds.length; i++)
         CityModel(id: _cityIds[i], name: names[_cityIds[i]]!, vendorCount: counts[i]),
     ];
+  }
+
+  @override
+  Future<int> getTotalVendorCount() async {
+    try {
+      final data = await _api.get('/search/vendors', query: {'page': 1, 'limit': 1});
+      return (data is Map ? (data['meta']?['total'] as num?)?.toInt() : null) ?? 0;
+    } catch (_) {
+      return 0;
+    }
   }
 }
 

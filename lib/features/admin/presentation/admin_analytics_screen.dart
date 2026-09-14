@@ -14,6 +14,22 @@ import '../data/admin_analytics.dart';
 final _numberFormat = NumberFormat('#,##0', 'en_US');
 final _dateFormat = DateFormat.yMMMd();
 
+/// Most analytics stats are plain counts, but a few of the API's own
+/// fields are fractional — a 0-1 conversion ratio (`registrationToVendor:
+/// 0.332`) or a decimal average (`averageRating: 3.88`). Rounding either
+/// to the nearest whole number the way a count formats (`0`, `4`) throws
+/// away the only meaningful digits, so this renders a ratio as a
+/// percentage and any other non-integer as a 2-decimal number instead.
+String _formatStatValue(num value) {
+  if (value is double && value > 0 && value < 1) {
+    return '${(value * 100).toStringAsFixed(1)}%';
+  }
+  if (value is double && value != value.roundToDouble()) {
+    return value.toStringAsFixed(2);
+  }
+  return _numberFormat.format(value);
+}
+
 /// Renders the 6 `/admin/analytics/*` reports as tabs sharing one date
 /// range picker (Conversion ignores the range — its endpoint takes none).
 /// Every tab reads through [parseAnalyticsReport]'s generic shape rather
@@ -178,7 +194,7 @@ class _StatChips extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(_numberFormat.format(stat.value), style: context.typography.headlineSm),
+                Text(_formatStatValue(stat.value), style: context.typography.headlineSm),
                 Text(stat.label, style: context.typography.caption),
               ],
             ),

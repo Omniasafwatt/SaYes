@@ -152,7 +152,7 @@ class _HomeContent extends StatelessWidget {
         const SizedBox(height: _HeroSection.categoryOverlap + AppSpacing.sectionGap),
         FadeSlideIn(delay: const Duration(milliseconds: 40), child: const _SearchBar()),
         const SizedBox(height: AppSpacing.sectionGap),
-        FadeSlideIn(delay: const Duration(milliseconds: 80), child: _TrustStatsRow(l10n: l10n)),
+        FadeSlideIn(delay: const Duration(milliseconds: 80), child: _TrustStatsRow(l10n: l10n, data: data)),
         const SizedBox(height: AppSpacing.sectionGap),
         FadeSlideIn(
           delay: const Duration(milliseconds: 120),
@@ -345,18 +345,23 @@ class _SearchBar extends StatelessWidget {
 
 /// Three trust signals in a single elevated strip — a quiet "you're in good
 /// company" cue right under the search bar, before any vendor content has
-/// even loaded. Uses [AppColors.bronze] rather than the gold reserved for
-/// ratings/verified badges, so this reads as its own distinct accent.
+/// even loaded. Every number here is real: vendor count comes from
+/// `/search/vendors`'s own `meta.total` (a dedicated 1-item fetch, not the
+/// batch already loaded for the carousels below), categories/cities counts
+/// are just the length of the lists this same screen already fetched —
+/// there's no "happy couples" endpoint to source a customer count from, so
+/// that slot shows categories instead of a number nobody can verify.
 class _TrustStatsRow extends StatelessWidget {
-  const _TrustStatsRow({required this.l10n});
+  const _TrustStatsRow({required this.l10n, required this.data});
   final AppLocalizations l10n;
+  final HomeData data;
 
   @override
   Widget build(BuildContext context) {
     final stats = [
-      (icon: Icons.verified_rounded, value: l10n.homeStatsVendorsValue, label: l10n.homeStatsVendorsLabel),
-      (icon: Icons.favorite_rounded, value: l10n.homeStatsCouplesValue, label: l10n.homeStatsCouplesLabel),
-      (icon: Icons.location_city_rounded, value: l10n.homeStatsCitiesValue, label: l10n.homeStatsCitiesLabel),
+      (icon: Icons.verified_rounded, value: _priceFormat.format(data.totalVendorCount), label: l10n.homeStatsVendorsLabel),
+      (icon: Icons.category_rounded, value: _priceFormat.format(data.categories.length), label: l10n.homeStatsCategoriesLabel),
+      (icon: Icons.location_city_rounded, value: _priceFormat.format(data.cities.length), label: l10n.homeStatsCitiesLabel),
     ];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenMargin),

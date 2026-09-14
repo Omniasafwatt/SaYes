@@ -475,12 +475,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileBookingUpdatesSubtitle => 'Status changes on your requests';
 
   @override
-  String get profilePromotions => 'Promotions & offers';
-
-  @override
-  String get profilePromotionsSubtitle => 'Occasional vendor deals and offers';
-
-  @override
   String get homeGreetingMorning => 'Good morning';
 
   @override
@@ -523,19 +517,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeSeeAll => 'See all';
 
   @override
-  String get homeStatsVendorsValue => '500+';
-
-  @override
   String get homeStatsVendorsLabel => 'Verified Vendors';
 
   @override
-  String get homeStatsCouplesValue => '12K+';
-
-  @override
-  String get homeStatsCouplesLabel => 'Happy Couples';
-
-  @override
-  String get homeStatsCitiesValue => '6';
+  String get homeStatsCategoriesLabel => 'Categories';
 
   @override
   String get homeStatsCitiesLabel => 'Cities';
@@ -1163,6 +1148,58 @@ class AppLocalizationsEn extends AppLocalizations {
       'We\'ll let you know when something needs your attention.';
 
   @override
+  String get notificationSentTitle => 'Booking request sent';
+
+  @override
+  String notificationSentBody(String vendorName) {
+    return 'Your request to $vendorName is on its way — we\'ll notify you when they respond.';
+  }
+
+  @override
+  String get notificationAcceptedTitle => 'Booking request accepted';
+
+  @override
+  String notificationAcceptedBody(String vendorName, String date) {
+    return '$vendorName accepted your request for $date.';
+  }
+
+  @override
+  String get notificationRejectedTitle => 'Booking request declined';
+
+  @override
+  String notificationRejectedBody(String vendorName) {
+    return '$vendorName declined your request. Explore other vendors for your date.';
+  }
+
+  @override
+  String get notificationIncomingTitle => 'New booking request';
+
+  @override
+  String notificationIncomingBody(
+    String customerName,
+    String packageName,
+    String date,
+  ) {
+    return '$customerName requested $packageName for $date.';
+  }
+
+  @override
+  String get notificationVendorAcceptedTitle => 'You accepted a booking';
+
+  @override
+  String notificationVendorAcceptedBody(String customerName, String date) {
+    return 'You confirmed $customerName\'s request for $date.';
+  }
+
+  @override
+  String get notificationVendorRejectedTitle => 'You declined a booking';
+
+  @override
+  String notificationVendorRejectedBody(String customerName) {
+    return 'You declined $customerName\'s request.';
+  }
+
+  @override
   String get adminPanelTitle => 'Admin Panel';
 
   @override
@@ -1435,6 +1472,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminReviewHiddenBadge => 'Hidden';
 
   @override
+  String get adminReviewUnknownVendor => 'Vendor';
+
+  @override
   String get adminReviewHideAction => 'Hide';
 
   @override
@@ -1640,6 +1680,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adminPlanInactiveBadge => 'Inactive';
+
+  @override
+  String get adminPlanActivateAction => 'Activate';
+
+  @override
+  String get adminPlanDeactivateAction => 'Deactivate';
 
   @override
   String get adminGenericErrorMessage =>

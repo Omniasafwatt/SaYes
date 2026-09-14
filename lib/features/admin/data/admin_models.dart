@@ -189,6 +189,7 @@ BookingApiStatus bookingApiStatusFromApi(String? status) => switch (status?.toUp
 class AdminReviewSummary {
   const AdminReviewSummary({
     required this.id,
+    required this.vendorId,
     required this.vendorName,
     required this.customerName,
     required this.rating,
@@ -198,7 +199,13 @@ class AdminReviewSummary {
   });
 
   final String id;
-  final String vendorName;
+  final String vendorId;
+
+  /// The API's `GET /admin/reviews` nests only `{id, city}` under `vendor`
+  /// — no display name — so this is `null` whenever that's all we got, and
+  /// the screen resolves a real name from [vendorId] via a small cached
+  /// per-row lookup rather than showing a permanent "Vendor" placeholder.
+  final String? vendorName;
   final String customerName;
   final double rating;
   final String comment;
@@ -211,7 +218,8 @@ class AdminReviewSummary {
     final customer = (json['customer'] ?? json['user']) as Map<String, dynamic>?;
     return AdminReviewSummary(
       id: json['id'] as String,
-      vendorName: (vendorUser?['name'] as String?) ?? 'Vendor',
+      vendorId: (vendor?['id'] as String?) ?? json['vendorId'] as String? ?? '',
+      vendorName: vendorUser?['name'] as String?,
       customerName: (customer?['name'] as String?) ?? 'Customer',
       rating: (json['rating'] as num?)?.toDouble() ?? 0,
       comment: json['comment'] as String? ?? '',

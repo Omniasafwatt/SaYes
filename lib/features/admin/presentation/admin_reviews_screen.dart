@@ -122,6 +122,11 @@ class _ReviewRow extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dateLabel = DateFormat.yMMMd(Localizations.localeOf(context).toString()).format(review.createdAt);
+    String resolvedName = review.vendorName ?? l10n.adminReviewUnknownVendor;
+    if (review.vendorName == null && review.vendorId.isNotEmpty) {
+      final lookup = ref.watch(adminVendorNameProvider(review.vendorId));
+      if (lookup.hasValue) resolvedName = lookup.value!;
+    }
     return Container(
       padding: const EdgeInsets.all(AppSpacing.cardPaddingMd),
       decoration: BoxDecoration(color: AppColors.surface, borderRadius: AppRadius.lgRadius, boxShadow: AppShadows.card),
@@ -130,7 +135,7 @@ class _ReviewRow extends ConsumerWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Text(review.vendorName, style: context.typography.titleMd, maxLines: 1, overflow: TextOverflow.ellipsis)),
+              Expanded(child: Text(resolvedName, style: context.typography.titleMd, maxLines: 1, overflow: TextOverflow.ellipsis)),
               if (review.isHidden)
                 Container(
                   margin: const EdgeInsetsDirectional.only(end: 6),

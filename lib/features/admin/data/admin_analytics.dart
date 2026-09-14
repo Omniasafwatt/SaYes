@@ -29,7 +29,19 @@ class AnalyticsReport {
 
 const _skipKeys = {'from', 'to', 'success', 'id'};
 const _seriesLabelKeys = ['label', 'name', 'period', 'date', 'category', 'categoryName', 'status', 'rating', 'month', 'day'];
-const _seriesValueKeys = ['value', 'count', 'amount', 'total', 'revenue', 'bookings', 'reviews'];
+const _seriesValueKeys = [
+  'value',
+  'count',
+  'amount',
+  'total',
+  'revenue',
+  'bookings',
+  'reviews',
+  'bookingCount',
+  'users',
+  'vendorCount',
+  'vendors',
+];
 
 String humanizeKey(String key) {
   final withSpaces = key.replaceAllMapped(RegExp(r'([a-z0-9])([A-Z])'), (m) => '${m[1]} ${m[2]}');
@@ -38,8 +50,6 @@ String humanizeKey(String key) {
 }
 
 AnalyticsReport parseAnalyticsReport(dynamic json) {
-  if (json is! Map<String, dynamic>) return AnalyticsReport.empty;
-
   final stats = <AnalyticsStat>[];
   List<AnalyticsSeriesPoint>? series;
 
@@ -87,6 +97,14 @@ AnalyticsReport parseAnalyticsReport(dynamic json) {
     });
   }
 
-  walk(json);
+  // `top-categories`/`growth` return a bare array at the top level (no
+  // wrapping object with other stats alongside it) — the other 4 reports
+  // return an object, so only the object case walks for standalone numeric
+  // stats.
+  if (json is List) {
+    series = tryListAsSeries(json);
+  } else if (json is Map<String, dynamic>) {
+    walk(json);
+  }
   return AnalyticsReport(stats: stats, series: series ?? const []);
 }

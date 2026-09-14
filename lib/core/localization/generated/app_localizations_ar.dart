@@ -471,12 +471,6 @@ class AppLocalizationsAr extends AppLocalizations {
       'تغييرات حالة طلبات الحجز الخاصة بكِ';
 
   @override
-  String get profilePromotions => 'العروض والتخفيضات';
-
-  @override
-  String get profilePromotionsSubtitle => 'عروض مزودي الخدمة من حين لآخر';
-
-  @override
   String get homeGreetingMorning => 'صباح الخير';
 
   @override
@@ -519,19 +513,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeSeeAll => 'عرض الكل';
 
   @override
-  String get homeStatsVendorsValue => '+500';
-
-  @override
   String get homeStatsVendorsLabel => 'مزود موثّق';
 
   @override
-  String get homeStatsCouplesValue => '+12 ألف';
-
-  @override
-  String get homeStatsCouplesLabel => 'عروسين سعداء';
-
-  @override
-  String get homeStatsCitiesValue => '6';
+  String get homeStatsCategoriesLabel => 'فئة';
 
   @override
   String get homeStatsCitiesLabel => 'مدن';
@@ -1149,6 +1134,58 @@ class AppLocalizationsAr extends AppLocalizations {
       'سنعلمكِ عندما يحتاج شيء ما إلى انتباهك.';
 
   @override
+  String get notificationSentTitle => 'تم إرسال طلب الحجز';
+
+  @override
+  String notificationSentBody(String vendorName) {
+    return 'طلبك إلى $vendorName في الطريق — هنبلغك لما يردّوا.';
+  }
+
+  @override
+  String get notificationAcceptedTitle => 'تم قبول طلب الحجز';
+
+  @override
+  String notificationAcceptedBody(String vendorName, String date) {
+    return '$vendorName وافق على طلبك بتاريخ $date.';
+  }
+
+  @override
+  String get notificationRejectedTitle => 'تم رفض طلب الحجز';
+
+  @override
+  String notificationRejectedBody(String vendorName) {
+    return '$vendorName رفض طلبك. استكشفي موردين تانيين لموعدك.';
+  }
+
+  @override
+  String get notificationIncomingTitle => 'طلب حجز جديد';
+
+  @override
+  String notificationIncomingBody(
+    String customerName,
+    String packageName,
+    String date,
+  ) {
+    return '$customerName طلب $packageName بتاريخ $date.';
+  }
+
+  @override
+  String get notificationVendorAcceptedTitle => 'وافقت على حجز';
+
+  @override
+  String notificationVendorAcceptedBody(String customerName, String date) {
+    return 'أكّدت طلب $customerName بتاريخ $date.';
+  }
+
+  @override
+  String get notificationVendorRejectedTitle => 'رفضت حجز';
+
+  @override
+  String notificationVendorRejectedBody(String customerName) {
+    return 'رفضت طلب $customerName.';
+  }
+
+  @override
   String get adminPanelTitle => 'لوحة التحكم';
 
   @override
@@ -1419,6 +1456,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get adminReviewHiddenBadge => 'مخفي';
 
   @override
+  String get adminReviewUnknownVendor => 'مورد';
+
+  @override
   String get adminReviewHideAction => 'إخفاء';
 
   @override
@@ -1624,6 +1664,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get adminPlanInactiveBadge => 'غير نشطة';
+
+  @override
+  String get adminPlanActivateAction => 'تفعيل';
+
+  @override
+  String get adminPlanDeactivateAction => 'إلغاء التفعيل';
 
   @override
   String get adminGenericErrorMessage => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';

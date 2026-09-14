@@ -239,7 +239,7 @@ class _PulsingLoadingBarState extends State<_PulsingLoadingBar> with SingleTicke
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     borderRadius: AppRadius.fullRadius,
-                    gradient: const LinearGradient(colors: [AppColors.primary, AppColors.gold]),
+                    color: AppColors.primary,
                   ),
                   child: const SizedBox(height: 4),
                 ),

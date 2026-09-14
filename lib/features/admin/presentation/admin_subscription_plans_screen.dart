@@ -129,7 +129,7 @@ class _PlanCard extends ConsumerWidget {
               const Spacer(),
               TextButton(
                 onPressed: () => ref.read(adminSubscriptionPlansControllerProvider.notifier).setActive(plan.id, !plan.isActive),
-                child: Text(plan.isActive ? l10n.adminPlanInactiveBadge : l10n.adminPlanActiveLabel),
+                child: Text(plan.isActive ? l10n.adminPlanDeactivateAction : l10n.adminPlanActivateAction),
               ),
             ],
           ),

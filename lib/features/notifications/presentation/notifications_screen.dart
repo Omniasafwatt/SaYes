@@ -12,9 +12,9 @@ import '../application/notifications_controller.dart';
 import '../data/notification_item.dart';
 
 /// The signed-in account's notification inbox — reached from the bell icon
-/// on the customer Home or vendor Dashboard header. Content is placeholder
-/// data (see [PlaceholderNotificationsRepository]); tapping an item marks
-/// it read.
+/// on the customer Home or vendor Dashboard header. Content is derived live
+/// from the account's own real bookings (see [ApiNotificationsRepository]);
+/// tapping an item marks it read.
 class NotificationsScreen extends ConsumerWidget {
   const NotificationsScreen({super.key});
 
@@ -112,12 +112,17 @@ class _NotificationCard extends ConsumerWidget {
 
   final NotificationItem item;
 
+  static const _kindStyle = {
+    NotificationKind.requestSent: (icon: Icons.send_rounded, color: AppColors.primary),
+    NotificationKind.requestAccepted: (icon: Icons.check_circle_rounded, color: AppColors.success),
+    NotificationKind.requestRejected: (icon: Icons.cancel_rounded, color: AppColors.error),
+    NotificationKind.incomingRequest: (icon: Icons.notifications_active_rounded, color: AppColors.primary),
+  };
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = context.typography;
-    final icon = item.category == NotificationCategory.bookingUpdate
-        ? Icons.event_available_rounded
-        : Icons.local_offer_rounded;
+    final style = _kindStyle[item.kind]!;
 
     return InkWell(
       borderRadius: AppRadius.lgRadius,
@@ -135,9 +140,9 @@ class _NotificationCard extends ConsumerWidget {
             Container(
               width: 40,
               height: 40,
-              decoration: const BoxDecoration(color: AppColors.surface, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: style.color.withValues(alpha: 0.12), shape: BoxShape.circle),
               alignment: Alignment.center,
-              child: Icon(icon, size: 18, color: AppColors.primary),
+              child: Icon(style.icon, size: 18, color: style.color),
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(
@@ -161,7 +166,7 @@ class _NotificationCard extends ConsumerWidget {
                 width: 8,
                 height: 8,
                 margin: const EdgeInsets.only(top: 6),
-                decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                decoration: BoxDecoration(color: style.color, shape: BoxShape.circle),
               ),
             ],
           ],

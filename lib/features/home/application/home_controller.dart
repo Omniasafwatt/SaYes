@@ -11,12 +11,14 @@ class HomeData {
     required this.featuredVendors,
     required this.popularVendors,
     required this.cities,
+    required this.totalVendorCount,
   });
 
   final List<CategoryModel> categories;
   final List<VendorSummary> featuredVendors;
   final List<VendorSummary> popularVendors;
   final List<CityModel> cities;
+  final int totalVendorCount;
 }
 
 /// Loads the whole home feed in parallel. Re-runs automatically when the
@@ -35,6 +37,7 @@ class HomeController extends AsyncNotifier<HomeData> {
       repository.getFeaturedVendors(),
       repository.getPopularVendors(),
       repository.getPopularCities(l10n),
+      repository.getTotalVendorCount(),
     ]);
 
     return HomeData(
@@ -42,6 +45,7 @@ class HomeController extends AsyncNotifier<HomeData> {
       featuredVendors: results[1] as List<VendorSummary>,
       popularVendors: results[2] as List<VendorSummary>,
       cities: results[3] as List<CityModel>,
+      totalVendorCount: results[4] as int,
     );
   }
 }

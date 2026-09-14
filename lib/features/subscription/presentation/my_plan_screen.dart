@@ -91,7 +91,7 @@ class _MyPlanBody extends ConsumerWidget {
         Container(
           padding: const EdgeInsets.all(AppSpacing.cardPaddingLg),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [AppColors.primary, AppColors.gold]),
+            color: AppColors.primary,
             borderRadius: AppRadius.xlRadius,
             boxShadow: AppShadows.card,
           ),

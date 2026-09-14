@@ -1,127 +1,135 @@
-import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/widgets/badges.dart';
 import '../../auth/data/auth_models.dart';
+import '../../bookings/data/booking_repository.dart';
+import '../../vendor_bookings/data/vendor_bookings_repository.dart';
 import 'notification_item.dart';
 
-/// Contract for a signed-in account's notification inbox. Every method
-/// takes the account's [UserRole] since a real backend would send a
-/// customer booking-status updates about vendors they booked and a vendor
-/// new-request alerts about couples booking them — different content, same
-/// inbox shape, and this placeholder needs the role to know which sample
-/// set it's reading/writing (see [PlaceholderNotificationsRepository]).
+/// Contract for a signed-in account's notification inbox.
 abstract class NotificationsRepository {
-  Future<List<NotificationItem>> getNotifications(UserRole role);
+  Future<List<NotificationItem>> getNotifications(UserRole role, AppLocalizations l10n);
   Future<void> markAsRead(UserRole role, String id);
-  Future<void> markAllAsRead(UserRole role);
+  Future<void> markAllAsRead(UserRole role, AppLocalizations l10n);
 }
 
-/// TEMPORARY placeholder implementation — same honest pattern as
-/// [PlaceholderVendorBookingsRepository]: no backend exists yet to push
-/// real notifications, so this seeds a fixed, role-appropriate sample list
-/// on first read and persists read/unread state on-device via
-/// shared_preferences from then on. Storage is keyed by role (not by
-/// account) — this device gets one "customer" sample inbox and one
-/// "vendor" one. That's coarser than real per-account data, but without it
-/// a customer account and a vendor account sharing this device would
-/// share one seeded-once inbox, so a fresh vendor signup could inherit a
-/// customer's leftover "your booking was accepted" notification — content
-/// that reads as genuinely broken for that role, not just generic
-/// placeholder data. Replace with a real Dio-backed/push-driven
-/// implementation once the API contract exists; screens reading through
-/// [NotificationsRepository] won't need to change.
-class PlaceholderNotificationsRepository implements NotificationsRepository {
-  String _keyFor(UserRole role) => 'sayyes_notifications_${role.name}';
+/// There's no notifications endpoint in the API at all — no push
+/// infrastructure, no event log. Rather than showing invented content with
+/// invented names, this derives a real inbox from data the account
+/// genuinely has: a customer's own bookings (`/bookings/mine`) and a
+/// vendor's own incoming requests (`/bookings/incoming`), turned into one
+/// notification per booking reflecting its actual current status. "Read"
+/// has nothing server-side to live on, so it's tracked locally by id — see
+/// [NotificationKind]'s doc comment for why a status change still surfaces
+/// as unread despite that.
+class ApiNotificationsRepository implements NotificationsRepository {
+  ApiNotificationsRepository(this._bookingRepository, this._vendorBookingsRepository);
 
-  List<NotificationItem> _seedFor(UserRole role) {
-    final now = DateTime.now();
-    if (role == UserRole.vendor) {
-      return [
-        NotificationItem(
-          id: 'n1',
-          category: NotificationCategory.bookingUpdate,
-          title: 'New booking request',
-          body: 'Mariam & Youssef requested Essential Coverage for November 10, 2026.',
-          createdAt: now.subtract(const Duration(hours: 3)),
-          read: false,
-        ),
-        NotificationItem(
-          id: 'n2',
-          category: NotificationCategory.bookingUpdate,
-          title: 'Upcoming event reminder',
-          body: 'Your event with Hana & Omar is in two weeks — August 27, 2026.',
-          createdAt: now.subtract(const Duration(days: 1)),
-          read: false,
-        ),
-        NotificationItem(
-          id: 'n3',
-          category: NotificationCategory.promotion,
-          title: 'Grow your business',
-          body: 'Vendors with a complete portfolio get up to 3x more booking requests.',
-          createdAt: now.subtract(const Duration(days: 4)),
-          read: true,
-        ),
-      ];
-    }
+  final BookingRepository _bookingRepository;
+  final VendorBookingsRepository _vendorBookingsRepository;
+
+  String _readKey(UserRole role) => 'sayyes_notifications_read_${role.name}';
+
+  Future<Set<String>> _readIds(UserRole role) async {
+    final prefs = await SharedPreferences.getInstance();
+    return (prefs.getStringList(_readKey(role)) ?? const []).toSet();
+  }
+
+  Future<void> _saveReadIds(UserRole role, Set<String> ids) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(_readKey(role), ids.toList());
+  }
+
+  Future<List<NotificationItem>> _customerNotifications(AppLocalizations l10n, Set<String> readIds) async {
+    final dateFormat = DateFormat.yMMMd(l10n.localeName);
+    final bookings = await _bookingRepository.getBookings();
     return [
-      NotificationItem(
-        id: 'n1',
-        category: NotificationCategory.bookingUpdate,
-        title: 'Booking request accepted',
-        body: 'Nour Al Sham Wedding Hall accepted your request for December 5, 2026.',
-        createdAt: now.subtract(const Duration(hours: 5)),
-        read: false,
-      ),
-      NotificationItem(
-        id: 'n2',
-        category: NotificationCategory.bookingUpdate,
-        title: 'Booking request sent',
-        body: "Your request to Amira Lens Photography is on its way — we'll notify you when they respond.",
-        createdAt: now.subtract(const Duration(days: 2)),
-        read: true,
-      ),
-      NotificationItem(
-        id: 'n3',
-        category: NotificationCategory.promotion,
-        title: 'Special offer this week',
-        body: '20% off bridal styling sessions booked before the end of the month.',
-        createdAt: now.subtract(const Duration(days: 3)),
-        read: false,
-      ),
+      for (final booking in bookings)
+        switch (booking.status) {
+          BookingStatus.pending => NotificationItem(
+              id: '${booking.id}_pending',
+              kind: NotificationKind.requestSent,
+              title: l10n.notificationSentTitle,
+              body: l10n.notificationSentBody(booking.vendorName),
+              createdAt: booking.createdAt,
+              read: readIds.contains('${booking.id}_pending'),
+            ),
+          BookingStatus.accepted => NotificationItem(
+              id: '${booking.id}_accepted',
+              kind: NotificationKind.requestAccepted,
+              title: l10n.notificationAcceptedTitle,
+              body: l10n.notificationAcceptedBody(booking.vendorName, dateFormat.format(booking.eventDate)),
+              createdAt: booking.createdAt,
+              read: readIds.contains('${booking.id}_accepted'),
+            ),
+          BookingStatus.rejected => NotificationItem(
+              id: '${booking.id}_rejected',
+              kind: NotificationKind.requestRejected,
+              title: l10n.notificationRejectedTitle,
+              body: l10n.notificationRejectedBody(booking.vendorName),
+              createdAt: booking.createdAt,
+              read: readIds.contains('${booking.id}_rejected'),
+            ),
+        },
     ];
   }
 
-  Future<void> _save(UserRole role, List<NotificationItem> items) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(_keyFor(role), [for (final n in items) jsonEncode(n.toJson())]);
+  Future<List<NotificationItem>> _vendorNotifications(AppLocalizations l10n, Set<String> readIds) async {
+    final dateFormat = DateFormat.yMMMd(l10n.localeName);
+    final requests = await _vendorBookingsRepository.getRequests();
+    return [
+      for (final request in requests)
+        switch (request.status) {
+          BookingStatus.pending => NotificationItem(
+              id: '${request.id}_pending',
+              kind: NotificationKind.incomingRequest,
+              title: l10n.notificationIncomingTitle,
+              body: l10n.notificationIncomingBody(request.customerName, request.packageName, dateFormat.format(request.eventDate)),
+              createdAt: request.createdAt,
+              read: readIds.contains('${request.id}_pending'),
+            ),
+          BookingStatus.accepted => NotificationItem(
+              id: '${request.id}_accepted',
+              kind: NotificationKind.requestAccepted,
+              title: l10n.notificationVendorAcceptedTitle,
+              body: l10n.notificationVendorAcceptedBody(request.customerName, dateFormat.format(request.eventDate)),
+              createdAt: request.createdAt,
+              read: readIds.contains('${request.id}_accepted'),
+            ),
+          BookingStatus.rejected => NotificationItem(
+              id: '${request.id}_rejected',
+              kind: NotificationKind.requestRejected,
+              title: l10n.notificationVendorRejectedTitle,
+              body: l10n.notificationVendorRejectedBody(request.customerName),
+              createdAt: request.createdAt,
+              read: readIds.contains('${request.id}_rejected'),
+            ),
+        },
+    ];
   }
 
   @override
-  Future<List<NotificationItem>> getNotifications(UserRole role) async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getStringList(_keyFor(role));
-    if (raw == null) {
-      final seeded = _seedFor(role);
-      await _save(role, seeded);
-      return seeded;
-    }
-    return raw.map((entry) => NotificationItem.fromJson(jsonDecode(entry) as Map<String, dynamic>)).toList();
+  Future<List<NotificationItem>> getNotifications(UserRole role, AppLocalizations l10n) async {
+    final readIds = await _readIds(role);
+    return role == UserRole.vendor ? _vendorNotifications(l10n, readIds) : _customerNotifications(l10n, readIds);
   }
 
   @override
   Future<void> markAsRead(UserRole role, String id) async {
-    final items = await getNotifications(role);
-    await _save(role, [
-      for (final n in items)
-        if (n.id == id) n.copyWithRead(true) else n,
-    ]);
+    final ids = await _readIds(role);
+    ids.add(id);
+    await _saveReadIds(role, ids);
   }
 
   @override
-  Future<void> markAllAsRead(UserRole role) async {
-    final items = await getNotifications(role);
-    await _save(role, [for (final n in items) n.copyWithRead(true)]);
+  Future<void> markAllAsRead(UserRole role, AppLocalizations l10n) async {
+    final items = await getNotifications(role, l10n);
+    await _saveReadIds(role, {for (final n in items) n.id});
   }
 }
 
-final notificationsRepositoryProvider = Provider<NotificationsRepository>((ref) => PlaceholderNotificationsRepository());
+final notificationsRepositoryProvider = Provider<NotificationsRepository>(
+  (ref) => ApiNotificationsRepository(ref.watch(bookingRepositoryProvider), ref.watch(vendorBookingsRepositoryProvider)),
+);

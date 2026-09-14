@@ -1,5 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/localization/generated/app_localizations.dart';
+import '../../../core/localization/locale_controller.dart';
 import '../../auth/data/auth_models.dart';
+import '../../profile/application/notification_preferences_controller.dart';
 import '../../profile/application/user_profile_controller.dart';
 import '../data/notification_item.dart';
 import '../data/notifications_repository.dart';
@@ -19,9 +22,13 @@ class NotificationsController extends AsyncNotifier<List<NotificationItem>> {
     return profile?.role ?? UserRole.customer;
   }
 
+  AppLocalizations _l10n() => lookupAppLocalizations(ref.watch(localeControllerProvider));
+
   Future<List<NotificationItem>> _load() async {
+    final wantsBookingUpdates = ref.watch(notificationPreferencesControllerProvider).bookingUpdates;
+    if (!wantsBookingUpdates) return const [];
     final role = await _currentRole();
-    final items = await ref.read(notificationsRepositoryProvider).getNotifications(role);
+    final items = await ref.read(notificationsRepositoryProvider).getNotifications(role, _l10n());
     return [...items]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
   }
 
@@ -43,7 +50,7 @@ class NotificationsController extends AsyncNotifier<List<NotificationItem>> {
 
   Future<void> markAllAsRead() async {
     final role = await _currentRole();
-    await ref.read(notificationsRepositoryProvider).markAllAsRead(role);
+    await ref.read(notificationsRepositoryProvider).markAllAsRead(role, _l10n());
     final current = state.value;
     if (current == null) return;
     state = AsyncValue.data([for (final n in current) n.copyWithRead(true)]);

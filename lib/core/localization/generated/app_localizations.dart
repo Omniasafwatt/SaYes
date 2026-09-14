@@ -968,18 +968,6 @@ abstract class AppLocalizations {
   /// **'Status changes on your requests'**
   String get profileBookingUpdatesSubtitle;
 
-  /// No description provided for @profilePromotions.
-  ///
-  /// In en, this message translates to:
-  /// **'Promotions & offers'**
-  String get profilePromotions;
-
-  /// No description provided for @profilePromotionsSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Occasional vendor deals and offers'**
-  String get profilePromotionsSubtitle;
-
   /// No description provided for @homeGreetingMorning.
   ///
   /// In en, this message translates to:
@@ -1064,35 +1052,17 @@ abstract class AppLocalizations {
   /// **'See all'**
   String get homeSeeAll;
 
-  /// No description provided for @homeStatsVendorsValue.
-  ///
-  /// In en, this message translates to:
-  /// **'500+'**
-  String get homeStatsVendorsValue;
-
   /// No description provided for @homeStatsVendorsLabel.
   ///
   /// In en, this message translates to:
   /// **'Verified Vendors'**
   String get homeStatsVendorsLabel;
 
-  /// No description provided for @homeStatsCouplesValue.
+  /// No description provided for @homeStatsCategoriesLabel.
   ///
   /// In en, this message translates to:
-  /// **'12K+'**
-  String get homeStatsCouplesValue;
-
-  /// No description provided for @homeStatsCouplesLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Happy Couples'**
-  String get homeStatsCouplesLabel;
-
-  /// No description provided for @homeStatsCitiesValue.
-  ///
-  /// In en, this message translates to:
-  /// **'6'**
-  String get homeStatsCitiesValue;
+  /// **'Categories'**
+  String get homeStatsCategoriesLabel;
 
   /// No description provided for @homeStatsCitiesLabel.
   ///
@@ -2222,6 +2192,82 @@ abstract class AppLocalizations {
   /// **'We\'ll let you know when something needs your attention.'**
   String get notificationsEmptyMessage;
 
+  /// No description provided for @notificationSentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking request sent'**
+  String get notificationSentTitle;
+
+  /// No description provided for @notificationSentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request to {vendorName} is on its way — we\'ll notify you when they respond.'**
+  String notificationSentBody(String vendorName);
+
+  /// No description provided for @notificationAcceptedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking request accepted'**
+  String get notificationAcceptedTitle;
+
+  /// No description provided for @notificationAcceptedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{vendorName} accepted your request for {date}.'**
+  String notificationAcceptedBody(String vendorName, String date);
+
+  /// No description provided for @notificationRejectedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking request declined'**
+  String get notificationRejectedTitle;
+
+  /// No description provided for @notificationRejectedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{vendorName} declined your request. Explore other vendors for your date.'**
+  String notificationRejectedBody(String vendorName);
+
+  /// No description provided for @notificationIncomingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New booking request'**
+  String get notificationIncomingTitle;
+
+  /// No description provided for @notificationIncomingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{customerName} requested {packageName} for {date}.'**
+  String notificationIncomingBody(
+    String customerName,
+    String packageName,
+    String date,
+  );
+
+  /// No description provided for @notificationVendorAcceptedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You accepted a booking'**
+  String get notificationVendorAcceptedTitle;
+
+  /// No description provided for @notificationVendorAcceptedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You confirmed {customerName}\'s request for {date}.'**
+  String notificationVendorAcceptedBody(String customerName, String date);
+
+  /// No description provided for @notificationVendorRejectedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You declined a booking'**
+  String get notificationVendorRejectedTitle;
+
+  /// No description provided for @notificationVendorRejectedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You declined {customerName}\'s request.'**
+  String notificationVendorRejectedBody(String customerName);
+
   /// No description provided for @adminPanelTitle.
   ///
   /// In en, this message translates to:
@@ -2744,6 +2790,12 @@ abstract class AppLocalizations {
   /// **'Hidden'**
   String get adminReviewHiddenBadge;
 
+  /// No description provided for @adminReviewUnknownVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor'**
+  String get adminReviewUnknownVendor;
+
   /// No description provided for @adminReviewHideAction.
   ///
   /// In en, this message translates to:
@@ -3127,6 +3179,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Inactive'**
   String get adminPlanInactiveBadge;
+
+  /// No description provided for @adminPlanActivateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate'**
+  String get adminPlanActivateAction;
+
+  /// No description provided for @adminPlanDeactivateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate'**
+  String get adminPlanDeactivateAction;
 
   /// No description provided for @adminGenericErrorMessage.
   ///
